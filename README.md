@@ -13,7 +13,7 @@ Reco!は、日々の行った事を簡単に記録・管理・共有できます
 
 ## 就業Termの技術
 * devise
-* メッセージ機能
+* お気に入り機能
 
 ## カリキュラム外の技術
 * ransack
@@ -34,8 +34,8 @@ https://docs.google.com/spreadsheets/d/1NDM8KZCQmmo7yodlo8UEfojOngeBVVncNlLA4K8u
 https://docs.google.com/spreadsheets/d/1NDM8KZCQmmo7yodlo8UEfojOngeBVVncNlLA4K8uJU0/edit#gid=1890356014&range=A1
 
 ## ER図
-https://cacoo.com/diagrams/l01zmvJMbIZq4rR9/BE4D8
-<img width="1240" alt="ER図" src="https://user-images.githubusercontent.com/78161698/124539028-aa8fbd80-de57-11eb-8102-db7736eb7136.png">
+https://cacoo.com/diagrams/l01zmvJMbIZq4rR9/22C11
+<img width="1522" alt="ER図３" src="https://user-images.githubusercontent.com/78161698/124699911-b5fdea00-df26-11eb-9bfd-4bee2a4d0599.png">
 
 ## 画面遷移図
 https://cacoo.com/diagrams/l01zmvJMbIZq4rR9/73966
