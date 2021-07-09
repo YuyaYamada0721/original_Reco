@@ -31,15 +31,15 @@ $ rails s
 https://docs.google.com/spreadsheets/d/1NDM8KZCQmmo7yodlo8UEfojOngeBVVncNlLA4K8uJU0/edit?usp=sharing
 
 ## テーブル定義書
-https://docs.google.com/spreadsheets/d/1NDM8KZCQmmo7yodlo8UEfojOngeBVVncNlLA4K8uJU0/edit#gid=1890356014&range=A1
+https://docs.google.com/spreadsheets/d/1NDM8KZCQmmo7yodlo8UEfojOngeBVVncNlLA4K8uJU0/edit#gid=1530815877&range=A1
 
 ## ER図
-https://cacoo.com/diagrams/l01zmvJMbIZq4rR9/22C11
-<img width="1433" alt="ER図４" src="https://user-images.githubusercontent.com/78161698/124703919-29efc080-df2e-11eb-9796-d68339d3ad4a.png">
+https://cacoo.com/diagrams/l01zmvJMbIZq4rR9/110A9
+![ER図](https://user-images.githubusercontent.com/78161698/125025014-d790da00-e0bc-11eb-9097-6cfd0b63a3c8.png)
 
 ## 画面遷移図
 https://cacoo.com/diagrams/l01zmvJMbIZq4rR9/73966
-<img width="1714" alt="画面遷移図" src="https://user-images.githubusercontent.com/78161698/124539086-bf6c5100-de57-11eb-915e-ccbed4ccdde2.png">
+![画面遷移図](https://user-images.githubusercontent.com/78161698/125025123-158dfe00-e0bd-11eb-8504-c05410e86934.png)
 
 ## ワイヤーフレーム
 https://cacoo.com/diagrams/l01zmvJMbIZq4rR9/13E59
