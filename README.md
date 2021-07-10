@@ -35,7 +35,7 @@ https://docs.google.com/spreadsheets/d/1NDM8KZCQmmo7yodlo8UEfojOngeBVVncNlLA4K8u
 
 ## ER図
 https://cacoo.com/diagrams/l01zmvJMbIZq4rR9/110A9
-<img width="1619" alt="ER図_宮崎さん監修" src="https://user-images.githubusercontent.com/78161698/125160749-96322480-e1b9-11eb-89b2-0bfadf354616.png">
+<img width="1612" alt="ER図２" src="https://user-images.githubusercontent.com/78161698/125162423-aac6ea80-e1c2-11eb-93d4-e797b4e2bb5d.png">
 
 ## 画面遷移図
 https://cacoo.com/diagrams/l01zmvJMbIZq4rR9/73966
