@@ -39,6 +39,3 @@ end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-# デザイン関係
-gem 'bootstrap', '~> 4.1.1'
-gem 'jquery-rails'
