@@ -30,6 +30,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
+
+  gem 'letter_opener_web'
 end
 
 group :test do
@@ -39,4 +41,7 @@ end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem 'cancancan'
 gem 'devise'
+gem 'devise-i18n'
+gem 'rails_admin', '~> 2.0'
