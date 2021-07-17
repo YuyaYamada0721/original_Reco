@@ -4,6 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :username, presence: true, length: { in: 1..30 }
+  validates :introduction, length: { maximum: 200 }
+
+  has_many :teams, foreign_key: :owner_id
+
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.username = 'ゲスト'
