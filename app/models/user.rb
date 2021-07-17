@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :username, presence: true, length: { in: 1..30 }
   validates :introduction, length: { maximum: 200 }
 
-  has_many :teams, foreign_key: :owner_id
+  has_many :teams
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
