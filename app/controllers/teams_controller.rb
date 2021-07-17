@@ -11,6 +11,7 @@ class TeamsController < ApplicationController
     @team = current_user.teams.build(team_params)
     @team.owner_id = current_user.id
     if @team.save
+      @team.invite_member(@team.user)
       redirect_to teams_path
     end
   end
