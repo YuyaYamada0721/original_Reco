@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   def index
-    @teams = Team.all
+    @teams = current_user.teams.all
   end
 
   def new
@@ -21,5 +21,4 @@ class TeamsController < ApplicationController
   def team_params
     params.require(:team).permit(:user_id, :owner_id, :name, :is_solo)
   end
-
 end
