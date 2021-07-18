@@ -1,0 +1,7 @@
+<%= form_with model: team, local: false do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit value %>
+  <% if value == 'チーム名編集' %>
+    <%= link_to '取消', new_team_path, data: { remote: true } %>
+  <% end %>
+<% end %>

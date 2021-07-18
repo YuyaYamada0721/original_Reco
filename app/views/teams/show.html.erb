@@ -1,0 +1,16 @@
+<h1>
+  <span>チーム名:</span>
+  <%= @team.name %>
+</h1>
+
+<hr>
+
+<p>
+<strong>メンバー</strong>
+</p>
+
+<% @members.each do |member| %>
+  <span>・<%= member.user.username %></span>
+  <br>
+  <br>
+<% end %>

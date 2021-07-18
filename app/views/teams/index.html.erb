@@ -1,25 +1,13 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Teams</h1>
+<h3>チームを作成できます。<br>
+チーム名を入力後、作成ボタン押下で<strong>すぐに作成されます。</strong></h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<hr>
 
-  <tbody>
-    <% @teams.each do |team| %>
-      <tr>
-        <td><%= team.name %></td>
-      </tr>
+<%= render 'form', team: Team.new, value: '作成' %>
 
-    <% end %>
-  </tbody>
-</table>
+<hr>
 
-<br>
-
-<%= link_to 'New Team', new_team_path %>
+<div id='teams'>
+  <%= render @teams %>
+</div>
