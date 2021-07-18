@@ -6,7 +6,6 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @teams = Team.all
     @member = current_user.members.find_by(team_id: @team.id)
     @members = Member.where(team_id: params[:id])
   end
