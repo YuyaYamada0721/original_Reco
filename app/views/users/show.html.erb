@@ -1,5 +1,13 @@
-<h1><%= @user.username %>のページ</h1>
+
+<p><%= image_tag @user.image.url, size: '500x400' if @user.image && @user.image.url %></p>
+
+<p><%= @user.username %>のページ</p>
 <p>メールアドレス: <%= @user.email %></p>
+<p>自己紹介: <%= @user.introduction %></p>
+
+<%= link_to 'ユーザ情報を編集する', edit_user_path %>
+
+<br>
 
 <%= link_to 'チーム', teams_path %>
 

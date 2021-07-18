@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :members, dependent: :destroy
   has_many :members_teams, through: :members, source: :team
 
+  mount_uploader :image, ImageUploader
+
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.username = 'ゲスト'
