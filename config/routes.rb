@@ -10,5 +10,9 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: %i[show edit update]
-  resources :teams
+  resources :teams do
+    member do
+      post :invitation
+    end
+  end
 end

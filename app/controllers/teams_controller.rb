@@ -3,11 +3,10 @@ class TeamsController < ApplicationController
   before_action :set_team, only: %i[destroy edit update show]
 
   def index
-    @teams = current_user.teams.all
+    @teams = current_user.members_teams
   end
 
   def show
-    @member = current_user.members.find_by(team_id: @team.id)
     @members = Member.where(team_id: params[:id])
   end
 
@@ -33,6 +32,18 @@ class TeamsController < ApplicationController
 
   def update
     @team.update(team_params)
+  end
+
+  def invitation
+    @team = Team.new(id: params[:id])
+    if User.find_by(email: params[:team][:email])
+      @user = User.find_by(email: params[:team][:email])
+      @team.user_id = @user.id
+      Member.create(user_id: @team.user.id, team_id: @team.id)
+      redirect_to team_path
+    else
+      redirect_to team_path, notice: '招待できませんでした。'
+    end
   end
 
   private
