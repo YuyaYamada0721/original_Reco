@@ -6,8 +6,9 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
-    if @user.upadate(user_params)
+    if @user.update(user_params)
       redirect_to user_path, notice: '編集しました。'
+      bypass_sign_in(@user)
     else
       render 'edit'
     end
@@ -16,10 +17,10 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.find(current_user.id)
+    @user = User.find(params[:id])
   end
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation, :image, :introduction, :admin)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :image, :image_cache, :introduction, :admin)
   end
 end

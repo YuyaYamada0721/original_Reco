@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :プロフィール画像： %>
-    <%= image_tag(@user.image.url) if @user.image && @user.image.url %>
+    <%= image_tag @user.image.url, size: '500x400' if @user.image && @user.image.url %>
     <%= form.file_field :image %>
     <%= form.hidden_field :image_cache %>
   </div>
@@ -34,11 +34,13 @@
   </div>
 
   <div class="field">
-    <%= form.hidden_field :password %>
+    <%= form.label :パスワード %>
+    <%= form.password_field :password %>
   </div>
 
   <div class="field">
-    <%= form.hidden_field :password_confirmation %>
+    <%= form.label :パスワード確認 %>
+    <%= form.password_field :password_confirmation %>
   </div>
 
 
