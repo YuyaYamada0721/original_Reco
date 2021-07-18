@@ -1,4 +1,17 @@
-<p>
-  <strong>チーム名:</strong>
+<h1>
+  <span>チーム名:</span>
   <%= @team.name %>
+</h1>
+
+<hr>
+
+<p>
+<strong>メンバー</strong>
 </p>
+
+<% @members.each do |member| %>
+  <span>・<%= member.user.username %></span>
+  <%= link_to '詳細', team_member_path(team_id: member.team.id, id: member.user.id), class: 'btn btn-primary' %>
+  <br>
+  <br>
+<% end %>
