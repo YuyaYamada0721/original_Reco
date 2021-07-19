@@ -3,7 +3,9 @@ class TeamsController < ApplicationController
   before_action :set_team, only: %i[destroy edit update show]
 
   def index
+    @q = Team.ransack(params[:q])
     @teams = current_user.members_teams
+    @teams = @q.result(distinct: true)
   end
 
   def show
@@ -53,6 +55,6 @@ class TeamsController < ApplicationController
   end
 
   def team_params
-    params.require(:team).permit(:user_id, :owner_id, :name, :is_solo)
+    params.require(:team).permit(:user_id, :owner_id, :name, :is_solo, :q)
   end
 end

@@ -3,7 +3,7 @@
 チーム名を入力後、作成ボタン押下で<strong>すぐに作成されます。</strong></h3>
 
 <hr>
-
+<%= sort_link(@q, :is_solo, '使用用途') %>
 <%= render 'form', team: Team.new, value: '作成' %>
 
 <hr>
