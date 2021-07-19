@@ -1,5 +1,9 @@
 <%= form_with model: team, local: false do |f| %>
   <%= f.text_field :name %>
+  <%= f.label :is_solo, '個人', value: true %>
+  <%= f.radio_button :is_solo, true %>
+  <%= f.label :is_solo, 'チーム', value: false %>
+  <%= f.radio_button :is_solo, false %>
   <%= f.submit value %>
   <% if value == 'チーム名編集' %>
     <%= link_to '取消', new_team_path, data: { remote: true } %>
