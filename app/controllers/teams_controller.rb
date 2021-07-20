@@ -40,8 +40,6 @@ class TeamsController < ApplicationController
     @team = Team.new(id: params[:id]) #箱@teamを準備 Teamのshowの中で追加できるようにするため、team.idしか入っていない
     if User.find_by(email: params[:team][:email]) #Userテーブルから入力したmailアドレスがあればtrue
       @user = User.find_by(email: params[:team][:email]) # そのUser情報を箱@userへ代入
-      # @team.user_id = @user.id
-      # Member.create(user_id: @team.user.id, team_id: @team.id)
       Member.create(user_id: @user.id, team_id: @team.id) #Memberテーブルへ保存するためにはuser.idとteam.idがいるため
       redirect_to team_path
     else
