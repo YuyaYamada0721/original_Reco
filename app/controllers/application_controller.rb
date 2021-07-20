@@ -5,6 +5,13 @@ class ApplicationController < ActionController::Base
     user_path(current_user.id)
   end
 
+  def team_members_check
+    unless Member.where(team_id: params[:id]).where(user_id: current_user.id).present?
+      flash[:notice] = 'メンバーではないチーム情報は見れません'
+      redirect_to teams_path
+    end
+  end
+
   protected
 
   def configure_permitted_parameters
