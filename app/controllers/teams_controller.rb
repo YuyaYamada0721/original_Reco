@@ -4,8 +4,8 @@ class TeamsController < ApplicationController
 
   def index
     @q = Team.ransack(params[:q])
-    @teams = current_user.members_teams
     @teams = @q.result(distinct: true)
+    @teams = current_user.members_teams
   end
 
   def show
