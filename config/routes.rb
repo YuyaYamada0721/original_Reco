@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :teams do
     member do
       post :invitation
+      patch :owner_change
     end
   end
 end

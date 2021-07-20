@@ -5,15 +5,24 @@
 
 <hr>
 
-<p>
+<h2>
 <strong>メンバー</strong>
+</h2>
+
+<p>
+<strong>オーナー：<%= @team.owner.username %></strong>
 </p>
 
-<% @members.each do |member| %>
-  <span>・<%= member.user.username %></span>
-  <br>
-  <br>
-<% end %>
+  <% @members.each do |member| %>
+    <% if member.team.owner.id != member.user.id %>
+      <span>・<%= member.user.username %></span>
+      <% if current_user == member.team.owner %>
+        <%= link_to 'オーナー権利譲渡', owner_change_team_path(owner_id: member.user_id), method: :patch %>
+      <% end %>
+    <% end %>
+    <br>
+    <br>
+  <% end %>
 
 <%= form_with(model: @team, method: :post, url: invitation_team_path, local: true) do |form| %>
   <%= form.email_field :email %>

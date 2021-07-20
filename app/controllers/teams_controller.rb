@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_team, only: %i[destroy edit update show]
+  before_action :set_team, only: %i[destroy edit update show owner_change]
 
   def index
     @q = Team.ransack(params[:q])
@@ -46,6 +46,11 @@ class TeamsController < ApplicationController
     else
       redirect_to team_path, notice: '招待できませんでした。'
     end
+  end
+
+  def owner_change
+    @team.update(owner_id: params[:owner_id])
+    redirect_to team_path, notice: 'チームオーナーを交代しました'
   end
 
   private
