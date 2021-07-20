@@ -16,5 +16,9 @@ Rails.application.routes.draw do
       delete :secession
       patch :owner_change
     end
+    resources :members do
+      resources :knowledges do
+      end
+    end
   end
 end
