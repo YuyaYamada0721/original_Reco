@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       redirect_to user_path, notice: '編集しました。'
-      bypass_sign_in(@user)
+      bypass_sign_in(@user) #Userを編集してもログイン状態を維持
     else
       render 'edit'
     end
