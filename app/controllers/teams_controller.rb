@@ -37,11 +37,12 @@ class TeamsController < ApplicationController
   end
 
   def invitation
-    @team = Team.new(id: params[:id])
-    if User.find_by(email: params[:team][:email])
-      @user = User.find_by(email: params[:team][:email])
-      @team.user_id = @user.id
-      Member.create(user_id: @team.user.id, team_id: @team.id)
+    @team = Team.new(id: params[:id]) #箱@teamを準備 Teamのshowの中で追加できるようにするため、team.idしか入っていない
+    if User.find_by(email: params[:team][:email]) #Userテーブルから入力したmailアドレスがあればtrue
+      @user = User.find_by(email: params[:team][:email]) # そのUser情報を箱@userへ代入
+      # @team.user_id = @user.id
+      # Member.create(user_id: @team.user.id, team_id: @team.id)
+      Member.create(user_id: @user.id, team_id: @team.id) #Memberテーブルへ保存するためにはuser.idとteam.idがいるため
       redirect_to team_path
     else
       redirect_to team_path, notice: '招待できませんでした。'
