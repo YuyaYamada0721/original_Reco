@@ -4,9 +4,9 @@ class TeamsController < ApplicationController
   before_action :set_team, only: %i[destroy edit update show owner_change invitation]
 
   def index
-    @q = Team.ransack(params[:q])
-    @teams = @q.result(distinct: true)
     @teams = current_user.members_teams
+    @q = @teams.ransack(params[:q])
+    @teams = @q.result(distinct: true)
   end
 
   def show

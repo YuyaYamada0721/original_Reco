@@ -12,13 +12,14 @@ Rails.application.routes.draw do
   resources :users, only: %i[show edit update]
   resources :teams do
     member do
-      post :invitation
-      delete :secession
+      post :invitation # member#create
+      delete :secession # member#destroy
       patch :owner_change
     end
-    resources :members do
-      resources :knowledges do
-      end
+    resources :members, controller: 'teams/members' do
+    end
+    resources :knowledges, controller: 'teams/knowledges' do
+      resources :tips, controller: 'teams/knowledges/tips'
     end
   end
 end
