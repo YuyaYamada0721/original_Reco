@@ -1,0 +1,14 @@
+<h1>チーム情報一覧</h1>
+
+<table>
+  <tr>
+    <th>ナレッジ一覧</th>
+  </tr>
+
+<% @knowledges.each do |knowledge|  %>
+  <tr>
+    <td><%= knowledge.name %></td>
+  </tr>
+<% end %>
+
+</table>
