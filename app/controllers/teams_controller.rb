@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_team, only: %i[destroy edit update show owner_change]
+  before_action :set_team, only: %i[destroy edit update show owner_change invitation]
 
   def index
     @q = Team.ransack(params[:q])
@@ -47,9 +47,16 @@ class TeamsController < ApplicationController
     end
   end
 
+  def secession
+    @user = User.find_by(id: params[:user_id])
+    @member = Member.find_by(user_id: @user.id, team_id: params[:id])
+    @member.destroy
+    redirect_to team_path, notice: 'メンバーを脱退させました。'
+  end
+
   def owner_change
     @team.update(owner_id: params[:owner_id])
-    redirect_to team_path, notice: 'チームオーナーを交代しました'
+    redirect_to team_path, notice: 'チームオーナーを交代しました。'
   end
 
   private

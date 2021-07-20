@@ -18,10 +18,11 @@
       <span>・<%= member.user.username %></span>
       <% if current_user == member.team.owner %>
         <%= link_to 'オーナー権利譲渡', owner_change_team_path(owner_id: member.user_id), method: :patch %>
+        <%= link_to 'チーム脱退', secession_team_path(user_id: member.user_id), method: :delete %>
       <% end %>
+  <br>
+  <br>
     <% end %>
-    <br>
-    <br>
   <% end %>
 
 <%= form_with(model: @team, method: :post, url: invitation_team_path, local: true) do |form| %>
