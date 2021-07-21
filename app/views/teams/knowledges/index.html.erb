@@ -2,21 +2,11 @@
 
 <%= link_to '新規ナレッジ登録',  new_team_knowledge_path(@team) %>
 
-  <h2>ナレッジ一覧</h2>
+<h2>ナレッジ一覧</h2>
 
 <% @knowledges.each do |knowledge|  %>
-  <div class="py-5">
-    <div class="col-md-3">
-      <div class="card">
-        <div class="card-block">
-          <h4 class="card-title">
-            <td><%= knowledge.name %></td>
-          </h4>
-          <h6 class="card-subtitle">
-            作成者：<td><%= knowledge.member.user.username %></td>
-          </h6>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= knowledge.name %>
+  <div>作成者：<%= knowledge.member.user.username %></div>
+  <div><%= link_to '詳細', team_knowledge_path(@team, knowledge) %></div>
+  <br>
 <% end %>

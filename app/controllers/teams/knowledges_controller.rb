@@ -1,4 +1,5 @@
 class Teams::KnowledgesController < ApplicationController
+  before_action :set_knowledge, only: %i[show]
 
   def index
     @team = Team.find(params[:team_id])
@@ -19,12 +20,17 @@ class Teams::KnowledgesController < ApplicationController
     end
   end
 
+  def show
+    @team = Team.find(params[:team_id])
+  end
+
   private
+
+  def set_knowledge
+    @knowledge = Knowledge.find(params[:id])
+  end
 
   def knowledge_params
     params.require(:knowledge).permit(:member_id, :team_id, :name)
   end
-
-    # member = Member.where(team_id: params[:team_id]).where(user_id: current_user.id)
-    # @knowledge = member.knowledges.build
 end
