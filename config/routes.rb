@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   resources :users, only: %i[show edit update]
   resources :teams do
     member do
-      delete :secession # member#destroy
       patch :owner_change
     end
     resources :members, controller: 'teams/members' do
