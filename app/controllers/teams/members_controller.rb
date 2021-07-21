@@ -1,12 +1,15 @@
 class Teams::MembersController < ApplicationController
 
   def create
-    if User.find_by(email: params[:team][:email])
-      @user = User.find_by(email: params[:team][:email])
-      Member.create(user_id: @user.id, team_id: params[:team_id])
-      redirect_to team_path(params[:team_id]), notice: 'メンバーを追加しました。'
+    team = Team.find(params[:team_id])
+    user = User.find_by(email: params[:team][:email])
+    if user.blank?
+      redirect_to team_path(team), notice: '存在しないユーザです。'
+    elsif Member.find_by(user_id: user.id, team_id: team.id).present?
+      redirect_to team_path(team), notice: '既にメンバーの一員です。'
     else
-      redirect_to team_path, notice: '招待できませんでした。'
+      Member.create(user_id: user.id, team_id: team.id)
+      redirect_to team_path(team), notice: 'メンバーを追加しました。'
     end
   end
 
