@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def team_members_check
     unless Member.where(team_id: params[:id]).where(user_id: current_user.id).present?
-      flash[:notice] = 'メンバーではないチーム情報は見れません'
+      flash[:notice] = 'メンバーではないチーム情報は見れません。'
       redirect_to teams_path
     end
   end
