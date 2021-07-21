@@ -1,5 +1,5 @@
 class Teams::KnowledgesController < ApplicationController
-  before_action :set_knowledge, only: %i[show edit update]
+  before_action :set_knowledge, only: %i[show edit update destroy]
 
   def index
     @team = Team.find(params[:team_id])
@@ -30,6 +30,11 @@ class Teams::KnowledgesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @knowledge.destroy
+    redirect_to team_knowledges_path, notice: '削除しました。'
   end
 
   private
