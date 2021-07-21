@@ -25,7 +25,8 @@
     <% end %>
   <% end %>
 
-<%= form_with(model: @team, method: :post, url: invitation_team_path, local: true) do |form| %>
+<%= form_with model: @team, method: :post, url: team_members_path(@team.id), local: true do |form| %>
+  <%= form.label :招待したい方のEmailアドレスを入力して下さい。 %>
   <%= form.email_field :email %>
   <%= form.submit '招待' %>
 <% end %>
