@@ -10,5 +10,10 @@ class Teams::MembersController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    team = Team.find_by(id: params[:team_id])
+    member = Member.find_by(team_id: team.id, user_id: params[:id])
+    member.destroy
+    redirect_to team_path(params[:team_id])
+  end
 end
