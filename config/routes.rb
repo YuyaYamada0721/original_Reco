@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   resources :users, only: %i[show edit update]
   resources :teams do
     member do
-      post :invitation # member#create
       delete :secession # member#destroy
       patch :owner_change
     end
