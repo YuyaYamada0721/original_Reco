@@ -1,0 +1,6 @@
+<%= form_with scope: :team, local: true, url: {controller: 'teams/knowledges'} do |form| %>
+  <%= form.label :ナレッジ名 %>
+  <%= form.text_field :name %>
+  <%= form.submit '登録する' %>
+<% end %>
+<%= link_to '戻る', team_knowledges_path %>
