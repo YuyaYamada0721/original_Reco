@@ -37,13 +37,6 @@ class TeamsController < ApplicationController
     @team.update(team_params)
   end
 
-  def secession
-    @user = User.find_by(id: params[:user_id])
-    @member = Member.find_by(user_id: @user.id, team_id: params[:id])
-    @member.destroy
-    redirect_to team_path, notice: 'メンバーを脱退させました。'
-  end
-
   def owner_change
     @team.update(owner_id: params[:owner_id])
     redirect_to team_path, notice: 'チームオーナーを交代しました。'
