@@ -12,13 +12,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def current_user_check
-    unless current_user == User.find(params[:id])
-      flash[:notice] = '他のユーザページにはアクセスできません。'
-      redirect_to user_path(current_user.id)
-    end
-  end
-
   protected
 
   def configure_permitted_parameters

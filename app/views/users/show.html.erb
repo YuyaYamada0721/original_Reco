@@ -5,10 +5,10 @@
 <p>メールアドレス: <%= @user.email %></p>
 <p>自己紹介: <%= @user.introduction %></p>
 
-<%= link_to 'ユーザ情報を編集する', edit_user_path %>
+<% if current_user == User.find(params[:id]) %>
+  <%= link_to 'ユーザ情報を編集する', edit_user_path %>
+<% end %>
 
 <br>
 
-<%= link_to 'チーム', teams_path %>
-
-<p>個人での利用の場合、チーム作成をして個人でご利用下さい。</p>
+<%= link_to '個人記録・チーム記録へ', teams_path %>
