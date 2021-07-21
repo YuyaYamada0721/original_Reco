@@ -14,9 +14,10 @@ class Teams::MembersController < ApplicationController
   end
 
   def destroy
-    team = Team.find_by(id: params[:team_id])
-    member = Member.find_by(team_id: team.id, user_id: params[:id])
+    team = Team.find_by(id: params[:team_id]).id
+    user = Member.find(params[:id]).user.id
+    member = Member.find_by(team_id: team, user_id: user)
     member.destroy
-    redirect_to team_path(params[:team_id])
+    redirect_to team_path(team), notice: 'メンバーを脱退させました。'
   end
 end
