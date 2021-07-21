@@ -1,9 +1,8 @@
 <h1>チーム情報一覧</h1>
 
-<table>
-  <tr>
-    <th>ナレッジ一覧</th>
-  </tr>
+<%= link_to '新規ナレッジ登録',  new_team_knowledge_path(@team) %>
+
+  <h2>ナレッジ一覧</h2>
 
 <% @knowledges.each do |knowledge|  %>
   <tr>
