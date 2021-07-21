@@ -1,5 +1,5 @@
 class Teams::KnowledgesController < ApplicationController
-  before_action :set_knowledge, only: %i[show]
+  before_action :set_knowledge, only: %i[show edit update]
 
   def index
     @team = Team.find(params[:team_id])
@@ -20,8 +20,16 @@ class Teams::KnowledgesController < ApplicationController
     end
   end
 
-  def show
-    @team = Team.find(params[:team_id])
+  def show; end
+
+  def edit; end
+
+  def update
+    if @knowledge.update(knowledge_params)
+      redirect_to team_knowledges_path, notice: '編集しました。'
+    else
+      render :edit
+    end
   end
 
   private
