@@ -1,5 +1,6 @@
 class Teams::KnowledgesController < ApplicationController
   before_action :set_knowledge, only: %i[show edit update destroy]
+  before_action :authenticate_user!
 
   def index
     @team = Team.find(params[:team_id])
