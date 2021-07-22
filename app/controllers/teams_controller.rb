@@ -1,7 +1,6 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user!
-  before_action :team_members_check, only: %i[show]
-  before_action :set_team, only: %i[destroy edit update show owner_change invitation]
+  before_action :team_members_check, only: :show
 
   def index
     @teams = current_user.members_teams
@@ -10,6 +9,7 @@ class TeamsController < ApplicationController
   end
 
   def show
+    @team = Team.find(params[:id])
     @members = Member.where(team_id: params[:id])
   end
 
@@ -28,25 +28,26 @@ class TeamsController < ApplicationController
   end
 
   def destroy
+    @team = Team.find(params[:id])
     @team.destroy
   end
 
-  def edit; end
+  def edit
+    @team = Team.find(params[:id])
+  end
 
   def update
+    @team = Team.find(params[:id])
     @team.update(team_params)
   end
 
   def owner_change
+    @team = Team.find(params[:id])
     @team.update(owner_id: params[:owner_id])
     redirect_to team_path, notice: 'チームオーナーを交代しました。'
   end
 
   private
-
-  def set_team
-    @team = Team.find(params[:id])
-  end
 
   def team_params
     params.require(:team).permit(:user_id, :owner_id, :name, :is_solo, :q)
