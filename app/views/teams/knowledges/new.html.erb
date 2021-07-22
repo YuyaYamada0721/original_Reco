@@ -1,4 +1,14 @@
-<%= form_with scope: :team, local: true, url: {controller: 'teams/knowledges'} do |form| %>
+<%= form_with model: @knowledge, url: team_knowledges_path(@team.id), local: true do |form| %>
+    <div id="error_explanation", style="height:150px;">
+      <% if @knowledge.errors.any? %>
+        <h2><%= pluralize(@knowledge.errors.count, "error") %> prohibited this team from being saved:</h2>
+      <ul>
+        <% @knowledge.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    </div>
   <%= form.label :ナレッジ名 %>
   <%= form.text_field :name %>
   <%= form.submit '登録する' %>
