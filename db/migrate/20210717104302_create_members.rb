@@ -6,6 +6,6 @@ class CreateMembers < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    add_index :members, %i[user_id team_id], unique: :true
+    add_index :members, %i[user_id team_id], unique: 'true'
   end
 end

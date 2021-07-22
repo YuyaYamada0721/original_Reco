@@ -24,3 +24,10 @@
 
 <hr>
 <%= link_to '戻る', teams_path %>
+<hr>
+
+<h6>ストック一覧</h6>
+
+<% @stocks.each do |stock| %>
+  <p>・<%= link_to stock.knowledge.name, team_knowledge_path(@team, stock.knowledge_id) %></p>
+<% end %>

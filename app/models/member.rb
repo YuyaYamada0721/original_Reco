@@ -5,4 +5,6 @@ class Member < ApplicationRecord
   belongs_to :team
 
   has_many :knowledges, dependent: :destroy
+  has_many :stocks, dependent: :destroy
+  has_many :stocks_knowledges, through: :stocks, source: :knowledge
 end
