@@ -22,8 +22,9 @@ class TeamsController < ApplicationController
     @team.owner_id = current_user.id
     if @team.save
       @team.invite_member(@team.user)
+      redirect_to teams_path, notice: 'チームを登録しました。'
     else
-      redirect_to teams_path, notice: '作成できませんでした'
+      render :new
     end
   end
 
