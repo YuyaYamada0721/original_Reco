@@ -18,17 +18,17 @@
     <% end %>
   <% end %>
 
-<%= form_with model: @team, method: :post, url: team_members_path(@team.id), local: true do |form| %>
-  <%= form.label :招待したい方のEmailアドレスを入力して下さい。 %>
-  <%= form.email_field :email %>
-  <%= form.submit '招待' %>
-<% end %>
 
 <%= link_to 'ナレッジ一覧へ', team_knowledges_path(@team) %>
 
 <hr>
 
 <% if current_user == @team.owner %>
+  <%= form_with model: @team, method: :post, url: team_members_path(@team.id), local: true do |form| %>
+    <%= form.label :招待したい方のEmailアドレスを入力して下さい。 %>
+    <%= form.email_field :email %>
+    <%= form.submit '招待' %>
+  <% end %>
   <%= link_to '削除', team_path(@team), method: :delete, data: { confirm: '削除しますか？' } %>
   <%= link_to '編集', edit_team_path(@team) %>
 <% end%>
