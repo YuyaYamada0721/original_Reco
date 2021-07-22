@@ -1,7 +1,7 @@
 <h1>チーム情報一覧</h1>
 
 <%= link_to '新規ナレッジ登録',  new_team_knowledge_path(@team) %>
-
+<%= link_to '戻る', team_path(@team) %>
 <h2>ナレッジ一覧</h2>
 
 <% @knowledges.each do |knowledge|  %>
