@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user!
+  before_action :team_owner_check, only: :edit
   before_action :team_members_check, only: :show
 
   def index
@@ -22,23 +23,27 @@ class TeamsController < ApplicationController
     @team.owner_id = current_user.id
     if @team.save
       @team.invite_member(@team.user)
+      redirect_to teams_path, notice: 'チームを登録しました。'
     else
-      redirect_to teams_path, notice: '作成できませんでした'
+      render :new
     end
-  end
-
-  def destroy
-    @team = Team.find(params[:id])
-    @team.destroy
   end
 
   def edit
     @team = Team.find(params[:id])
+    @members = Member.where(team_id: params[:id])
   end
 
   def update
     @team = Team.find(params[:id])
     @team.update(team_params)
+    redirect_to teams_path, notice: 'チームを編集しました。'
+  end
+
+  def destroy
+    @team = Team.find(params[:id])
+    @team.destroy
+    redirect_to teams_path, notice: 'チームを削除しました。'
   end
 
   def owner_change

@@ -1,15 +1,25 @@
-<%= form_with model: team, local: false do |f| %>
-  <%= f.text_field :name %>
+<%= form_with model: team, local: true do |form| %>
+    <div id="error_explanation", style="height:150px;">
+      <% if @team.errors.any? %>
+        <h2><%= pluralize(@team.errors.count, "error") %> prohibited this team from being saved:</h2>
+      <ul>
+        <% @team.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    </div>
 
-  <%= f.label :is_solo, '個人', value: true %>
-  <%= f.radio_button :is_solo, true %>
+<div>
+  <%= form.text_field :name %>
 
-  <%= f.label :is_solo, 'チーム', value: false %>
-  <%= f.radio_button :is_solo, false %>
+  <%= form.label :is_solo, '個人', value: true %>
+  <%= form.radio_button :is_solo, true %>
 
-  <%= f.submit value %>
-  
-  <% if value == 'チーム名編集' %>
-    <%= link_to '取消', new_team_path, data: { remote: true } %>
-  <% end %>
+  <%= form.label :is_solo, 'チーム', value: false %>
+  <%= form.radio_button :is_solo, false %>
+
+  <%= form.submit '登録する' %>
+</div>
+
 <% end %>

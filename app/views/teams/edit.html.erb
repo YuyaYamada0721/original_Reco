@@ -1,0 +1,37 @@
+<h1>チーム編集</h1>
+
+<hr>
+
+<%= render 'form', team: @team %>
+
+<hr>
+
+<h2>メンバー</h2>
+
+<p><strong>オーナー：<%= @team.owner.username %></strong></p>
+
+<% @members.each do |member| %>
+  <% if member.team.owner.id != member.user.id %>
+    <span>・<%= member.user.username %></span>
+    <% if current_user == member.team.owner %>
+      <%= link_to 'オーナー権利譲渡', owner_change_team_path(owner_id: member.user_id), method: :patch %>
+      <%= link_to 'チーム脱退', team_member_path(@team.id, member.id), method: :delete %>
+    <% end %>
+<br>
+<br>
+  <% end %>
+<% end %>
+
+<hr>
+
+<%= form_with model: @team, method: :post, url: team_members_path(@team.id), local: true do |form| %>
+  <%= form.label :招待したい方のEmailアドレスを入力して下さい。 %>
+  <%= form.email_field :email %>
+  <%= form.submit '招待' %>
+<% end %>
+
+<hr>
+
+<%= link_to 'チーム削除', team_path(@team), method: :delete, data: { confirm: '削除しますか？' } %>
+<br>
+<%= link_to '戻る', teams_path %>
