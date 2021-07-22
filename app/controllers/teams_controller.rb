@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user!
-  before_action :team_members_check, except: :index
+  before_action :team_members_check, only: :show
 
   def index
     @teams = current_user.members_teams
