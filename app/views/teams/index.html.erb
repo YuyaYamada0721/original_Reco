@@ -2,9 +2,9 @@
 <h3>チームの一覧です<br>
 
 <hr>
-<span><%= sort_link(@q, :is_solo, '使用用途を揃える') %></span>
+<h6><%= sort_link(@q, :is_solo, '使用用途を揃える') %></h6>
 <hr>
-<span><%= link_to 'チーム登録', new_team_path %></span>
+<p><%= link_to 'チーム登録', new_team_path %></p>
 <hr>
 
 <% @teams.each do |team| %>

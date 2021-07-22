@@ -1,17 +1,10 @@
-<h1>
-  <span>チーム名:</span>
-  <%= @team.name %>
-</h1>
+<h1>チーム名：<%= @team.name %></h1>
 
 <hr>
 
-<h2>
-<strong>メンバー</strong>
-</h2>
+<h2>メンバー</h2>
 
-<p>
-<strong>オーナー：<%= @team.owner.username %></strong>
-</p>
+<p><strong>オーナー：<%= @team.owner.username %></strong></p>
 
   <% @members.each do |member| %>
     <% if member.team.owner.id != member.user.id %>
