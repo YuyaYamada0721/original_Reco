@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user!
+  before_action :team_owner_check, only: :edit
   before_action :team_members_check, only: :show
 
   def index

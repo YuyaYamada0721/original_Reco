@@ -19,6 +19,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def team_owner_check
+    return if current_user == Team.find(params[:id]).owner
+
+    flash[:notice] = 'チームのオーナーしかアクセスできません。'
+    redirect_to teams_path
+  end
+
   protected
 
   def configure_permitted_parameters
