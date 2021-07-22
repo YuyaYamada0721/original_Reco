@@ -1,13 +1,21 @@
 <h1>Teams</h1>
-<h3>チームを作成できます。<br>
-チーム名を入力後、作成ボタン押下で<strong>すぐに作成されます。</strong></h3>
-
-<hr>
-<%= sort_link(@q, :is_solo, '使用用途を揃える') %>
-<%= render 'form', team: Team.new, value: '作成' %>
+<h3>チームの一覧です<br>
 
 <hr>
 
-<div id='teams'>
-  <%= render @teams %>
-</div>
+<span><%= sort_link(@q, :is_solo, '使用用途を揃える') %></span>
+
+<hr>
+
+<span><%= link_to 'チーム登録', new_team_path %></span>
+
+<hr>
+<br>
+
+<% @teams.each do |team| %>
+
+<div>チーム名：<%= link_to team.name, team_path(team) %></div>
+
+<div>使用用途：<%= team.is_solo ? '個人':'チーム' %></div>
+
+<% end %>
