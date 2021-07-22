@@ -14,10 +14,11 @@ Rails.application.routes.draw do
     member do
       patch :owner_change
     end
-    resources :members, controller: 'teams/members' do
-    end
     resources :knowledges, controller: 'teams/knowledges' do
       resources :tips, controller: 'teams/knowledges/tips'
+      resources :stocks, controller: 'teams/knowledges/stocks', only: %i[create destroy]
+    end
+    resources :members, controller: 'teams/members', only: %i[create destroy] do
     end
   end
 end
