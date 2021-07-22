@@ -1,5 +1,9 @@
 <h1>ナレッジ詳細</h1>
 <%= @knowledge.name %>
 <br>
-<%= link_to 'ストックする', team_knowledge_stocks_path(@knowledge.team_id, @knowledge), method: :post %>
+
+
+  <%= link_to 'ストック登録', team_knowledge_stocks_path(@knowledge.team_id, @knowledge), method: :post %>
+  <%= link_to 'ストック解除', team_knowledge_stock_path(@knowledge.team_id, @knowledge, params[:id]), method: :delete %>
+
 <%= link_to '戻る', team_knowledges_path %>
