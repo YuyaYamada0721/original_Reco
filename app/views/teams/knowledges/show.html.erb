@@ -2,11 +2,10 @@
 <%= @knowledge.name %>
 <br>
 
-<% unless @knowledge.member == current_user.id %>
   <% if @stock.present? %>
     <%= link_to 'ストック解除', team_knowledge_stock_path(@knowledge.team_id, @knowledge, params[:id]), method: :delete %>
   <% else %>
     <%= link_to 'ストック登録', team_knowledge_stocks_path(@knowledge.team_id, @knowledge), method: :post %>
   <% end %>
-<% end %>
+
 <%= link_to '戻る', team_knowledges_path %>
