@@ -28,12 +28,6 @@ class TeamsController < ApplicationController
     end
   end
 
-  def destroy
-    @team = Team.find(params[:id])
-    @team.destroy
-    redirect_to teams_path, notice: 'チームを削除しました。'
-  end
-
   def edit
     @team = Team.find(params[:id])
     @members = Member.where(team_id: params[:id])
@@ -42,6 +36,13 @@ class TeamsController < ApplicationController
   def update
     @team = Team.find(params[:id])
     @team.update(team_params)
+    redirect_to teams_path, notice: 'チームを編集しました。'
+  end
+
+  def destroy
+    @team = Team.find(params[:id])
+    @team.destroy
+    redirect_to teams_path, notice: 'チームを削除しました。'
   end
 
   def owner_change
