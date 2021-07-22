@@ -1,7 +1,6 @@
 class Teams::KnowledgesController < ApplicationController
   before_action :authenticate_user!
   before_action :member_knowledge_check
-  before_action :set_knowledge, only: %i[show edit update destroy]
 
   def index
     @team = Team.find(params[:team_id])
@@ -24,11 +23,16 @@ class Teams::KnowledgesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @knowledge = Knowledge.find(params[:id])
+  end
 
-  def edit; end
+  def edit
+    @knowledge = Knowledge.find(params[:id])
+  end
 
   def update
+    @knowledge = Knowledge.find(params[:id])
     if @knowledge.update(knowledge_params)
       redirect_to team_knowledges_path, notice: '編集しました。'
     else
@@ -37,15 +41,12 @@ class Teams::KnowledgesController < ApplicationController
   end
 
   def destroy
+    @knowledge = Knowledge.find(params[:id])
     @knowledge.destroy
     redirect_to team_knowledges_path, notice: '削除しました。'
   end
 
   private
-
-  def set_knowledge
-    @knowledge = Knowledge.find(params[:id])
-  end
 
   def knowledge_params
     params.require(:knowledge).permit(:member_id, :team_id, :name)
