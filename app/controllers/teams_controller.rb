@@ -36,6 +36,7 @@ class TeamsController < ApplicationController
 
   def edit
     @team = Team.find(params[:id])
+    @members = Member.where(team_id: params[:id])
   end
 
   def update
