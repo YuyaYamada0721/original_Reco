@@ -2,20 +2,13 @@
 <h3>チームの一覧です<br>
 
 <hr>
-
 <span><%= sort_link(@q, :is_solo, '使用用途を揃える') %></span>
-
 <hr>
-
 <span><%= link_to 'チーム登録', new_team_path %></span>
-
 <hr>
-<br>
 
 <% @teams.each do |team| %>
-
-<div>チーム名：<%= link_to team.name, team_path(team) %></div>
-
-<div>使用用途：<%= team.is_solo ? '個人':'チーム' %></div>
-
+<p>チーム名：<%= link_to team.name, team_path(team) %></p>
+<p>使用用途：<%= team.is_solo ? '個人':'チーム' %></p>
+<br>
 <% end %>

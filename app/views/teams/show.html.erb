@@ -32,3 +32,13 @@
 <% end %>
 
 <%= link_to 'ナレッジ一覧へ', team_knowledges_path(@team) %>
+
+<hr>
+
+<% if current_user == @team.owner %>
+  <%= link_to '削除', team_path(@team), method: :delete, data: { confirm: '削除しますか？' } %>
+  <%= link_to '編集', edit_team_path(@team) %>
+<% end%>
+
+<hr>
+<%= link_to '戻る', teams_path %>
