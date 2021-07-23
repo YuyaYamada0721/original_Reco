@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_22_090116) do
+ActiveRecord::Schema.define(version: 2021_07_23_065542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,19 @@ ActiveRecord::Schema.define(version: 2021_07_22_090116) do
     t.index ["user_id"], name: "index_teams_on_user_id"
   end
 
+  create_table "tips", force: :cascade do |t|
+    t.bigint "member_id", null: false
+    t.bigint "knowledge_id", null: false
+    t.bigint "team_id", null: false
+    t.string "name", null: false
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["knowledge_id"], name: "index_tips_on_knowledge_id"
+    t.index ["member_id"], name: "index_tips_on_member_id"
+    t.index ["team_id"], name: "index_tips_on_team_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username", null: false
     t.string "email", default: "", null: false
@@ -83,4 +96,7 @@ ActiveRecord::Schema.define(version: 2021_07_22_090116) do
   add_foreign_key "stocks", "knowledges"
   add_foreign_key "stocks", "members"
   add_foreign_key "teams", "users"
+  add_foreign_key "tips", "knowledges"
+  add_foreign_key "tips", "members"
+  add_foreign_key "tips", "teams"
 end
