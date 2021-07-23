@@ -3,6 +3,7 @@ class Teams::Knowledges::TipsController < ApplicationController
 
   def index
     @team = Team.find(params[:team_id])
+    @knowledge = Knowledge.find(params[:knowledge_id])
     @tips = @team.tips.all
   end
 

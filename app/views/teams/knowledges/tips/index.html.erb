@@ -1,0 +1,9 @@
+<h1>Tips</h1>
+
+<hr>
+
+<% @tips.each do |tip| %>
+  <%= tip.name %>
+<% end %>
+
+<%= link_to '戻る', team_knowledge_path(@team.id,@knowledge.id) %>
