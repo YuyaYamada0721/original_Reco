@@ -24,6 +24,7 @@ class Teams::KnowledgesController < ApplicationController
   end
 
   def show
+    @team = Team.find(params[:team_id])
     @knowledge = Knowledge.find(params[:id])
     @member = Member.find_by(team_id: params[:team_id], user_id: current_user.id)
     @stock = @member.stocks.find_by(knowledge_id: @knowledge.id)
