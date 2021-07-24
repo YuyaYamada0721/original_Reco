@@ -30,6 +30,15 @@ class Teams::Knowledges::TipsController < ApplicationController
     @tip = Tip.find(params[:id])
   end
 
+  def update
+    @tip = Tip.find(params[:id])
+    if @tip.update(tip_params)
+      redirect_to team_knowledge_tips_path, notice: '編集しました。'
+    else
+      render :edit
+    end
+  end
+
   private
 
   def tip_params
