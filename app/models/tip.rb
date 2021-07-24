@@ -5,5 +5,6 @@ class Tip < ApplicationRecord
   belongs_to :knowledge
   belongs_to :team
 
-  has_many :pictures
+  has_many :pictures, dependent: :destroy
+  accepts_nested_attributes_for :pictures
 end
