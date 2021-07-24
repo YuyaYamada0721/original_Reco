@@ -26,6 +26,10 @@ class Teams::Knowledges::TipsController < ApplicationController
     end
   end
 
+  def edit
+    @tip = Tip.find(params[:id])
+  end
+
   private
 
   def tip_params
