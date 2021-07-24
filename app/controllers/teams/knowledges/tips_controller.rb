@@ -41,6 +41,8 @@ class Teams::Knowledges::TipsController < ApplicationController
 
   def show
     @tip = Tip.find(params[:id])
+    @team = Team.find(params[:team_id])
+    @knowledge = Knowledge.find(params[:knowledge_id])
   end
 
   private
