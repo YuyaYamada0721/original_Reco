@@ -7,6 +7,7 @@ class Member < ApplicationRecord
   has_many :knowledges, dependent: :destroy
   has_many :stocks, dependent: :destroy
   has_many :stocks_knowledges, through: :stocks, source: :knowledge
+  has_many :tips, dependent: :destroy
 
   before_create :solo_team?
 

@@ -5,4 +5,5 @@ class Knowledge < ApplicationRecord
   belongs_to :team
 
   has_many :stocks, dependent: :destroy
+  has_many :tips, dependent: :destroy
 end

@@ -1,0 +1,16 @@
+<h1>Tip詳細</h1>
+<hr>
+
+<h2>タイトル</h2>
+<p><%= @tip.name %></p>
+<hr>
+<h2>内容</h2>
+<p><%= @tip.content %></p>
+
+<hr>
+
+<%= link_to '編集', edit_team_knowledge_tip_path(@team.id, @knowledge.id, @tip.id) %>
+<br>
+<%= link_to '削除', team_knowledge_tip_path(@team.id, @knowledge.id, @tip.id), method: :delete, data: { confirm: '削除しますか？' } %>
+<br>
+<%= link_to '戻る', team_knowledge_tips_path %>

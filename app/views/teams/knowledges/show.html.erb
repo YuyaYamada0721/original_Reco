@@ -1,5 +1,7 @@
-<h1>ナレッジ詳細</h1>
-<%= @knowledge.name %>
+<h1>Knowledge詳細</h1>
+<hr>
+
+<h2><%= @knowledge.name %></h2>
 <br>
 
   <% if @stock.present? %>
@@ -7,5 +9,11 @@
   <% else %>
     <%= link_to 'ストック登録', team_knowledge_stocks_path(@knowledge.team_id, @knowledge), method: :post %>
   <% end %>
+
+<br>
+
+<%= link_to 'Tipsへ', team_knowledge_tips_path(@team.id, @knowledge.id) %>
+
+<br>
 
 <%= link_to '戻る', team_knowledges_path %>
