@@ -45,10 +45,15 @@ class Teams::Knowledges::TipsController < ApplicationController
     @knowledge = Knowledge.find(params[:knowledge_id])
   end
 
+  def destroy
+    @tip = Tip.find(params[:id])
+    @tip.destroy
+    redirect_to team_knowledge_tips_path, notice: '削除しました。'
+  end
+
   private
 
   def tip_params
     params.require(:tip).permit(:member_id, :knowledge_id, :team_id, :name, :content)
   end
-
 end
