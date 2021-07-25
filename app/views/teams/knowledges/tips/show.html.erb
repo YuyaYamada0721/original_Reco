@@ -8,7 +8,7 @@
 <p><%= @tip.content %></p>
 <h2>画像</h2>
 <% @tip.pictures.each do |picture| %>
-  <%= image_tag picture.image.url %>
+  <%= image_tag picture.image.url, size: '300x200'  if picture.image && picture.image.url %>
 <% end %>
 <hr>
 

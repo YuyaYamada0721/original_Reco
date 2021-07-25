@@ -55,6 +55,6 @@ class Teams::Knowledges::TipsController < ApplicationController
   private
 
   def tip_params
-    params.require(:tip).permit(:name, :content, pictures_attributes: %i[id tip_id image image_cache]).merge(knowledge_id: params[:knowledge_id],team_id: params[:team_id])
+    params.require(:tip).permit(:name, :content, pictures_attributes: %i[id tip_id image image_cache _destroy]).merge(knowledge_id: params[:knowledge_id],team_id: params[:team_id])
   end
 end
