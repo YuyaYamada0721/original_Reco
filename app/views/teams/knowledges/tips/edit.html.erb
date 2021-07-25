@@ -19,6 +19,18 @@
   <%= form.label :内容 %>
   <%= form.text_area :content %>
 <br>
+
+<div class='pictures_area'>
+  <% @tip.pictures.each do |picture| %>
+    <%= image_tag picture.image.url, size: '300x200' if picture.image && picture.image.url %>
+  <% end %>
+</div>
+
+  <%= form.fields_for :pictures  do |picture| %>
+    <%= picture.file_field :image %>
+    <%= picture.hidden_field :image_cache %>
+  <% end %>
+
   <%= form.submit '登録' %>
 <% end %>
 <br>
