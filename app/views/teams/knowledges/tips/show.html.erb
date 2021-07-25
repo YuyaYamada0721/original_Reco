@@ -6,7 +6,10 @@
 <hr>
 <h2>内容</h2>
 <p><%= @tip.content %></p>
-
+<h2>画像</h2>
+<% @tip.pictures.each do |picture| %>
+  <%= image_tag picture.image.url, class: 'luminous' %>
+<% end %>
 <hr>
 
 <%= link_to '編集', edit_team_knowledge_tip_path(@team.id, @knowledge.id, @tip.id) %>

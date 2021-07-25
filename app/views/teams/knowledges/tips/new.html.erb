@@ -19,6 +19,11 @@
   <%= form.label :内容 %>
   <%= form.text_area :content %>
 <br>
+
+  <%= form.fields_for :pictures  do |picture| %>
+    <%= picture.file_field :image %>
+  <% end %>
+
   <%= form.submit '登録' %>
 <% end %>
 <br>
