@@ -28,6 +28,7 @@ class Teams::Knowledges::TipsController < ApplicationController
 
   def edit
     @tip = Tip.find(params[:id])
+    @tip.pictures.build
   end
 
   def update
@@ -54,6 +55,6 @@ class Teams::Knowledges::TipsController < ApplicationController
   private
 
   def tip_params
-    params.require(:tip).permit(:name, :content, pictures_attributes: %i[id tip_id image]).merge(knowledge_id: params[:knowledge_id],team_id: params[:team_id])
+    params.require(:tip).permit(:name, :content, pictures_attributes: %i[id tip_id image image_cache]).merge(knowledge_id: params[:knowledge_id],team_id: params[:team_id])
   end
 end
