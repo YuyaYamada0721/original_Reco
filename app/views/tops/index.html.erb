@@ -1,0 +1,42 @@
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col span-12">
+        <div class="head">
+          <h1><%= link_to 'Reco!', root_path %></h1>
+            <div class="header-menu">
+              <a href="#">新規登録</a>
+              <a href="#">ログイン</a>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col span-12">
+        <nav>
+          <%# <div id="open"><img src="img/button.png"></div>
+          <div id="close"><img src="img/button2.png"></div> %>
+          <div id="navi">
+            <!-- <ul>
+                <li><a href="index.html">新規登録</a></li>
+                <li><a href="subpage.html">ログイン</a></li>
+                <li><a href="subpage.html">サブページ</a></li>
+                <li><a href="subpage.html">サブページ</a></li>
+                <li><a href="subpage.html">お問い合わせ</a></li>
+            </ul> -->
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="mainimg">
+    <div class="top-image"></div>
+    <div class="top-info">
+        <h3>日々の行った事を<br>記録・管理・共有できます。</h3>
+        <h5>シンプルに簡単に記録を残しましょう。</h5>
+        <button class="sign-up"><a href="/users/sign_up">新規登録</a></button>
+        <button class="sign-in"><a href="/users/sign_in">ログイン</a></button>
+        <button class="guest-in"><%= link_to 'ゲストログイン(閲覧用)', users_guest_sign_in_path, method: :post %></button>
+    </div>
+</div>
