@@ -1,0 +1,80 @@
+body {
+    color: #000;
+    font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+    background: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+// -----
+
+a {
+    color: #666;
+    text-decoration-line: none;
+}
+
+a:hover {
+    color: #999;
+}
+
+a .top-image:hover {
+    opacity: 0.8;
+}
+
+h3 {
+    color: #666;
+    padding-top: 120px;
+}
+
+h5 {
+    color: #666;
+}
+
+.top-info .sign-up {
+    margin-top: 40px;
+}
+
+.head {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem 0 0 0;
+}
+
+.head h1 {
+    padding: 1rem 0;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.header-menu {
+    display: flex;
+    margin-left: auto;
+    font-size: 1.5rem;
+    padding: 1rem 0 0 0;
+}
+
+.header-menu a {
+    margin-right: 20px;
+    display: block;
+    color: #666;
+}
+
+.header-menu a:hover {
+    color: #999;
+}
+
+.main-img {
+    height: 650px;
+    display: flex;
+    margin-top: 80px;
+}
+
+.main-img .top-image {
+    background-image: url("/assets/top.png");
+    width: 65%;
+    background-size: 85%;
+    background-repeat: no-repeat;
+}
