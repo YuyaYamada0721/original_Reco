@@ -15,8 +15,10 @@ Rails.application.routes.draw do
       patch :owner_change
     end
     resources :knowledges, controller: 'teams/knowledges' do
-      resources :tips, controller: 'teams/knowledges/tips'
       resources :stocks, controller: 'teams/knowledges/stocks', only: %i[create destroy]
+      resources :tips, controller: 'teams/knowledges/tips' do
+        resources :tags, controller: 'teams/knowledges/tips/tags', only: %i[index new create destroy]
+      end
     end
     resources :members, controller: 'teams/members', only: %i[create destroy] do
     end
