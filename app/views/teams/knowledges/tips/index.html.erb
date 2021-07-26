@@ -6,6 +6,9 @@
 <% @tips.each do |tip| %>
   <p>・<%= link_to tip.name, team_knowledge_tip_path(@team.id, @knowledge.id, tip.id) %></p>
   <p>作成者：<%= tip.member.user.username %></p>
+  <% tip.tags.each do |tag| %>
+    <span>タグ名：<%= tag.name %></span>
+  <% end %>
   <hr>
 <% end %>
 
