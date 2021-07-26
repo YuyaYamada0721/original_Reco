@@ -1,5 +1,3 @@
-
-
 body {
     color: #000;
     font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
@@ -14,7 +12,6 @@ body {
 // -----
 
 a {
-    display: block;
     color: #666;
     text-decoration-line: none;
 }
@@ -61,40 +58,21 @@ h5 {
 
 .header-menu a {
     margin-right: 20px;
-}
-
-nav ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    list-style: none;
-    margin-bottom: 0.5rem;
-}
-
-nav li {
     display: block;
-    flex: 0 0 15%;
+    color: #666;
 }
 
-nav li a {
-    text-decoration: none;
-    text-align: center;
+.header-menu a:hover {
+    color: #999;
 }
 
-nav a:hover {
-    text-decoration: underline;
-}
-
-nav a {
-    padding: 1rem;
-}
-
-.mainimg {
-    height: 700px;
+.main-img {
+    height: 650px;
     display: flex;
+    margin-top: 80px;
 }
 
-.mainimg .top-image {
+.main-img .top-image {
     background-image: url("/assets/top.png");
     width: 65%;
     background-size: 85%;
