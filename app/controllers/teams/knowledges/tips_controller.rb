@@ -1,5 +1,6 @@
 class Teams::Knowledges::TipsController < ApplicationController
   before_action :authenticate_user!
+  before_action :team_member_check
 
   def index
     @team = Team.find(params[:team_id])

@@ -12,9 +12,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def member_knowledge_check
+  def team_member_check
     unless Member.where(team_id: params[:team_id]).find_by(user_id: current_user.id).present?
-      flash[:notice] = 'メンバーではないナレッジ情報は見れません'
+      flash[:notice] = 'メンバーでないのでアクセスできません。'
       redirect_to teams_path
     end
   end
