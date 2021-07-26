@@ -1,6 +1,8 @@
 <h1>タグ一覧</h1>
 <h6>Tips登録の際に使用します。</h6>
 <hr>
+<%= link_to '登録', new_team_tag_path %>
+<hr>
 
 <% @tags.each do |tag| %>
   <div>・<%= tag.name %></div>

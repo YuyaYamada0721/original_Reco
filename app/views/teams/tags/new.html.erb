@@ -1,0 +1,8 @@
+<h1>タグ登録</h1>
+<hr>
+
+<%= form_with model: @tag, url: team_tags_path(@team), local: true do |form|%>
+  <%= form.label :タグ名 %>
+  <%= form.text_field :name %>
+  <%= form.submit '登録' %>
+<% end %>
