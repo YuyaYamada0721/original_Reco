@@ -53,4 +53,21 @@
   text-align: center;
 }
 
+.login-content {
+  display: flex;
+}
+
+.login-image {
+  background-image: url("/assets/login.png");
+  background-repeat: no-repeat;
+  margin-top: 80px;
+  background-size: 90%;
+  width: 50%;
+  height: 400px;
+}
+
+.form-content {
+  margin-left: 100px;
+}
+
 // -----view/devise/sessions/new.html.erb-----
