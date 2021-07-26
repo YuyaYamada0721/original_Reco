@@ -61,9 +61,10 @@
   background-image: url("/assets/login.png");
   background-repeat: no-repeat;
   margin-top: 80px;
-  background-size: 90%;
+  background-size: 100%;
+  height: auto;
   width: 50%;
-  height: 400px;
+  max-width: 100%;
 }
 
 .form-content {
