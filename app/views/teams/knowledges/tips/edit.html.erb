@@ -19,6 +19,10 @@
   <%= form.label :内容 %>
   <%= form.text_area :content %>
 <br>
+  <% Tag.all.each do |tag| %>
+    <%= form.check_box :tag_ids, { multiple: true, checked: @tip.tags.find_by(id: tag.id).present?, include_hidden: false }, tag[:id] %>
+    <label><%= tag.name %></label>
+  <% end %>
 
 <div class='pictures_area'>
   <% @tip.pictures.each do |picture| %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_24_133507) do
+ActiveRecord::Schema.define(version: 2021_07_26_025449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,24 @@ ActiveRecord::Schema.define(version: 2021_07_24_133507) do
     t.index ["knowledge_id"], name: "index_stocks_on_knowledge_id"
     t.index ["member_id", "knowledge_id"], name: "index_stocks_on_member_id_and_knowledge_id", unique: true
     t.index ["member_id"], name: "index_stocks_on_member_id"
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.bigint "tip_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["tip_id", "tag_id"], name: "index_taggings_on_tip_id_and_tag_id", unique: true
+    t.index ["tip_id"], name: "index_taggings_on_tip_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.bigint "team_id", null: false
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_tags_on_team_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -104,6 +122,9 @@ ActiveRecord::Schema.define(version: 2021_07_24_133507) do
   add_foreign_key "pictures", "tips"
   add_foreign_key "stocks", "knowledges"
   add_foreign_key "stocks", "members"
+  add_foreign_key "taggings", "tags"
+  add_foreign_key "taggings", "tips"
+  add_foreign_key "tags", "teams"
   add_foreign_key "teams", "users"
   add_foreign_key "tips", "knowledges"
   add_foreign_key "tips", "members"
