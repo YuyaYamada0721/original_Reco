@@ -1,4 +1,6 @@
 class Teams::TagsController < ApplicationController
+  before_action :team_member_check
+
   def index
     @team = Team.find(params[:team_id])
     @tags = @team.tags.all
