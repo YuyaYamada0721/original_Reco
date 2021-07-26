@@ -7,6 +7,7 @@ class Team < ApplicationRecord
   has_many :members, dependent: :destroy
   has_many :knowledges, dependent: :destroy
   has_many :tips, dependent: :destroy
+  has_many :tags, dependent: :destroy
 
   def invite_member(user)
     members.create(user: user)
