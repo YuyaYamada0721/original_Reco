@@ -12,8 +12,10 @@
 
 <br>
 
-<%= link_to 'Tipsへ', team_knowledge_tips_path(@team.id, @knowledge.id) %>
-
+<div><%= link_to '編集', edit_team_knowledge_path(@team, @knowledge) %></div>
+<div><%= link_to '削除', team_knowledge_path(@team, @knowledge), method: :delete, data: { confirm: '削除しても良いですか？' } %></div>
+<hr>
+<div><%= link_to 'Tipsへ', team_knowledge_tips_path(@team.id, @knowledge.id) %></div>
 <br>
 
 <%= link_to '戻る', team_knowledges_path %>

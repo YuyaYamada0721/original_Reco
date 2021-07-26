@@ -8,7 +8,5 @@
   <%= knowledge.name %>
   <div>作成者：<%= knowledge.member.user.username %></div>
   <div><%= link_to '詳細', team_knowledge_path(@team, knowledge) %></div>
-  <div><%= link_to '編集', edit_team_knowledge_path(@team, knowledge) %></div>
-  <div><%= link_to '削除', team_knowledge_path(@team, knowledge), method: :delete, data: { confirm: '削除しても良いですか？' } %></div>
   <br>
 <% end %>

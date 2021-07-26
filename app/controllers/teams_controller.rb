@@ -38,8 +38,12 @@ class TeamsController < ApplicationController
 
   def update
     @team = Team.find(params[:id])
-    @team.update(team_params)
-    redirect_to teams_path, notice: 'チームを編集しました。'
+    @members = Member.where(team_id: params[:id])
+    if @team.update(team_params)
+      redirect_to teams_path, notice: 'チームを編集しました。'
+    else
+      render :edit
+    end
   end
 
   def destroy
