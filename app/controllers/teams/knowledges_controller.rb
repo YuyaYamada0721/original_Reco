@@ -13,12 +13,12 @@ class Teams::KnowledgesController < ApplicationController
   end
 
   def create
-    @member = Member.where(team_id: params[:team_id]).find_by(user_id: current_user.id)
-    @knowledge = Knowledge.new(member_id: @member.id, team_id: params[:team_id], name: params[:knowledge][:name])
+    @team = Team.find(params[:team_id])
+    @member = Member.where(team_id: @team.id).find_by(user_id: current_user.id)
+    @knowledge = Knowledge.new(member_id: @member.id, team_id: @team.id, name: params[:knowledge][:name])
     if @knowledge.save
       redirect_to team_knowledges_path, notice: 'ナレッジを登録しました。'
     else
-      @team = Team.find(params[:team_id])
       render :new
     end
   end
