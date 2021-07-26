@@ -5,7 +5,7 @@
 <hr>
 
 <% @tags.each do |tag| %>
-  <div>・<%= tag.name %></div>
+  <div>・<%= tag.name %>　　　<%= link_to '削除', team_tag_path(@team, tag), method: :delete, data: { confirm: '削除しますか？' } %></div>
   <br>
 <% end %>
 
