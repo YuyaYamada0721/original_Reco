@@ -1,6 +1,8 @@
+
+// -----body-----
+
 body {
     color: #000;
-    font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
     background: #fff;
     font-size: 16px;
     font-weight: 400;
@@ -9,7 +11,9 @@ body {
     padding: 0;
 }
 
-// -----
+// -----body-----
+
+// -----リンク系-----
 
 a {
     color: #666;
@@ -18,42 +22,35 @@ a {
 
 a:hover {
     color: #999;
+    text-decoration-line: none;
 }
 
 .top-image a:hover {
     opacity: 0.8;
 }
 
-h3 {
-    color: #666;
-    padding-top: 120px;
-}
+// -----リンク系-----
 
-h5 {
-    color: #666;
-}
-
-.top-info .sign-up {
-    margin-top: 40px;
-}
+// -----header-----
 
 .head {
     display: flex;
     flex-direction: row;
-    padding: 1rem 0 0 0;
+    padding: 0 10rem 0 0;
+    background-color: #efefef;
 }
 
 .head h1 {
-    padding: 1rem 0;
-    font-weight: 700;
-    letter-spacing: 3px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    margin-left: 10rem;
 }
 
 .header-menu {
     display: flex;
     margin-left: auto;
-    font-size: 1.5rem;
-    padding: 1rem 0 0 0;
+    font-size: 1.2rem;
+    margin-top: 0.7rem;
 }
 
 .header-menu a {
@@ -67,9 +64,9 @@ h5 {
 }
 
 .main-img {
-    height: 650px;
     display: flex;
-    margin-top: 80px;
+    height: 700px;
+    margin-top:100px;
 }
 
 .main-img .top-image {
@@ -77,4 +74,19 @@ h5 {
     width: 65%;
     background-size: 85%;
     background-repeat: no-repeat;
+}
+
+.top-info h3 {
+    color: #666;
+    padding-top: 120px;
+    line-height: 2.5rem;
+    letter-spacing: 0.1rem;
+}
+
+.top-info h5 {
+    color: #666;
+}
+
+.top-info .sign-up {
+    margin-top: 40px;
 }
