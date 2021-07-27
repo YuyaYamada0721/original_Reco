@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       patch :owner_change
     end
     resources :groups, controller: 'teams/groups', only: %i[show create]
-    resources :messages, controller: 'teams/messages', only: %i[cerate]
+    resources :messages, controller: 'teams/messages', only: %i[create]
     resources :tags, controller: 'teams/tags', only: %i[index new create destroy]
     resources :knowledges, controller: 'teams/knowledges' do
       resources :tips, controller: 'teams/knowledges/tips'
