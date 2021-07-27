@@ -20,4 +20,28 @@ class Teams::MembersController < ApplicationController
     member.destroy
     redirect_to team_path(team), notice: 'メンバーを脱退させました。'
   end
+
+  def show
+    @member = Member.find(params[:id])
+    @current_member = Member.find_by(team_id: params[:team_id], user_id: current_user.id)
+    @current_member_group_member = GroupMember.where(member_id: @current_member.id)
+    @member_group_member = GroupMember.where(member_id: @member.id)
+
+    if @member.id == @current_member.id
+    else
+      @current_member_group_member.each do |cu|
+        @member_group_member.each do |u|
+          if cu.group_id == u.group_id then
+            @is_group = true
+            @group_id = cu.group_id
+          end
+        end
+      end
+      if @is_group
+      else
+        @group = Group.new
+        @group_member = GroupMember.new
+      end
+    end
+  end
 end

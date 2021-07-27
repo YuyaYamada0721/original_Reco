@@ -9,6 +9,9 @@ class Member < ApplicationRecord
   has_many :stocks_knowledges, through: :stocks, source: :knowledge
   has_many :tips, dependent: :destroy
 
+  has_many :messages, dependent: :destroy
+  has_many :group_members, dependent: :destroy
+
   before_create :solo_team?
 
   def solo_team?

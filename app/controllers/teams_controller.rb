@@ -14,6 +14,7 @@ class TeamsController < ApplicationController
     @members = Member.where(team_id: params[:id])
     @member = Member.find_by(team_id: params[:id], user_id: current_user.id)
     @stocks = Stock.where(member_id: @member.id)
+    @owner = Member.find_by(team_id: params[:id], user_id: @team.owner.id)
   end
 
   def new
