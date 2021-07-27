@@ -32,6 +32,4 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
     devise_parameter_sanitizer.permit(:account_update, keys: %i[username image introduction admin])
   end
-
-  def top; end
 end
