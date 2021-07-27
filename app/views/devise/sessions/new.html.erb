@@ -1,11 +1,11 @@
-<h2 class="signin-title"><%= t('.sign_in') %></h2>
+<h2 class="entrance-title"><%= t('.sign_in') %></h2>
 
-<div class="login-content">
+<div class="entrance-content">
 
   <div class="login-image img-fluid"></div>
 
-  <div class="form-content">
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-signin' }) do |f| %>
+  <div class="entrance-form">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-sign-in' }) do |f| %>
       <div class="field">
         <%= f.label :email %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
@@ -23,15 +23,15 @@
         </div>
       <% end %>
 
-      <div class="signin-action">
+      <div class="sign-in-action">
         <%= f.submit t('.sign_in'), class: 'btn btn-lg btn-block' %>
       </div>
 
-      <div class="signin-action">
+      <div class="sign-in-action">
         <%= link_to 'ゲストログイン(閲覧用)', users_guest_sign_in_path, method: :post, class: 'btn btn-lg btn-block' %>
       </div>
     <% end %>
-      <div class="signin-help">
+      <div class="sign-in-help">
         <%= render "devise/shared/links" %>
       </div>
   </div>
