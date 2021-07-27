@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_27_043134) do
+ActiveRecord::Schema.define(version: 2021_07_27_044124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(version: 2021_07_27_043134) do
     t.index ["team_id"], name: "index_members_on_team_id"
     t.index ["user_id", "team_id"], name: "index_members_on_user_id_and_team_id", unique: true
     t.index ["user_id"], name: "index_members_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "member_id", null: false
+    t.bigint "group_id", null: false
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_messages_on_group_id"
+    t.index ["member_id"], name: "index_messages_on_member_id"
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -134,6 +144,8 @@ ActiveRecord::Schema.define(version: 2021_07_27_043134) do
   add_foreign_key "knowledges", "teams"
   add_foreign_key "members", "teams"
   add_foreign_key "members", "users"
+  add_foreign_key "messages", "groups"
+  add_foreign_key "messages", "members"
   add_foreign_key "pictures", "tips"
   add_foreign_key "stocks", "knowledges"
   add_foreign_key "stocks", "members"
