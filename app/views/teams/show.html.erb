@@ -4,11 +4,12 @@
 
 <h2>メンバー</h2>
 
-<p><strong>オーナー：<%= @team.owner.username %></strong></p>
+<p><strong>オーナー：<%= @team.owner.username %><%= link_to '詳細', team_member_path(@team.id, @owner.id) %></strong></p>
 
   <% @members.each do |member| %>
     <% if member.team.owner.id != member.user.id %>
       <span>・<%= member.user.username %></span>
+      <%= link_to '詳細', team_member_path(@team.id, member.id) %>
   <br>
   <br>
     <% end %>
