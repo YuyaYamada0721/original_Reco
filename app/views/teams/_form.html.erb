@@ -1,7 +1,7 @@
 <%= form_with model: team, local: true do |form| %>
-    <div id="error_explanation", style="height:150px;">
+    <div id="error_explanation", style="height:100px;">
       <% if @team.errors.any? %>
-        <h2><%= pluralize(@team.errors.count, "error") %> prohibited this team from being saved:</h2>
+        <h2><%= t('errors.template.header', model: Team.model_name.human, count: team.errors.count) %></h2>
       <ul>
         <% @team.errors.full_messages.each do |message| %>
           <li><%= message %></li>
