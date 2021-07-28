@@ -6,7 +6,7 @@ class TeamsController < ApplicationController
   def index
     @teams = current_user.members_teams
     @q = @teams.ransack(params[:q])
-    @teams = @q.result(distinct: true)
+    @teams = @q.result(distinct: true).page(params[:page]).per(6)
   end
 
   def show
