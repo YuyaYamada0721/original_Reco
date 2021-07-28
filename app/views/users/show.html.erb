@@ -1,14 +1,27 @@
+<div class="profile">
 
-<p><%= image_tag @user.image.url, size: '500x400' if @user.image && @user.image.url %></p>
+  <div class="profile-image">
+    <%= image_tag @user.image.url, size: '400x300' if @user.image && @user.image.url %>
+  </div>
+  <div class="profile-user-settings">
+    <h1 class="profile-user-name"><%= @user.username %></h1>
 
-<p><%= @user.username %>のページ</p>
-<p>メールアドレス: <%= @user.email %></p>
-<p>自己紹介: <%= @user.introduction %></p>
+        <% if current_user == User.find(params[:id]) %>
+          <%= link_to '編集', edit_user_path, class: 'btn profile-edit-btn' %>
+        <% end %>
+ 
+  </div>
 
-<% if current_user == User.find(params[:id]) %>
-  <%= link_to 'ユーザ情報を編集する', edit_user_path %>
-<% end %>
+  <div class="profile-stats">
+    <ul>
+      <li><%= link_to '個人記録・チーム記録へ', teams_path, class: 'btn record-link-btn' %></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
 
-<br>
+  <div class="profile-bio">
+    <p><span class="profile-real-name"><%= @user.introduction %></p>
+  </div>
 
-<%= link_to '個人記録・チーム記録へ', teams_path %>
+</div>

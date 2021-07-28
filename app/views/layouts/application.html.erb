@@ -13,6 +13,7 @@
 
   <header>
     <div class="head">
+    <% if controller.controller_name == 'tops' || controller.controller_name == 'registrations' || controller.controller_name == 'sessions'%>
       <h1><%= link_to 'Reco!', root_path %></h1>
         <div class="header-menu">
           <% if user_signed_in? %>
@@ -23,13 +24,29 @@
             <%= link_to "ログイン", new_user_session_path %>
           <% end %>
         </div>
+    <% else %>
+      <div id="sidebar">
+        <div class="toggle-btn" onclick="toggleSidebar(this)">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="list">
+          <div class="item">Reco!</div>
+          <div class="item"><%= link_to "マイページ", user_path(current_user.id) %></div>
+          <div class="item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></div>
+        </div>
+      </div>
+    <% end %>
     </div>
-    <% if notice %>
-      <p class="alert alert-notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-error"><%= alert %></p>
-    <% end %>
+    <div class="alert-space">
+      <% if notice %>
+        <p class="alert alert-notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-error"><%= alert %></p>
+      <% end %>
+    </div>
   </header>
 
 
