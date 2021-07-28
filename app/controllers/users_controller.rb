@@ -11,7 +11,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
+    if params[:delete_image]
+      @user.image = nil
+      @user.save
+      render :edit
+      nil
+    elsif @user.update(user_params)
       redirect_to user_path, notice: '編集しました。'
       bypass_sign_in(@user)
     else
@@ -22,6 +27,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation, :image, :image_cache, :introduction, :admin)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :image, :image_cache, :delete_image,
+                                 :introduction, :admin)
   end
 end

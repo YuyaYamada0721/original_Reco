@@ -88,36 +88,52 @@
 // -----user edit-----
 
 .form-user-edit .form-control {
-  height: 30px;
-  width: 400px;
-  font-size: 1em;
-  line-height: 1.5;
-  padding: 10px 20px 10px;
-  margin-bottom: 20px;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+    height: 30px;
+    width: 400px;
+    font-size: 1em;
+    line-height: 1.5;
+    padding: 10px 20px 10px;
+    margin-bottom: 20px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
 
 .form-user-edit .area-field {
-  height: 100px;
-  width: 800px;
-  font-size: 1em;
-  line-height: 1.5;
-  padding: 10px 20px 10px;
-  margin-bottom: 20px;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+    height: 100px;
+    width: 800px;
+    font-size: 1em;
+    line-height: 1.5;
+    padding: 10px 20px 10px;
+    margin-bottom: 20px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
 
 .input-group {
-  width: 400px;
-  margin: 20px 0;
+    width: 400px;
+    margin: 20px 0;
 }
 
-.custom-file {
-  overflow: hidden;
+.image-field {
+    display: flex;
 }
 
-.custom-file-label {
-  white-space: nowrap;
+.image_input_btn{
+    display: block;
+    width: 50px;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    padding-top: 2px;
+    background-color: #666;
+    color: white;
+    text-decoration: none;
+    text-align: center;
 }
+
+.image_form{
+    margin: 10px 20px;
+}
+
+// -----user edit-----

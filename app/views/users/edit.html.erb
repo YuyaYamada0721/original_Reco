@@ -22,14 +22,10 @@
       <%= image_tag @user.image.url, size: '300x200' if @user.image && @user.image.url %>
       <%= form.hidden_field :image_cache %>
 
-      <div class="input-group">
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="customFile">
-          <label class="custom-file-label" for="customFile" data-browse="参照">ファイル選択...</label>
-        </div>
-        <div class="input-group-append">
-          <button type="button" class="btn btn-outline-secondary reset">取消</button>
-        </div>
+      <div class="image-field">
+        <%= form.label :image, '画像', class: 'image_input_btn' %>
+        <%= form.file_field :image, class: 'image_form' %>
+        <%= form.submit value: "設定している画像を削除する。",name: "delete_image",data: { confirm: "画像を削除しますか？"}, class:'btn btn-danger' %>
       </div>
 
       <%= form.label :自己紹介 %>
@@ -42,20 +38,8 @@
       <%= form.label :パスワード確認 %>
       <%= form.password_field :password_confirmation, class: 'form-control' %>
 
-
     <div class="actions">
       <%= form.submit "編集する", class: "send", class: 'btn btn-secondary' %>
     </div>
   </div>
 <% end %>
-
-<script>
-  $('.custom-file-input').on('change', function () {
-      $(this).next('.custom-file-label').html($(this)[0].files[0].name);
-  })
-
-    $('.reset').click(function () {
-      $(this).parent().prev().children('.custom-file-label').html('ファイル選択...');
-    $('.custom-file-input').val('');
-  })
-</script>
