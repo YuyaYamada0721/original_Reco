@@ -11,40 +11,51 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :名前： %>
-    <%= form.text_field :username %>
-  </div>
+  <div class="form-user-edit">
 
-  <div class="field">
-    <%= form.label :メールアドレス： %>
-    <%= form.email_field :email %>
-  </div>
+      <%= form.label :名前 %>
+      <%= form.text_field :username, class: 'form-control' %>
 
-  <div class="field">
-    <%= form.label :プロフィール画像： %>
-    <%= image_tag @user.image.url, size: '500x400' if @user.image && @user.image.url %>
-    <%= form.file_field :image %>
-    <%= form.hidden_field :image_cache %>
-  </div>
+      <%= form.label :メールアドレス %>
+      <%= form.email_field :email, class: 'form-control' %>
 
-  <div class="field">
-    <%= form.label :自己紹介： %>
-    <%= form.text_area :introduction %>
-  </div>
+      <%= image_tag @user.image.url, size: '300x200' if @user.image && @user.image.url %>
+      <%= form.hidden_field :image_cache %>
 
-  <div class="field">
-    <%= form.label :パスワード %>
-    <%= form.password_field :password %>
-  </div>
+      <div class="input-group">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="customFile">
+          <label class="custom-file-label" for="customFile" data-browse="参照">ファイル選択...</label>
+        </div>
+        <div class="input-group-append">
+          <button type="button" class="btn btn-outline-secondary reset">取消</button>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :パスワード確認 %>
-    <%= form.password_field :password_confirmation %>
-  </div>
+      <%= form.label :自己紹介： %>
+      <%= form.text_area :introduction, class: 'form-control area-field' %>
+
+      <%= form.label :パスワード %>
+      <%= form.password_field :password, class: 'form-control' %>
 
 
-  <div class="actions">
-    <%= form.submit "編集する", class: "send" %>
+      <%= form.label :パスワード確認 %>
+      <%= form.password_field :password_confirmation, class: 'form-control' %>
+
+
+    <div class="actions">
+      <%= form.submit "編集する", class: "send", class: 'btn btn-secondary' %>
+    </div>
   </div>
 <% end %>
+
+<script>
+  $('.custom-file-input').on('change', function () {
+      $(this).next('.custom-file-label').html($(this)[0].files[0].name);
+  })
+
+    $('.reset').click(function () {
+      $(this).parent().prev().children('.custom-file-label').html('ファイル選択...');
+    $('.custom-file-input').val('');
+  })
+</script>
