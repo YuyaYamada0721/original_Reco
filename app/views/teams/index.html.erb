@@ -12,10 +12,10 @@
     <div class="col-md-4">
       <div class="card mb-3">
         <div class="card-header">チーム名：<%= link_to team.name, team_path(team) %></div>
-        <div class="card-body">
+        <a href="/teams/<%= team.id %>" class="card-body">
           <h6 class="card-title">使用用途：<%= team.is_solo ? '個人':'チーム' %></h6>
           <p class="card-text">チームのintroductionカラムが必要かと思っている</p>
-        </div>
+        </a>
       </div>
     </div>
   <% end %>
