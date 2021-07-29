@@ -1,6 +1,4 @@
-// -----見出し-----
-
-
+// -----user show-----
 
 .profile {
     padding: 5rem 0;
@@ -83,8 +81,8 @@
     margin-left: 2rem;
 }
 
-
 // -----user show-----
+
 
 // -----user edit-----
 
@@ -135,6 +133,11 @@
 
 .image_form{
     margin: 10px 20px;
+}
+
+.form-user-edit .action .btn {
+    color: white;
+    background-color: #7db4e6;
 }
 
 // -----user edit-----

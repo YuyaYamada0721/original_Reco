@@ -52,18 +52,6 @@
 
 // -----team new-----
 
-// -----team 見出し-----
-
-.crud-title {
-  padding: 0.4em 0.5em;
-  color: #494949;
-  background: #f4f4f4;
-  border-left: solid 5px #7db4e6;
-  border-bottom: solid 3px #d7d7d7;
-}
-
-// -----team 見出し-----
-
 // -----team 検索 ソート-----
 
 .search-box {
@@ -84,3 +72,106 @@
 }
 
 // -----team 検索 ソート-----
+
+// -----team new-----
+
+.form-team .form-control {
+  width: 300px;
+}
+
+.form-team .btn {
+  color: white;
+  background-color: #7db4e6;
+}
+
+// -----
+.cp_ipradio {
+	width: 90%;
+	margin: 2em auto;
+	text-align: left;
+}
+@keyframes click-wave {
+	0% {
+		position: relative;
+		width: 30px;
+		height: 30px;
+		opacity: 0.35;
+	}
+	100% {
+		width: 200px;
+		height: 200px;
+		margin-top: -80px;
+		margin-left: -80px;
+		opacity: 0;
+	}
+}
+.cp_ipradio .option-input {
+	position: relative;
+	position: relative;
+	top: 13.33333px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 30px;
+	height: 30px;
+	margin-right: 0.5rem;
+	cursor: pointer;
+	transition: all 0.15s ease-out 0s;
+	color: #ffffff;
+	border: none;
+	outline: none;
+	background: #d7cbcb;
+	-webkit-appearance: none;
+	        appearance: none;
+}
+.cp_ipradio .option-input:hover {
+	background: #d6a9a9;
+}
+.cp_ipradio .option-input:checked {
+	background: #7db4e6;
+}
+.cp_ipradio .option-input:checked::before {
+	font-size: 20px;
+	line-height: 30px;
+	position: absolute;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	content: '✔';
+	text-align: center;
+}
+.cp_ipradio .option-input:checked::after {
+	position: relative;
+	display: block;
+	content: '';
+	-webkit-animation: click-wave 0.65s;
+	        animation: click-wave 0.65s;
+	background: #7db4e6;
+}
+.cp_ipradio .option-input.radio {
+	border-radius: 50%;
+}
+.cp_ipradio .option-input.radio::after {
+	border-radius: 50%;
+}
+.cp_ipradio label {
+	line-height: 40px;
+}
+.cp_ipradio .option-input:disabled {
+	cursor: not-allowed;
+	background: #b8b7b7;
+}
+.cp_ipradio .option-input:disabled::before {
+	font-size: 20px;
+	line-height: 30px;
+	position: absolute;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	content: '✖︎';
+	text-align: center;
+}
+.cp_ipradio .disabled {
+	color: #9e9e9e;
+}
+// -----
