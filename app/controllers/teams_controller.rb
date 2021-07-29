@@ -34,7 +34,7 @@ class TeamsController < ApplicationController
 
   def edit
     @team = Team.find(params[:id])
-    @members = Member.where(team_id: params[:id])
+    @members = Member.where(team_id: params[:id]).page(params[:page]).per(5)
   end
 
   def update

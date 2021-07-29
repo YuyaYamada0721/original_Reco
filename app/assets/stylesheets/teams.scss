@@ -217,11 +217,11 @@
 }
 
 
-.function-index {
+.function-index-team-show {
 	margin-left: 100px;
 }
 
-.function-index .next-knowledge {
+.function-index-team-show .next-knowledge {
   color: white;
   background-color: #7db4e6;
 	display: block;
@@ -229,16 +229,63 @@
 	width: 200px;
 }
 
-.function-index .next-tag {
+.function-index-team-show .next-tag {
   color: white;
   background-color: #7db4e6;
 	display: block;
 	margin: 20px 0;
 }
 
-.function-index .next-team-edit {
+.function-index-team-show .next-team-edit {
   color: white;
   background-color: #8fbc8f;
 	display: block;
 	margin: 20px 0;
+}
+
+// -----team show-----
+
+// -----team edit-----
+
+.team-edit-function {
+	display: flex;
+	margin: 80px 0;
+}
+
+.function-index-team-edit .form-control {
+	width: 400px;
+	margin-bottom: 20px;
+}
+
+.team-edit-li {
+  border-radius: 0.5em;
+	width: 400px;
+	margin: 15px 0px;
+	font-size: 1rem;
+}
+
+// -----チーム削除ボタン
+.btn-circle-flat {
+	margin: 100px 100px;
+  display: inline-block;
+  text-decoration: none;
+  background: red;
+  color: #FFF;
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  transition: .4s;
+}
+
+.btn-circle-flat:hover {
+  background: red;
+}
+// -----チーム削除ボタン
+
+.function-index-team-edit .btn {
+  color: white;
+  background-color: #7db4e6;
 }
