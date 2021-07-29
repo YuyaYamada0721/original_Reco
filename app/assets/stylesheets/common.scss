@@ -10,6 +10,7 @@
 
 // -----CRUD機能見出し-----
 
+
 // -----戻るボタン-----
 
 .btn-flat-logo {
@@ -28,3 +29,82 @@
 }
 
 // -----戻るボタン-----
+
+
+// -----new画面へ遷移する時のボタンデザイン-----
+
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+  7px 7px 20px 0px rgba(0,0,0,.1),
+  4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+.new-link {
+  background: #f4f4f4;
+  background: linear-gradient(0deg, #7db4e6 0%, #7db4e6 100%);
+  border: none;
+  margin: 20px 0;
+}
+
+.new-link:before {
+  height: 0%;
+  width: 2px;
+}
+
+.new-link:hover {
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+              -4px -4px 6px 0 rgba(116, 125, 136, .5),
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+}
+
+// -----new画面へ遷移する時のボタンデザイン-----
+
+
+// -----question ヘルプを表示するデザイン-----
+
+.cp_tooltip {
+	display: inline-block;
+}
+.cp_tooltiptext {
+	position: relative;
+	cursor: pointer;
+}
+.cp_tooltiptext::after {
+	// position: absolute;
+	transition: all 0.3s ease 0s;
+	opacity: 0;
+	top: 0px;
+	left: 0px;
+	// display: block;
+	padding: 0.2em 0.5em;
+	content: attr(data-tooltip);
+	white-space: nowrap;
+	color: #ffffff;
+	border-radius: 6px;
+	background: #7db4e6;
+}
+.cp_tooltiptext:hover::after {
+	top: 26px;
+	opacity: 1;
+}
+
+.fa-question-circle-o {
+  color: #7db4e6;
+  font-size: 50px;
+}
+
+// -----question ヘルプを表示するデザイン-----

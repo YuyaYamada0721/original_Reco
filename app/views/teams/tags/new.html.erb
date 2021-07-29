@@ -1,8 +1,11 @@
-<h1>タグ登録</h1>
-<hr>
+<h1 class="crud-title">タグ登録</h1>
 
-<%= form_with model: @tag, url: team_tags_path(@team), local: true do |form|%>
-  <%= form.label :タグ名 %>
-  <%= form.text_field :name %>
-  <%= form.submit '登録' %>
-<% end %>
+<div class="tag-new-form">
+  <%= form_with model: @tag, url: team_tags_path(@team), local: true do |form|%>
+    <%= form.label :タグ名 %>
+    <%= form.text_field :name, class: 'form-control' %>
+    <%= form.submit '登録', class: 'btn' %>
+  <% end %>
+</div>
+
+<%= link_to '戻る', team_tags_path, class: 'btn-flat-logo' %>

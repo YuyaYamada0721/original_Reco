@@ -1,18 +1,20 @@
 <h1 class="crud-title">タグ一覧</h1>
 
-
 <div class="cp_tooltip">
-<span data-tooltip="タグはティップス登録の際に使用します！" class="cp_tooltiptext"><i class="fa fa-question-circle-o"></i></span>
+  <span data-tooltip="タグはティップス登録の際に使用します！" class="cp_tooltiptext"><i class="fa fa-question-circle-o"></i></span>
 </div>
 
 <div>
   <%= link_to 'タグ登録', new_team_tag_path, class: 'custom-btn new-link' %>
 </div>
 
-<hr>
-<% @tags.each do |tag| %>
-  <div>・<%= tag.name %>      <%= link_to '削除', team_tag_path(@team, tag), method: :delete, data: { confirm: '削除しますか？' } %></div>
-  <br>
-<% end %>
+<div class="tag-index">
+  <% @tags.each do |tag| %>
+    <li><%= tag.name %><%= link_to '削除', team_tag_path(@team, tag), method: :delete, data: { confirm: 'タグを削除しますか？' }, class: 'btn btn-danger' %></li>
+  <% end %>
+</div>
 
-<%= link_to '戻る', team_path(@team) %>
+<%= paginate @tags %>
+
+<hr>
+<%= link_to '戻る', team_path(@team), class: 'btn-flat-logo' %>
