@@ -22,6 +22,8 @@ class Teams::MembersController < ApplicationController
   end
 
   def show
+    @team = Team.find(params[:team_id])
+    @stocks = Stock.where(member_id: params[:id])
     @member = Member.find(params[:id])
     @current_member = Member.find_by(team_id: params[:team_id], user_id: current_user.id)
     @current_member_group_member = GroupMember.where(member_id: @current_member.id)
