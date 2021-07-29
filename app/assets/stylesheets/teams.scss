@@ -5,3 +5,78 @@
 .team-index-card {
   height: 420px;
 }
+
+// -----new team-----
+
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+  7px 7px 20px 0px rgba(0,0,0,.1),
+  4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+.new-team-link {
+  background: #f4f4f4;
+  background: linear-gradient(0deg, #7db4e6 0%, #7db4e6 100%);
+  border: none;
+  margin: 20px 0;
+}
+
+.new-team-link:before {
+  height: 0%;
+  width: 2px;
+}
+
+.new-team-link:hover {
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+              -4px -4px 6px 0 rgba(116, 125, 136, .5),
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+}
+
+// -----new team-----
+
+// -----見出し-----
+
+.crud-title {
+  padding: 0.4em 0.5em;
+  color: #494949;
+  background: #f4f4f4;
+  border-left: solid 5px #7db4e6;
+  border-bottom: solid 3px #d7d7d7;
+}
+
+// -----見出し-----
+
+// -----検索-----
+
+.search-box {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.team-search {
+  margin: 10px 20px;
+}
+
+.team-sort {
+  margin: 15px 10px;
+}
+
+.team-sort a:hover{
+  color : #7db4e6;
+}
+
+// -----検索-----

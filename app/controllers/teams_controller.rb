@@ -59,6 +59,14 @@ class TeamsController < ApplicationController
     redirect_to team_path, notice: 'チームオーナーを交代しました。'
   end
 
+  def search
+    @teams = current_user.members_teams.page(params[:page]).per(6)
+    @q = @teams.ransack(params[:q])
+    @teams = @q.result(distinct: true)
+    @q = @teams
+    @results = @q.result
+  end
+
   private
 
   def team_params
