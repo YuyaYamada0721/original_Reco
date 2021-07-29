@@ -72,3 +72,39 @@
 }
 
 // -----new画面へ遷移する時のボタンデザイン-----
+
+
+// -----question ヘルプを表示するデザイン-----
+
+.cp_tooltip {
+	display: inline-block;
+}
+.cp_tooltiptext {
+	position: relative;
+	cursor: pointer;
+}
+.cp_tooltiptext::after {
+	// position: absolute;
+	transition: all 0.3s ease 0s;
+	opacity: 0;
+	top: 0px;
+	left: 0px;
+	// display: block;
+	padding: 0.2em 0.5em;
+	content: attr(data-tooltip);
+	white-space: nowrap;
+	color: #ffffff;
+	border-radius: 6px;
+	background: #7db4e6;
+}
+.cp_tooltiptext:hover::after {
+	top: 26px;
+	opacity: 1;
+}
+
+.fa-question-circle-o {
+  color: #7db4e6;
+  font-size: 50px;
+}
+
+// -----question ヘルプを表示するデザイン-----
