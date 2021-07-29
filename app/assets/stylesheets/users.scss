@@ -1,6 +1,6 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// -----見出し-----
+
+
 
 .profile {
     padding: 5rem 0;
@@ -55,11 +55,12 @@
 }
 
 .profile-stats li {
-    display: inline-block;
+    // display: inline-block;
     font-size: 2rem;
     line-height: 1.5;
     margin-right: 4rem;
     cursor: pointer;
+    list-style: none;
 }
 
 .profile-stats li:last-of-type {

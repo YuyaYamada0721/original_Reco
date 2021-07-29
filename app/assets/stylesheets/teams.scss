@@ -1,3 +1,5 @@
+// -----team index-----
+
 .card-body, .card-header a {
   color: black;
 }
@@ -6,7 +8,9 @@
   height: 420px;
 }
 
-// -----new team-----
+// -----team index-----
+
+// -----team new-----
 
 .custom-btn {
   width: 130px;
@@ -46,9 +50,9 @@
     inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
 }
 
-// -----new team-----
+// -----team new-----
 
-// -----見出し-----
+// -----team 見出し-----
 
 .crud-title {
   padding: 0.4em 0.5em;
@@ -58,9 +62,9 @@
   border-bottom: solid 3px #d7d7d7;
 }
 
-// -----見出し-----
+// -----team 見出し-----
 
-// -----検索-----
+// -----team 検索 ソート-----
 
 .search-box {
   display: flex;
@@ -79,4 +83,4 @@
   color : #7db4e6;
 }
 
-// -----検索-----
+// -----team 検索 ソート-----
