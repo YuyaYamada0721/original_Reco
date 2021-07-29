@@ -28,6 +28,7 @@ class Teams::Knowledges::TipsController < ApplicationController
   end
 
   def edit
+    @team = Team.find(params[:team_id])
     @tip = Tip.find(params[:id])
     @tip.pictures.build
   end
