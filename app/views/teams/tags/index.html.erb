@@ -1,11 +1,17 @@
-<h1>タグ一覧</h1>
-<h6>Tips登録の際に使用します。</h6>
-<hr>
-<%= link_to '登録', new_team_tag_path %>
-<hr>
+<h1 class="crud-title">タグ一覧</h1>
 
+
+<div class="cp_tooltip">
+<span data-tooltip="タグはティップス登録の際に使用します！" class="cp_tooltiptext"><i class="fa fa-question-circle-o"></i></span>
+</div>
+
+<div>
+  <%= link_to 'タグ登録', new_team_tag_path, class: 'custom-btn new-link' %>
+</div>
+
+<hr>
 <% @tags.each do |tag| %>
-  <div>・<%= tag.name %>　　　<%= link_to '削除', team_tag_path(@team, tag), method: :delete, data: { confirm: '削除しますか？' } %></div>
+  <div>・<%= tag.name %>      <%= link_to '削除', team_tag_path(@team, tag), method: :delete, data: { confirm: '削除しますか？' } %></div>
   <br>
 <% end %>
 

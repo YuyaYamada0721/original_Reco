@@ -1,3 +1,291 @@
-// Place all the styles related to the Teams controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// -----team index-----
+
+.card-body, .card-header a {
+  color: black;
+}
+
+.team-index-card {
+  height: 420px;
+}
+
+// -----team index-----
+
+
+// -----team new-----
+
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+  7px 7px 20px 0px rgba(0,0,0,.1),
+  4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+.new-link {
+  background: #f4f4f4;
+  background: linear-gradient(0deg, #7db4e6 0%, #7db4e6 100%);
+  border: none;
+  margin: 20px 0;
+}
+
+.new-link:before {
+  height: 0%;
+  width: 2px;
+}
+
+.new-link:hover {
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+              -4px -4px 6px 0 rgba(116, 125, 136, .5),
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+}
+
+// -----team new-----
+
+
+// -----team 検索 ソート-----
+
+.search-box {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.team-search {
+  margin: 10px 20px;
+}
+
+.team-sort {
+  margin: 15px 10px;
+}
+
+.team-sort a:hover{
+  color : #7db4e6;
+}
+
+// -----team 検索 ソート-----
+
+
+// -----team new-----
+
+.form-team .form-control {
+  width: 300px;
+}
+
+.form-team .btn {
+  color: white;
+  background-color: #7db4e6;
+}
+
+// -----ラジオボタン
+.cp_ipradio {
+	width: 90%;
+	margin: 2em auto;
+	text-align: left;
+}
+@keyframes click-wave {
+	0% {
+		position: relative;
+		width: 30px;
+		height: 30px;
+		opacity: 0.35;
+	}
+	100% {
+		width: 200px;
+		height: 200px;
+		margin-top: -80px;
+		margin-left: -80px;
+		opacity: 0;
+	}
+}
+.cp_ipradio .option-input {
+	position: relative;
+	position: relative;
+	top: 13.33333px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 30px;
+	height: 30px;
+	margin-right: 0.5rem;
+	cursor: pointer;
+	transition: all 0.15s ease-out 0s;
+	color: #ffffff;
+	border: none;
+	outline: none;
+	background: #d7cbcb;
+	-webkit-appearance: none;
+	        appearance: none;
+}
+.cp_ipradio .option-input:hover {
+	background: #d6a9a9;
+}
+.cp_ipradio .option-input:checked {
+	background: #7db4e6;
+}
+.cp_ipradio .option-input:checked::before {
+	font-size: 20px;
+	line-height: 30px;
+	position: absolute;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	content: '✔';
+	text-align: center;
+}
+.cp_ipradio .option-input:checked::after {
+	position: relative;
+	display: block;
+	content: '';
+	-webkit-animation: click-wave 0.65s;
+	        animation: click-wave 0.65s;
+	background: #7db4e6;
+}
+.cp_ipradio .option-input.radio {
+	border-radius: 50%;
+}
+.cp_ipradio .option-input.radio::after {
+	border-radius: 50%;
+}
+.cp_ipradio label {
+	line-height: 40px;
+}
+.cp_ipradio .option-input:disabled {
+	cursor: not-allowed;
+	background: #b8b7b7;
+}
+.cp_ipradio .option-input:disabled::before {
+	font-size: 20px;
+	line-height: 30px;
+	position: absolute;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	content: '✖︎';
+	text-align: center;
+}
+.cp_ipradio .disabled {
+	color: #9e9e9e;
+}
+// -----
+
+// -----team new-----
+
+
+// -----team show-----
+
+.team-show-function {
+	display: flex;
+	margin: 80px 0;
+}
+
+.team-member-index {
+	margin-right: 80px;
+}
+
+.team-member-label {
+  background: linear-gradient(transparent 70%, #a7d6ff 70%);
+	width: 100px;
+	font-size: 1.5rem;
+}
+
+.team-show-li {
+  padding: 0.5em;
+  border-radius: 0.5em;
+	width: 400px;
+	margin: 10px 0px;
+	font-size: 1.2rem;
+}
+
+.team-owner-show {
+	list-style: none;
+  padding: 0.5em;
+  border-radius: 0.5em;
+	width: 400px;
+	margin: 10px 0px;
+	font-size: 1.2rem;
+}
+
+
+.function-index-team-show {
+	margin-left: 100px;
+}
+
+.function-index-team-show .next-knowledge {
+  color: white;
+  background-color: #7db4e6;
+	display: block;
+	margin: 20px 0;
+	width: 200px;
+}
+
+.function-index-team-show .next-tag {
+  color: white;
+  background-color: #7db4e6;
+	display: block;
+	margin: 20px 0;
+}
+
+.function-index-team-show .next-team-edit {
+  color: white;
+  background-color: #8fbc8f;
+	display: block;
+	margin: 20px 0;
+}
+
+// -----team show-----
+
+// -----team edit-----
+
+.team-edit-function {
+	display: flex;
+	margin: 80px 0;
+}
+
+.function-index-team-edit .form-control {
+	width: 400px;
+	margin-bottom: 20px;
+}
+
+.team-edit-li {
+  border-radius: 0.5em;
+	width: 400px;
+	margin: 15px 0px;
+	font-size: 1rem;
+}
+
+// -----チーム削除ボタン
+.btn-circle-flat {
+	margin: 100px 100px;
+  display: inline-block;
+  text-decoration: none;
+  background: red;
+  color: #FFF;
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  transition: .4s;
+}
+
+.btn-circle-flat:hover {
+  background: red;
+}
+// -----チーム削除ボタン
+
+.function-index-team-edit .btn {
+  color: white;
+  background-color: #7db4e6;
+}

@@ -1,21 +1,23 @@
 <div class="profile">
 
+  <h1 class="crud-title">マイページ</h1>
+
   <div class="profile-image">
     <%= image_tag @user.image.url, size: '400x300' if @user.image && @user.image.url %>
   </div>
-  <div class="profile-user-settings">
-    <h1 class="profile-user-name"><%= @user.username %></h1>
 
-        <% if current_user == User.find(params[:id]) %>
-          <%= link_to '編集', edit_user_path, class: 'btn profile-edit-btn' %>
-        <% end %>
- 
+  <div class="profile-user-settings">
+    <h2 class="profile-user-name"><%= @user.username %></h2>
   </div>
 
   <div class="profile-stats">
     <ul>
       <li><%= link_to '個人記録・チーム記録へ', teams_path, class: 'btn record-link-btn' %></li>
-      <li></li>
+      <li>
+        <% if current_user == User.find(params[:id]) %>
+          <%= link_to 'ユーザ情報編集', edit_user_path, class: 'btn profile-edit-btn' %>
+        <% end %>
+      </li>
       <li></li>
     </ul>
   </div>

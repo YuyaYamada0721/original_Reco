@@ -1,6 +1,4 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// -----user show-----
 
 .profile {
     padding: 5rem 0;
@@ -55,11 +53,12 @@
 }
 
 .profile-stats li {
-    display: inline-block;
+    // display: inline-block;
     font-size: 2rem;
     line-height: 1.5;
     margin-right: 4rem;
     cursor: pointer;
+    list-style: none;
 }
 
 .profile-stats li:last-of-type {
@@ -82,8 +81,8 @@
     margin-left: 2rem;
 }
 
-
 // -----user show-----
+
 
 // -----user edit-----
 
@@ -134,6 +133,11 @@
 
 .image_form{
     margin: 10px 20px;
+}
+
+.form-user-edit .action .btn {
+    color: white;
+    background-color: #7db4e6;
 }
 
 // -----user edit-----

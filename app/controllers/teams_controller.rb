@@ -6,12 +6,12 @@ class TeamsController < ApplicationController
   def index
     @teams = current_user.members_teams
     @q = @teams.ransack(params[:q])
-    @teams = @q.result(distinct: true)
+    @teams = @q.result(distinct: true).page(params[:page]).per(6)
   end
 
   def show
     @team = Team.find(params[:id])
-    @members = Member.where(team_id: params[:id])
+    @members = Member.where(team_id: params[:id]).page(params[:page]).per(5)
     @member = Member.find_by(team_id: params[:id], user_id: current_user.id)
     @stocks = Stock.where(member_id: @member.id)
     @owner = Member.find_by(team_id: params[:id], user_id: @team.owner.id)
@@ -34,7 +34,7 @@ class TeamsController < ApplicationController
 
   def edit
     @team = Team.find(params[:id])
-    @members = Member.where(team_id: params[:id])
+    @members = Member.where(team_id: params[:id]).page(params[:page]).per(5)
   end
 
   def update
@@ -57,6 +57,14 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @team.update(owner_id: params[:owner_id])
     redirect_to team_path, notice: 'チームオーナーを交代しました。'
+  end
+
+  def search
+    @teams = current_user.members_teams.page(params[:page]).per(6)
+    @q = @teams.ransack(params[:q])
+    @teams = @q.result(distinct: true)
+    @q = @teams
+    @results = @q.result
   end
 
   private
