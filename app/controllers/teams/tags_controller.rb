@@ -3,7 +3,7 @@ class Teams::TagsController < ApplicationController
 
   def index
     @team = Team.find(params[:team_id])
-    @tags = @team.tags.all
+    @tags = @team.tags.all.page(params[:page]).per(7)
   end
 
   def new
