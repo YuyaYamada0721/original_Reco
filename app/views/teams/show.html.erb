@@ -25,6 +25,7 @@
     <% if current_user == @team.owner %>
       <%= link_to '編集', edit_team_path(@team), class: 'next-team-edit btn' %>
     <% end%>
+    <%= link_to 'チームチャットへ', team_group_path(@team.id, @team_chat.id) %>
   </div>
 
 </div>

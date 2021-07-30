@@ -2,7 +2,7 @@ class Teams::GroupsController < ApplicationController
 
   def create
     @current_member = Member.find_by(team_id: params[:team_id], user_id: current_user.id)
-    @group = Group.create
+    @group = Group.create(is_dm: true)
     @group_member1 = GroupMember.create(group_id: @group.id, member_id: @current_member.id)
     @group_member2 = GroupMember.create(params.require(:group_member).permit(:member_id, :group_id).merge(group_id: @group.id))
     redirect_to team_group_path(params[:team_id], @group.id)
@@ -19,5 +19,4 @@ class Teams::GroupsController < ApplicationController
       credirect_back(fallback_location: root_path)
     end
   end
-
 end
