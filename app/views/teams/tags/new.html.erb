@@ -1,9 +1,9 @@
 <h1 class="crud-title">タグ登録</h1>
 
 <%= form_with model: @tag, url: team_tags_path(@team), local: true do |form| %>
-  <div id="error_explanation", style="height:150px;">
+  <div id="error_explanation", style="height:100px;">
     <% if @tag.errors.any? %>
-      <h2><%= pluralize(@tag.errors.count, "error") %> prohibited this team from being saved:</h2>
+      <h2><%= t('errors.template.header', model: Tag.model_name.human, count: @tag.errors.count) %></h2>
     <ul>
       <% @tag.errors.full_messages.each do |message| %>
         <li><%= message %></li>
