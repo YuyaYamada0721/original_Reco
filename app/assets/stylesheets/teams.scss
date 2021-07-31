@@ -91,6 +91,7 @@
 	height: 30px;
 	content: '✔';
 	text-align: center;
+	font-family: sans-serif;
 }
 .cp_ipradio .option-input:checked::after {
 	position: relative;
@@ -179,7 +180,7 @@
 // -----team edit-----
 .team-edit-function {
 	display: flex;
-	margin: 80px 0;
+	margin: 50px 0;
 }
 
 .function-index-team-edit .form-control {
@@ -214,11 +215,6 @@
   background: red;
 }
 // チーム削除ボタン
-
-.function-index-team-edit .btn {
-  color: white;
-  background-color: #7db4e6;
-}
 // -----team edit-----
 
 

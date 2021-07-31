@@ -15,7 +15,7 @@ class TeamsController < ApplicationController
     @member = Member.find_by(team_id: params[:id], user_id: current_user.id)
     @stocks = Stock.where(member_id: @member.id)
     @owner = Member.find_by(team_id: params[:id], user_id: @team.owner.id)
-    
+
     @team_chat = Group.joins(:group_members).find_by(group_members: { member_id: @owner.id }, is_dm: 'false')
   end
 
@@ -39,12 +39,12 @@ class TeamsController < ApplicationController
 
   def edit
     @team = Team.find(params[:id])
-    @members = Member.where(team_id: params[:id]).page(params[:page]).per(5)
+    @members = Member.where(team_id: @team.id).page(params[:page]).per(5)
   end
 
   def update
     @team = Team.find(params[:id])
-    @members = Member.where(team_id: params[:id])
+    @members = Member.where(team_id: @team.id).page(params[:page]).per(5)
     if @team.update(team_params)
       redirect_to teams_path, notice: 'チームを編集しました。'
     else
