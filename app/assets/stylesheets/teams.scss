@@ -1,18 +1,15 @@
 // -----team index-----
-
 .card-body, .card-header a {
-  color: black;
+  color: #094067;
 }
 
 .team-index-card {
   height: 420px;
 }
-
 // -----team index-----
 
 
 // -----team 検索 ソート-----
-
 .search-box {
   display: flex;
   margin-bottom: 20px;
@@ -29,20 +26,15 @@
 .team-sort a:hover{
   color : #7db4e6;
 }
-
 // -----team 検索 ソート-----
 
 
 // -----team new-----
-
 .form-team .form-control {
   width: 300px;
 }
+// -----team new-----
 
-.form-team .btn {
-  color: white;
-  background-color: #7db4e6;
-}
 
 // -----ラジオボタン
 .cp_ipradio {
