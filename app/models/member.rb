@@ -10,6 +10,7 @@ class Member < ApplicationRecord
   has_many :tips, dependent: :destroy
 
   has_many :messages, dependent: :destroy
+  has_many :reads, dependent: :destroy
   has_many :group_members, dependent: :destroy
 
   before_create :solo_team?
