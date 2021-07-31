@@ -1,8 +1,12 @@
 <h1 class="crud-title">チーム名：<%= @team.name %></h1>
 
+
 <div class="team-show-function">
 
   <div class="team-member-index">
+    <div class="cp_tooltip">
+      <span data-tooltip="個人メッセージはメンバーの名前をクリック！" class="cp_tooltiptext"><i class="fa fa-question-circle-o"></i></span>
+    </div>
     <p class="team-member-label">メンバー</p>
       <ul>
         <div class="team-owner-show">オーナー：<%= link_to @team.owner.username, team_member_path(@team.id, @owner.id) %></div>
@@ -17,15 +21,18 @@
 
   <div class="function-index-team-show">
     <div>
-      <%= link_to 'ナレッジ一覧へ', team_knowledges_path(@team), class: 'next-knowledge btn' %>
+      <%= link_to 'ナレッジ', team_knowledges_path(@team), class: 'next-btn btn shine-btn' %>
     </div>
+
     <div>
-      <%= link_to 'タグ一覧へ', team_tags_path(@team), class: 'next-tag btn' %>
+      <%= link_to 'タグ', team_tags_path(@team), class: 'next-btn btn shine-btn' %>
     </div>
+
     <% if current_user == @team.owner %>
-      <%= link_to '編集', edit_team_path(@team), class: 'next-team-edit btn' %>
+      <%= link_to 'チーム編集', edit_team_path(@team), class: 'team-edit-btn btn' %>
     <% end%>
-    <%= link_to 'チームチャットへ', team_group_path(@team.id, @team_chat.id) %>
+
+    <%= link_to 'チームメッセージ', team_group_path(@team.id, @team_chat.id), class: 'team-message-btn btn' %>
   </div>
 
 </div>

@@ -3,6 +3,10 @@ ja:
     models:
       team: チーム
       user: ユーザー
+      tag: タグ
     attributes:
       team:
         name: チーム名
+      user:
+      tag:
+        name: タグ名

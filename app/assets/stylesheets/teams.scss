@@ -1,21 +1,15 @@
 // -----team index-----
-
 .card-body, .card-header a {
-  color: black;
+  color: #094067;
 }
 
 .team-index-card {
   height: 420px;
 }
-
 // -----team index-----
 
 
-
-
-
 // -----team 検索 ソート-----
-
 .search-box {
   display: flex;
   margin-bottom: 20px;
@@ -32,22 +26,17 @@
 .team-sort a:hover{
   color : #7db4e6;
 }
-
 // -----team 検索 ソート-----
 
 
 // -----team new-----
-
 .form-team .form-control {
   width: 300px;
 }
+// -----team new-----
 
-.form-team .btn {
-  color: white;
-  background-color: #7db4e6;
-}
 
-// -----ラジオボタン
+// -----ラジオボタン-----
 .cp_ipradio {
 	width: 90%;
 	margin: 2em auto;
@@ -102,6 +91,7 @@
 	height: 30px;
 	content: '✔';
 	text-align: center;
+	font-family: sans-serif;
 }
 .cp_ipradio .option-input:checked::after {
 	position: relative;
@@ -120,33 +110,14 @@
 .cp_ipradio label {
 	line-height: 40px;
 }
-.cp_ipradio .option-input:disabled {
-	cursor: not-allowed;
-	background: #b8b7b7;
-}
-.cp_ipradio .option-input:disabled::before {
-	font-size: 20px;
-	line-height: 30px;
-	position: absolute;
-	display: inline-block;
-	width: 30px;
-	height: 30px;
-	content: '✖︎';
-	text-align: center;
-}
-.cp_ipradio .disabled {
-	color: #9e9e9e;
-}
-// -----
-
-// -----team new-----
+// -----ラジオボタン-----
 
 
 // -----team show-----
-
 .team-show-function {
 	display: flex;
-	margin: 80px 0;
+	height: 400px;
+	margin: 50px 0;
 }
 
 .team-member-index {
@@ -176,12 +147,11 @@
 	font-size: 1.2rem;
 }
 
-
 .function-index-team-show {
 	margin-left: 100px;
 }
 
-.function-index-team-show .next-knowledge {
+.function-index-team-show .next-btn {
   color: white;
   background-color: #7db4e6;
 	display: block;
@@ -189,27 +159,28 @@
 	width: 200px;
 }
 
-.function-index-team-show .next-tag {
-  color: white;
-  background-color: #7db4e6;
-	display: block;
-	margin: 20px 0;
-}
-
-.function-index-team-show .next-team-edit {
+.function-index-team-show .team-edit-btn {
   color: white;
   background-color: #8fbc8f;
 	display: block;
 	margin: 20px 0;
+	width: 200px;
 }
 
+.function-index-team-show .team-message-btn {
+  color: white;
+  background-color: #ffb6c1;
+	display: block;
+	margin: 20px 0;
+	width: 200px;
+}
 // -----team show-----
 
-// -----team edit-----
 
+// -----team edit-----
 .team-edit-function {
 	display: flex;
-	margin: 80px 0;
+	margin: 50px 0;
 }
 
 .function-index-team-edit .form-control {
@@ -224,7 +195,7 @@
 	font-size: 1rem;
 }
 
-// -----チーム削除ボタン
+// チーム削除ボタン
 .btn-circle-flat {
 	margin: 100px 100px;
   display: inline-block;
@@ -243,9 +214,37 @@
 .btn-circle-flat:hover {
   background: red;
 }
-// -----チーム削除ボタン
+// チーム削除ボタン
+// -----team edit-----
 
-.function-index-team-edit .btn {
-  color: white;
-  background-color: #7db4e6;
+
+// -----キラッと光るアニメーション-----
+.shine-btn{
+  position: relative;
+  display:inline-block;
+    color: #fff;
+    text-decoration: none;
+    outline: none;
+    overflow: hidden;
+}
+
+.shine-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+    width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+  transform: skewX(-25deg);
+}
+
+.shine-btn:hover::before {
+  animation: shine 0.7s;
+}
+
+@keyframes shine {
+  100% {
+    left: 125%;
+  }
 }

@@ -1,46 +1,50 @@
-// -----CRUD機能見出し-----
+// -----body-----
+body {
+    color: #5f6c7b;
+    background: #fffffe;
+    font-size: 16px;
+}
+// -----body-----
 
+
+// -----CRUD機能見出し-----
 .crud-title {
-  padding: 0.4em 0.5em;
-  color: #494949;
+  padding: 0.5em 0.5em;
+  color: #094067;
   background: #f4f4f4;
   border-left: solid 5px #7db4e6;
   border-bottom: solid 3px #d7d7d7;
 }
-
 // -----CRUD機能見出し-----
 
 
 // -----戻るボタン-----
-
 .btn-flat-logo {
   position: relative;
   display: inline-block;
   font-weight: bold;
-  padding: 0.25em 0.5em;
+  padding: 0.5em 1em;
+  border-radius: 5px;
   text-decoration: none;
-  color: #FFF;
+  color: #fffffe;
   background: #666;
-  transition: .4s;
+  transition: .5s;
 }
 
 .btn-flat-logo:hover {
   background: #666;
 }
-
 // -----戻るボタン-----
 
 
 // -----new画面へ遷移する時のボタンデザイン-----
-
 .custom-btn {
   width: 130px;
   height: 40px;
-  color: white;
+  color: #fffffe;
   border-radius: 5px;
   padding: 10px 25px;
-  font-family: 'Lato', sans-serif;
-  font-weight: 500;
+  font-weight: bold;
   background: transparent;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -53,15 +57,10 @@
 }
 
 .new-link {
-  background: #f4f4f4;
+  background: #fffffe;
   background: linear-gradient(0deg, #7db4e6 0%, #7db4e6 100%);
   border: none;
   margin: 20px 0;
-}
-
-.new-link:before {
-  height: 0%;
-  width: 2px;
 }
 
 .new-link:hover {
@@ -70,12 +69,10 @@
     inset -4px -4px 6px 0 rgba(255,255,255,.2),
     inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
 }
-
 // -----new画面へ遷移する時のボタンデザイン-----
 
 
 // -----question ヘルプを表示するデザイン-----
-
 .cp_tooltip {
 	display: inline-block;
 }
@@ -106,5 +103,23 @@
   color: #7db4e6;
   font-size: 50px;
 }
-
 // -----question ヘルプを表示するデザイン-----
+
+
+// -----登録ボタン-----
+.btn-gradient-simple {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  color: #FFF;
+  background-image: linear-gradient(45deg, #7db4e6 0%, #b0c9ff 100%);
+  transition: .4s;
+}
+
+.btn-gradient-simple:hover {
+  background-image: linear-gradient(45deg, #709dff 50%, #b0c9ff 100%);
+}
+// -----登録ボタン-----

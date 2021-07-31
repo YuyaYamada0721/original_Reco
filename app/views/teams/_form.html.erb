@@ -15,14 +15,14 @@
   <%= form.text_field :name, class: 'form-control' %>
 
   <div class="cp_ipradio">
-  <%= form.label :is_solo, '個人', value: true %>
-  <%= form.radio_button :is_solo, true, class: 'option-input radio' %>
+    <%= form.label :is_solo, '個人', value: true %>
+    <%= form.radio_button :is_solo, true, class: 'option-input radio' %>
 
-  <%= form.label :is_solo, 'チーム', value: false %>
-  <%= form.radio_button :is_solo, false, class: 'option-input radio' %>
+    <%= form.label :is_solo, 'チーム', value: false %>
+    <%= form.radio_button :is_solo, false, class: 'option-input radio' %>
   </div>
 
-  <%= form.submit '登録する', class: 'btn' %>
+  <%= form.submit '登録する', class: 'btn-gradient-simple' %>
 </div>
 
 <% end %>

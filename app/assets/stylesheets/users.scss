@@ -1,5 +1,4 @@
 // -----user show-----
-
 .profile {
     padding: 5rem 0;
 }
@@ -31,12 +30,13 @@
 }
 
 .profile-user-settings {
-    margin-top: 1.5rem;
+    margin: 2rem 0;
 }
 
 .profile-user-name {
     display: inline-block;
     font-size: 3rem;
+    border-bottom: #666 5px dotted;
 }
 
 .profile-edit-btn {
@@ -49,7 +49,7 @@
 }
 
 .profile-stats {
-    margin-top: 2.5rem;
+    margin-top: 1rem;
 }
 
 .profile-stats li {
@@ -61,15 +61,13 @@
     list-style: none;
 }
 
-.profile-stats li:last-of-type {
-    margin-right: 0;
-}
-
 .profile-bio {
+    border-top: #666 5px dotted;
     font-size: 1.5rem;
     font-weight: 300;
     line-height: 1.5;
-    margin-top: 2.5rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
 }
 
 .record-link-btn {
@@ -80,12 +78,10 @@
     padding: 0 2.5rem;
     margin-left: 2rem;
 }
-
 // -----user show-----
 
 
 // -----user edit-----
-
 .form-user-edit .form-control {
     height: 30px;
     width: 400px;
@@ -134,10 +130,4 @@
 .image_form{
     margin: 10px 20px;
 }
-
-.form-user-edit .action .btn {
-    color: white;
-    background-color: #7db4e6;
-}
-
 // -----user edit-----
