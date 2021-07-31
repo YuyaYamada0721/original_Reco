@@ -12,6 +12,7 @@ class Teams::TagsController < ApplicationController
   end
 
   def create
+    @team = Team.find(params[:team_id])
     @tag = Tag.new(tag_params)
     if @tag.save
       redirect_to team_tags_path, notice: 'タグを登録しました。'

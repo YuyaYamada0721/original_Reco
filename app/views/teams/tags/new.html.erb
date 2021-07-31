@@ -1,11 +1,22 @@
 <h1 class="crud-title">タグ登録</h1>
 
-<div class="tag-new-form">
-  <%= form_with model: @tag, url: team_tags_path(@team), local: true do |form|%>
-    <%= form.label :タグ名 %>
-    <%= form.text_field :name, class: 'form-control' %>
-    <%= form.submit '登録', class: 'btn' %>
+<%= form_with model: @tag, url: team_tags_path(@team), local: true do |form| %>
+  <div id="error_explanation", style="height:150px;">
+    <% if @tag.errors.any? %>
+      <h2><%= pluralize(@tag.errors.count, "error") %> prohibited this team from being saved:</h2>
+    <ul>
+      <% @tag.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
   <% end %>
-</div>
+  </div>
 
+  <div class="tag-new-form">
+      <%= form.label :タグ名 %>
+      <%= form.text_field :name, class: 'form-control' %>
+      <%= form.submit '登録', class: 'btn-gradient-simple' %>
+  </div>
+<% end %>
+<br>
 <%= link_to '戻る', team_tags_path, class: 'btn-flat-logo' %>
