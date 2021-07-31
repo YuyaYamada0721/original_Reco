@@ -18,6 +18,13 @@ class Teams::GroupsController < ApplicationController
       @messages = @group.messages
       @message = Message.new
       @group_members = @group.group_members
+
+      @read_check = Read.where(member_id: @current_member.id).pluck('message_id') #Readテーブルで自分が確認したmessage情報を取得
+      @group_message_check = @messages.pluck('id') #groupのmessage情報を取得
+      @reads = @group_message_check - @read_check #group showをした時点でReadテーブルに保存したいmessage情報に絞る
+      @reads.each do |read| #Readテーブルへ未確認messageを見た is_checkedをtrue として保存
+        Read.create(member_id: @current_member.id, message_id: read, is_checked: true)
+      end
     else
       redirect_to team_path(@team), notice: 'グループを作成して下さい。'
     end
