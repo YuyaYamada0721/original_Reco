@@ -3,7 +3,6 @@
 <%= render 'form', team: @team %>
 <br>
 <%= link_to '戻る', teams_path, class: 'btn btn-flat-logo' %>
-
 <hr>
 
 <div class="team-edit-function">
@@ -35,4 +34,5 @@
     <% end %>
     <%= link_to 'チーム削除', team_path(@team), method: :delete, data: { confirm: 'チームを削除しますか？' }, class: 'btn-circle-flat' %>
   </div>
+  
 </div>
