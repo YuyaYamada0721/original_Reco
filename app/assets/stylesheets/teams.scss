@@ -115,7 +115,8 @@
 // -----team show-----
 .team-show-function {
 	display: flex;
-	margin: 80px 0;
+	height: 400px;
+	margin: 50px 0;
 }
 
 .team-member-index {
@@ -145,12 +146,11 @@
 	font-size: 1.2rem;
 }
 
-
 .function-index-team-show {
 	margin-left: 100px;
 }
 
-.function-index-team-show .next-knowledge {
+.function-index-team-show .next-btn {
   color: white;
   background-color: #7db4e6;
 	display: block;
@@ -158,31 +158,25 @@
 	width: 200px;
 }
 
-.function-index-team-show .next-tag {
-  color: white;
-  background-color: #7db4e6;
-	display: block;
-	margin: 20px 0;
-}
-
-.function-index-team-show .next-team-edit {
+.function-index-team-show .team-edit-btn {
   color: white;
   background-color: #8fbc8f;
 	display: block;
 	margin: 20px 0;
+	width: 200px;
 }
 
-.function-index-team-show .next-team-message {
+.function-index-team-show .team-message-btn {
   color: white;
   background-color: #ffb6c1;
 	display: block;
 	margin: 20px 0;
+	width: 200px;
 }
-
 // -----team show-----
 
-// -----team edit-----
 
+// -----team edit-----
 .team-edit-function {
 	display: flex;
 	margin: 80px 0;
@@ -200,7 +194,7 @@
 	font-size: 1rem;
 }
 
-// -----チーム削除ボタン
+// チーム削除ボタン
 .btn-circle-flat {
 	margin: 100px 100px;
   display: inline-block;
@@ -219,9 +213,42 @@
 .btn-circle-flat:hover {
   background: red;
 }
-// -----チーム削除ボタン
+// チーム削除ボタン
 
 .function-index-team-edit .btn {
   color: white;
   background-color: #7db4e6;
+}
+// -----team edit-----
+
+
+// -----キラッと光るアニメーション-----
+.shine-btn{
+  position: relative;
+  display:inline-block;
+    color: #fff;
+    text-decoration: none;
+    outline: none;
+    overflow: hidden;
+}
+
+.shine-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+    width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+  transform: skewX(-25deg);
+}
+
+.shine-btn:hover::before {
+  animation: shine 0.7s;
+}
+
+@keyframes shine {
+  100% {
+    left: 125%;
+  }
 }
