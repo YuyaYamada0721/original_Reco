@@ -15,6 +15,8 @@ class TeamsController < ApplicationController
     @member = Member.find_by(team_id: params[:id], user_id: current_user.id)
     @stocks = Stock.where(member_id: @member.id)
     @owner = Member.find_by(team_id: params[:id], user_id: @team.owner.id)
+    
+    @team_chat = Group.joins(:group_members).find_by(group_members: { member_id: @owner.id }, is_dm: 'false')
   end
 
   def new
@@ -26,6 +28,9 @@ class TeamsController < ApplicationController
     @team.owner_id = current_user.id
     if @team.save
       @team.invite_member(@team.user)
+      @owner_at_the_member_table = Member.find_by(team_id: @team.id, user_id: current_user.id)
+      @group = Group.create
+      @group_member_ = GroupMember.create(group_id: @group.id, member_id: @owner_at_the_member_table.id)
       redirect_to teams_path, notice: 'チームを登録しました。'
     else
       render :new

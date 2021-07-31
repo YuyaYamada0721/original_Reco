@@ -1,46 +1,49 @@
 class Teams::MembersController < ApplicationController
 
   def create
-    team = Team.find(params[:team_id])
-    user = User.find_by(email: params[:team][:email])
-    if user.blank?
-      redirect_to team_path(team), notice: '存在しないユーザです。'
-    elsif Member.find_by(user_id: user.id, team_id: team.id).present?
-      redirect_to team_path(team), notice: '既にメンバーの一員です。'
+    @team = Team.find(params[:team_id])
+    @user = User.find_by(email: params[:team][:email])
+
+    if @user.blank?
+      redirect_to team_path(@team), notice: '存在しないユーザです。'
+    elsif Member.find_by(user_id: @user.id, team_id: @team.id).present?
+      redirect_to team_path(@team), notice: '既にメンバーの一員です。'
     else
-      Member.create(user_id: user.id, team_id: team.id)
-      redirect_to team_path(team), notice: 'メンバーを追加しました。'
+      @member = Member.create(user_id: @user.id, team_id: @team.id)
+      @owner = Member.find_by(team_id: @team.id, user_id: @team.owner.id)
+      @team_chat = Group.joins(:group_members).find_by(group_members: { member_id: @owner.id }, is_dm: 'false')
+      GroupMember.create(member_id: @member.id, group_id: @team_chat.id)
+      redirect_to team_path(@team), notice: 'メンバーを追加しました。'
     end
   end
 
   def destroy
-    team = Team.find_by(id: params[:team_id]).id
-    user = Member.find(params[:id]).user.id
-    member = Member.find_by(team_id: team, user_id: user)
-    member.destroy
-    redirect_to team_path(team), notice: 'メンバーを脱退させました。'
+    @team = Team.find_by(id: params[:team_id])
+    @member = Member.find(params[:id])
+    @subject_member = Member.find_by(team_id: @team.id, user_id: @member.user.id)
+
+    @subject_member.destroy
+    redirect_to team_path(@team), notice: 'メンバーを脱退させました。'
   end
 
   def show
-    @team = Team.find(params[:team_id])
-    @stocks = Stock.where(member_id: params[:id])
-    @member = Member.find(params[:id])
-    @current_member = Member.find_by(team_id: params[:team_id], user_id: current_user.id)
-    @current_member_group_member = GroupMember.where(member_id: @current_member.id)
-    @member_group_member = GroupMember.where(member_id: @member.id)
+    @team = Team.find(params[:team_id]) #チーム情報
+    @member = Member.find(params[:id]) #対象のメンバー情報
+    @member_group_member = GroupMember.where(member_id: @member.id) #対象のメンバーのグループ情報
+    @current_member = Member.find_by(team_id: params[:team_id], user_id: current_user.id) #現在のユーザのメンバーとしての情報
+    @current_member_group_member = GroupMember.where(member_id: @current_member.id) #現在のユーザのメンバーとしてのグループ情報
+    @stocks = Stock.where(member_id: params[:id]) #メンバーでの画面でストック一覧を表示させるため
 
-    if @member.id == @current_member.id
-    else
-      @current_member_group_member.each do |cu|
-        @member_group_member.each do |u|
-          if cu.group_id == u.group_id then
+    unless @member.id == @current_member.id
+      @current_member_group_member.each do |cmgm|
+        @member_group_member.each do |mgm|
+          if cmgm.group_id == mgm.group_id && cmgm.group.is_dm == true
             @is_group = true
-            @group_id = cu.group_id
+            @group_id = cmgm.group_id
           end
         end
       end
-      if @is_group
-      else
+      unless @is_group
         @group = Group.new
         @group_member = GroupMember.new
       end
