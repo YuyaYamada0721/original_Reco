@@ -36,6 +36,7 @@ class Teams::KnowledgesController < ApplicationController
   end
 
   def update
+    @team = Team.find(params[:id])
     @knowledge = Knowledge.find(params[:id])
     if @knowledge.update(knowledge_params)
       redirect_to team_knowledges_path, notice: '編集しました。'
