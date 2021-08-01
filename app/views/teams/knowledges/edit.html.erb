@@ -1,17 +1,24 @@
-<%= form_with model: @knowledge, url: team_knowledge_path, local: true do |form| %>
-    <div id="error_explanation", style="height:150px;">
-      <% if @knowledge.errors.any? %>
-        <h2><%= pluralize(@knowledge.errors.count, "error") %> prohibited this team from being saved:</h2>
-      <ul>
-        <% @knowledge.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    <% end %>
-    </div>
+<h1 class="crud-title">ナレッジ編集</h1>
 
-  <%= form.label :ナレッジ名 %>
-  <%= form.text_field :name %>
-  <%= form.submit '登録する' %>
+<%= form_with model: @knowledge, url: team_knowledge_path, local: true do |form| %>
+  <div id="error_explanation", style="height:100px;">
+    <% if @knowledge.errors.any? %>
+      <h2><%= pluralize(@knowledge.errors.count, "error") %> prohibited this team from being saved:</h2>
+    <ul>
+      <% @knowledge.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+    <% end %>
+  </div>
+
+  <div class="form-knowledge">
+    <%= form.label :ナレッジ名 %>
+    <%= form.text_field :name, class: 'form-control' %>
+    <%= form.submit '登録する', class: 'btn-gradient-simple knowledge-btn' %>
+  </div>
 <% end %>
-<%= link_to '戻る', team_knowledges_path %>
+
+<%= link_to '戻る', team_knowledge_path, class: 'btn-flat-logo' %>
+
+<%= link_to '削除', team_knowledge_path(@team, @knowledge), method: :delete, data: { confirm: '削除しても良いですか？' }, class: 'btn btn-danger' %>

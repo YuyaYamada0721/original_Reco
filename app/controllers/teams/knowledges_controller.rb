@@ -31,6 +31,7 @@ class Teams::KnowledgesController < ApplicationController
   end
 
   def edit
+    @team = Team.find(params[:id])
     @knowledge = Knowledge.find(params[:id])
   end
 
