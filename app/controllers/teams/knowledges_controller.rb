@@ -9,8 +9,8 @@ class Teams::KnowledgesController < ApplicationController
   end
 
   def new
-    @knowledge = Knowledge.new
     @team = Team.find(params[:team_id])
+    @knowledge = Knowledge.new
   end
 
   def create
@@ -32,12 +32,12 @@ class Teams::KnowledgesController < ApplicationController
   end
 
   def edit
-    @team = Team.find(params[:id])
+    @team = Team.find(params[:team_id])
     @knowledge = Knowledge.find(params[:id])
   end
 
   def update
-    @team = Team.find(params[:id])
+    @team = Team.find(params[:team_id])
     @knowledge = Knowledge.find(params[:id])
     if @knowledge.update(knowledge_params)
       redirect_to team_knowledges_path, notice: '編集しました。'
