@@ -1,0 +1,39 @@
+// -----親-----
+.chat-content {
+  display: flex;
+}
+
+// -----子-----
+.chat-member {
+  width: 30%;
+}
+
+.chat-field {
+  height: 600px;
+  width: 70%;
+  overflow-y: auto;
+}
+
+// ----子子-----
+.chat-name {
+  width: 15%;
+}
+
+.message-text {
+  background-color: blanchedalmond;
+  width: 55%;
+  border-radius: 5px;
+}
+
+.chat-status {
+  width: 30%;
+}
+
+// -----入力欄-----
+.chat-input {
+  margin: 20px 200px;
+}
+
+.chat-input .form-control {
+  margin: 10px 0;
+}

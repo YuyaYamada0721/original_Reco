@@ -15,9 +15,9 @@ class Teams::GroupsController < ApplicationController
     @group = Group.find(params[:id])
 
     if GroupMember.where(member_id: @current_member.id, group_id: @group.id).present?
-      @messages = @group.messages
+      @messages = @group.messages.order(id: 'DESC')
       @message = Message.new
-      @group_members = @group.group_members
+      @group_members = @group.group_members.page(params[:page]).per(10)
 
       @read_check = Read.where(member_id: @current_member.id).pluck('message_id') #Readテーブルで自分が確認したmessage情報を取得
       @group_message_check = @messages.pluck('id') #groupのmessage情報を取得
