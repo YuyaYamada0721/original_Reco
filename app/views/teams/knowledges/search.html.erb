@@ -14,7 +14,7 @@
 <hr>
 
 <div class="row index-card knowledge-card">
-  <% @knowledges.each do |knowledge| %>
+  <% @results.each do |knowledge| %>
     <div class="col-md-4">
       <div class="card mb-3">
         <a href="/teams/<%= @team.id %>/knowledges/<%= knowledge.id %>" class="card-body">
@@ -27,7 +27,7 @@
     </div>
   <% end %>
 </div>
-<%= paginate @knowledges %>
+<%= paginate @results %>
 
 <hr>
 <%= link_to '戻る', team_path(@team), class: 'btn-flat-logo' %>

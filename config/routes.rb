@@ -21,6 +21,9 @@ Rails.application.routes.draw do
     resources :messages, controller: 'teams/messages', only: %i[create]
     resources :tags, controller: 'teams/tags', only: %i[index new create destroy]
     resources :knowledges, controller: 'teams/knowledges' do
+      collection do
+        get :search
+      end
       resources :tips, controller: 'teams/knowledges/tips'
       resources :stocks, controller: 'teams/knowledges/stocks', only: %i[create destroy]
     end
