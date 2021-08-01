@@ -1,27 +1,29 @@
-<h1><%= @member.team.name %>：<%= @member.user.username %>さんのページ</h1>
-<hr>
+<h1 class="crud-title"><%= @member.team.name %>：<%= @member.user.username %>さんのページ</h1>
 
-<% if @member.id == @current_member.id %>
-
-<% else %>
-  <% if @is_group == true %>
-    <%= link_to 'チャットへ', team_group_path(params[:team_id], @group_id) %>
+<div class="chat-btn-space">
+  <% if @member.id == @current_member.id %>
   <% else %>
-    <%= form_for @group, url: team_groups_path(params[:team_id])  do |f| %>
-      <%= fields_for @group_member do |e| %>
-        <%= e.hidden_field :member_id, value: @member.id %>
+    <% if @is_group == true %>
+      <%= link_to 'チャットへ', team_group_path(params[:team_id], @group_id), class: 'solo-chat-btn btn' %>
+    <% else %>
+      <%= form_for @group, url: team_groups_path(params[:team_id])  do |f| %>
+        <%= fields_for @group_member do |e| %>
+          <%= e.hidden_field :member_id, value: @member.id %>
+        <% end %>
+        <%= f.submit "チャットを始める", class: 'solo-chat-btn btn' %>
       <% end %>
-      <%= f.submit "チャットを始める" %>
     <% end %>
   <% end %>
-<% end %>
+</div>
+
+<p class="stock-label">ナレッジストック一覧</p>
+
+<div class="stock-space">
+  <% @stocks.each do |stock| %>
+    <li><%= link_to stock.knowledge.name, team_knowledge_path(@team, stock.knowledge_id) %></li>
+  <% end %>
+  <%= paginate @stocks %>
+</div>
 
 <hr>
-<h6>ストック一覧</h6>
-
-<% @stocks.each do |stock| %>
-  <p>・<%= link_to stock.knowledge.name, team_knowledge_path(@team, stock.knowledge_id) %></p>
-<% end %>
-
-<hr>
-<%= link_to '戻る', team_path(@team) %>
+<%= link_to '戻る', team_path(@team), class: 'btn-flat-logo' %>

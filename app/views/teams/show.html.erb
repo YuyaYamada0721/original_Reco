@@ -4,9 +4,9 @@
 <div class="team-show-function">
 
   <div class="team-member-index">
-    <div class="cp_tooltip">
-      <span data-tooltip="個人メッセージはメンバーの名前をクリック！" class="cp_tooltiptext"><i class="fa fa-question-circle-o"></i></span>
-    </div>
+    <%# <div class="cp_tooltip">
+      <span data-tooltip="個人メッセージはメンバーの名前をクリック！" class="cp_tooltiptext"><i class="fa fa-question-circle-o"></i></span> %>
+    <%# </div> %>
     <p class="team-member-label">メンバー</p>
       <ul>
         <div class="team-owner-show">オーナー：<%= link_to @team.owner.username, team_member_path(@team.id, @owner.id) %></div>
@@ -19,7 +19,7 @@
     <%= paginate @members %>
   </div>
 
-  <div class="function-index-team-show">
+  <div class="function team">
     <div>
       <%= link_to 'ナレッジ', team_knowledges_path(@team), class: 'next-btn btn shine-btn' %>
     </div>
@@ -29,10 +29,10 @@
     </div>
 
     <% if current_user == @team.owner %>
-      <%= link_to 'チーム編集', edit_team_path(@team), class: 'team-edit-btn btn' %>
+      <%= link_to 'チーム編集', edit_team_path(@team), class: 'edit-btn btn' %>
     <% end%>
 
-    <%= link_to 'チームメッセージ', team_group_path(@team.id, @team_chat.id), class: 'team-message-btn btn' %>
+    <%= link_to 'チームメッセージ', team_group_path(@team.id, @team_chat.id), class: 'chat-btn btn' %>
   </div>
 
 </div>

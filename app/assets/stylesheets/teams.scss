@@ -3,8 +3,8 @@
   color: #094067;
 }
 
-.team-index-card {
-  height: 420px;
+.index-card {
+  height: 400px;
 }
 // -----team index-----
 
@@ -147,28 +147,31 @@
 	font-size: 1.2rem;
 }
 
-.function-index-team-show {
+.team {
 	margin-left: 100px;
 }
 
-.function-index-team-show .next-btn {
+.function .next-btn {
   color: white;
+	font-weight: bold;
   background-color: #7db4e6;
 	display: block;
 	margin: 20px 0;
 	width: 200px;
 }
 
-.function-index-team-show .team-edit-btn {
+.function .edit-btn {
   color: white;
+	font-weight: bold;
   background-color: #8fbc8f;
 	display: block;
 	margin: 20px 0;
 	width: 200px;
 }
 
-.function-index-team-show .team-message-btn {
+.function .chat-btn {
   color: white;
+	font-weight: bold;
   background-color: #ffb6c1;
 	display: block;
 	margin: 20px 0;

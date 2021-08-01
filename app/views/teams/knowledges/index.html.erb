@@ -1,12 +1,22 @@
-<h1>チーム情報一覧</h1>
+<h1 class="crud-title">ナレッジ一覧</h1>
 
-<%= link_to '新規ナレッジ登録',  new_team_knowledge_path(@team) %>
-<%= link_to '戻る', team_path(@team) %>
-<h2>ナレッジ一覧</h2>
+<%= link_to 'ナレッジ登録',  new_team_knowledge_path(@team), class: 'custom-btn new-link' %>
+<hr>
 
-<% @knowledges.each do |knowledge|  %>
-  <%= knowledge.name %>
-  <div>作成者：<%= knowledge.member.user.username %></div>
-  <div><%= link_to '詳細', team_knowledge_path(@team, knowledge) %></div>
-  <br>
-<% end %>
+<div class="row index-card knowledge-card">
+  <% @knowledges.each do |knowledge| %>
+    <div class="col-md-4">
+      <div class="card mb-3">
+        <a href="/teams/<%= @team.id %>/knowledges/<%= knowledge.id %>" class="card-body">
+          <p class="card-title knowledge-title">ナレッジ名</p>
+          <p><%= knowledge.name %></p>
+          <h6 class="card-title">作成者：<%= knowledge.member.user.username %></h6>
+        </a>
+      </div>
+    </div>
+  <% end %>
+</div>
+<%= paginate @knowledges %>
+
+<hr>
+<%= link_to '戻る', team_path(@team), class: 'btn-flat-logo' %>

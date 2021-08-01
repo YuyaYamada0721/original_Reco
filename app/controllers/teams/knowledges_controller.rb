@@ -4,7 +4,7 @@ class Teams::KnowledgesController < ApplicationController
 
   def index
     @team = Team.find(params[:team_id])
-    @knowledges = @team.knowledges.all
+    @knowledges = @team.knowledges.all.page(params[:page]).per(6)
   end
 
   def new
@@ -31,10 +31,12 @@ class Teams::KnowledgesController < ApplicationController
   end
 
   def edit
+    @team = Team.find(params[:id])
     @knowledge = Knowledge.find(params[:id])
   end
 
   def update
+    @team = Team.find(params[:id])
     @knowledge = Knowledge.find(params[:id])
     if @knowledge.update(knowledge_params)
       redirect_to team_knowledges_path, notice: '編集しました。'

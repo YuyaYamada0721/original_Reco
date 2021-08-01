@@ -32,7 +32,7 @@ class Teams::MembersController < ApplicationController
     @member_group_member = GroupMember.where(member_id: @member.id) #対象のメンバーのグループ情報
     @current_member = Member.find_by(team_id: params[:team_id], user_id: current_user.id) #現在のユーザのメンバーとしての情報
     @current_member_group_member = GroupMember.where(member_id: @current_member.id) #現在のユーザのメンバーとしてのグループ情報
-    @stocks = Stock.where(member_id: params[:id]) #メンバーでの画面でストック一覧を表示させるため
+    @stocks = Stock.where(member_id: params[:id]).page(params[:page]).per(10) #メンバーでの画面でストック一覧を表示させるため
 
     unless @member.id == @current_member.id
       @current_member_group_member.each do |cmgm|
