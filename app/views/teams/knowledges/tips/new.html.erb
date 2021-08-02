@@ -31,7 +31,7 @@
 
   <div>
     <%= form.fields_for :pictures  do |picture| %>
-      <%= picture.file_field :image, multiple: true, class: 'image-upload-dropfile-hidden', id: 'image-label', type: 'file', name: 'pictures[image][]' %>
+      <%= picture.file_field :image %>
     <% end %>
   </div>
 

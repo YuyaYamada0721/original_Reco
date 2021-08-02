@@ -25,15 +25,30 @@
   <% end %>
 
 <div class='pictures_area'>
+
+  <% n = 1 %>
   <% @tip.pictures.each do |picture| %>
+    <label>画像<%= n %></label>
     <%= image_tag picture.image.url, size: '300x200' if picture.image && picture.image.url %>
+    <% n += 1 %>
   <% end %>
+
+  <div class="test-field">
+    <%= form.fields_for :pictures  do |picture| %>
+        <div class="test-field2">
+          <%= picture.hidden_field :image_cache %>
+          <%= picture.file_field :image %>
+        </div>
+    <% end %>
+  </div>
+
 </div>
 
-  <%= form.fields_for :pictures  do |picture| %>
-    <%= picture.file_field :image %>
-    <%= picture.hidden_field :image_cache %>
-  <% end %>
+    <%= form.submit value: "画像１を削除する。", name: "delete_image1",data: { confirm: "画像１を削除しますか？"}, class:'btn btn-danger' %>
+    <%= form.submit value: "画像２を削除する。", name: "delete_image2",data: { confirm: "画像２を削除しますか？"}, class:'btn btn-danger' %>
+    <%= form.submit value: "画像３を削除する。", name: "delete_image3",data: { confirm: "画像３を削除しますか？"}, class:'btn btn-danger' %>
+    <%= form.submit value: "画像を全て削除する。", name: "delete_image",data: { confirm: "画像を全て削除しますか？"},class:'btn btn-danger' %>
+
 
   <%= form.submit '登録' %>
 <% end %>

@@ -14,7 +14,7 @@ class Teams::Knowledges::TipsController < ApplicationController
     @team = Team.find(params[:team_id])
     @knowledge = Knowledge.find(params[:knowledge_id])
     @tip = Tip.new
-    @tip.pictures.build #画像の複数投稿は macならコマンド押しながら選択 windowsならctrl押しながら
+    3.times { @tip.pictures.build }
   end
 
   def create
@@ -25,13 +25,11 @@ class Teams::Knowledges::TipsController < ApplicationController
     @tip.member_id = @member.id
 
     if @tip.save
-
       if params[:pictures].present?
         params[:pictures][:image].each do |img|
           @tip_image = @tip.pictures.create(image: img, tip_id: @tip.id)
         end
       end
-
       redirect_to team_knowledge_tips_path, notice: 'Tipを作成しました。'
     else
       render :new
@@ -43,12 +41,34 @@ class Teams::Knowledges::TipsController < ApplicationController
     @tip = Tip.find(params[:id])
 
     @tip.pictures.build if @tip.pictures.blank? || @tip.pictures.count < 3 #写真が投稿されていないか写真の投稿が３つ以下の時に実施
-
   end
 
   def update
     @tip = Tip.find(params[:id])
-    if @tip.update(tip_params)
+
+    if params[:delete_image] #設定している画像を全て削除する
+      @tip.pictures.each do |picture|
+        picture.image = nil
+      end
+      @tip.save
+      render :edit
+      nil
+    elsif params[:delete_image1]
+      @tip.pictures[0].image = nil
+      @tip.save
+      render :edit
+      nil
+    elsif params[:delete_image2]
+      @tip.pictures[1].image = nil
+      @tip.save
+      render :edit
+      nil
+    elsif params[:delete_image3]
+      @tip.pictures[2].image = nil
+      @tip.save
+      render :edit
+      nil
+    elsif @tip.update(tip_params)
       redirect_to team_knowledge_tips_path, notice: '編集しました。'
     else
       render :edit
