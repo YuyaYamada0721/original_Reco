@@ -6,7 +6,8 @@ class Teams::Knowledges::TipsController < ApplicationController
     @team = Team.find(params[:team_id])
     @knowledge = Knowledge.find(params[:knowledge_id])
     @member = Member.find_by(user_id: current_user.id, team_id: params[:team_id])
-    @tips = @team.tips.all
+    @tips = @team.tips.all.page(params[:page]).per(6).order(id: 'DESC')
+    @q = @tips.ransack(params[:q])
   end
 
   def new
@@ -52,6 +53,15 @@ class Teams::Knowledges::TipsController < ApplicationController
     @tip = Tip.find(params[:id])
     @tip.destroy
     redirect_to team_knowledge_tips_path, notice: '削除しました。'
+  end
+
+  def search
+    @team = Team.find(params[:team_id])
+    @knowledge = Knowledge.find(params[:knowledge_id])
+    @member = Member.find_by(user_id: current_user.id, team_id: params[:team_id])
+    @tips = @team.tips.all.page(params[:page]).per(6).order(id: 'DESC')
+    @q = @tips.ransack(params[:q])
+    @results = @q.result
   end
 
   private

@@ -24,7 +24,11 @@ Rails.application.routes.draw do
       collection do
         get :search
       end
-      resources :tips, controller: 'teams/knowledges/tips'
+      resources :tips, controller: 'teams/knowledges/tips' do
+        collection do
+          get :search
+        end
+      end
       resources :stocks, controller: 'teams/knowledges/stocks', only: %i[create destroy]
     end
     resources :members, controller: 'teams/members', only: %i[show create destroy] do
