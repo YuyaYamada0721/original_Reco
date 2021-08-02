@@ -19,7 +19,7 @@
   <%= form.label :内容 %>
   <%= form.text_area :content %>
 <br>
-  <% @team.tags.all.each do |tag| %>
+  <% @tip.team.tags.each do |tag| %>
     <%= form.check_box :tag_ids, { multiple: true, checked: @tip.tags.find_by(id: tag.id).present?, include_hidden: false }, tag[:id] %>
     <label><%= tag.name %></label>
   <% end %>

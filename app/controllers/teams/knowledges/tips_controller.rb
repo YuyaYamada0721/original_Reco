@@ -14,13 +14,16 @@ class Teams::Knowledges::TipsController < ApplicationController
     @team = Team.find(params[:team_id])
     @knowledge = Knowledge.find(params[:knowledge_id])
     @tip = Tip.new
-    3.times { @tip.pictures.build }
+    2.times { @tip.pictures.build }
   end
 
   def create
+    @team = Team.find(params[:team_id])
+    @knowledge = Knowledge.find(params[:knowledge_id])
     @member = Member.find_by(user_id: current_user.id, team_id: params[:team_id])
     @tip = Tip.new(tip_params)
     @tip.member_id = @member.id
+
     if @tip.save
       redirect_to team_knowledge_tips_path, notice: 'Tipを作成しました。'
     else
