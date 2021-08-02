@@ -20,12 +20,11 @@
     <div class="col-md-4">
       <div class="card mb-3">
         <a href="/teams/<%= @team.id %>/knowledges/<%= @knowledge.id %>/tips/<%= tip.id %>" class="card-body">
-          <p class="card-title knowledge-title">ティップス名</p>
-          <p><%= tip.name %></p>
+          <p class="card-title tip-title"><%= tip.name %></p>
             <% tip.tags.each do |tag| %>
-              <h6 class="card-title">タグ：<%= tag.name %></h6>
+              <h6 class="card-content">タグ：<%= tag.name %></h6>
             <% end %>
-          <h6>作成者：<%= tip.member.user.username %></h6>
+          <h6 class="card-content">作成者：<%= tip.member.user.username %></h6>
         </a>
       </div>
     </div>

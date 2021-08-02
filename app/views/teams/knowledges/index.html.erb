@@ -18,10 +18,9 @@
     <div class="col-md-4">
       <div class="card mb-3">
         <a href="/teams/<%= @team.id %>/knowledges/<%= knowledge.id %>" class="card-body">
-          <p class="card-title knowledge-title">ナレッジ名</p>
-          <p><%= knowledge.name %></p>
-          <h6 class="card-title">作成者：<%= knowledge.member.user.username %></h6>
-          <h6 class="card-title">更新日：<%= l knowledge.updated_at %></h6>
+          <p class="card-title knowledge-title"><%= knowledge.name %></p>
+          <h6 class="card-content">作成者：<%= knowledge.member.user.username %></h6>
+          <h6 class="card-content">更新日：<%= l knowledge.updated_at %></h6>
         </a>
       </div>
     </div>
