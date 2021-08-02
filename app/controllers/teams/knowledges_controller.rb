@@ -4,12 +4,13 @@ class Teams::KnowledgesController < ApplicationController
 
   def index
     @team = Team.find(params[:team_id])
-    @knowledges = @team.knowledges.all.page(params[:page]).per(6)
+    @knowledges = @team.knowledges.all.page(params[:page]).per(6).order(id: 'DESC')
+    @q = @knowledges.ransack(params[:q])
   end
 
   def new
-    @knowledge = Knowledge.new
     @team = Team.find(params[:team_id])
+    @knowledge = Knowledge.new
   end
 
   def create
@@ -31,12 +32,12 @@ class Teams::KnowledgesController < ApplicationController
   end
 
   def edit
-    @team = Team.find(params[:id])
+    @team = Team.find(params[:team_id])
     @knowledge = Knowledge.find(params[:id])
   end
 
   def update
-    @team = Team.find(params[:id])
+    @team = Team.find(params[:team_id])
     @knowledge = Knowledge.find(params[:id])
     if @knowledge.update(knowledge_params)
       redirect_to team_knowledges_path, notice: '編集しました。'
@@ -51,9 +52,16 @@ class Teams::KnowledgesController < ApplicationController
     redirect_to team_knowledges_path, notice: '削除しました。'
   end
 
+  def search
+    @team = Team.find(params[:team_id])
+    @knowledges = @team.knowledges.all.page(params[:page]).per(6).order(id: 'DESC')
+    @q = @knowledges.ransack(params[:q])
+    @results = @q.result
+  end
+
   private
 
   def knowledge_params
-    params.require(:knowledge).permit(:member_id, :team_id, :name)
+    params.require(:knowledge).permit(:member_id, :team_id, :name, :q)
   end
 end

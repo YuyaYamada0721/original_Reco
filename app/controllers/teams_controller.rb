@@ -69,7 +69,7 @@ class TeamsController < ApplicationController
     @q = @teams.ransack(params[:q])
     @teams = @q.result(distinct: true)
     @q = @teams
-    @results = @q.result
+    # @results = @q.result searchアクションさえ定義していて、検索すればデフォルトであいまい検索してくれるっぽい？
   end
 
   private
