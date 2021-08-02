@@ -1,6 +1,7 @@
 class Teams::Knowledges::TipsController < ApplicationController
   before_action :authenticate_user!
   before_action :team_member_check
+  after_action :tag_check, only: :update
 
   def index
     @team = Team.find(params[:team_id])
@@ -39,13 +40,15 @@ class Teams::Knowledges::TipsController < ApplicationController
 
   def edit
     @team = Team.find(params[:team_id])
-    @tip = Tip.find(params[:id])
     @knowledge = Knowledge.find(params[:knowledge_id])
-    
+    @tip = Tip.find(params[:id])
+
     @tip.pictures.build if @tip.pictures.blank? || @tip.pictures.count < 3 #写真が投稿されていないか写真の投稿が３つ以下の時に実施
   end
 
   def update
+    @team = Team.find(params[:team_id])
+    @knowledge = Knowledge.find(params[:knowledge_id])
     @tip = Tip.find(params[:id])
 
     if params[:delete_image] #設定している画像を全て削除する

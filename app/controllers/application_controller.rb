@@ -26,6 +26,15 @@ class ApplicationController < ActionController::Base
     redirect_to teams_path
   end
 
+  def tag_check
+    if params[:tip][:tag_ids] == nil
+      @tags = Tagging.where(tip_id: @tip.id)
+      @tags.each do |tag|
+        tag.destroy
+      end
+    end
+  end
+
   protected
 
   def configure_permitted_parameters
