@@ -32,6 +32,7 @@ class Teams::Knowledges::TipsController < ApplicationController
       end
       redirect_to team_knowledge_tips_path, notice: 'Tipを作成しました。'
     else
+      3.times { @tip.pictures.build }
       render :new
     end
   end
@@ -39,7 +40,8 @@ class Teams::Knowledges::TipsController < ApplicationController
   def edit
     @team = Team.find(params[:team_id])
     @tip = Tip.find(params[:id])
-
+    @knowledge = Knowledge.find(params[:knowledge_id])
+    
     @tip.pictures.build if @tip.pictures.blank? || @tip.pictures.count < 3 #写真が投稿されていないか写真の投稿が３つ以下の時に実施
   end
 

@@ -1,21 +1,27 @@
-<h1>Tip詳細</h1>
+<h1 class='crud-title'>ティップス詳細</h1>
+
+<p class="tip-line">タイトル</p>
+<div><%= @tip.name %></div>
+
 <hr>
 
-<h2>タイトル</h2>
-<p><%= @tip.name %></p>
+<p class="tip-line">内容</p>
+<div><%= markdown(@tip.content).html_safe %></div>
+
 <hr>
-<h2>内容</h2>
-<p><%= @tip.content %></p>
-<h2>画像</h2>
-<% @tip.pictures.each do |picture| %>
-  <%= link_to picture.image.url, 'data-lightbox': picture do %>
-    <%= image_tag picture.image.url, size: '300x200' if picture.image && picture.image.url %>
+
+<p class="tip-line">画像</p>
+<div class="pictures-area">
+  <% @tip.pictures.each do |picture| %>
+    <%= link_to picture.image.url, 'data-lightbox': picture do %>
+      <div class="tip-picture"><%= image_tag picture.image.url, size: '300x200' if picture.image && picture.image.url %></div>
+    <% end %>
   <% end %>
-<% end %>
+</div>
+
 <hr>
 
-<%= link_to '編集', edit_team_knowledge_tip_path(@team.id, @knowledge.id, @tip.id) %>
-<br>
-<%= link_to '削除', team_knowledge_tip_path(@team.id, @knowledge.id, @tip.id), method: :delete, data: { confirm: '削除しますか？' } %>
-<br>
-<%= link_to '戻る', team_knowledge_tips_path %>
+<div class="function">
+  <%= link_to '編集', edit_team_knowledge_tip_path(@team.id, @knowledge.id, @tip.id), class: 'edit-btn btn' %>
+  <%= link_to '戻る', team_knowledge_tips_path, class: 'btn-flat-logo' %>
+</div>

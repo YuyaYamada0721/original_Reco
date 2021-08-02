@@ -1,8 +1,8 @@
-<h1>Tip編集</h1>
+<h1 class="crud-title">ティップス編集</h1>
 <hr>
 
 <%= form_with model: @tip, url: team_knowledge_tip_path, local: true do |form| %>
-  <div id="error_explanation", style="height:150px;">
+  <div id="error_explanation", style="height:50px;">
     <% if @tip.errors.any? %>
       <h2><%= pluralize(@tip.errors.count, "error") %> prohibited this team from being saved:</h2>
     <ul>
@@ -13,44 +13,56 @@
   <% end %>
   </div>
 
-  <%= form.label :タイトル %>
-  <%= form.text_field :name %>
-<br>
-  <%= form.label :内容 %>
-  <%= form.text_area :content %>
-<br>
-  <% @tip.team.tags.each do |tag| %>
-    <%= form.check_box :tag_ids, { multiple: true, checked: @tip.tags.find_by(id: tag.id).present?, include_hidden: false }, tag[:id] %>
-    <label><%= tag.name %></label>
-  <% end %>
+  <div class="tip-label">
+    <%= form.label :タイトル %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
 
-<div class='pictures_area'>
+  <div class="tip-content">
+    <%= form.label :内容 %>
+    <%= form.text_area :content, class: 'form-control' %>
+  </div>
 
-  <% n = 1 %>
-  <% @tip.pictures.each do |picture| %>
-    <label>画像<%= n %></label>
-    <%= image_tag picture.image.url, size: '300x200' if picture.image && picture.image.url %>
-    <% n += 1 %>
-  <% end %>
-
-  <div class="test-field">
-    <%= form.fields_for :pictures  do |picture| %>
-        <div class="test-field2">
-          <%= picture.hidden_field :image_cache %>
-          <%= picture.file_field :image %>
-        </div>
+  <div class="tip-tag">
+    <%= form.label :タグ： %>
+    <% @tip.team.tags.each do |tag| %>
+      <label><%= tag.name %></label>
+      <%= form.check_box :tag_ids, { multiple: true, checked: @tip.tags.find_by(id: tag.id).present?, include_hidden: false }, tag[:id] %>
     <% end %>
   </div>
 
-</div>
+  <div class='pictures-area'>
+    <% n = 1 %>
+    <% @tip.pictures.each do |picture| %>
+      <span>画像<%= n %></span>
+      <div class="tip-picture"><%= image_tag picture.image.url, size: '300x200' if picture.image && picture.image.url %></div>
+      <% n += 1 %>
+    <% end %>
+  </div>
 
-    <%= form.submit value: "画像１を削除する。", name: "delete_image1",data: { confirm: "画像１を削除しますか？"}, class:'btn btn-danger' %>
-    <%= form.submit value: "画像２を削除する。", name: "delete_image2",data: { confirm: "画像２を削除しますか？"}, class:'btn btn-danger' %>
-    <%= form.submit value: "画像３を削除する。", name: "delete_image3",data: { confirm: "画像３を削除しますか？"}, class:'btn btn-danger' %>
-    <%= form.submit value: "画像を全て削除する。", name: "delete_image",data: { confirm: "画像を全て削除しますか？"},class:'btn btn-danger' %>
+    <div class="tip-file-field">
+      <%= form.fields_for :pictures  do |picture| %>
+          <div class="tip-file-select">
+            <%= picture.hidden_field :image_cache %>
+            <%= picture.file_field :image %>
+          </div>
+      <% end %>
+    </div>
 
+  <div class="tip-function">
+    <div>
+      <%= form.submit value: "画像１を削除する。", name: "delete_image1",data: { confirm: "画像１を削除しますか？"}, class:'btn btn-danger tip-picture-d' %>
+      <%= form.submit value: "画像２を削除する。", name: "delete_image2",data: { confirm: "画像２を削除しますか？"}, class:'btn btn-danger tip-picture-d' %>
+      <%= form.submit value: "画像３を削除する。", name: "delete_image3",data: { confirm: "画像３を削除しますか？"}, class:'btn btn-danger tip-picture-d' %>
+      <%= form.submit value: "画像を全て削除する。", name: "delete_image",data: { confirm: "画像を全て削除しますか？"},class:'btn btn-danger tip-picture-d' %>
+    </div>
 
-  <%= form.submit '登録' %>
+    <div class="tip-function">
+      <div class="tip-edit-btn">
+        <%= form.submit '登録', class: 'btn-gradient-simple tip-action-btn' %>
+        <%= link_to '戻る', team_knowledge_tip_path, class: 'btn-flat-logo tip-action-btn' %>
+        <%= link_to '削除', team_knowledge_tip_path(@team.id, @knowledge.id, @tip.id), method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-danger tip-action-btn' %>
+      </div>
+    </div>
+  </div>
 <% end %>
-<br>
-<%= link_to '戻る', team_knowledge_tip_path %>

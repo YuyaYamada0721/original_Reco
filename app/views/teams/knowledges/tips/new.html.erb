@@ -1,7 +1,7 @@
-<h1>Tip登録</h1>
+<h1 class='crud-title'>ティップス登録</h1>
 
 <%= form_with model: @tip, url: team_knowledge_tips_path(@team.id, @knowledge.id), local: true do |form| %>
-  <div id="error_explanation", style="height:100px;">
+  <div id="error_explanation", style="height:50px;">
     <% if @tip.errors.any? %>
       <h2><%= pluralize(@tip.errors.count, "error") %> prohibited this team from being saved:</h2>
     <ul>
@@ -12,31 +12,32 @@
   <% end %>
   </div>
 
-  <div>
+  <div class="tip-label">
     <%= form.label :タイトル %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
-  <div>
+  <div class="tip-content">
     <%= form.label :内容 %>
-    <%= form.text_area :content %>
+    <%= form.text_area :content, class: 'form-control' %>
   </div>
 
-  <div>
+  <div class="tip-tag">
+    <%= form.label :タグ： %>
     <% @team.tags.all.each do |tag| %>
-      <%= form.check_box :tag_ids, { multiple: true, checked: @tip.tags.find_by(id: tag.id).present?, include_hidden: false }, tag[:id] %>
       <label><%= tag.name %></label>
+      <%= form.check_box :tag_ids, { multiple: true, checked: @tip.tags.find_by(id: tag.id).present?, include_hidden: false }, tag[:id] %>
     <% end %>
   </div>
 
-  <div>
+  <div class="tip-image">
     <%= form.fields_for :pictures  do |picture| %>
       <%= picture.file_field :image %>
     <% end %>
   </div>
 
-  <%= form.submit '登録' %>
+  <%= form.submit '登録', class: 'btn-gradient-simple' %>
 <% end %>
 
 <hr>
-<%= link_to '戻る', team_knowledge_tips_path %>
+<%= link_to '戻る', team_knowledge_tips_path, class: 'btn-flat-logo' %>
