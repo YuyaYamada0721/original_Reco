@@ -8,7 +8,9 @@
 <p><%= @tip.content %></p>
 <h2>画像</h2>
 <% @tip.pictures.each do |picture| %>
-  <%= image_tag picture.image.url, size: '300x200'  if picture.image && picture.image.url %>
+  <%= link_to picture.image.url, 'data-lightbox': picture do %>
+    <%= image_tag picture.image.url, size: '300x200' if picture.image && picture.image.url %>
+  <% end %>
 <% end %>
 <hr>
 

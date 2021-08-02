@@ -1,8 +1,7 @@
 <h1>Tip登録</h1>
-<hr>
 
 <%= form_with model: @tip, url: team_knowledge_tips_path(@team.id, @knowledge.id), local: true do |form| %>
-  <div id="error_explanation", style="height:150px;">
+  <div id="error_explanation", style="height:100px;">
     <% if @tip.errors.any? %>
       <h2><%= pluralize(@tip.errors.count, "error") %> prohibited this team from being saved:</h2>
     <ul>
@@ -13,23 +12,31 @@
   <% end %>
   </div>
 
-  <%= form.label :タイトル %>
-  <%= form.text_field :name %>
-<br>
-  <%= form.label :内容 %>
-  <%= form.text_area :content %>
-<br>
-  <% @team.tags.all.each do |tag| %>
-    <%= form.check_box :tag_ids, { multiple: true, checked: @tip.tags.find_by(id: tag.id).present?, include_hidden: false }, tag[:id] %>
-    <label><%= tag.name %></label>
-  <% end %>
-<br>
+  <div>
+    <%= form.label :タイトル %>
+    <%= form.text_field :name %>
+  </div>
 
-  <%= form.fields_for :pictures  do |picture| %>
-    <%= picture.file_field :image %>
-  <% end %>
+  <div>
+    <%= form.label :内容 %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div>
+    <% @team.tags.all.each do |tag| %>
+      <%= form.check_box :tag_ids, { multiple: true, checked: @tip.tags.find_by(id: tag.id).present?, include_hidden: false }, tag[:id] %>
+      <label><%= tag.name %></label>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.fields_for :pictures  do |picture| %>
+      <%= picture.file_field :image, multiple: true, class: 'image-upload-dropfile-hidden', id: 'image-label', type: 'file', name: 'pictures[image][]' %>
+    <% end %>
+  </div>
 
   <%= form.submit '登録' %>
 <% end %>
-<br>
+
+<hr>
 <%= link_to '戻る', team_knowledge_tips_path %>

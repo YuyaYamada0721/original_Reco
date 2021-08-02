@@ -14,7 +14,7 @@ class Teams::Knowledges::TipsController < ApplicationController
     @team = Team.find(params[:team_id])
     @knowledge = Knowledge.find(params[:knowledge_id])
     @tip = Tip.new
-    2.times { @tip.pictures.build }
+    @tip.pictures.build #画像の複数投稿は macならコマンド押しながら選択 windowsならctrl押しながら
   end
 
   def create
@@ -25,6 +25,13 @@ class Teams::Knowledges::TipsController < ApplicationController
     @tip.member_id = @member.id
 
     if @tip.save
+
+      if params[:pictures].present?
+        params[:pictures][:image].each do |img|
+          @tip_image = @tip.pictures.create(image: img, tip_id: @tip.id)
+        end
+      end
+
       redirect_to team_knowledge_tips_path, notice: 'Tipを作成しました。'
     else
       render :new
@@ -34,7 +41,9 @@ class Teams::Knowledges::TipsController < ApplicationController
   def edit
     @team = Team.find(params[:team_id])
     @tip = Tip.find(params[:id])
-    @tip.pictures.build
+
+    @tip.pictures.build if @tip.pictures.blank? || @tip.pictures.count < 3 #写真が投稿されていないか写真の投稿が３つ以下の時に実施
+
   end
 
   def update
@@ -70,6 +79,6 @@ class Teams::Knowledges::TipsController < ApplicationController
   private
 
   def tip_params
-    params.require(:tip).permit(:name, :content, tag_ids: [], pictures_attributes: %i[id tip_id image image_cache]).merge(knowledge_id: params[:knowledge_id],team_id: params[:team_id])
+    params.require(:tip).permit(:name, :content, tag_ids: [], pictures_attributes: %i[id tip_id image]).merge(knowledge_id: params[:knowledge_id],team_id: params[:team_id])
   end
 end
