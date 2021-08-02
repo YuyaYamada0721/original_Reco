@@ -43,7 +43,13 @@ class Teams::Knowledges::TipsController < ApplicationController
     @knowledge = Knowledge.find(params[:knowledge_id])
     @tip = Tip.find(params[:id])
 
-    @tip.pictures.build if @tip.pictures.blank? || @tip.pictures.count < 3 #写真が投稿されていないか写真の投稿が３つ以下の時に実施
+    if @tip.pictures.blank?  #写真が投稿されていないか写真の投稿が３つ以下の時に実施
+      3.times { @tip.pictures.build }
+    elsif @tip.pictures.count == 1
+      2.times { @tip.pictures.build }
+    elsif @tip.pictures.count == 2
+      @tip.pictures.build
+    end
   end
 
   def update
