@@ -7,7 +7,7 @@ class Teams::Knowledges::TipsController < ApplicationController
     @team = Team.find(params[:team_id])
     @knowledge = Knowledge.find(params[:knowledge_id])
     @member = Member.find_by(user_id: current_user.id, team_id: params[:team_id])
-    @tips = @team.tips.all.page(params[:page]).per(6).order(id: 'DESC')
+    @tips = @knowledge.tips.all.page(params[:page]).per(6).order(id: 'DESC')
     @q = @tips.ransack(params[:q])
   end
 
@@ -31,7 +31,7 @@ class Teams::Knowledges::TipsController < ApplicationController
           @tip_image = @tip.pictures.create(image: img, tip_id: @tip.id)
         end
       end
-      redirect_to team_knowledge_tips_path, notice: 'Tipを作成しました。'
+      redirect_to team_knowledge_tips_path, notice: 'ティップスを作成しました。'
     else
       3.times { @tip.pictures.build }
       render :new
@@ -63,24 +63,23 @@ class Teams::Knowledges::TipsController < ApplicationController
       end
       @tip.save
       render :edit
-      nil
     elsif params[:delete_image1]
-      @tip.pictures[0].image = nil
+      @tip.pictures[0].image = nil if @tip.pictures[0].present?
       @tip.save
       render :edit
       nil
     elsif params[:delete_image2]
-      @tip.pictures[1].image = nil
+      @tip.pictures[1].image = nil if @tip.pictures[1].present?
       @tip.save
       render :edit
       nil
     elsif params[:delete_image3]
-      @tip.pictures[2].image = nil
+      @tip.pictures[2].image = nil if @tip.pictures[2].present?
       @tip.save
       render :edit
       nil
     elsif @tip.update(tip_params)
-      redirect_to team_knowledge_tips_path, notice: '編集しました。'
+      redirect_to team_knowledge_tips_path, notice: 'ティップスを編集しました。'
     else
       render :edit
     end
@@ -95,7 +94,7 @@ class Teams::Knowledges::TipsController < ApplicationController
   def destroy
     @tip = Tip.find(params[:id])
     @tip.destroy
-    redirect_to team_knowledge_tips_path, notice: '削除しました。'
+    redirect_to team_knowledge_tips_path, notice: 'ティップスを削除しました。'
   end
 
   def search

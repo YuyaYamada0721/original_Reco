@@ -33,7 +33,7 @@
 
   <div class='pictures-area'>
     <% n = 1 %>
-    <% @tip.pictures.each do |picture| %>
+    <% @tip.pictures.each_with_index do |picture| %>
       <span>画像<%= n %></span>
       <div class="tip-picture"><%= image_tag picture.image.url, size: '300x200' if picture.image && picture.image.url %></div>
       <% n += 1 %>
