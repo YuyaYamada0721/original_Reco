@@ -19,20 +19,24 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def team_owner_check
+  def team_owner_check 
     return if current_user == Team.find(params[:id]).owner
 
     flash[:notice] = 'チームのオーナーしかアクセスできません。'
     redirect_to teams_path
   end
 
-  def tag_check
+  def tag_check #tips登録時、tag_idsのパラメータがなければtaggingからデータを削除する
     if params[:tip][:tag_ids] == nil
       @tags = Tagging.where(tip_id: @tip.id)
       @tags.each do |tag|
         tag.destroy
       end
     end
+  end
+
+  def group_exist #URLに直接パラメータ入力でアクセス制限
+    redirect_to teams_path, notice: 'アクセスできません。' if Group.last.id < params[:id].to_i
   end
 
   protected

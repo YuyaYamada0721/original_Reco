@@ -1,4 +1,5 @@
 class Teams::GroupsController < ApplicationController
+  before_action :group_exist, only: :show
 
   def create
     @team = Team.find(params[:team_id])
