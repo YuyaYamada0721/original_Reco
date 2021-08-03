@@ -52,3 +52,6 @@ gem 'mini_magick'
 gem 'ransack'
 
 gem 'kaminari'
+
+gem 'coderay'
+gem 'redcarpet'

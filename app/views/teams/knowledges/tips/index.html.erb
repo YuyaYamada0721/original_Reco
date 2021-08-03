@@ -21,8 +21,9 @@
       <div class="card mb-3">
         <a href="/teams/<%= @team.id %>/knowledges/<%= @knowledge.id %>/tips/<%= tip.id %>" class="card-body">
           <p class="card-title tip-title"><%= tip.name %></p>
+          <span>タグ：</span>
             <% tip.tags.each do |tag| %>
-              <h6 class="card-content">タグ：<%= tag.name %></h6>
+              <span class="card-content">・<%= tag.name %></span>
             <% end %>
           <h6 class="card-content">作成者：<%= tip.member.user.username %></h6>
         </a>

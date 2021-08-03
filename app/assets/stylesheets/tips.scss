@@ -1,3 +1,54 @@
 .tip-title {
   border-bottom: 1px solid black;
 }
+
+.test-field {
+  display: flex;
+}
+
+.tip-content .form-control {
+  font-size: 1rem;
+  height: 300px;
+}
+
+.tip-label .form-control {
+  width: 400px;
+}
+
+.tip-image {
+  margin: 10px 0;
+}
+
+.tip-line {
+  display: inline-block;
+  border-bottom: solid 3px #87CEFA;
+}
+
+.pictures-area {
+  display: flex;
+}
+
+.tip-picture {
+  margin-left: 20px;
+}
+
+.tip-file-field {
+  display: flex;
+  margin: 10px 30px;
+}
+
+.tip-file-select {
+  margin: 10px;
+}
+
+.tip-function .tip-picture-d {
+  margin: 10px 50px;
+}
+
+.tip-edit-btn {
+  margin: 20px 0;
+}
+
+.tip-action-btn {
+  margin: 0 20px;
+}
