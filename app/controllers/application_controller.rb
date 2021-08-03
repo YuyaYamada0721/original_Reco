@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def team_member_check #tags
+  def team_member_check #tags knowledges
     unless Member.where(team_id: params[:team_id]).find_by(user_id: current_user.id).present?
       flash[:notice] = 'メンバーでないのでアクセスできません。'
       redirect_to teams_path
@@ -24,6 +24,14 @@ class ApplicationController < ActionController::Base
 
     flash[:notice] = 'チームのオーナーしかアクセスできません。'
     redirect_to teams_path
+  end
+
+  def team_knowledge_check #knowledges
+    @knowledge = Knowledge.find(params[:id])
+    unless Member.where(team_id: @knowledge.team_id, user_id: current_user.id).present?
+      flash[:notice] = 'メンバーでないのでアクセスできません。'
+      redirect_to teams_path
+    end
   end
 
   def tag_check #tips登録時、tag_idsのパラメータがなければtaggingからデータを削除する
