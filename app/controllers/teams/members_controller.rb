@@ -1,5 +1,5 @@
 class Teams::MembersController < ApplicationController
-  
+
   def create
     @team = Team.find(params[:team_id])
     @user = User.find_by(email: params[:team][:email])
@@ -22,7 +22,13 @@ class Teams::MembersController < ApplicationController
     @member = Member.find(params[:id])
     @subject_member = Member.find_by(team_id: @team.id, user_id: @member.user.id)
 
+    @dm_groups = Group.joins(:group_members).where(group_members: { member_id: @subject_member.id }, is_dm: 'true')
+    @dm_groups.each do |dm_group|
+      dm_group.destroy #メンバーを脱退させると そのメンバーが個人チャットしていたgroupを削除
+    end
+
     @subject_member.destroy
+
     redirect_to team_path(@team), notice: 'メンバーを脱退させました。'
   end
 
