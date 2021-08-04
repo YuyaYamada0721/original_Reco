@@ -54,6 +54,15 @@ class TeamsController < ApplicationController
 
   def destroy
     @team = Team.find(params[:id])
+    @members = @team.members
+
+    @members.each do |member| #チームを削除する時にこのチームで作成したGroupも削除する処理
+      @dm_groups = Group.joins(:group_members).where(group_members: { member_id: member.id })
+        @dm_groups.each do |dm_group|
+          dm_group.destroy
+        end
+    end
+
     @team.destroy
     redirect_to teams_path, notice: 'チームを削除しました。'
   end

@@ -1,5 +1,5 @@
 class Tag < ApplicationRecord
-  validates :name, presence: true
+  validates :name, presence: true, length: { in: 1..30 }
 
   belongs_to :team
 

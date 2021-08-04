@@ -5,34 +5,46 @@ class ApplicationController < ActionController::Base
     user_path(current_user.id)
   end
 
-  def team_members_check
+  def team_members_check #teams
     unless Member.where(team_id: params[:id]).where(user_id: current_user.id).present?
       flash[:notice] = 'メンバーではないチーム情報は見れません。'
       redirect_to teams_path
     end
   end
 
-  def team_member_check
+  def team_member_check #tags knowledges
     unless Member.where(team_id: params[:team_id]).find_by(user_id: current_user.id).present?
       flash[:notice] = 'メンバーでないのでアクセスできません。'
       redirect_to teams_path
     end
   end
 
-  def team_owner_check
+  def team_owner_check #teams
     return if current_user == Team.find(params[:id]).owner
 
     flash[:notice] = 'チームのオーナーしかアクセスできません。'
     redirect_to teams_path
   end
 
-  def tag_check
+  def team_knowledge_check #knowledges
+    @knowledge = Knowledge.find(params[:id])
+    unless Member.where(team_id: @knowledge.team_id, user_id: current_user.id).present?
+      flash[:notice] = 'メンバーでないのでアクセスできません。'
+      redirect_to teams_path
+    end
+  end
+
+  def tag_check #tips登録時、tag_idsのパラメータがなければtaggingからデータを削除する
     if params[:tip][:tag_ids] == nil
       @tags = Tagging.where(tip_id: @tip.id)
       @tags.each do |tag|
         tag.destroy
       end
     end
+  end
+
+  def group_exist #URLに直接パラメータ入力でアクセス制限
+    redirect_to teams_path, notice: 'アクセスできません' if Group.last.id < params[:id].to_i
   end
 
   protected

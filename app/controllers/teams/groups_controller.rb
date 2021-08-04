@@ -1,4 +1,5 @@
 class Teams::GroupsController < ApplicationController
+  before_action :group_exist, only: :show
 
   def create
     @team = Team.find(params[:team_id])
@@ -26,7 +27,7 @@ class Teams::GroupsController < ApplicationController
         Read.create(member_id: @current_member.id, message_id: read, is_checked: true)
       end
     else
-      redirect_to team_path(@team), notice: 'グループを作成して下さい。'
+      redirect_to team_path(@team), notice: 'アクセスできません'
     end
   end
 end
