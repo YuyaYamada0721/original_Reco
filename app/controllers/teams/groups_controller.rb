@@ -20,12 +20,11 @@ class Teams::GroupsController < ApplicationController
       @message = Message.new
       @group_members = @group.group_members.page(params[:page]).per(10)
 
-      @read_check = Read.where(member_id: @current_member.id).pluck('message_id') #Readテーブルで自分が確認したmessage情報を取得
-      @group_message_check = @messages.pluck('id') #groupのmessage情報を取得
-      @reads = @group_message_check - @read_check #group showをした時点でReadテーブルに保存したいmessage情報に絞る
-      @reads.each do |read| #Readテーブルへ未確認messageを見た is_checkedをtrue として保存
-        Read.create(member_id: @current_member.id, message_id: read, is_checked: true)
-      end
+      @reads = Read.where(member_id: @current_member.id)
+        @reads.each do |read|
+          read.update(is_checked: true)
+        end
+# チャット画面を開いた時点で、Readテーブルにある自分のメンバーidにヒットするレコード(メッセージ)に既読としてis_checkedにtrueを入れる
     else
       redirect_to team_path(@team), notice: 'アクセスできません'
     end

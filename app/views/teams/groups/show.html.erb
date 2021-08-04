@@ -17,7 +17,11 @@
         <div class="chat-name"><%= message.member.user.username %></div>
         <div class="message-text p-2 ms-2 mb-0"><%= message.body %></div>
         <div class="chat-status">
-          <div>既読<%= message.reads.count %></div>
+        <% if message.member_id == @current_member.id %>
+          <% unless Read.where(message_id: message.id, is_checked: true).count.zero? %>
+            <div>既読 <%= message.reads.where(is_checked: true).count %> / <%= message.reads.count %></div>
+          <% end %>
+        <% end %>
           <div><%= l message.created_at %></div>
         </div>
       </div>
