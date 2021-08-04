@@ -28,7 +28,6 @@ class Teams::MembersController < ApplicationController
     end
 
     @subject_member.destroy
-
     redirect_to team_path(@team), notice: 'メンバーを脱退させました。'
   end
 
