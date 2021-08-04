@@ -42,5 +42,21 @@ RSpec.describe 'ユーザ機能', type: :system do
         expect(page).to have_content 'ログアウトしました。'
       end
     end
+    context 'ゲストログインボタン押下' do
+      it 'ユーザ詳細ページへ遷移される' do
+        visit root_path
+        find('.guest-in').click
+        expect(page).to have_content 'ログインしました。'
+        expect(page).to have_content 'ゲスト'
+      end
+    end
+    context '管理者ゲストログインボタン押下' do
+      it 'ユーザ詳細ページへ遷移される' do
+        visit root_path
+        find('.admin-guest-in').click
+        expect(page).to have_content 'ログインしました。'
+        expect(page).to have_content '管理者ゲスト'
+      end
+    end
   end
 end
