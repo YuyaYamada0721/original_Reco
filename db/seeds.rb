@@ -144,9 +144,9 @@ Read.create!(
 # ----------Knowledge
 Knowledge.create!(
   [
-    { member_id: 1, team_id: 1, name: '部品一覧' },
-    { member_id: 2, team_id: 1, name: '段取り手順' },
-    { member_id: 7, team_id: 3, name: 'Ruby' },
+    { member_id: 1, team_id: 1, name: 'ライン毎の製品まとめ' },
+    { member_id: 2, team_id: 1, name: '段取りまとめ' },
+    { member_id: 7, team_id: 3, name: 'Ruby初級' },
     { member_id: 8, team_id: 4, name: 'パソコン管理' },
     { member_id: 8, team_id: 4, name: '消耗品注文' }
   ]
@@ -168,3 +168,30 @@ Stock.create!(
   ]
 )
 # ----------Stock
+
+# ----------Tip
+Tip.create!(
+  [
+    { member_id: 1, knowledge_id: 1, team_id: 1, name: 'Fライン', content: '製品A、製品B、製品C' },
+    { member_id: 1, knowledge_id: 1, team_id: 1, name: 'Gライン', content: '製品D、製品E、製品F' },
+    { member_id: 2, knowledge_id: 1, team_id: 1, name: 'Hライン', content: '製品G、製品H、製品I' },
+    { member_id: 1, knowledge_id: 2, team_id: 1, name: '機械Ⅰ段取り手順', content: '①カバーを外します・・・' },
+    { member_id: 2, knowledge_id: 2, team_id: 1, name: '機械Ⅱ段取り手順', content: '①カバーを外して、内部清掃・・・' },
+    { member_id: 7, knowledge_id: 3, team_id: 3, name: '配列', content: 'Rubyにおいて配列を作成する場合は括弧（ [] ）を使用します' },
+    { member_id: 8, knowledge_id: 4, team_id: 4, name: 'デスクトップ', content: '富士通：１０台、LENOVO：５台' },
+    { member_id: 9, knowledge_id: 5, team_id: 4, name: 'プリンター', content: 'トナー、ドラムユニット' }
+  ]
+)
+# ----------Tip
+
+# ----------Picture
+Picture.create!(
+  [
+    { tip_id: 1, image: open('./app/assets/images/screw0.jpg') },
+    { tip_id: 1, image: open('./app/assets/images/screw1.jpg') },
+    { tip_id: 1, image: open('./app/assets/images/drone.jpg') },
+    { tip_id: 7, image: open('./app/assets/images/computer.png') },
+    { tip_id: 8, image: open('./app/assets/images/printer.png') }
+  ]
+)
+# ----------Picture
