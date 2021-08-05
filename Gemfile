@@ -55,3 +55,5 @@ gem 'kaminari'
 
 gem 'coderay'
 gem 'redcarpet'
+
+gem 'faker'
