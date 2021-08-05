@@ -23,7 +23,7 @@
           <p class="card-title tip-title"><%= tip.name %></p>
           <span>タグ：</span>
             <% tip.tags.each do |tag| %>
-              <span class="card-content">・<%= tag.name %></span>
+              <span class="card-content"><%= tag.name %>  </span>
             <% end %>
           <h6 class="card-content">作成者：<%= tip.member.user.username %></h6>
         </a>
