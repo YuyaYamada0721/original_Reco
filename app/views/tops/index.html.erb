@@ -1,6 +1,14 @@
-<header class="py-4 bg-image-full">
-    <div class="text-center my-5">
+<header class="py-3 bg-image-full">
+    <div class="text-center my-4">
         <div>
+            <div class="error-box">
+                <% if notice %>
+                    <span class="alert alert-notice"><%= notice %></span>
+                <% end %>
+                <% if alert %>
+                    <span class="alert alert-error"><%= alert %></span>
+                <% end %>
+            </div>
             <h1 class="text-white fw-bolder" id="reco-main">Reco!</h1>
             <h2 class="text-white fw-bolder">知識を記録・共有できるアプリ</h2>
             <h3 class="text-white">未来のために記録を残しましょう</h3>

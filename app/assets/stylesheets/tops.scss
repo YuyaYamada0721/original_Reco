@@ -40,14 +40,7 @@
 //     color: #999;
 // }
 // // -----header-----
-// // -----alert-----
-// .alert {
-//     text-align: center;
-// }
-// .alert-space {
-//     height: 50px;
-// }
-// // -----alert-----
+
 // // -----top img-----
 // .main-img {
 //     display: flex;
@@ -276,6 +269,24 @@ p {
   font-size: 4rem;
   margin-bottom: 20px;
 }
+
+// -----alert-----
+.alert {
+    text-align: center;
+}
+.alert-space {
+    height: 50px;
+}
+.error-box {
+  height: 20px;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: white;
+}
+// -----alert-----
+
+
+
 
 .ms-auto {
   margin-left: auto !important;
