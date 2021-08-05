@@ -140,3 +140,31 @@ Read.create!(
   ]
 )
 # ----------Read
+
+# ----------Knowledge
+Knowledge.create!(
+  [
+    { member_id: 1, team_id: 1, name: '部品一覧' },
+    { member_id: 2, team_id: 1, name: '段取り手順' },
+    { member_id: 7, team_id: 3, name: 'Ruby' },
+    { member_id: 8, team_id: 4, name: 'パソコン管理' },
+    { member_id: 8, team_id: 4, name: '消耗品注文' }
+  ]
+)
+# ----------Knowledge
+
+# ----------Stock
+Stock.create!(
+  [
+    { member_id: 1, knowledge_id: 1 },
+    { member_id: 2, knowledge_id: 1 },
+    { member_id: 3, knowledge_id: 1 },
+    { member_id: 1, knowledge_id: 2 },
+    { member_id: 2, knowledge_id: 2 },
+    { member_id: 3, knowledge_id: 2 },
+    { member_id: 8, knowledge_id: 4 },
+    { member_id: 9, knowledge_id: 4 },
+    { member_id: 10, knowledge_id: 4 }
+  ]
+)
+# ----------Stock
