@@ -195,3 +195,27 @@ Picture.create!(
   ]
 )
 # ----------Picture
+
+# ----------Tag
+Tag.create!(
+  [
+    { team_id: 1, name: '確認要' },
+    { team_id: 1, name: '重要' },
+    { team_id: 3, name: 'RubyonRails' },
+    { team_id: 4, name: '基礎' },
+    { team_id: 4, name: 'よくある問い合わせ' }
+  ]
+)
+# ----------Tag
+
+# ----------Tagging
+Tagging.create!(
+  [
+    { tip_id: 1, tag_id: 1 },
+    { tip_id: 2, tag_id: 2 },
+    { tip_id: 6, tag_id: 3 },
+    { tip_id: 7, tag_id: 4 },
+    { tip_id: 8, tag_id: 5 }
+  ]
+)
+# ----------Tagging
