@@ -3,7 +3,7 @@
 <%= form_with model: @tip, url: team_knowledge_tips_path(@team.id, @knowledge.id), local: true do |form| %>
   <div id="error_explanation", style="height:50px;">
     <% if @tip.errors.any? %>
-      <h2><%= pluralize(@tip.errors.count, "error") %> prohibited this team from being saved:</h2>
+      <h2><%= t('errors.template.header', model: Tip.model_name.human, count: @tip.errors.count) %></h2>
     <ul>
       <% @tip.errors.full_messages.each do |message| %>
         <li><%= message %></li>

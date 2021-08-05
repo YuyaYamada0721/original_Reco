@@ -3,7 +3,7 @@
 <%= form_with model: @knowledge, url: team_knowledges_path(@team), local: true do |form| %>
   <div id="error_explanation", style="height:100px;">
     <% if @knowledge.errors.any? %>
-      <h2><%= pluralize(@knowledge.errors.count, "error") %> prohibited this team from being saved:</h2>
+      <h2><%= t('errors.template.header', model: Knowledge.model_name.human, count: @knowledge.errors.count) %></h2>
     <ul>
       <% @knowledge.errors.full_messages.each do |message| %>
         <li><%= message %></li>

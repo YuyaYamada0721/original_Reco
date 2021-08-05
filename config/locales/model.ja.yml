@@ -4,9 +4,19 @@ ja:
       team: チーム
       user: ユーザー
       tag: タグ
+      knowledge: ナレッジ
+      tip: ティップ
     attributes:
       team:
         name: チーム名
       user:
+        name: 名前
+        email: メールアドレス
       tag:
         name: タグ名
+      knowledge:
+        name: ナレッジ名
+      tip:
+        name: ティップ名
+        content: 内容
+        image: 画像
