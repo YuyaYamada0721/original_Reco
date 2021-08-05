@@ -8,7 +8,7 @@ User.create!(username: 'AdminUser',
              admin: true)
 
 9.times do |n|
-  username = Faker::Games::Pokemon.name
+  username = Faker::Name.name
   email = Faker::Internet.email
   password = 'password'
   image_num = n + 1
@@ -108,3 +108,35 @@ GroupMember.create!(
   ]
 )
 # ----------GroupMember
+
+# ----------Message
+Message.create!(
+  [
+    { member_id: 1, group_id: 1, body: 'はじめまして' },
+    { member_id: 2, group_id: 1, body: 'よろしくおねがします' },
+    { member_id: 3, group_id: 1, body: 'よろです' },
+    { member_id: 1, group_id: 1, body: '今月中に学習した事をまとめて下さい' },
+    { member_id: 2, group_id: 1, body: '了解しました' },
+    { member_id: 3, group_id: 1, body: '・・・' }
+  ]
+)
+# ----------Message
+
+# ----------Read
+Read.create!(
+  [
+    { member_id: 2, message_id: 1, is_checked: true },
+    { member_id: 3, message_id: 1, is_checked: true },
+    { member_id: 1, message_id: 2, is_checked: true },
+    { member_id: 3, message_id: 2, is_checked: true },
+    { member_id: 1, message_id: 3, is_checked: true },
+    { member_id: 2, message_id: 3, is_checked: true },
+    { member_id: 2, message_id: 4, is_checked: true },
+    { member_id: 3, message_id: 4, is_checked: true },
+    { member_id: 1, message_id: 5, is_checked: true },
+    { member_id: 3, message_id: 5, is_checked: true },
+    { member_id: 1, message_id: 6, is_checked: true },
+    { member_id: 2, message_id: 6, is_checked: true }
+  ]
+)
+# ----------Read
