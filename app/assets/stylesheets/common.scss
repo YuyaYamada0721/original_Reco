@@ -3,6 +3,7 @@ body {
     color: #5f6c7b;
     background: #fffffe;
     font-size: 16px;
+    font-family: 'Poppins';
 }
 // -----body-----
 
@@ -124,3 +125,12 @@ body {
   background-image: linear-gradient(45deg, #709dff 50%, #b0c9ff 100%);
 }
 // -----登録ボタン-----
+
+
+#error_explanation h2 {
+  font-size: 1.2rem;
+}
+#error_explanation {
+  height: 0;
+  width: 600px;
+}
