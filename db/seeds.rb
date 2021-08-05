@@ -73,3 +73,38 @@ Member.create!(
     { user_id: 9, team_id: 5 }
   ]
 )
+# ----------Member
+
+# ----------Group
+Group.create!(
+  [
+    { is_dm: false },
+    { is_dm: false },
+    { is_dm: false },
+    { is_dm: false },
+    { is_dm: false },
+    { is_dm: true }
+  ]
+)
+# ----------Group
+
+# ----------GroupMember
+GroupMember.create!(
+  [
+    { member_id: 1, group_id: 1 },
+    { member_id: 2, group_id: 1 },
+    { member_id: 3, group_id: 1 },
+    { member_id: 4, group_id: 2 },
+    { member_id: 5, group_id: 2 },
+    { member_id: 6, group_id: 2 },
+    { member_id: 7, group_id: 3 },
+    { member_id: 8, group_id: 4 },
+    { member_id: 9, group_id: 4 },
+    { member_id: 10, group_id: 4 },
+    { member_id: 11, group_id: 5 },
+    { member_id: 12, group_id: 5 },
+    { member_id: 1, group_id: 6 },
+    { member_id: 2, group_id: 6 }
+  ]
+)
+# ----------GroupMember
