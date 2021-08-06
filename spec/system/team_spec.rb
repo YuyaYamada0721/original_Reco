@@ -4,10 +4,13 @@ RSpec.describe 'チーム機能', type: :system do
     @user = FactoryBot.create(:user)
     @user2 = FactoryBot.create(:user2)
     @team = FactoryBot.create(:team, user_id: @user.id, owner_id: @user.id)
+    @team2 = FactoryBot.create(:team2, user_id: @user.id, owner_id: @user.id)
     @member = FactoryBot.create(:member, user_id: @user.id, team_id: @team.id)
+    @member2 = FactoryBot.create(:member, user_id: @user.id, team_id: @team2.id)
     @group = FactoryBot.create(:group)
 
     FactoryBot.create(:team, user: @user, owner: @user)
+    FactoryBot.create(:team2, user: @user, owner: @user)
     FactoryBot.create(:group_member, member: @member, group: @group)
 
     visit new_user_session_path
@@ -95,6 +98,16 @@ RSpec.describe 'チーム機能', type: :system do
         click_on 'オーナー権限譲渡'
         expect(page).to have_content 'チームオーナーを交代しました。'
         expect(page).to have_content 'オーナー：fuga'
+      end
+    end
+  end
+  describe 'チーム検索機能' do
+    context 'チームの検索操作をした場合' do
+      it '検索したチームが表示される' do
+        fill_in 'q[name_cont]', with: 'fugaチーム'
+        click_on '検索'
+        expect(page).to have_content 'fugaチーム'
+        expect(page).not_to have_content 'テストチーム'
       end
     end
   end
