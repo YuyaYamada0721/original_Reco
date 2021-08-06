@@ -59,10 +59,7 @@
 // .top-info h5 {
 //     color: #5f6c7b;
 // }
-// .top-info .sign-up, .sign-in, .guest-in, .admin-guest-in {
-//     margin-top: 40px;
-//     padding: 10px;
-// }
+
 // // -----top info-----
 // // -----view/devise/sessions/new.html.erb-----
 // // -----view/devise/registrations/new.html.erb-----
@@ -82,15 +79,7 @@
 //     width: 50%;
 //     max-width: 100%;
 // }
-// .sign-up-image {
-//     background-image: url("/assets/signup.png");
-//     background-repeat: no-repeat;
-//     margin-top: 80px;
-//     background-size: 100%;
-//     height: auto;
-//     width: 50%;
-//     max-width: 100%;
-// }
+
 // .entrance-form {
 //     margin-left: 100px;
 // }
@@ -99,27 +88,9 @@
 //     padding: 15px;
 //     margin: 50px auto 20px;
 // }
-// .form-sign-up {
-//     max-width: 330px;
-//     padding: 15px;
-//     margin: 50px auto 20px;
-// }
-// .form-sign-in .form-control {
-//     position: relative;
-//     height: auto;
-//     -webkit-box-sizing: border-box;
-//             box-sizing: border-box;
-//     padding: 10px;
-//     font-size: 16px;
-// }
-// .form-sign-up .form-control {
-//     position: relative;
-//     height: auto;
-//     -webkit-box-sizing: border-box;
-//             box-sizing: border-box;
-//     padding: 10px;
-//     font-size: 16px;
-// }
+
+
+
 // .form-sign-in .form-control:focus {
 //     z-index: 2;
 // }
@@ -150,26 +121,14 @@
 //     margin: 20px 0;
 //     background-color: #efefef;
 // }
-// .sign-up-action {
-//     margin: 20px 0;
-//     background-color: #efefef;
-// }
+
 // .sign-in-help {
 //     text-align: center;
 // }
-// .sign-up-help {
-//     text-align: center;
-// }
+
 // // -----view/devise/sessions/new.html.erb-----
 // // -----view/devise/registrations/new.html.erb-----
-// // ------error view-----
-// #error_explanation h2 {
-//     font-size: 1rem;
-// }
-// #error_explanation {
-//     width: 500px;
-// }
-// // ------error view-----
+
 // ------修正前
 
 /*!
@@ -249,6 +208,10 @@ p {
 .reco-function {
   width: 30%;
   margin: 30px 0;
+}
+
+.reco-function h3 {
+  text-decoration: underline;
 }
 
 .reco-function-title {
