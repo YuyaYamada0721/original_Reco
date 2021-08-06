@@ -15,7 +15,7 @@
             <% if member.team.owner.id != member.user.id %>
               <% if member.team.owner.id != member.user.id %>
                 <li class="team-edit-li"><%= member.user.username %></li>
-                <%= link_to 'オーナー権利譲渡', owner_change_team_path(owner_id: member.user_id), method: :patch, class: 'btn btn-warning' %>
+                <%= link_to 'オーナー権限譲渡', owner_change_team_path(owner_id: member.user_id), method: :patch, class: 'btn btn-warning' %>
                 <%= link_to 'チーム脱退', team_member_path(@team.id, member.id), method: :delete, data: { confirm: '脱退させますか？' },class: 'btn btn-danger' %>
               <% end %>
             <% end %>

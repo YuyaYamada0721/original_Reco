@@ -1,6 +1,9 @@
 require 'rails_helper'
 RSpec.describe 'ユーザ機能', type: :system do
-  let!(:user) { FactoryBot.create(:user) }
+  before do
+    @user = FactoryBot.create(:user)
+  end
+
   describe 'ユーザ登録機能' do
     context 'ユーザ登録操作をした場合' do
       it 'ユーザ登録が完了し、ユーザ詳細画面へ遷移される' do
@@ -21,14 +24,14 @@ RSpec.describe 'ユーザ機能', type: :system do
         visit new_user_session_path
         fill_in 'user[email]', with: 'piyo@piyo.com'
         fill_in 'user[password]', with: 'piyopiyo'
-        find('.sign-in-btn').click
+        find('.devise-btn').click
         expect(page).to have_content 'piyo'
         expect(page).to have_content 'ログインしました。'
       end
     end
     context 'ログインせずにユーザ詳細画面に飛ぼうとした場合' do
       it 'ログイン画面に遷移される' do
-        visit user_path(user)
+        visit user_path(@user)
         expect(page).to have_content 'ログインもしくはアカウント登録してください。'
       end
     end
@@ -37,7 +40,7 @@ RSpec.describe 'ユーザ機能', type: :system do
         visit new_user_session_path
         fill_in 'user[email]', with: 'piyo@piyo.com'
         fill_in 'user[password]', with: 'piyopiyo'
-        find('.sign-in-btn').click
+        find('.devise-btn').click
         click_on 'ログアウト'
         expect(page).to have_content 'ログアウトしました。'
       end
@@ -45,15 +48,15 @@ RSpec.describe 'ユーザ機能', type: :system do
     context 'ゲストログインボタン押下' do
       it 'ユーザ詳細ページへ遷移される' do
         visit root_path
-        find('.guest-in').click
+        find('.guest-btn').click
         expect(page).to have_content 'ログインしました。'
         expect(page).to have_content 'ゲスト'
       end
     end
-    context 'ゲストログインボタン押下' do
+    context '管理者ゲストログインボタン押下' do
       it 'ユーザ詳細ページへ遷移される' do
         visit root_path
-        find('.admin-guest-in').click
+        find('.admin-guest-btn').click
         expect(page).to have_content 'ログインしました。'
         expect(page).to have_content '管理者ゲスト'
       end
