@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :knowledge do
-    member { nil }
-    team { nil }
-    name { "MyString" }
+    name { 'テストナレッジ' }
+  end
+  factory :knowledge2, class: 'Knowledge' do
+    name { 'fugaナレッジ' }
   end
 end

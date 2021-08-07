@@ -41,7 +41,7 @@ class Teams::KnowledgesController < ApplicationController
     @team = Team.find(params[:team_id])
     @knowledge = Knowledge.find(params[:id])
     if @knowledge.update(knowledge_params)
-      redirect_to team_knowledges_path, notice: '編集しました。'
+      redirect_to team_knowledges_path, notice: 'ナレッジを編集しました。'
     else
       render :edit
     end
@@ -50,7 +50,7 @@ class Teams::KnowledgesController < ApplicationController
   def destroy
     @knowledge = Knowledge.find(params[:id])
     @knowledge.destroy
-    redirect_to team_knowledges_path, notice: '削除しました。'
+    redirect_to team_knowledges_path, notice: 'ナレッジを削除しました。'
   end
 
   def search

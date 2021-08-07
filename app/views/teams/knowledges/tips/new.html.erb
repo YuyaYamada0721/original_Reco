@@ -1,4 +1,4 @@
-<h1 class='crud-title'>ティップス登録</h1>
+<h1 class='crud-title'>ティップ登録</h1>
 
 <%= form_with model: @tip, url: team_knowledge_tips_path(@team.id, @knowledge.id), local: true do |form| %>
   <div id="error_explanation", style="height:50px;">
@@ -25,7 +25,7 @@
   <div class="tip-tag">
     <%= form.label :タグ： %>
     <% @team.tags.all.each do |tag| %>
-      <label><%= tag.name %></label>
+      <%= form.label :tag_ids, tag.name, value: tag[:id] %>
       <%= form.check_box :tag_ids, { multiple: true, checked: @tip.tags.find_by(id: tag.id).present?, include_hidden: false }, tag[:id] %>
     <% end %>
   </div>

@@ -1,4 +1,4 @@
-<h1 class='crud-title'>ティップス詳細</h1>
+<h1 class='crud-title'>ティップ詳細</h1>
 
 <p class="tip-line">タイトル</p>
 <div><%= @tip.name %></div>
@@ -8,6 +8,12 @@
 <p class="tip-line">内容</p>
 <div><%= markdown(@tip.content).html_safe %></div>
 
+<hr>
+
+<p class="tip-line">タグ</p>
+  <% @tip.tags.each do |tag| %>
+    <div><%= tag.name %>  </div>
+  <% end %>
 <hr>
 
 <p class="tip-line">画像</p>
@@ -22,6 +28,6 @@
 <hr>
 
 <div class="function">
-  <%= link_to '編集', edit_team_knowledge_tip_path(@team.id, @knowledge.id, @tip.id), class: 'edit-btn btn' %>
+  <%= link_to 'ティップ編集', edit_team_knowledge_tip_path(@team.id, @knowledge.id, @tip.id), class: 'edit-btn btn' %>
   <%= link_to '戻る', team_knowledge_tips_path, class: 'btn-flat-logo' %>
 </div>

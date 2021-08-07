@@ -1,14 +1,16 @@
 require 'rails_helper'
 RSpec.describe '管理者機能', type: :system do
-  let!(:user) { FactoryBot.create(:user) }
-  let!(:user2) { FactoryBot.create(:user2) }
+  before do
+    @user = FactoryBot.create(:user)
+  end
+
   describe 'サイト管理機能' do
     context '管理者ユーザログイン後、ユーザ詳細画面にて管理者画面のボタンを押下した場合' do
       it 'サイト管理機能画面へ遷移される' do
         visit new_user_session_path
         fill_in 'user[email]', with: 'piyo@piyo.com'
         fill_in 'user[password]', with: 'piyopiyo'
-        find('.sign-in-btn').click
+        find('.devise-btn').click
         click_on '管理者画面'
         sleep 1
         expect(page).to have_content 'サイト管理'
@@ -19,7 +21,7 @@ RSpec.describe '管理者機能', type: :system do
         visit new_user_session_path
         fill_in 'user[email]', with: 'fuga@fuga.com'
         fill_in 'user[password]', with: 'fugafuga'
-        find('.sign-in-btn').click
+        find('.devise-btn').click
         expect(page).not_to have_content '管理者画面'
       end
     end
