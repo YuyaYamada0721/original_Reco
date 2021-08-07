@@ -12,7 +12,6 @@ RSpec.describe 'ティップ機能', type: :system do
     FactoryBot.create(:team, user: @user, owner: @user)
     FactoryBot.create(:group_member, member: @member, group: @group)
     FactoryBot.create(:tip, knowledge: @knowledge, member: @member, team: @team)
-    # FactoryBot.create(:tip2, knowledge: @knowledge, member: @member, team: @team)
     FactoryBot.create(:tagging, tip: @tip2, tag: @tag)
 
     visit new_user_session_path
