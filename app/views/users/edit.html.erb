@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <h1 class="app-function-title"><span>User</span>編集</h1>
+
   <div class="form-user-edit">
 
       <%= form.label :名前 %>
@@ -28,10 +30,10 @@
         <%= form.submit value: "設定している画像を削除する。",name: "delete_image",data: { confirm: "画像を削除しますか？"}, class:'btn btn-danger' %>
       </div>
 
-      <%= form.label :自己紹介 %>
+      <%= form.label :introduction, '自己紹介(200字以内)' %>
       <%= form.text_area :introduction, class: 'form-control area-field' %>
 
-      <%= form.label :パスワード %>
+      <%= form.label :password, 'パスワード(6字以上)' %>
       <%= form.password_field :password, class: 'form-control' %>
 
 

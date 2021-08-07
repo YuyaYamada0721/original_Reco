@@ -1,12 +1,8 @@
-<h1 class="crud-title">チーム名：<%= @team.name %></h1>
-
+<h1 class="app-function-title"><span>Team</span><%= @team.name %></h1>
 
 <div class="team-show-function">
 
   <div class="team-member-index">
-    <%# <div class="cp_tooltip">
-      <span data-tooltip="個人メッセージはメンバーの名前をクリック！" class="cp_tooltiptext"><i class="fa fa-question-circle-o"></i></span> %>
-    <%# </div> %>
     <p class="team-member-label">メンバー</p>
       <ul>
         <div class="team-owner-show">オーナー：<%= link_to @team.owner.username, team_member_path(@team.id, @owner.id) %></div>

@@ -1,22 +1,33 @@
-// -----body-----
+// 全体適用
 body {
     color: #5f6c7b;
     background: #fffffe;
     font-size: 16px;
-    font-family: 'Poppins';
+    font-family: 'Osaka', sans-serif;
 }
-// -----body-----
 
 
-// -----CRUD機能見出し-----
-.crud-title {
-  padding: 0.5em 0.5em;
-  color: #094067;
-  background: #f4f4f4;
-  border-left: solid 5px #7db4e6;
-  border-bottom: solid 3px #d7d7d7;
+// CRUD機能見出し
+.app-function-title {
+	font-size: 1.5rem;
 }
-// -----CRUD機能見出し-----
+
+.app-function-title span {
+	display: flex;
+	align-items: center;
+	color: #498ee0;
+	font-size: 1rem;
+	text-transform: uppercase;
+}
+
+.app-function-title span::before {
+	content: '';
+	display: inline-block;
+	margin-right: 20px;
+	width: 40px;
+	height: 1px;
+	background-color: #498ee0;
+}
 
 
 // -----戻るボタン-----
