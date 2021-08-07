@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 RSpec.describe 'ユーザモデル機能', type: :model do
   describe 'バリデーションのテスト' do
     context 'ユーザの名前が空の場合' do
