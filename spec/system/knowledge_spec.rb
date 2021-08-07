@@ -26,7 +26,7 @@ RSpec.describe 'ナレッジ機能', type: :system do
       it 'ナレッジ登録が完了し、ナレッジ一覧画面へ遷移される' do
         click_on 'ナレッジ登録'
         fill_in 'knowledge[name]', with: 'テストナレッジ'
-        click_on '登録する'
+        click_on '登録'
         expect(page).to have_content 'テストナレッジ'
         expect(page).to have_content 'ナレッジを登録しました。'
       end
@@ -46,7 +46,7 @@ RSpec.describe 'ナレッジ機能', type: :system do
         click_on 'テストナレッジ'
         click_on 'ナレッジ編集'
         fill_in 'knowledge[name]', with: 'ナレッジ編集機能テスト'
-        click_on '登録する'
+        click_on '登録'
         expect(page).to have_content 'ナレッジ編集機能テスト'
         expect(page).to have_content 'ナレッジを編集しました。'
       end

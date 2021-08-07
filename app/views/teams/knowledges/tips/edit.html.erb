@@ -1,4 +1,4 @@
-<h1 class="crud-title">ティップス編集</h1>
+<h1 class="crud-title">ティップ編集</h1>
 <hr>
 
 <%= form_with model: @tip, url: team_knowledge_tip_path, local: true do |form| %>
@@ -26,7 +26,7 @@
   <div class="tip-tag">
     <%= form.label :タグ： %>
     <% @tip.team.tags.each do |tag| %>
-      <label><%= tag.name %></label>
+      <%= form.label :tag_ids, tag.name, value: tag[:id] %>
       <%= form.check_box :tag_ids, { multiple: true, checked: @tip.tags.find_by(id: tag.id).present?, include_hidden: false }, tag[:id] %>
     <% end %>
   </div>

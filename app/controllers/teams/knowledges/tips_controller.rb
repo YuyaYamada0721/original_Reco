@@ -31,7 +31,7 @@ class Teams::Knowledges::TipsController < ApplicationController
           @tip_image = @tip.pictures.create(image: img, tip_id: @tip.id)
         end
       end
-      redirect_to team_knowledge_tips_path, notice: 'ティップスを作成しました。'
+      redirect_to team_knowledge_tips_path, notice: 'ティップを登録しました。'
     else
       3.times { @tip.pictures.build }
       render :new
@@ -79,7 +79,7 @@ class Teams::Knowledges::TipsController < ApplicationController
       render :edit
       nil
     elsif @tip.update(tip_params)
-      redirect_to team_knowledge_tips_path, notice: 'ティップスを編集しました。'
+      redirect_to team_knowledge_tips_path, notice: 'ティップを編集しました。'
     else
       render :edit
     end
@@ -94,7 +94,7 @@ class Teams::Knowledges::TipsController < ApplicationController
   def destroy
     @tip = Tip.find(params[:id])
     @tip.destroy
-    redirect_to team_knowledge_tips_path, notice: 'ティップスを削除しました。'
+    redirect_to team_knowledge_tips_path, notice: 'ティップを削除しました。'
   end
 
   def search

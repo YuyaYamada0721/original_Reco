@@ -1,6 +1,8 @@
 FactoryBot.define do
   factory :tag do
-    team { nil }
-    name { "MyString" }
+    name { 'テストタグ' }
+  end
+  factory :tag2, class: 'Tag' do
+    name { 'ファクトリー' }
   end
 end
