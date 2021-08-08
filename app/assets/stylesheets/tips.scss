@@ -11,7 +11,6 @@
   height: 600px;
 }
 
-
 .tip-content .form-control {
   font-size: 1rem;
   height: 300px;
@@ -21,14 +20,21 @@
   width: 400px;
 }
 
+.tip-tag {
+  margin: 20px 0;
+}
+
 .tip-image {
-  margin: 10px 0;
+  margin: 20px 0;
 }
 
 .tip-line {
   display: inline-block;
-  border-bottom: solid 3px #87CEFA;
+  border-bottom: solid 3px #498ee0;
 }
+
+
+
 
 .pictures-area {
   display: flex;
@@ -51,10 +57,30 @@
   margin: 10px 50px;
 }
 
-.tip-edit-btn {
-  margin: 20px 0;
+
+
+// ティップ詳細画面
+.tip-show .edit-btn {
+  color: white;
+	font-weight: bold;
+  background-color: #8fbc8f;
+	display: block;
+	margin: 20px 0;
+	width: 200px;
 }
 
-.tip-action-btn {
-  margin: 0 20px;
+.tip-show-box {
+  margin-top: 30px;
+}
+
+.tip-show-name p {
+  font-size: 1.2rem;
+}
+
+.tip-show-content p {
+  font-size: 1.2rem;
+}
+
+.tip-show-tag {
+  margin: 20px 0;
 }
