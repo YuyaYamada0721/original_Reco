@@ -1,4 +1,13 @@
-<h1 class="crud-title">ナレッジ編集</h1>
+<h1 class="app-function-title">
+  <span>
+    <% if @team.is_solo? %>
+      Solo Knowledge
+    <% else %>
+      Team Knowledge
+    <% end %>
+  </span>
+  <%= @team.name %> -ナレッジ編集-
+</h1>
 
 <%= form_with model: @knowledge, url: team_knowledge_path, local: true do |form| %>
   <div id="error_explanation", style="height:100px;">
@@ -15,10 +24,10 @@
   <div class="form-knowledge">
     <%= form.label :ナレッジ名 %>
     <%= form.text_field :name, class: 'form-control' %>
-    <%= form.submit '登録', class: 'btn-gradient-simple knowledge-btn' %>
+    <%= form.submit '登録', class: 'custom-btn new-link' %>
   </div>
 <% end %>
 
 <%= link_to '戻る', team_knowledge_path, class: 'btn-flat-logo' %>
 
-<%= link_to '削除', team_knowledge_path(@team, @knowledge), method: :delete, data: { confirm: '削除しても良いですか？' }, class: 'btn btn-danger' %>
+<%= link_to '削除', team_knowledge_path(@team, @knowledge), method: :delete, data: { confirm: '削除しても良いですか？' }, class: 'btn btn-danger knowledge-delete-btn' %>
