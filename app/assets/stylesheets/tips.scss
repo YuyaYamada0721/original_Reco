@@ -1,3 +1,4 @@
+// ティップの一覧画面での機能
 .tip-index-function-box {
   display: flex;
   margin: 20px 0;
@@ -7,35 +8,39 @@
 	padding: 25px 20px 0 20px;
 }
 
+// ティップ一覧表示範囲
 .tip-index-box {
   height: 600px;
 }
 
+// 内容入力欄
 .tip-content .form-control {
   font-size: 1rem;
   height: 300px;
 }
 
-.tip-label .form-control {
+// ティップ名入力欄
+.tip-name .form-control {
   width: 400px;
 }
 
+// タグのフォーム
 .tip-tag {
   margin: 20px 0;
 }
 
+// 写真のフォーム
 .tip-image {
   margin: 20px 0;
 }
 
+// ティップ詳細時の見出しを分かりやすくする線
 .tip-line {
   display: inline-block;
   border-bottom: solid 3px #498ee0;
 }
 
-
-
-
+// 写真エリア
 .pictures-area {
   display: flex;
 }
@@ -53,11 +58,10 @@
   margin: 10px;
 }
 
+// 写真削除ボタン
 .tip-function .tip-picture-d {
-  margin: 10px 50px;
+  margin: 20px 10px;
 }
-
-
 
 // ティップ詳細画面
 .tip-show .edit-btn {
@@ -83,4 +87,8 @@
 
 .tip-show-tag {
   margin: 20px 0;
+}
+
+.tip-edit-btn {
+  margin: 0 20px;
 }
