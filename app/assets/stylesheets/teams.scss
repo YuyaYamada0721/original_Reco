@@ -210,7 +210,15 @@
 // 大枠
 .team-edit-function {
 	display: flex;
-	margin: 30px 0;
+	margin: 70px 0;
+}
+
+.team-edit-function form {
+	width: 400px;
+}
+
+.team-edit-function .team-member-index {
+	margin: 0;
 }
 
 // メンバー欄
