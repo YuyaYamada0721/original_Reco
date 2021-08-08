@@ -1,4 +1,13 @@
-<h1 class="app-function-title"><span>Team</span><%= @team.name %></h1>
+<h1 class="app-function-title">
+  <span>
+    <% if @team.is_solo? %>
+      Solo
+    <% else %>
+      Team
+    <% end %>
+  </span>
+  <%= @team.name %>
+</h1>
 
 <div class="team-show-function">
 
