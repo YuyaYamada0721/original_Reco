@@ -1,32 +1,36 @@
-<h1 class="crud-title">チーム一覧</h1>
+<h1 class="app-function-title"><span>Team or Solo</span>一覧</h1>
 
-<%= link_to 'チーム登録', new_team_path, class: 'custom-btn new-link' %>
+<div class="team-index-function-box">
+  <div>
+    <%= link_to 'チーム登録', new_team_path, class: 'custom-btn new-link' %>
+  </div>
 
-<div class="search-box">
-  <div class="team-search">
-    <%= search_form_for @q, url: teams_path do |f| %>
-      <%= f.label :name_cont, 'チーム名' %>
-      <%= f.search_field :name_cont %>
-      <%= f.submit '検索', class: 'btn btn-secondary' %>
+  <div class="search-box">
+    <%= search_form_for @q, url: teams_path do |form| %>
+      <%= form.label :name_cont, 'チーム名' %>
+      <%= form.search_field :name_cont %>
+      <%= form.submit '検索', class: 'btn btn-secondary' %>
     <% end %>
   </div>
+
   <div class="team-sort">
     <%= sort_link(@q, :is_solo, '使用用途を揃える') %>
   </div>
 </div>
 
-<div class="row index-card">
-  <% @teams.each do |team| %>
-    <div class="col-md-4">
-      <div class="card mb-3">
-        <div class="card-header">チーム名：<%= link_to team.name, team_path(team) %></div>
-        <a href="/teams/<%= team.id %>" class="card-body">
-          <p class="card-title">使用用途：<%= team.is_solo ? '個人':'チーム' %></p>
-        </a>
+<div class="team-index-box">
+  <div class="row">
+    <% @teams.each do |team| %>
+      <div class="col-md-4">
+        <div class="card stacked--fan-right">
+          <div class="card-header"><%= link_to team.name, team_path(team) %></div>
+            <a href="/teams/<%= team.id %>">
+              <p class="card-content"><%= team.is_solo ? '個人':'チーム' %></p>
+            </a>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
-<hr>
 <%= paginate @teams %>

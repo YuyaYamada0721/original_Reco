@@ -1,42 +1,73 @@
-// -----team index-----
-.card-body, .card-header a {
+// チーム一覧での表示のされ方
+.team-index-box {
+	margin-top: 60px;
+}
+
+.card {
+	margin: 30px 10px;
+}
+
+.card a {
+	text-decoration: none;
+}
+
+.card-header, .card-header a {
   color: #094067;
+	font-size: 1.3rem;
+	text-decoration: none;
 }
 
-.index-card {
-  height: 450px;
+.card-content {
+	color: #094067;
+	font-size: 1rem;
+	padding: 10px 0 0 20px;
 }
-// -----team index-----
 
 
-// -----team 検索 ソート-----
-.search-box {
+// チーム一覧での機能
+.team-index-function-box {
   display: flex;
-  margin-bottom: 20px;
+  margin: 40px 0;
 }
 
-.team-search {
-  margin: 10px 20px;
+.search-box {
+	padding: 20px 20px;
 }
 
 .team-sort {
-  margin: 15px 10px;
+  padding: 20px 20px;
+}
+
+.sort_link {
+	text-align: center;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 25px;
+  background-color: #666;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+  7px 7px 20px 0px rgba(0,0,0,.1),
+  4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
 }
 
 .team-sort a:hover{
-  color : #7db4e6;
+	color: white;
+	text-decoration: none;
+  opacity: 0.8;
 }
-// -----team 検索 ソート-----
 
 
-// -----team new-----
+// チーム作成時のフォームの大きさ
 .form-team .form-control {
   width: 300px;
 }
-// -----team new-----
 
 
-// -----ラジオボタン-----
+// チーム作成時のチームか個人か選択時のラジオボタンアニメーション
 .cp_ipradio {
 	width: 90%;
 	margin: 2em auto;
@@ -80,7 +111,7 @@
 	background: #d6a9a9;
 }
 .cp_ipradio .option-input:checked {
-	background: #7db4e6;
+	background: #498ee0;
 }
 .cp_ipradio .option-input:checked::before {
 	font-size: 20px;
@@ -99,7 +130,7 @@
 	content: '';
 	-webkit-animation: click-wave 0.65s;
 	        animation: click-wave 0.65s;
-	background: #7db4e6;
+	background: #498ee0;
 }
 .cp_ipradio .option-input.radio {
 	border-radius: 50%;
@@ -110,10 +141,9 @@
 .cp_ipradio label {
 	line-height: 40px;
 }
-// -----ラジオボタン-----
 
 
-// -----team show-----
+// チーム詳細時の大枠
 .team-show-function {
 	display: flex;
 	height: 400px;
@@ -124,43 +154,40 @@
 	margin-right: 80px;
 }
 
-.team-member-label {
-  background: linear-gradient(transparent 70%, #a7d6ff 70%);
-	width: 100px;
-	font-size: 1.5rem;
-}
 
+// チームメンバー一覧
 .team-show-li {
-  padding: 0.5em;
-  border-radius: 0.5em;
 	width: 400px;
-	margin: 10px 0px;
+	margin: 30px 0px;
 	font-size: 1.2rem;
-}
-
-.team-owner-show {
 	list-style: none;
-  padding: 0.5em;
-  border-radius: 0.5em;
-	width: 400px;
-	margin: 10px 0px;
-	font-size: 1.2rem;
 }
 
-.team {
+.team-show-li .fa {
+	margin-right: 20px;
+}
+
+.team-show-li a {
+	text-decoration: none;
+}
+
+.team-show {
 	margin-left: 100px;
 }
 
-.function .next-btn {
-  color: white;
-	font-weight: bold;
+.team-show .next-btn {
   background-color: #7db4e6;
 	display: block;
 	margin: 20px 0;
 	width: 200px;
 }
 
-.function .edit-btn {
+.team-show .fa {
+  color: white;
+	font-weight: bold;
+}
+
+.team-show .edit-btn {
   color: white;
 	font-weight: bold;
   background-color: #8fbc8f;
@@ -169,7 +196,7 @@
 	width: 200px;
 }
 
-.function .chat-btn {
+.team-show .chat-btn {
   color: white;
 	font-weight: bold;
   background-color: #ffb6c1;
@@ -177,37 +204,56 @@
 	margin: 20px 0;
 	width: 200px;
 }
-// -----team show-----
 
 
-// -----team edit-----
+// チーム編集時
+// 大枠
 .team-edit-function {
 	display: flex;
-	margin: 50px 0;
+	margin: 70px 0;
 }
 
-.function-index-team-edit .form-control {
+.team-edit-function form {
+	width: 400px;
+}
+
+.team-edit-function .team-member-index {
+	margin: 0;
+}
+
+// メンバー欄
+.team-edit-li {
+	width: 400px;
+	margin: 10px 0px;
+	font-size: 1.2rem;
+	list-style: none;
+}
+
+.team-edit-li .fa {
+	margin-right: 10px;
+}
+
+// メールアドレス入力欄
+.team-edit .form-control {
 	width: 400px;
 	margin-bottom: 20px;
 }
 
-.team-edit-li {
-  border-radius: 0.5em;
-	width: 400px;
-	margin: 15px 0px;
-	font-size: 1rem;
+.team-edit p {
+	font-size: 1.3rem;
 }
+
 
 // チーム削除ボタン
 .btn-circle-flat {
-	margin: 100px 100px;
+	margin: 50px 100px;
   display: inline-block;
   text-decoration: none;
   background: red;
   color: #FFF;
-  width: 120px;
-  height: 120px;
-  line-height: 120px;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
   border-radius: 50%;
   text-align: center;
   overflow: hidden;
@@ -217,8 +263,6 @@
 .btn-circle-flat:hover {
   background: red;
 }
-// チーム削除ボタン
-// -----team edit-----
 
 
 // -----キラッと光るアニメーション-----
@@ -250,4 +294,21 @@
   100% {
     left: 125%;
   }
+}
+
+// カードにホバーすると傾く
+.stacked--fan-right {
+	transform-origin: center bottom;
+
+	&:before,
+	&:after {
+			transform-origin: 50% 100%;
+	}
+
+	&:hover {
+			transform: translate(2.5px, 0) rotate(2.5deg);
+
+			&:before { transform: translate(-2.5px, 0) rotate(-2.5deg); }
+			&:after { transform: translate(-5px, 0) rotate(-5deg); }
+	}
 }

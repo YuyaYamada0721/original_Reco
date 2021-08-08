@@ -1,4 +1,4 @@
-// -----user show-----
+// ユーザ詳細
 .profile {
     padding: 5rem 0;
 }
@@ -20,6 +20,7 @@
 
 .profile-image img {
     border-radius: 50%;
+    margin: 40px 0;
 }
 
 .profile-user-settings,
@@ -48,10 +49,6 @@
     margin-left: 2rem;
 }
 
-.profile-stats {
-    margin-top: 1rem;
-}
-
 .profile-stats li {
     // display: inline-block;
     font-size: 2rem;
@@ -78,10 +75,9 @@
     padding: 0 2.5rem;
     margin-left: 2rem;
 }
-// -----user show-----
 
 
-// -----user edit-----
+// ユーザ編集
 .form-user-edit .form-control {
     height: 30px;
     width: 400px;
@@ -130,4 +126,3 @@
 .image_form{
     margin: 10px 20px;
 }
-// -----user edit-----

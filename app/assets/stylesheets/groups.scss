@@ -1,35 +1,43 @@
-// -----親-----
+// 親枠
 .chat-content {
   display: flex;
 }
 
-// -----子-----
+// 子枠 参加者
 .chat-member {
   width: 30%;
 }
 
+.chat-member p {
+  margin-top: 20px;
+  font-size: 1.2rem;
+}
+
+// 子枠 チャット
 .chat-field {
   height: 600px;
   width: 70%;
   overflow-y: auto;
 }
 
-// ----子子-----
+// 子枠 チャット 内部 投稿者欄
 .chat-name {
   width: 15%;
 }
 
+// チャット内容
 .message-text {
   background-color: blanchedalmond;
   width: 55%;
   border-radius: 5px;
 }
 
+// 既読のステータス
 .chat-status {
   width: 30%;
 }
 
-// -----入力欄-----
+// 入力欄
 .chat-input {
   margin: 20px 200px;
 }
