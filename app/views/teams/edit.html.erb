@@ -17,7 +17,7 @@
     <%= render 'form', team: @team %>
     <%= link_to '戻る', team_path(@team), class: 'btn btn-flat-logo' %>
   </div>
-  
+
   <div class="team-member-index">
     <p>メンバー</p>
       <ul>
@@ -38,7 +38,7 @@
   <div class="team-edit">
     <% if @team.is_solo == false %>
       <%= form_with model: @team, method: :post, url: team_members_path(@team.id), local: true do |form| %>
-        <p>招待対象者が登録している事を確認し、<br>招待したい方のEmailアドレスを入力して、招待ボタンを押下して下さい。</p>
+        <p>招待対象者が登録している事を確認し、<br>招待したい方のEmailアドレスを入力して、<br>招待ボタンを押下して下さい。</p>
         <%= form.email_field :email, class: 'form-control' %>
         <%= form.submit '招待', class: 'btn-gradient-simple' %>
       <% end %>
