@@ -61,14 +61,13 @@
 }
 
 
-// -----team new-----
+// チーム作成時のフォームの大きさ
 .form-team .form-control {
   width: 300px;
 }
-// -----team new-----
 
 
-// -----ラジオボタン-----
+// チーム作成時のチームか個人か選択時のラジオボタンアニメーション
 .cp_ipradio {
 	width: 90%;
 	margin: 2em auto;
@@ -142,10 +141,9 @@
 .cp_ipradio label {
 	line-height: 40px;
 }
-// -----ラジオボタン-----
 
 
-// -----team show-----
+// チーム詳細時の大枠
 .team-show-function {
 	display: flex;
 	height: 400px;
@@ -208,34 +206,46 @@
 }
 
 
-// -----team edit-----
+// チーム編集時
+// 大枠
 .team-edit-function {
 	display: flex;
-	margin: 50px 0;
+	margin: 30px 0;
 }
 
-.function-index-team-edit .form-control {
+// メンバー欄
+.team-edit-li {
+	width: 400px;
+	margin: 10px 0px;
+	font-size: 1.2rem;
+	list-style: none;
+}
+
+.team-edit-li .fa {
+	margin-right: 10px;
+}
+
+// メールアドレス入力欄
+.team-edit .form-control {
 	width: 400px;
 	margin-bottom: 20px;
 }
 
-.team-edit-li {
-  border-radius: 0.5em;
-	width: 400px;
-	margin: 15px 0px;
-	font-size: 1rem;
+.team-edit p {
+	font-size: 1.3rem;
 }
+
 
 // チーム削除ボタン
 .btn-circle-flat {
-	margin: 100px 100px;
+	margin: 50px 100px;
   display: inline-block;
   text-decoration: none;
   background: red;
   color: #FFF;
-  width: 120px;
-  height: 120px;
-  line-height: 120px;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
   border-radius: 50%;
   text-align: center;
   overflow: hidden;
@@ -245,8 +255,6 @@
 .btn-circle-flat:hover {
   background: red;
 }
-// チーム削除ボタン
-// -----team edit-----
 
 
 // -----キラッと光るアニメーション-----
