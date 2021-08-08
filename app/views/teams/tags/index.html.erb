@@ -1,13 +1,26 @@
-<h1 class="app-function-title"><span>Team Tags</span><%= @team.name %> -タグ一覧-</h1>
+<h1 class="app-function-title">
+  <span>
+    <% if @team.is_solo? %>
+      Solo Tag
+    <% else %>
+      Team Tag
+    <% end %>
+  </span>
+  <%= @team.name %> -タグ一覧-
+</h1>
 
 <div>
   <%= link_to 'タグ登録', new_team_tag_path, class: 'custom-btn new-link' %>
 </div>
 
 <div class="tag-index">
-  <% @tags.each do |tag| %>
-    <li><%= tag.name %><%= link_to '削除', team_tag_path(@team, tag), method: :delete, data: { confirm: 'タグを削除しますか？' }, class: 'btn btn-danger' %></li>
-  <% end %>
+    <% @tags.each do |tag| %>
+      <li>
+        <%= tag.name %><%= link_to team_tag_path(@team, tag), method: :delete, data: { confirm: 'タグを削除しますか？' } do %>
+        <i class="fa fa-trash-o"></i>
+        <% end %>
+      </li>
+    <% end %>
 </div>
 
 <%= paginate @tags %>
