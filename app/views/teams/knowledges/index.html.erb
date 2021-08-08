@@ -1,32 +1,44 @@
-<h1 class="crud-title">ナレッジ一覧</h1>
+<h1 class="app-function-title">
+  <span>
+    <% if @team.is_solo? %>
+      Solo Knowledge
+    <% else %>
+      Team Knowledge
+    <% end %>
+  </span>
+  <%= @team.name %> -ナレッジ一覧-
+</h1>
 
-<%= link_to 'ナレッジ登録',  new_team_knowledge_path(@team), class: 'custom-btn new-link' %>
+<div class="knowledge-index-function-box">
+  <div>
+    <%= link_to 'ナレッジ登録',  new_team_knowledge_path(@team), class: 'custom-btn new-link' %>
+  </div>
 
-<div class="search-box">
-  <div class="team-search">
-    <%= search_form_for @q, url: search_team_knowledges_path do |f| %>
-      <%= f.label :name_cont, 'ナレッジ名' %>
-      <%= f.search_field :name_cont %>
-      <%= f.submit '検索', class: 'btn btn-secondary' %>
+  <div class="knowledge-search-box">
+      <%= search_form_for @q, url: search_team_knowledges_path do |f| %>
+        <%= f.label :name_cont, 'ナレッジ名' %>
+        <%= f.search_field :name_cont %>
+        <%= f.submit '検索', class: 'btn btn-secondary' %>
+      <% end %>
+  </div>
+</div>
+
+<div class="knowledge-index-box">
+  <div class="row">
+    <% @knowledges.each do |knowledge| %>
+      <div class="col-md-4">
+        <div class="card stacked--fan-right">
+          <div class="card-header"><%= link_to knowledge.name, team_knowledge_path(@team, knowledge) %></div>
+            <a href="/teams/<%= @team.id %>/knowledges/<%= knowledge.id %>">
+              <p class="card-content">作成者：<%= knowledge.member.user.username %></p>
+              <p class="card-content">更新日：<%= l knowledge.updated_at %></p>
+            </a>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
-<hr>
 
-<div class="row index-card knowledge-card">
-  <% @knowledges.each do |knowledge| %>
-    <div class="col-md-4">
-      <div class="card mb-3">
-        <a href="/teams/<%= @team.id %>/knowledges/<%= knowledge.id %>" class="card-body">
-          <p class="card-title knowledge-title"><%= knowledge.name %></p>
-          <h6 class="card-content">作成者：<%= knowledge.member.user.username %></h6>
-          <h6 class="card-content">更新日：<%= l knowledge.updated_at %></h6>
-        </a>
-      </div>
-    </div>
-  <% end %>
-</div>
 <%= paginate @knowledges %>
 
-<hr>
 <%= link_to '戻る', team_path(@team), class: 'btn-flat-logo' %>

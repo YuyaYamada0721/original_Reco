@@ -1,24 +1,35 @@
-<h1 class="crud-title">ナレッジ名：<%= @knowledge.name %></h1>
-
-<div class="function">
-  <div>
-    <%= link_to 'ティップス', team_knowledge_tips_path(@team.id, @knowledge.id), class: 'next-btn btn shine-btn' %>
-  </div>
-
-  <div>
-    <%= link_to 'ナレッジ編集', edit_team_knowledge_path(@team, @knowledge), class: 'edit-btn btn' %>
-  </div>
-
-  <div>
-    <% if @stock.present? %>
-      <%= link_to 'ストック解除', team_knowledge_stock_path(@knowledge.team_id, @knowledge, params[:id]), method: :delete, class: 'stock-btn sad' %>
-      <div><i class="fa fa-star"></i></div>
+<h1 class="app-function-title">
+  <span>
+    <% if @team.is_solo? %>
+      Solo Knowledge
     <% else %>
-      <%= link_to 'ストック登録', team_knowledge_stocks_path(@knowledge.team_id, @knowledge), method: :post, class: 'stock-btn fine' %>
-      <div><i class="fa fa-star-o"></i></div>
+      Team Knowledge
     <% end %>
-  </div>
+  </span>
+  <%= @team.name %> -<%= @knowledge.name %>-
+</h1>
+
+<div class="knowledge-show">
+
+  <%= link_to team_knowledge_tips_path(@team.id, @knowledge.id), class: 'next-btn btn shine-btn' do %>
+    <i class="fa fa-file-text"> ティップス</i>
+  <% end %>
+
+  <%= link_to edit_team_knowledge_path(@team, @knowledge), class: 'edit-btn btn' do %>
+    <i class="fa fa-pencil"> ナレッジ編集</i>
+  <% end %>
+
+
+  <% if @stock.present? %>
+    <%= link_to team_knowledge_stock_path(@knowledge.team_id, @knowledge, params[:id]), method: :delete, class: 'stock-btn sad' do %>
+      <i class="fa fa-star"> ストック解除</i>
+    <% end %>
+  <% else %>
+    <%= link_to team_knowledge_stocks_path(@knowledge.team_id, @knowledge), method: :post, class: 'stock-btn fine' do %>
+      <i class="fa fa-star-o"> ストック登録</i>
+    <% end %>
+  <% end %>
+
 </div>
 
-<hr>
 <%= link_to '戻る', team_knowledges_path, class: 'btn-flat-logo' %>

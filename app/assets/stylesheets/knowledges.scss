@@ -1,36 +1,47 @@
-// -----knowledge index-----
-.knowledge-card .card-header {
-  background-color: #f8f8ff;
+// ナレッジ一覧
+.knowledge-index-function-box {
+  display: flex;
+  margin: 40px 0;
 }
 
-.knowledge-title {
-  border-bottom: 1px solid black;
+.knowledge-search-box {
+	padding: 20px 20px;
 }
 
-.card-content {
-  font-size: 0.8rem;
-  padding-top: 10px;
+.knowledge-index-box {
+  height: 600px;
 }
-// -----knowledge index-----
 
 
-// -----knowledge new edit-----
+// ナレッジ登録フォーム
 .form-knowledge .form-control {
   width: 400px;
 }
 
-.knowledge-btn {
-  margin: 10px 0;
-}
-// -----knowledge new edit-----
-
-
-// -----スター-----
-.function .fa {
-  font-size: 2rem;
+.knowledge-show .next-btn {
+  background-color: #7db4e6;
+	display: block;
+	margin: 20px 0;
+	width: 200px;
 }
 
-.function .stock-btn {
+.knowledge-show .fa {
+  color: white;
+	font-weight: bold;
+}
+
+.knowledge-show .edit-btn {
+  color: white;
+	font-weight: bold;
+  background-color: #8fbc8f;
+	display: block;
+	margin: 20px 0 0 0;
+	width: 200px;
+}
+
+
+// ストックボタン
+.knowledge-show .stock-btn {
   color: white;
   background-color: #b2b2ff;
 	border-radius: 5px;
@@ -38,11 +49,8 @@
 	margin: 20px 0;
 	width: 200px;
 }
-// -----スター-----
 
-
-// -----stock登録-----
-.function .fine {
+.knowledge-show .fine {
   color: #fff;
   font-weight: bold;
   text-align: center;
@@ -53,7 +61,8 @@
   display: inline-block;
   transition: .3s;
 }
-.function .fine::before {
+
+.knowledge-show .fine::before {
   content: "";
   width: 90%;
   height: 10px;
@@ -65,24 +74,25 @@
   opacity: 0;
   transition: .3s;
 }
-.function .fine:hover {
+
+.knowledge-show .fine:hover {
   transform: translateY(-7px);
 }
-.function .fine:hover::before {
+
+.knowledge-show .fine:hover::before {
   transform: translateY(7px);
   opacity: 1;
 }
-// -----stock登録-----
 
 
-// -----stock解除-----
-.function .sad {
+// ストック解除
+.knowledge-show .sad {
   text-align: center;
   font-weight: bold;
   display: inline-block;
 }
 
-.function .sad:hover {
+.knowledge-show .sad:hover {
   animation: hurueru .3s  infinite;
 }
 
@@ -93,4 +103,10 @@
   75% {transform: translate(2px, 0px) rotateZ(-1deg)}
   100% {transform: translate(0px, 0px) rotateZ(0deg)}
 }
-// -----stock解除-----
+
+
+// ナレッジ削除ボタン
+
+.knowledge-delete-btn {
+  margin-left: 30px;
+}

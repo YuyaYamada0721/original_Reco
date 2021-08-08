@@ -1,33 +1,44 @@
-<h1 class='crud-title'>ティップ詳細</h1>
-
-<p class="tip-line">タイトル</p>
-<div><%= @tip.name %></div>
-
-<hr>
-
-<p class="tip-line">内容</p>
-<div><%= markdown(@tip.content).html_safe %></div>
-
-<hr>
-
-<p class="tip-line">タグ</p>
-  <% @tip.tags.each do |tag| %>
-    <div><%= tag.name %>  </div>
-  <% end %>
-<hr>
-
-<p class="tip-line">画像</p>
-<div class="pictures-area">
-  <% @tip.pictures.each do |picture| %>
-    <%= link_to picture.image.url, 'data-lightbox': picture do %>
-      <div class="tip-picture"><%= image_tag picture.image.url, size: '300x200' if picture.image && picture.image.url %></div>
+<h1 class="app-function-title">
+  <span>
+    <% if @team.is_solo? %>
+      Solo Tip
+    <% else %>
+      Team Tip
     <% end %>
-  <% end %>
+  </span>
+  <%= @team.name %> -<%= @knowledge.name %>- -<%= @tip.name %>-
+</h1>
+
+<div class="tip-show-box">
+  <div class="tip-show-name">
+    <h2 class="tip-line">ティップ名</h2>
+    <p><%= @tip.name %></p>
+  </div>
+
+  <div class="tip-show-content">
+    <h2 class="tip-line">内容</h2>
+    <p><%= markdown(@tip.content).html_safe %></p>
+  </div>
+
+  <div class='tip-show-tag'>
+    <h3 class="tip-line">タグ</h3>
+    <% @tip.tags.each do |tag| %>
+      <div>・<%= tag.name %></div>
+    <% end %>
+  </div>
+
+
+  <h3 class="tip-line">画像</h3>
+  <div class="pictures-area">
+    <% @tip.pictures.each do |picture| %>
+      <%= link_to picture.image.url, 'data-lightbox': picture do %>
+        <div class="tip-picture"><%= image_tag picture.image.url, size: '300x200' if picture.image && picture.image.url %></div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 
-<hr>
-
-<div class="function">
+<div class="tip-show">
   <%= link_to 'ティップ編集', edit_team_knowledge_tip_path(@team.id, @knowledge.id, @tip.id), class: 'edit-btn btn' %>
   <%= link_to '戻る', team_knowledge_tips_path, class: 'btn-flat-logo' %>
 </div>

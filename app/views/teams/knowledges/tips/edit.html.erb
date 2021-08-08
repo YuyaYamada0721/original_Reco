@@ -1,8 +1,16 @@
-<h1 class="crud-title">ティップ編集</h1>
-<hr>
+<h1 class="app-function-title">
+  <span>
+    <% if @team.is_solo? %>
+      Solo Tip
+    <% else %>
+      Team Tip
+    <% end %>
+  </span>
+  <%= @team.name %> -<%= @knowledge.name %>- -<%= @tip.name %>-
+</h1>
 
 <%= form_with model: @tip, url: team_knowledge_tip_path, local: true do |form| %>
-  <div id="error_explanation", style="height:50px;">
+  <div id="error_explanation", style="float: right;">
     <% if @tip.errors.any? %>
       <h2><%= t('errors.template.header', model: Tip.model_name.human, count: @tip.errors.count) %></h2>
     <ul>
@@ -13,13 +21,13 @@
   <% end %>
   </div>
 
-  <div class="tip-label">
-    <%= form.label :タイトル %>
+  <div class="tip-name">
+    <%= form.label :name, 'ティップ名' %>
     <%= form.text_field :name, class: 'form-control' %>
   </div>
 
   <div class="tip-content">
-    <%= form.label :内容 %>
+    <%= form.label :content, '内容' %>
     <%= form.text_area :content, class: 'form-control' %>
   </div>
 
@@ -58,10 +66,10 @@
     </div>
 
     <div class="tip-function">
-      <div class="tip-edit-btn">
-        <%= form.submit '登録', class: 'btn-gradient-simple tip-action-btn' %>
-        <%= link_to '戻る', team_knowledge_tip_path, class: 'btn-flat-logo tip-action-btn' %>
-        <%= link_to '削除', team_knowledge_tip_path(@team.id, @knowledge.id, @tip.id), method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-danger tip-action-btn' %>
+      <div>
+        <%= form.submit '登録', class: 'custom-btn new-link tip-edit-btn' %>
+        <%= link_to '戻る', team_knowledge_tip_path, class: 'btn-flat-logo tip-edit-btn' %>
+        <%= link_to '削除', team_knowledge_tip_path(@team.id, @knowledge.id, @tip.id), method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-danger tip-edit-btn' %>
       </div>
     </div>
   </div>

@@ -1,29 +1,46 @@
-.tip-title {
-  border-bottom: 1px solid black;
-}
-
-.test-field {
+// ティップの一覧画面での機能
+.tip-index-function-box {
   display: flex;
+  margin: 20px 0;
 }
 
+.tip-search-box {
+	padding: 25px 20px 0 20px;
+}
+
+// ティップ一覧表示範囲
+.tip-index-box {
+  height: 600px;
+}
+
+// 内容入力欄
 .tip-content .form-control {
   font-size: 1rem;
   height: 300px;
 }
 
-.tip-label .form-control {
+// ティップ名入力欄
+.tip-name .form-control {
   width: 400px;
 }
 
-.tip-image {
-  margin: 10px 0;
+// タグのフォーム
+.tip-tag {
+  margin: 20px 0;
 }
 
+// 写真のフォーム
+.tip-image {
+  margin: 20px 0;
+}
+
+// ティップ詳細時の見出しを分かりやすくする線
 .tip-line {
   display: inline-block;
-  border-bottom: solid 3px #87CEFA;
+  border-bottom: solid 3px #498ee0;
 }
 
+// 写真エリア
 .pictures-area {
   display: flex;
 }
@@ -41,14 +58,37 @@
   margin: 10px;
 }
 
+// 写真削除ボタン
 .tip-function .tip-picture-d {
-  margin: 10px 50px;
+  margin: 20px 10px;
 }
 
-.tip-edit-btn {
+// ティップ詳細画面
+.tip-show .edit-btn {
+  color: white;
+	font-weight: bold;
+  background-color: #8fbc8f;
+	display: block;
+	margin: 20px 0;
+	width: 200px;
+}
+
+.tip-show-box {
+  margin-top: 30px;
+}
+
+.tip-show-name p {
+  font-size: 1.2rem;
+}
+
+.tip-show-content p {
+  font-size: 1.2rem;
+}
+
+.tip-show-tag {
   margin: 20px 0;
 }
 
-.tip-action-btn {
+.tip-edit-btn {
   margin: 0 20px;
 }
