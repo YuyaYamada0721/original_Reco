@@ -174,20 +174,23 @@
 }
 
 
-.team {
+.team-show {
 	margin-left: 100px;
 }
 
-.function .next-btn {
-  color: white;
-	font-weight: bold;
+.team-show .next-btn {
   background-color: #7db4e6;
 	display: block;
 	margin: 20px 0;
 	width: 200px;
 }
 
-.function .edit-btn {
+.team-show .fa {
+  color: white;
+	font-weight: bold;
+}
+
+.team-show .edit-btn {
   color: white;
 	font-weight: bold;
   background-color: #8fbc8f;
@@ -196,7 +199,7 @@
 	width: 200px;
 }
 
-.function .chat-btn {
+.team-show .chat-btn {
   color: white;
 	font-weight: bold;
   background-color: #ffb6c1;
@@ -204,7 +207,6 @@
 	margin: 20px 0;
 	width: 200px;
 }
-// -----team show-----
 
 
 // -----team edit-----
