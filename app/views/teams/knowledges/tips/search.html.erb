@@ -1,9 +1,20 @@
-<h1 class="crud-title">ティップ一覧</h1>
+<h1 class="app-function-title">
+  <span>
+    <% if @team.is_solo? %>
+      Solo Tip
+    <% else %>
+      Team Tip
+    <% end %>
+  </span>
+  <%= @team.name %> -ティップ一覧-
+</h1>
 
-<%= link_to 'ティップ登録', new_team_knowledge_tip_path, class: 'custom-btn new-link' %>
+<div class="tip-index-function-box">
+  <div>
+    <%= link_to 'ティップ登録', new_team_knowledge_tip_path, class: 'custom-btn new-link' %>
+  </div>
 
-<div class="search-box">
-  <div class="team-search">
+  <div class="tip-search-box">
     <%= search_form_for @q, url: search_team_knowledge_tips_path do |f| %>
       <%= f.label :name_cont, 'ティップス名' %>
       <%= f.search_field :name_cont %>
@@ -13,24 +24,26 @@
     <% end %>
   </div>
 </div>
-<hr>
 
-<div class="row index-card">
-  <% @results.each do |tip| %>
-    <div class="col-md-4">
-      <div class="card mb-3">
-        <a href="/teams/<%= @team.id %>/knowledges/<%= @knowledge.id %>/tips/<%= tip.id %>" class="card-body">
-          <p class="card-title knowledge-title">ティップス名</p>
-          <p><%= tip.name %></p>
-            <% tip.tags.each do |tag| %>
-              <h6 class="card-title">タグ：<%= tag.name %></h6>
-            <% end %>
-          <h6>作成者：<%= tip.member.user.username %></h6>
-        </a>
+<div class="tip-index-box">
+  <div class="row">
+    <% @results.each do |tip| %>
+      <div class="col-md-4">
+        <div class="card stacked--fan-right">
+          <div class="card-header"><%= link_to tip.name, team_knowledge_tip_path(@team, @knowledge, tip) %></div>
+            <a href="/teams/<%= @team.id %>/knowledges/<%= @knowledge.id %>/tips/<%= tip.id %>">
+              <% tip.tags.each do |tag| %>
+                <p class="card-content">タグ：<%= tag.name %>  </p>
+              <% end %>
+              <p class="card-content">作成者：<%= tip.member.user.username %></p>
+              <p class="card-content">更新日：<%= l tip.updated_at %></p>
+            </a>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
-<hr>
+<%= paginate @results %>
+
 <%= link_to '戻る', team_knowledge_path(@team.id,@knowledge.id), class: 'btn-flat-logo' %>

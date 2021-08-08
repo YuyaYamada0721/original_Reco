@@ -1,10 +1,16 @@
-.tip-title {
-  border-bottom: 1px solid black;
+.tip-index-function-box {
+  display: flex;
+  margin: 20px 0;
 }
 
-.test-field {
-  display: flex;
+.tip-search-box {
+	padding: 25px 20px 0 20px;
 }
+
+.tip-index-box {
+  height: 600px;
+}
+
 
 .tip-content .form-control {
   font-size: 1rem;
