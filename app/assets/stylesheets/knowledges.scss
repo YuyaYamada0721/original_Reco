@@ -1,31 +1,25 @@
-// -----knowledge index-----
-.knowledge-card .card-header {
-  background-color: #f8f8ff;
+// ナレッジ一覧
+.knowledge-index-function-box {
+  display: flex;
+  margin: 40px 0;
 }
 
-.knowledge-title {
-  border-bottom: 1px solid black;
+.knowledge-search-box {
+	padding: 20px 20px;
 }
 
-.card-content {
-  font-size: 0.8rem;
-  padding-top: 10px;
+.knowledge-index-box {
+  height: 500px;
 }
-// -----knowledge index-----
 
 
-// -----knowledge new edit-----
+// ナレッジ登録フォーム
 .form-knowledge .form-control {
   width: 400px;
 }
 
-.knowledge-btn {
-  margin: 10px 0;
-}
-// -----knowledge new edit-----
 
-
-// -----スター-----
+// お気に入りのスター
 .function .fa {
   font-size: 2rem;
 }
@@ -38,7 +32,6 @@
 	margin: 20px 0;
 	width: 200px;
 }
-// -----スター-----
 
 
 // -----stock登録-----
