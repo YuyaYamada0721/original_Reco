@@ -1,11 +1,23 @@
-<h1 class="crud-title">チャット</h1>
+<h1 class="app-function-title">
+  <span>
+    <% if @team.is_solo? %>
+      Solo Memo
+    <% else %>
+      Team Message
+    <% end %>
+  </span>
+    <% if @team.is_solo? %>
+      メモ
+    <% else %>
+    <%= @team.name %> -メッセージ-
+    <% end %>
+</h1>
 
 <div class="chat-content">
-
   <div class="chat-member">
-    <p>参加者</p>
+    <p>-参加者-</p>
     <% @group_members.each do |gm| %>
-      <p>・<%= gm.member.user.username%></p>
+      <p><%= gm.member.user.username%></p>
     <% end %>
     <%= paginate @group_members %>
   </div>

@@ -16,9 +16,7 @@
 <div class="tag-index">
     <% @tags.each do |tag| %>
       <li>
-        <%= tag.name %><%= link_to team_tag_path(@team, tag), method: :delete, data: { confirm: 'タグを削除しますか？' } do %>
-        <i class="fa fa-trash-o"></i>
-        <% end %>
+        <%= tag.name %><%= link_to '削除', team_tag_path(@team, tag), method: :delete, data: { confirm: 'タグを削除しますか？' }, class: 'btn btn-danger' %>
       </li>
     <% end %>
 </div>

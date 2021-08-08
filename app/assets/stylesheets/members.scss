@@ -12,10 +12,13 @@
 
 .stock-space li {
   margin: 20px 0;
+  font-size: 1.2rem;
 }
 
-.stock-label {
-  background: linear-gradient(transparent 70%, #a7d6ff 70%);
-	width: 250px;
-	font-size: 1.4rem;
+.stock-space a {
+  text-decoration: none;
+}
+
+.chat-btn-space .fa {
+  font-weight: bold;
 }

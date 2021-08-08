@@ -33,8 +33,14 @@
       <i class="fa fa-tag"> タグ</i>
     <% end %>
 
-    <%= link_to team_group_path(@team.id, @team_chat.id), class: 'chat-btn btn' do %>
-      <i class="fa fa-comments"> チームメッセージ</i>
+    <% if @team.is_solo? %>
+      <%= link_to team_group_path(@team.id, @team_chat.id), class: 'chat-btn btn' do %>
+        <i class="fa fa-sticky-note"></i> メモ</i>
+      <% end %>
+    <% else %>
+      <%= link_to team_group_path(@team.id, @team_chat.id), class: 'chat-btn btn' do %>
+        <i class="fa fa-comments"> チームメッセージ</i>
+      <% end %>
     <% end %>
 
     <% if current_user == @team.owner %>
