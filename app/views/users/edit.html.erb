@@ -1,6 +1,6 @@
 <%= form_with(model: @user, local: true) do |form| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation", style="float: right;">
       <h2><%= t("errors.template.header", model: User.model_name.human, count: @user.errors.count) %></h2>
 
       <ul>

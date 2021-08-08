@@ -4,10 +4,14 @@
 }
 
 .pagination>.active>a {
-  background: #93c9ff;
+  background: #498ee0;
   border-radius: 15px;
 }
 
 .pagination>li>a:hover {
   border-radius: 15px;
+}
+
+.pagination {
+  margin: 50px 0;
 }
