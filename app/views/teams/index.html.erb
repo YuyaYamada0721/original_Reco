@@ -23,9 +23,9 @@
     <% @teams.each do |team| %>
       <div class="col-md-4">
         <div class="card stacked--fan-right">
-          <div class="card-header"><%= link_to team.name, team_path(team) %></div>
+          <div class="card-header">チーム名：<%= link_to team.name, team_path(team) %></div>
             <a href="/teams/<%= team.id %>">
-              <p class="card-content"><%= team.is_solo ? '個人':'チーム' %></p>
+              <p class="card-content">使用用途：<%= team.is_solo ? '個人':'チーム' %></p>
             </a>
         </div>
       </div>
