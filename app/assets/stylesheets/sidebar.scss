@@ -21,6 +21,7 @@
 
 #sidebar .toggle-btn span {
   display: block;
+  transition: all .4s;
   width: 30px;
   height: 5px;
   background: #151719;
@@ -52,6 +53,7 @@
   display: block;
   width: 40px;
   height: 5px;
+  transition: all .4s;
   background: #151719;
   cursor: pointer;
 }
