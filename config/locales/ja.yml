@@ -219,3 +219,5 @@ ja:
       admin_guest_sign_in: '管理者ゲストログイン'
       log_out: 'ログアウト'
       sign_up: '新規登録'
+    button:
+      register: '登録'
