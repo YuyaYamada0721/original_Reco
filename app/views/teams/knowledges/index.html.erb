@@ -28,7 +28,7 @@
     <% @knowledges.each do |knowledge| %>
       <div class="col-md-4">
         <div class="card stacked--fan-right">
-          <div class="card-header"><%= link_to knowledge.name, team_knowledge_path(@team, knowledge) %></div>
+          <div class="card-header">ナレッジ名：<%= link_to knowledge.name, team_knowledge_path(@team, knowledge) %></div>
             <a href="/teams/<%= @team.id %>/knowledges/<%= knowledge.id %>">
               <p class="card-content">作成者：<%= knowledge.member.user.username %></p>
               <p class="card-content">更新日：<%= l knowledge.updated_at %></p>
