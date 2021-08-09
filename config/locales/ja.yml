@@ -215,5 +215,7 @@ ja:
     messages:
       my_page: 'マイページ'
       sign_in: 'ログイン'
+      guest_sign_in: 'ゲストログイン'
+      admin_guest_sign_in: '管理者ゲストログイン'
       log_out: 'ログアウト'
       sign_up: '新規登録'
