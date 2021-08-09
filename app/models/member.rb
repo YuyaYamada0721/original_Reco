@@ -8,7 +8,6 @@ class Member < ApplicationRecord
   has_many :stocks, dependent: :destroy
   has_many :stocks_knowledges, through: :stocks, source: :knowledge
   has_many :tips, dependent: :destroy
-
   has_many :messages, dependent: :destroy
   has_many :reads, dependent: :destroy
   has_many :group_members, dependent: :destroy

@@ -64,7 +64,8 @@ RSpec.describe 'ストック機能', type: :system do
         click_on 'ストック登録'
         visit team_member_path(@team, @member)
         click_on 'テストナレッジ'
-        expect(page).to have_content 'ナレッジ名：テストナレッジ'
+        expect(page).to have_content 'テストナレッジ'
+        expect(page).to have_content 'ティップ'
       end
     end
   end

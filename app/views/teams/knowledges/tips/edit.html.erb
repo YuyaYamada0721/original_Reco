@@ -67,7 +67,7 @@
 
     <div class="tip-function">
       <div>
-        <%= form.submit '登録', class: 'custom-btn new-link tip-edit-btn' %>
+        <%= form.submit I18n.t('views.button.register'), class: 'custom-btn new-link tip-edit-btn' %>
         <%= link_to '戻る', team_knowledge_tip_path, class: 'btn-flat-logo tip-edit-btn' %>
         <%= link_to '削除', team_knowledge_tip_path(@team.id, @knowledge.id, @tip.id), method: :delete, data: { confirm: '削除しますか？' }, class: 'btn btn-danger tip-edit-btn' %>
       </div>

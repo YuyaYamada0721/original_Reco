@@ -97,7 +97,7 @@ RSpec.describe 'チーム機能', type: :system do
         click_on 'チーム編集'
         click_on 'オーナー権限譲渡'
         expect(page).to have_content 'チームオーナーを交代しました。'
-        expect(page).to have_content 'オーナー：fuga'
+        expect(page).to have_content 'fuga'
       end
     end
   end

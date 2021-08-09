@@ -46,7 +46,7 @@
   <%= form_for @message, url: team_messages_path(@team.id) do |form| %>
     <%= form.text_field :body, placeholder: 'メッセージを入力して下さい', class: 'form-control' %>
     <%= form.hidden_field :group_id, value: @group.id %>
-    <%= form.submit "投稿する", class: 'btn-gradient-simple' %>
+    <%= form.submit "投稿する" %>
     <%= link_to '戻る', team_path(@team), class: 'btn-flat-logo chat-btn-distance' %>
   <% end %>
 </div>
