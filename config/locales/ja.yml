@@ -212,3 +212,8 @@ ja:
       previous: "&lsaquo; 前"
       next: "次 &rsaquo;"
       truncate: "..."
+    messages:
+      my_page: 'マイページ'
+      sign_in: 'ログイン'
+      log_out: 'ログアウト'
+      sign_up: '新規登録'
