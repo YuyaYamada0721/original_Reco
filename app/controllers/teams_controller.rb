@@ -2,6 +2,7 @@ class TeamsController < ApplicationController
   before_action :authenticate_user!
   before_action :team_owner_check, only: :edit
   before_action :team_members_check, only: :show
+  before_action :already_exist_team, only: :create
 
   def index
     @teams = current_user.members_teams
