@@ -18,7 +18,6 @@
 
   <header>
     <div class="head">
-
     <% if controller.controller_name == 'tops' || controller.controller_name == 'registrations' || controller.controller_name == 'sessions'%>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
@@ -36,24 +35,8 @@
           </div>
         </div>
       </nav>
-    <% else %>
-      <div id="sidebar">
-        <div id="sidebar-btn" class="toggle-btn" onclick="toggleSidebar(this)">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="list">
-          <div class="item header-title">Reco!</div>
-          <div class="item"><i class="fa fa-home"></i>  <%= link_to I18n.t('views.messages.my_page'), user_path(current_user.id) %></div>
-          <div class="item"><i class="fa fa-power-off"></i>  <%= link_to I18n.t('views.messages.log_out'), destroy_user_session_path, method: :delete %></div>
-          <div class="item"><i class="fa fa-users"></i>  <%= link_to '個人・チーム記録一覧', teams_path %></div>
-        </div>
-      </div>
     <% end %>
-
     </div>
-
       <% unless controller.controller_name == 'tops' %>
         <div class="alert-space">
           <% if notice %>
@@ -69,8 +52,23 @@
   <% if controller.controller_name == 'tops' %>
       <%= yield %>
   <% else %>
-    <div class="container">
-      <%= yield %>
+    <div class="main-field">
+      <% unless controller.controller_name == 'tops' || controller.controller_name == 'registrations' || controller.controller_name == 'sessions'%>
+        <div id="sidebar">
+          <div class="list">
+            <div class="item header-title"></div>
+            <div class="item"><i class="fa fa-home"></i>  <%= link_to I18n.t('views.messages.my_page'), user_path(current_user.id) %></div>
+            <div class="item"><i class="fa fa-power-off"></i>  <%= link_to I18n.t('views.messages.log_out'), destroy_user_session_path, method: :delete %></div>
+            <div class="item"><i class="fa fa-users"></i>  <%= link_to '個人・チーム記録一覧', teams_path %></div>
+          </div>
+        </div>
+        <div id="sidebar-btn" class="toggle-btn side-space" onclick="toggleSidebar(this)">
+          <i class="fa fa-forward" id="open-btn">OPEN MENU</i>
+        </div>
+      <% end %>
+      <div class="container">
+        <%= yield %>
+      </div>
     </div>
   <% end %>
 
