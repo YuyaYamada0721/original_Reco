@@ -5,18 +5,16 @@ class TeamsController < ApplicationController
   before_action :already_exist_team, only: :create
 
   def index
-    @teams = current_user.members_teams
+    @teams = current_user.members_teams.page(params[:page]).per(6)
     @q = @teams.ransack(params[:q])
-    @teams = @q.result(distinct: true).page(params[:page]).per(6)
   end
 
   def show
     @team = Team.find(params[:id])
-    @members = Member.where(team_id: params[:id]).page(params[:page]).per(5)
-    @member = Member.find_by(team_id: params[:id], user_id: current_user.id)
-    @stocks = Stock.where(member_id: @member.id)
-    @owner = Member.find_by(team_id: params[:id], user_id: @team.owner.id)
+    @members = Member.where(team_id: @team.id).page(params[:page]).per(5)
 
+    # チームメッセージへ遷移するための準備
+    @owner = Member.find_by(team_id: @team.id, user_id: @team.owner.id)
     @team_chat = Group.joins(:group_members).find_by(group_members: { member_id: @owner.id }, is_dm: 'false')
   end
 
@@ -25,8 +23,8 @@ class TeamsController < ApplicationController
   end
 
   def create
-    @team = current_user.teams.build(team_params)
-    @team.owner_id = current_user.id
+    @team = Team.new(team_params)
+
     if @team.save
       @team.invite_member(@team.user)
       @owner_at_the_member_table = Member.find_by(team_id: @team.id, user_id: current_user.id)
@@ -45,7 +43,7 @@ class TeamsController < ApplicationController
 
   def update
     @team = Team.find(params[:id])
-    @members = Member.where(team_id: @team.id).page(params[:page]).per(5)
+    @members = Member.where(team_id: @team.id).page(params[:page]).per(5) # 更新時にエラー発生した場合render先で必要
     if @team.update(team_params)
       redirect_to teams_path, notice: 'チームを編集しました。'
     else
@@ -59,11 +57,8 @@ class TeamsController < ApplicationController
 
     @members.each do |member| #チームを削除する時にこのチームで作成したGroupも削除する処理
       @dm_groups = Group.joins(:group_members).where(group_members: { member_id: member.id })
-        @dm_groups.each do |dm_group|
-          dm_group.destroy
-        end
+      @dm_groups.each(&:destroy)
     end
-
     @team.destroy
     redirect_to teams_path, notice: 'チームを削除しました。'
   end
@@ -77,9 +72,7 @@ class TeamsController < ApplicationController
   def search
     @teams = current_user.members_teams.page(params[:page]).per(6)
     @q = @teams.ransack(params[:q])
-    @teams = @q.result(distinct: true)
-    @q = @teams
-    # @results = @q.result searchアクションさえ定義していて、検索すればデフォルトであいまい検索してくれるっぽい？
+    @results = @q.result(distinct: true)
   end
 
   private

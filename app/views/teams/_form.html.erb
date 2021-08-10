@@ -11,6 +11,10 @@
     </div>
 
 <div class="form-team">
+
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <%= form.hidden_field :owner_id, value: current_user.id %>
+
   <%= form.label :チーム名 %>
   <%= form.text_field :name, class: 'form-control' %>
 
