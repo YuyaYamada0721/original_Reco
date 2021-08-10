@@ -1,5 +1,5 @@
 #sidebar {
-  position: absolute;
+  position: fixed;
   top: 0px;
   left: -200px;
   width: 200px;
@@ -46,21 +46,21 @@
 // サイドバーを閉じるボタン
 #sidebar .close-btn {
   position: absolute;
-  left: 220px;
-  top: 50px;
+  left: 150px;
+  top: 20px;
 }
 
 #sidebar .close-btn span {
   display: block;
-  width: 40px;
-  height: 5px;
+  width: 25px;
+  height: 4px;
   transition: all .4s;
-  background: #151719;
+  background: white;
   cursor: pointer;
 }
 
 .close-btn span:nth-of-type(1) {
-    transform: translateY(4.5px) rotate(-45deg);
+    transform: translateY(2.5px) rotate(-45deg);
     width: 40px;
 }
 
