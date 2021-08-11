@@ -25,7 +25,7 @@ RSpec.describe 'チーム機能', type: :system do
       it 'チーム登録が完了し、チーム一覧画面へ遷移される' do
         click_on 'チーム登録'
         fill_in 'team[name]', with: 'テストチーム１'
-        click_on '登録する'
+        click_on '登録'
         expect(page).to have_content 'テストチーム１'
         expect(page).to have_content 'チームを登録しました。'
       end
@@ -45,7 +45,7 @@ RSpec.describe 'チーム機能', type: :system do
         click_on 'テストチーム'
         click_on 'チーム編集'
         fill_in 'team[name]', with: '編集テスト'
-        click_on '登録する'
+        click_on '登録'
         expect(page).to have_content '編集テスト'
       end
     end

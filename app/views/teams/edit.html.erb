@@ -36,7 +36,7 @@
     <% if @team.is_solo == false %>
       <%= form_with model: @team, method: :post, url: team_members_path(@team.id), local: true do |form| %>
         <p>招待対象者が登録している事を確認し、<br>招待したい方のEmailアドレスを入力して、<br>招待ボタンを押下して下さい。</p>
-        <%= form.email_field :email, class: 'form-control' %>
+        <%= form.email_field :email, class: 'form-control', placeholder: 'メールアドレスを入力して下さい。' %>
         <%= form.submit '招待' %>
       <% end %>
     <% end %>

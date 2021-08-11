@@ -16,10 +16,10 @@
 
   <div class="tip-search-box">
     <%= search_form_for @q, url: search_team_knowledge_tips_path do |f| %>
-      <%= f.label :name_cont, 'ティップス名' %>
-      <%= f.search_field :name_cont %>
+      <%= f.label :name_cont, 'ティップ名' %>
+      <%= f.search_field :name_cont, placeholder: 'ティップ名で検索できます。' %>
       <%= f.label :tags_name_cont, 'タグ名' %>
-      <%= f.search_field :tags_name_cont %>
+      <%= f.search_field :tags_name_cont, placeholder: 'タグ名で検索できます。' %>
       <%= f.submit '検索', class: 'btn btn-secondary' %>
     <% end %>
   </div>
@@ -30,7 +30,7 @@
     <% @results.each do |tip| %>
       <div class="col-md-4">
         <div class="card stacked--fan-right">
-          <div class="card-header"><%= link_to tip.name, team_knowledge_tip_path(@team, @knowledge, tip) %></div>
+          <div class="card-header">ティップ名：<%= link_to tip.name, team_knowledge_tip_path(@team, @knowledge, tip) %></div>
             <a href="/teams/<%= @team.id %>/knowledges/<%= @knowledge.id %>/tips/<%= tip.id %>">
               <% tip.tags.each do |tag| %>
                 <p class="card-content">タグ：<%= tag.name %>  </p>

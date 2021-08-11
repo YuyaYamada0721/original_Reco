@@ -39,14 +39,22 @@
 
 // 入力欄
 .chat-input {
-  margin: 20px 200px;
+  margin: auto;
+  text-align: center;
 }
 
 .chat-input .form-control {
-  margin: 10px 0;
+  width: 600px;
+  display: inline-block;
+  margin: 40px 0 0 0;
 }
 
-.chat-btn-distance {
-  position: absolute;
-  left: 300px;
+.message-button {
+  display: inline-block;
+}
+
+.chat-status .fa {
+  color: red;
+  font-size: 1.2rem;
+  font-weight: bold;
 }

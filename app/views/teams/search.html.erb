@@ -8,7 +8,7 @@
   <div class="search-box">
     <%= search_form_for @q, url: search_teams_path do |form| %>
       <%= form.label :name_cont, 'チーム名' %>
-      <%= form.search_field :name_cont %>
+      <%= form.search_field :name_cont, placeholder: 'チーム名で検索できます。' %>
       <%= form.submit '検索', class: 'btn btn-secondary' %>
     <% end %>
   </div>

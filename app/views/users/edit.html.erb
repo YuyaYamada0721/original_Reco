@@ -16,10 +16,10 @@
   <div class="form-user-edit">
 
       <%= form.label :名前 %>
-      <%= form.text_field :username, class: 'form-control' %>
+      <%= form.text_field :username, class: 'form-control', placeholder: '名前を入力して下さい。' %>
 
       <%= form.label :メールアドレス %>
-      <%= form.email_field :email, class: 'form-control' %>
+      <%= form.email_field :email, class: 'form-control', placeholder: 'メールアドレスを入力して下さい。' %>
 
       <%= image_tag @user.image.url, size: '300x200' if @user.image && @user.image.url %>
       <%= form.hidden_field :image_cache %>
@@ -31,14 +31,14 @@
       </div>
 
       <%= form.label :introduction, '自己紹介(200字以内)' %>
-      <%= form.text_area :introduction, class: 'form-control area-field' %>
+      <%= form.text_area :introduction, class: 'form-control area-field', placeholder: '自己紹介を入力して下さい。' %>
 
       <%= form.label :password, 'パスワード(6字以上)' %>
-      <%= form.password_field :password, class: 'form-control' %>
+      <%= form.password_field :password, class: 'form-control', placeholder: 'パスワードを入力して下さい。' %>
 
 
       <%= form.label :パスワード確認 %>
-      <%= form.password_field :password_confirmation, class: 'form-control' %>
+      <%= form.password_field :password_confirmation, class: 'form-control', placeholder: 'パスワードを入力して下さい。' %>
 
     <div class="action">
       <%= form.submit I18n.t('views.button.register'), class: "send" %>

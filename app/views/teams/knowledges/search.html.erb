@@ -17,7 +17,7 @@
   <div class="knowledge-search-box">
       <%= search_form_for @q, url: search_team_knowledges_path do |f| %>
         <%= f.label :name_cont, 'ナレッジ名' %>
-        <%= f.search_field :name_cont %>
+        <%= f.search_field :name_cont, placeholder: 'ナレッジ名で検索できます。' %>
         <%= f.submit '検索', class: 'btn btn-secondary' %>
       <% end %>
   </div>
@@ -28,7 +28,7 @@
     <% @results.each do |knowledge| %>
       <div class="col-md-4">
         <div class="card stacked--fan-right">
-          <div class="card-header"><%= link_to knowledge.name, team_knowledge_path(@team, knowledge) %></div>
+          <div class="card-header">ナレッジ名：<%= link_to knowledge.name, team_knowledge_path(@team, knowledge) %></div>
             <a href="/teams/<%= @team.id %>/knowledges/<%= knowledge.id %>">
               <p class="card-content">作成者：<%= knowledge.member.user.username %></p>
               <p class="card-content">更新日：<%= l knowledge.updated_at %></p>
