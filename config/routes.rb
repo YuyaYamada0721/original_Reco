@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       get :search
     end
     resources :groups, controller: 'teams/groups', only: %i[show create]
-    resources :messages, controller: 'teams/messages', only: %i[create]
+    resources :messages, controller: 'teams/messages', only: %i[create destroy]
     resources :tags, controller: 'teams/tags', only: %i[index new create destroy]
     resources :knowledges, controller: 'teams/knowledges' do
       collection do

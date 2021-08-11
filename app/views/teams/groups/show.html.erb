@@ -30,9 +30,12 @@
         <div class="message-text p-2 ms-2 mb-0"><%= message.body %></div>
         <div class="chat-status">
         <% if message.member_id == @current_member.id %>
-          <% unless Read.where(message_id: message.id, is_checked: true).count.zero? %>
-            <div>既読 <%= message.reads.where(is_checked: true).count %> / <%= message.reads.count %></div>
+          <%= link_to team_message_path(@team.id, message), method: :delete, data: { confirm: 'メッセージを削除しますか？' } do%>
+            <i class="fa fa-trash-o"></i>
           <% end %>
+            <% unless Read.where(message_id: message.id, is_checked: true).count.zero? %>
+              <span>既読 <%= message.reads.where(is_checked: true).count %> / <%= message.reads.count %></span>
+            <% end %>
         <% end %>
           <div><%= l message.created_at %></div>
         </div>

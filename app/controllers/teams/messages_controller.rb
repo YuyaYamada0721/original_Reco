@@ -38,4 +38,12 @@ class Teams::MessagesController < ApplicationController
       redirect_to team_path(params[:team_id]), notice: 'メッセージが作成できませんでした。'
     end
   end
+
+  def destroy
+    @team = Team.find(params[:team_id])
+    @group = Group.find(Message.find_by(id: params[:id]).group_id)
+    @message = Message.find(params[:id])
+    @message.destroy
+    redirect_to team_group_path(@team, @group), notice: 'メッセージを削除しました。'
+  end
 end
