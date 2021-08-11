@@ -1,5 +1,4 @@
 class Teams::MembersController < ApplicationController
-
   def create
     @team = Team.find(params[:team_id])
     @user = User.find_by(email: params[:team][:email])
