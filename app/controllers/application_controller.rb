@@ -47,12 +47,22 @@ class ApplicationController < ActionController::Base
     redirect_to teams_path, notice: 'アクセスできません' if Group.last.id < params[:id].to_i
   end
 
-  def already_exist_team # 同じ名前のチームを作成できない処理
+  def already_exist_team # 同じ名前のチームを作成できない
     @team = current_user.teams.build(team_params)
     if Team.where(user_id: current_user.id, name: params[:team][:name]).present?
       flash[:notice] = '既に存在するチーム名です。'
       render :new
     end
+  end
+
+  def same_team_check # 同じチームでないUserページにアクセスさせない
+    current_user_join_team = current_user.members.pluck('team_id')
+    subject_user = User.find(params[:id]).members.pluck('team_id')
+    same_team_judgment = current_user_join_team + subject_user
+    result = same_team_judgment.select { |judgment| same_team_judgment.count(judgment) > 1 }.uniq
+    return if result.present?
+
+    redirect_to user_path(current_user), notice: 'チームメンバーではないのでアクセスできません。'
   end
 
   protected
