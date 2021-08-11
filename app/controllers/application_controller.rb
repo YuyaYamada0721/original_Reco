@@ -60,9 +60,12 @@ class ApplicationController < ActionController::Base
     subject_user = User.find(params[:id]).members.pluck('team_id')
     same_team_judgment = current_user_join_team + subject_user
     result = same_team_judgment.select { |judgment| same_team_judgment.count(judgment) > 1 }.uniq
-    return if result.present?
 
-    redirect_to user_path(current_user), notice: 'チームメンバーではないのでアクセスできません。'
+    unless current_user.id == params[:id]
+      return if result.present?
+
+      redirect_to user_path(current_user), notice: 'チームメンバーではないのでアクセスできません。'
+    end
   end
 
   protected
