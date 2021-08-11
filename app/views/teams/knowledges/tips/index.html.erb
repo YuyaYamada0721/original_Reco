@@ -17,9 +17,9 @@
   <div class="tip-search-box">
     <%= search_form_for @q, url: search_team_knowledge_tips_path do |f| %>
       <%= f.label :name_cont, 'ティップ名' %>
-      <%= f.search_field :name_cont %>
+      <%= f.search_field :name_cont, placeholder: 'ティップ名で検索できます。' %>
       <%= f.label :tags_name_cont, 'タグ名' %>
-      <%= f.search_field :tags_name_cont %>
+      <%= f.search_field :tags_name_cont, placeholder: 'タグ名で検索できます。' %>
       <%= f.submit '検索', class: 'btn btn-secondary' %>
     <% end %>
   </div>
