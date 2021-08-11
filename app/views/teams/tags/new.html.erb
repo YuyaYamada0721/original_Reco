@@ -23,7 +23,7 @@
 
   <div class="tag-new-form">
       <%= form.label :タグ名 %>
-      <%= form.text_field :name, class: 'form-control' %>
+      <%= form.text_field :name, class: 'form-control', placeholder: 'タグ名を入力して下さい。' %>
       <%= form.submit I18n.t('views.button.register'), class: 'custom-btn new-link' %>
   </div>
 <% end %>
