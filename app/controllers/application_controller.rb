@@ -49,6 +49,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def team_function_owner_only #tags
+    @team = Team.find(params[:team_id])
+    return if @team.owner.id == current_user.id
+
+    flash[:notice] = 'チームのオーナーでないとアクセスできません。'
+    redirect_to team_tags_path
+  end
+
   def team_member_check # tags knowledges
     unless Member.where(team_id: params[:team_id]).find_by(user_id: current_user.id).present?
       flash[:notice] = 'メンバーでないのでアクセスできません。'

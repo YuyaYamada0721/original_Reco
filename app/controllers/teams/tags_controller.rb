@@ -1,5 +1,6 @@
 class Teams::TagsController < ApplicationController
   before_action :team_member_check
+  before_action :team_function_owner_only, only: :new
 
   def index
     @team = Team.find(params[:team_id])

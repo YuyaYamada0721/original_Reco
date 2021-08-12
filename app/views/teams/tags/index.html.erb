@@ -10,15 +10,20 @@
 </h1>
 
 <div>
-  <%= link_to 'タグ登録', new_team_tag_path, class: 'custom-btn new-link' %>
+  <% if @team.owner.id == current_user.id %>
+    <%= link_to 'タグ登録', new_team_tag_path, class: 'custom-btn new-link' %>
+  <% end %>
 </div>
 
 <div class="tag-index">
-    <% @tags.each do |tag| %>
-      <li>
-        <%= tag.name %><%= link_to '削除', team_tag_path(@team, tag), method: :delete, data: { confirm: 'タグを削除しますか？' }, class: 'btn btn-danger' %>
-      </li>
-    <% end %>
+  <% @tags.each do |tag| %>
+    <li>
+      <%= tag.name %>
+      <% if @team.owner.id == current_user.id %>
+        <%= link_to '削除', team_tag_path(@team, tag), method: :delete, data: { confirm: 'タグを削除しますか？' }, class: 'btn btn-danger' %>
+      <% end %>
+    </li>
+  <% end %>
 </div>
 
 <%= paginate @tags %>
