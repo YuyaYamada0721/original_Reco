@@ -10,15 +10,9 @@
 </h1>
 
 <div class="knowledge-show">
-
   <%= link_to team_knowledge_tips_path(@team.id, @knowledge.id), class: 'next-btn btn shine-btn' do %>
     <i class="fa fa-file-text"> ティップ</i>
   <% end %>
-
-  <%= link_to edit_team_knowledge_path(@team, @knowledge), class: 'edit-btn btn' do %>
-    <i class="fa fa-pencil"> ナレッジ編集</i>
-  <% end %>
-
 
   <% if @stock.present? %>
     <%= link_to team_knowledge_stock_path(@knowledge.team_id, @knowledge, params[:id]), method: :delete, class: 'stock-btn sad' do %>
@@ -30,6 +24,11 @@
     <% end %>
   <% end %>
 
+  <% if @knowledge.member_id == @current_member.id %>
+    <%= link_to edit_team_knowledge_path(@team, @knowledge), class: 'edit-btn btn' do %>
+      <i class="fa fa-pencil"> ナレッジ編集</i>
+    <% end %>
+  <% end %>
 </div>
 
 <%= link_to '戻る', team_knowledges_path, class: 'btn-flat-logo' %>

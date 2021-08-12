@@ -2,6 +2,7 @@ class Teams::KnowledgesController < ApplicationController
   before_action :authenticate_user!
   before_action :team_member_check, only: %i[index new create]
   before_action :team_knowledge_check, only: %i[show edit update destroy]
+  before_action :knowledge_author_check, only: :edit
 
   def index
     @team = Team.find(params[:team_id])
@@ -28,8 +29,8 @@ class Teams::KnowledgesController < ApplicationController
   def show
     @team = Team.find(params[:team_id])
     @knowledge = Knowledge.find(params[:id])
-    @member = Member.find_by(team_id: @team.id, user_id: current_user.id)
-    @stock = @member.stocks.find_by(knowledge_id: @knowledge.id)
+    @current_member = Member.find_by(team_id: @team.id, user_id: current_user.id)
+    @stock = @current_member.stocks.find_by(knowledge_id: @knowledge.id)
   end
 
   def edit
