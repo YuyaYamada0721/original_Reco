@@ -24,10 +24,22 @@ RSpec.describe 'チーム機能', type: :system do
     context 'チーム登録操作をした場合' do
       it 'チーム登録が完了し、チーム一覧画面へ遷移される' do
         click_on 'チーム登録'
+        fill_in 'team[name]', with: 'テストチーム1'
+        click_on '登録'
+        expect(page).to have_content 'テストチーム1'
+        expect(page).to have_content 'チームを登録しました。'
+      end
+    end
+    context '同名のチーム登録操作をした場合' do
+      it '保存できない' do
+        click_on 'チーム登録'
         fill_in 'team[name]', with: 'テストチーム１'
         click_on '登録'
-        expect(page).to have_content 'テストチーム１'
-        expect(page).to have_content 'チームを登録しました。'
+        click_on 'チーム登録'
+        fill_in 'team[name]', with: 'テストチーム1'
+        click_on '登録'
+        expect(page).to have_content '保存できませんでした。既に存在するチーム名です。'
+        expect(page).to have_content '登録'
       end
     end
   end

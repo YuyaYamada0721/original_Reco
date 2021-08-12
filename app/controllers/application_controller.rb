@@ -77,14 +77,6 @@ class ApplicationController < ActionController::Base
     redirect_to teams_path, notice: 'アクセスできません' if Group.last.id < params[:id].to_i
   end
 
-  def already_exist_team # 同じ名前のチームを作成できない teams
-    @team = current_user.teams.build(team_params)
-    if Team.where(user_id: current_user.id, name: params[:team][:name]).present?
-      flash[:notice] = '既に存在するチーム名です。'
-      render :new
-    end
-  end
-
   protected
 
   def configure_permitted_parameters
