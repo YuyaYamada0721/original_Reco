@@ -1,0 +1,16 @@
+#wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.left-column {
+  width: 30%;
+  height: 800px;
+  background-color: aqua;
+}
+
+.right-column {
+  width: 70%;
+  height: 800px;
+  background-color: aquamarine;
+}
