@@ -33,7 +33,7 @@
           <%= link_to team_message_path(@team.id, message), method: :delete, data: { confirm: 'メッセージを削除しますか？' } do%>
             <i class="fa fa-trash-o"></i>
           <% end %>
-            <% unless Read.where(message_id: message.id, is_checked: true).count.zero? %>
+            <% if Read.where(message_id: message.id, is_checked: true).present? %>
               <span>既読 <%= message.reads.where(is_checked: true).count %> / <%= message.reads.count %></span>
             <% end %>
         <% end %>
