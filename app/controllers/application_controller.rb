@@ -5,16 +5,23 @@ class ApplicationController < ActionController::Base
     user_path(current_user.id)
   end
 
-  def team_members_check # teams
-    unless Member.where(team_id: params[:id]).where(user_id: current_user.id).present?
-      flash[:notice] = 'メンバーではないチーム情報は見れません。'
-      redirect_to teams_path
+  def same_team_check # 同じチームでないUserページにアクセスさせない users
+    if User.find_by(id: params[:id]).nil?
+      redirect_to user_path(current_user), notice: 'ユーザは存在しません。'
+    elsif current_user.id != params[:id].to_i
+      current_user_join_team = current_user.members.pluck('team_id')
+      subject_user = User.find(params[:id]).members.pluck('team_id')
+      same_team_judgment = current_user_join_team + subject_user
+      result = same_team_judgment.select { |judgment| same_team_judgment.count(judgment) > 1 }.uniq
+      unless result.present?
+        redirect_to user_path(current_user), notice: 'チームメンバーではないのでアクセスできません。'
+      end
     end
   end
 
-  def team_member_check # tags knowledges
-    unless Member.where(team_id: params[:team_id]).find_by(user_id: current_user.id).present?
-      flash[:notice] = 'メンバーでないのでアクセスできません。'
+  def team_members_check # teams
+    unless Member.where(team_id: params[:id]).where(user_id: current_user.id).present?
+      flash[:notice] = 'メンバーではないチーム情報は見れません。'
       redirect_to teams_path
     end
   end
@@ -34,7 +41,30 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def tag_check # tips登録時、tag_idsのパラメータがなければtaggingからデータを削除する
+  def knowledge_author_check # knowledges
+    @current_member = Member.find_by(team_id: params[:team_id], user_id: current_user.id)
+    unless @current_member.id == @knowledge.member_id
+      flash[:notice] = 'ナレッジの作成者でないとアクセスできません。'
+      redirect_to team_knowledges_path
+    end
+  end
+
+  def team_function_owner_only #tags
+    @team = Team.find(params[:team_id])
+    return if @team.owner.id == current_user.id
+
+    flash[:notice] = 'チームのオーナーでないとアクセスできません。'
+    redirect_to team_tags_path
+  end
+
+  def team_member_check # tags knowledges
+    unless Member.where(team_id: params[:team_id]).find_by(user_id: current_user.id).present?
+      flash[:notice] = 'メンバーでないのでアクセスできません。'
+      redirect_to teams_path
+    end
+  end
+
+  def tag_check # tips登録時、tag_idsのパラメータがなければtaggingからデータを削除する tips
     if params[:tip][:tag_ids] == nil
       @tags = Tagging.where(tip_id: @tip.id)
       @tags.each do |tag|
@@ -43,30 +73,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def group_exist # group_idをURLに直接パラメータ入力でアクセスしようとする制限
+  def group_exist # group_idをURLに直接パラメータ入力でアクセスしようとする制限 groups
     redirect_to teams_path, notice: 'アクセスできません' if Group.last.id < params[:id].to_i
-  end
-
-  def already_exist_team # 同じ名前のチームを作成できない
-    @team = current_user.teams.build(team_params)
-    if Team.where(user_id: current_user.id, name: params[:team][:name]).present?
-      flash[:notice] = '既に存在するチーム名です。'
-      render :new
-    end
-  end
-
-  def same_team_check # 同じチームでないUserページにアクセスさせない
-    if User.find_by(id: params[:id]).nil?
-      redirect_to user_path(current_user), notice: 'ユーザは存在しません。'
-    elsif current_user.id != params[:id].to_i
-      current_user_join_team = current_user.members.pluck('team_id')
-      subject_user = User.find(params[:id]).members.pluck('team_id')
-      same_team_judgment = current_user_join_team + subject_user
-      result = same_team_judgment.select { |judgment| same_team_judgment.count(judgment) > 1 }.uniq
-      unless result.present?
-        redirect_to user_path(current_user), notice: 'チームメンバーではないのでアクセスできません。'
-      end
-    end
   end
 
   protected

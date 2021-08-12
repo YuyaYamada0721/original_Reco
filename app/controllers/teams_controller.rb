@@ -2,7 +2,6 @@ class TeamsController < ApplicationController
   before_action :authenticate_user!
   before_action :team_owner_check, only: :edit
   before_action :team_members_check, only: :show
-  before_action :already_exist_team, only: :create
 
   def index
     @teams = current_user.members_teams.page(params[:page]).per(6)
@@ -25,8 +24,12 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.new(team_params)
+    @team.name = @team.name.tr('０-９ａ-ｚＡ-Ｚ', '0-9a-zA-Z')
 
-    if @team.save
+    if Team.find_by(user_id: current_user.id, name: @team.name).present?
+      flash[:notice] = '保存できませんでした。既に存在するチーム名です。'
+      render :new
+    elsif @team.save
       @team.invite_member(@team.user)
       @owner_at_the_member_table = Member.find_by(team_id: @team.id, user_id: current_user.id)
       @group = Group.create

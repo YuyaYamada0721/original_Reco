@@ -29,12 +29,21 @@
 
 <p class="stock-label">ナレッジストック一覧</p>
 
-<div class="stock-space">
-  <% @stocks.each do |stock| %>
-    <li><%= link_to stock.knowledge.name, team_knowledge_path(@team, stock.knowledge_id) %></li>
+  <% if @current_member.id == params[:id].to_i %>
+    <div class="stock-space">
+      <% @stocks.each do |stock| %>
+        <li><%= link_to stock.knowledge.name, team_knowledge_path(@team, stock.knowledge_id) %></li>
+      <% end %>
+      <%= paginate @stocks %>
+    </div>
+  <% else %>
+    <div class="stock-space">
+      <% @stocks.each do |stock| %>
+        <li><%= stock.knowledge.name %></li>
+      <% end %>
+      <%= paginate @stocks %>
+    </div>
   <% end %>
-  <%= paginate @stocks %>
-</div>
 
 <hr>
 <%= link_to '戻る', team_path(@team), class: 'btn-flat-logo' %>

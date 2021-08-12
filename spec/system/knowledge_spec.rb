@@ -5,12 +5,14 @@ RSpec.describe 'ナレッジ機能', type: :system do
     @user2 = FactoryBot.create(:user2)
     @team = FactoryBot.create(:team, user_id: @user.id, owner_id: @user.id)
     @member = FactoryBot.create(:member, user_id: @user.id, team_id: @team.id)
+    @member2 = FactoryBot.create(:member, user_id: @user2.id, team_id: @team.id)
     @group = FactoryBot.create(:group)
+    @knowledge = FactoryBot.create(:knowledge3, member_id: @member2.id, team_id: @team.id)
 
     FactoryBot.create(:team, user: @user, owner: @user)
     FactoryBot.create(:group_member, member: @member, group: @group)
     FactoryBot.create(:knowledge, member: @member, team: @team)
-    FactoryBot.create(:knowledge2, member: @member, team: @team)
+    FactoryBot.create(:knowledge2, member: @member2, team: @team)
 
     visit new_user_session_path
     fill_in 'user[email]', with: 'piyo@piyo.com'
@@ -49,6 +51,19 @@ RSpec.describe 'ナレッジ機能', type: :system do
         click_on '登録'
         expect(page).to have_content 'ナレッジ編集機能テスト'
         expect(page).to have_content 'ナレッジを編集しました。'
+      end
+    end
+    context 'ナレッジ作成者でない場合' do
+      it 'ナレッジ編集ボタンが表示されない' do
+        click_on 'fugaナレッジ'
+        expect(page).not_to have_content 'ナレッジ編集'
+      end
+    end
+    context 'ナレッジ作成者でないかつURLに直接editと入力しアクセスしようとした場合' do
+      it 'ナレッジの一覧画面へリダイレクトされる' do
+        visit edit_team_knowledge_path(@team, @knowledge)
+        expect(page).to have_content 'ナレッジ一覧'
+        expect(page).to have_content 'ナレッジの作成者でないとアクセスできません。'
       end
     end
   end
