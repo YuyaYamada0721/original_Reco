@@ -38,10 +38,23 @@ RSpec.describe 'タグ機能', type: :system do
       it 'タグ登録が完了し、タグ一覧画面へ遷移される' do
         owner
         click_on 'タグ登録'
-        fill_in 'tag[name]', with: 'テストタグ'
+        fill_in 'tag[name]', with: 'テストタグ1'
         click_on '登録'
-        expect(page).to have_content 'テストタグ'
+        expect(page).to have_content 'テストタグ1'
         expect(page).to have_content 'タグを登録しました。'
+      end
+    end
+    context 'チームオーナーが既に登録されているタグ名で登録操作をした場合' do
+      it '登録できない' do
+        owner
+        click_on 'タグ登録'
+        fill_in 'tag[name]', with: 'テストタグ1'
+        click_on '登録'
+        click_on 'タグ登録'
+        fill_in 'tag[name]', with: 'テストタグ１'
+        click_on '登録'
+        expect(page).to have_content '保存できませんでした。既に存在するタグ名です。'
+        expect(page).to have_content 'タグ登録'
       end
     end
     context 'オーナー以外がタグ一覧画面へ遷移した場合' do

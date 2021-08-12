@@ -30,8 +30,8 @@ RSpec.describe 'チーム機能', type: :system do
         expect(page).to have_content 'チームを登録しました。'
       end
     end
-    context '同名のチーム登録操作をした場合' do
-      it '保存できない' do
+    context '既に登録されているチーム名で登録操作をした場合' do
+      it '登録できない' do
         click_on 'チーム登録'
         fill_in 'team[name]', with: 'テストチーム１'
         click_on '登録'

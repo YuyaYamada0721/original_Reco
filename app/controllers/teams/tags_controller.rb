@@ -15,7 +15,12 @@ class Teams::TagsController < ApplicationController
   def create
     @team = Team.find(params[:team_id])
     @tag = Tag.new(tag_params)
-    if @tag.save
+    @tag.name = @tag.name.tr('０-９ａ-ｚＡ-Ｚ', '0-9a-zA-Z')
+
+    if Tag.find_by(team_id: @team.id, name: @tag.name).present?
+      flash[:notice] = '保存できませんでした。既に存在するタグ名です。'
+      render :new
+    elsif @tag.save
       redirect_to team_tags_path, notice: 'タグを登録しました。'
     else
       render :new
