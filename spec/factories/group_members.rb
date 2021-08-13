@@ -3,4 +3,8 @@ FactoryBot.define do
     member { "" }
     group { "" }
   end
+  factory :group_member2, class: 'GroupMember' do
+    member { "" }
+    group { "" }
+  end
 end

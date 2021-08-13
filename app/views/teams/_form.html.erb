@@ -18,13 +18,25 @@
   <%= form.label :チーム名 %>
   <%= form.text_field :name, class: 'form-control', placeholder: 'チーム名を入力して下さい。' %>
 
-  <div class="cp_ipradio">
-    <%= form.label :is_solo, '個人', value: true %>
-    <%= form.radio_button :is_solo, true, class: 'option-input radio' %>
-
-    <%= form.label :is_solo, 'チーム', value: false %>
-    <%= form.radio_button :is_solo, false, class: 'option-input radio' %>
-  </div>
+  <% if controller.action_name == 'edit' %>
+    <% if @team.members.count == 1 %>
+      <div class="cp_ipradio">
+        <div><%= form.label :使用用途 %></div>
+        <%= form.label :is_solo, '個人', value: true %>
+        <%= form.radio_button :is_solo, true, class: 'option-input radio' %>
+        <%= form.label :is_solo, 'チーム', value: false %>
+        <%= form.radio_button :is_solo, false, class: 'option-input radio' %>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="cp_ipradio">
+      <div><%= form.label :使用用途 %></div>
+      <%= form.label :is_solo, '個人', value: true %>
+      <%= form.radio_button :is_solo, true, class: 'option-input radio' %>
+      <%= form.label :is_solo, 'チーム', value: false %>
+      <%= form.radio_button :is_solo, false, class: 'option-input radio' %>
+    </div>
+  <% end %>
 
   <%= form.submit I18n.t('views.button.register'), class: 'custom-btn new-link' %>
 </div>
