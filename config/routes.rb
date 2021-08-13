@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root 'tops#index'
 
-  get 'help', action: :show, controller: 'helps'
+  get 'help', action: :index, controller: 'helps'
 
   devise_for :users
   devise_scope :user do
