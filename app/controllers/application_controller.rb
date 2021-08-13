@@ -73,6 +73,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def tip_author_check
+    @current_member = Member.find_by(team_id: params[:team_id], user_id: current_user.id)
+    @tip = Tip.find(params[:id])
+    return if @current_member.id == @tip.member_id
+
+    flash[:notice] = 'ティップの作成者でないとアクセスできません。'
+    redirect_to team_knowledges_path
+  end
+
   def group_exist # group_idをURLに直接パラメータ入力でアクセスしようとする制限 groups
     redirect_to teams_path, notice: 'アクセスできません' if Group.last.id < params[:id].to_i
   end
