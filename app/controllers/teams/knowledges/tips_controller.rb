@@ -1,6 +1,7 @@
 class Teams::Knowledges::TipsController < ApplicationController
   before_action :authenticate_user!
   before_action :team_member_check
+  before_action :tip_author_check, only: :edit
   after_action :tag_check, only: :update
 
   def index
