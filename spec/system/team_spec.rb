@@ -61,6 +61,23 @@ RSpec.describe 'チーム機能', type: :system do
         expect(page).to have_content '編集テスト'
       end
     end
+    context 'チームメンバーが1人で編集画面に遷移した場合' do
+      it '使用用途を更新するフォームが表示される' do
+        click_on 'テストチーム'
+        click_on 'チーム編集'
+        expect(page).to have_content '使用用途'
+      end
+    end
+    context 'チームメンバーが複数人で編集画面に遷移した場合' do
+      it '使用用途を更新するフォームが表示されない' do
+        click_on 'テストチーム'
+        click_on 'チーム編集'
+        fill_in 'team[email]', with: 'fuga@fuga.com'
+        click_on '招待'
+        click_on 'チーム編集'
+        expect(page).not_to have_content '使用用途'
+      end
+    end
   end
   describe 'チーム削除機能' do
     context 'チーム削除操作をした場合' do
