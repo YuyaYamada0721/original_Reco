@@ -2,6 +2,13 @@ require 'rails_helper'
 RSpec.describe 'ユーザ機能', type: :system do
   before do
     @user = FactoryBot.create(:user)
+
+    def owner
+      visit new_user_session_path
+      fill_in 'user[email]', with: 'piyo@piyo.com'
+      fill_in 'user[password]', with: 'piyopiyo'
+      find('.devise-btn').click
+    end
   end
 
   describe 'ユーザ登録機能' do
@@ -59,6 +66,24 @@ RSpec.describe 'ユーザ機能', type: :system do
         find('.admin-guest-btn').click
         expect(page).to have_content 'ログインしました。'
         expect(page).to have_content '管理者ゲスト'
+      end
+    end
+  end
+  describe 'ユーザ編集機能' do
+    context 'ユーザ編集操作をした場合' do
+      it 'ユーザ編集が完了し、ユーザ詳細画面へ遷移される' do
+        owner
+        click_on 'ユーザ編集'
+        fill_in 'user[username]', with: 'テスト'
+        fill_in 'user[email]', with: 'test@test.com'
+        attach_file 'user[image]', "#{Rails.root}/spec/fixtures/test1.jpg"
+        fill_in 'user[introduction]', with: '確認中です'
+        fill_in 'user[password]', with: 'testtest'
+        fill_in 'user[password_confirmation]', with: 'testtest'
+        click_on '登録'
+        expect(page).to have_content 'テスト'
+        expect(page).to have_selector("img[src$='test1.jpg']")
+        expect(page).to have_content '確認中です'
       end
     end
   end
