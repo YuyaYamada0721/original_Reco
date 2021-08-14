@@ -55,6 +55,11 @@
 	border-color: #b99a00 rgba(0,0,0,0) rgba(0,0,0,0) rgba(0,0,0,0);
 }
 
+.right-column-box-content {
+  padding: 0 10%;
+  margin-bottom: 80px;
+}
+
 .right-column h3 {
   font-size: 1.5rem;
   margin: 30px 0 10px 0;
@@ -62,14 +67,20 @@
 }
 
 .right-column .right-column-h3 {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   text-align: center;
   margin: 0;
 }
 
+.right-column .test .right-column-h3 {
+  padding: 0 10%;
+  text-align: left;
+  margin: 10px 0;
+}
+
 .right-column .right-column-h3-alert {
   color: red;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   text-align: center;
   margin: 0;
 }
