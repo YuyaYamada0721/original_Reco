@@ -48,6 +48,7 @@ RSpec.describe 'ユーザ機能', type: :system do
         fill_in 'user[email]', with: 'piyo@piyo.com'
         fill_in 'user[password]', with: 'piyopiyo'
         find('.devise-btn').click
+        find('#sidebar-btn').click
         click_on 'ログアウト'
         expect(page).to have_content 'ログアウトしました。'
       end
