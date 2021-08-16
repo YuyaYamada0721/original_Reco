@@ -85,6 +85,14 @@
   margin: 0;
 }
 
+.right-column .test .right-column-h3-alert {
+  color: red;
+  font-size: 1.2rem;
+  text-align: left;
+  padding: 0 10%;
+  margin: 10px 0;
+}
+
 .right-column .right-column-content {
   font-size: 1.2rem;
   text-align: center;
@@ -109,7 +117,7 @@ ol.sample1 ol{
   list-style: none;
   padding: 0;
   width:350px;
-  font: 14px/1.6 'arial narrow', sans-serif;
+  font: 15px/1.6 'arial narrow', sans-serif;
 }
 ol.sample1 ol{
   margin: 0 0 0 35px;

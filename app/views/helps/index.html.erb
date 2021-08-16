@@ -4,17 +4,30 @@
 
   <div class="left-column">
     <ol class="sample1">
-      <li><a href="#item1">使用手順</a></li>
+      <li><a href="#item0">使用手順</a></li>
       <li><a href="#item1">各機能の説明</a></li>
         <ol>
           <li><a href="#item1">新規登録・ログイン</a></li>
           <li><a href="#item2">マイページ</a></li>
           <li><a href="#item3">個人記録・チーム記録<i class="fa fa-hand-o-left"> important</i></a></li>
+          <li><a href="#item4">ナレッジ</a></li>
+          <li><a href="#item5">ティップ</a></li>
         </ol>
     </ol>
   </div>
 
   <div class="right-column">
+
+    <div class="right-column-box">
+      <h2 id="item0">使用手順</h2>
+        <div class="right-column-box-content">
+          <h3><i class="fa fa-flag"></i>&nbsp;画像をクリック！フローチャートをご覧ください。</h3>
+          <p class="right-column-h3">
+            <a href="/assets/procedure.png" data-lightbox='demo'><img src="/assets/procedure.png" width="600" height="300"></a>
+          </p>
+        </div>
+    </div><hr>
+
     <div class="right-column-box">
       <h2 id="item1">新規登録・ログイン</h2>
         <div class="right-column-box-content">
@@ -78,6 +91,8 @@
             <div class="test">
               <p class="right-column-h3">●&nbsp;ナレッジ ・・・ チームのナレッジ一覧</p>
               <p class="right-column-h3">●&nbsp;タグ・・・チームのタグ一覧</p>
+              <p class="right-column-h3-alert"><i class="fa fa-exclamation-circle"></i>&nbsp;オーナー・・・タグ作成・削除</p>
+              <p class="right-column-h3-alert"><i class="fa fa-exclamation-circle"></i>&nbsp;一般ユーザ・・・タグ一覧確認のみ</p>
               <p class="right-column-h3">●&nbsp;チームメッセージ・・・チームでメッセージが可能</p>
               <p class="right-column-h3-alert"><i class="fa fa-exclamation-circle"></i>&nbsp;チームに招待した時点で、チームメッセージに参加されます。</p>
               <p class="right-column-h3">● メンバーの名前を選択</p>
@@ -86,20 +101,99 @@
               <p class="right-column-h3"><i class="fa fa-hand-pointer-o"></i>&nbsp;自分を選択するとストックしているナレッジがリンクとなっています。</p>
             </div>
         </div>
-    </div>
+
         <div class="right-column-box-content">
           <h3><i class="fa fa-flag"></i>&nbsp;チーム編集</h3>
-          <p class="right-column-h3">チームの様々な事が行えます。</p>
+          <p class="right-column-h3">オーナー&#40;チーム作成者&#41;がチームの様々な事が行えます。</p>
             <div class="test">
               <p class="right-column-h3">●&nbsp;チーム名の更新</p>
+              <p class="right-column-h3">●&nbsp;チーム使用用途の更新</p>
+              <p class="right-column-h3-alert"><i class="fa fa-exclamation-circle"></i>&nbsp;使用用途の更新はメンバーがオーナーのみの１人の時に可能です。</p>
               <p class="right-column-h3">●&nbsp;メンバーをチームから脱退</p>
               <p class="right-column-h3">●&nbsp;メンバーにオーナー権限を譲渡</p>
               <p class="right-column-h3">●&nbsp;チームに招待</p>
               <p class="right-column-h3"><i class="fa fa-hand-pointer-o"></i>&nbsp;本アプリに登録されている招待したい方のメールアドレスを入力し招待ボタンを押下して下さい。</p>
               <p class="right-column-h3">●&nbsp;チームの削除</p>
-              <p class="right-column-h3-alert"><i class="fa fa-exclamation-circle"></i>&nbsp;使用用途の更新はメンバーがオーナーのみの１人の時に可能です。</p>
             </div>
         </div>
     </div><hr>
 
+    <div class="right-column-box">
+      <h2 id="item4">ナレッジ&#40;親項目&#41;</h2>
+        <div class="right-column-box-content">
+          <h3><i class="fa fa-flag"></i>&nbsp;ナレッジ登録</h3>
+          <p class="right-column-h3">ナレッジ名を登録します。</p>
+          <p class="right-column-h3">これから記録を残す親項目となります。フォルダのようなものです。</p>
+        </div>
+
+        <div class="right-column-box-content">
+          <h3><i class="fa fa-flag"></i>&nbsp;ナレッジ一覧</h3>
+          <p class="right-column-h3">登録したナレッジの一覧が表示されます。</p>
+          <p class="right-column-h3">ナレッジ名もしくはカードの作成者付近をクリックすると、詳細画面へ遷移されます。</p>
+          <p class="right-column-h3"><i class="fa fa-hand-pointer-o"></i>&nbsp;ナレッジを６個以上登録するとページネーションが適応されます。</p>
+        </div>
+
+        <div class="right-column-box-content">
+          <h3><i class="fa fa-flag"></i>&nbsp;ナレッジ一覧 検索機能</h3>
+          <p class="right-column-h3">ナレッジ名であいまい検索をする事ができます。</p>
+          <p class="right-column-h3">例えば、ナレッジ名が "テスト" の場合、"ト" でも検索に引っかかります。</p>
+        </div>
+
+        <div class="right-column-box-content">
+          <h3><i class="fa fa-flag"></i>&nbsp;ナレッジ詳細</h3>
+          <p class="right-column-h3">ナレッジの様々な事が行えます。</p>
+            <div class="test">
+              <p class="right-column-h3">●&nbsp;ティップ ・・・ ナレッジのティップ一覧</p>
+              <p class="right-column-h3">●&nbsp;ストック・・・ナレッジをストックしアクセスが容易になります。</p>
+              <p class="right-column-h3-alert">チームの詳細の自分の名前をクリックして下さい！<br>ストック一覧が表示されます！</p>
+            </div>
+        </div>
+
+        <div class="right-column-box-content">
+          <h3><i class="fa fa-flag"></i>&nbsp;チーム編集</h3>
+          <p class="right-column-h3">ナレッジ作成者がナレッジの様々な事が行えます。</p>
+            <div class="test">
+              <p class="right-column-h3">●&nbsp;ナレッジ名の更新</p>
+              <p class="right-column-h3">●&nbsp;ナレッジの削除</p>
+            </div>
+        </div>
+    </div><hr>
+
+    <div class="right-column-box">
+      <h2 id="item5">ティップ&#40;子項目&#41;</h2>
+        <div class="right-column-box-content">
+          <h3><i class="fa fa-flag"></i>&nbsp;ティップ登録</h3>
+          <p class="right-column-h3">ナレッジ記録の中身を記載していきましょう。ファイルのようなものです。</p>
+            <div class="test">
+              <p class="right-column-h3">●&nbsp;ティップ名</p>
+              <p class="right-column-h3">●&nbsp;ティップ内容</p>
+              <p class="right-column-h3">●&nbsp;タグ</p>
+              <p class="right-column-h3">●&nbsp;画像 ３ファイル保存可能</p>
+            </div>
+        </div>
+
+        <div class="right-column-box-content">
+          <h3><i class="fa fa-flag"></i>&nbsp;ティップ一覧</h3>
+          <p class="right-column-h3">登録したティップの一覧が表示されます。</p>
+          <p class="right-column-h3">ティップ名もしくはカードの作成者付近をクリックすると、詳細画面へ遷移されます。</p>
+          <p class="right-column-h3"><i class="fa fa-hand-pointer-o"></i>&nbsp;ティップを６個以上登録するとページネーションが適応されます。</p>
+        </div>
+
+        <div class="right-column-box-content">
+          <h3><i class="fa fa-flag"></i>&nbsp;ティップ一覧 検索機能</h3>
+          <p class="right-column-h3">ティップ名、タグ名であいまい検索をする事ができます。</p>
+          <p class="right-column-h3">例えば、ナレッジ名が "テスト" の場合、"ト" でも検索に引っかかります。</p>
+        </div>
+
+        <div class="right-column-box-content">
+          <h3><i class="fa fa-flag"></i>&nbsp;ティップ詳細</h3>
+          <p class="right-column-h3">ティップの内容を確認する事ができます。</p>
+        </div>
+
+        <div class="right-column-box-content">
+          <h3><i class="fa fa-flag"></i>&nbsp;ティップ編集</h3>
+          <p class="right-column-h3">ティップ作成者がティップ編集を行う事ができます。</p>
+        </div>
+    </div>
+  </div>
 </div>
