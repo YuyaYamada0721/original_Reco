@@ -38,10 +38,14 @@
   margin: 20px 0;
 }
 
-// ティップ詳細時の見出しを分かりやすくする線
-.tip-line {
+// ティップ詳細時の見出しをデザイン
+.tip-label {
   display: inline-block;
-  border-bottom: solid 3px #498ee0;
+  font-size: 1rem;
+  background: #5f6c7b;
+  padding: 0.3em;
+  color: white;
+  border-radius: 0.5em;
 }
 
 // 写真エリア
@@ -83,11 +87,11 @@
 }
 
 .tip-show-name p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 .tip-show-content p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 .tip-show-tag {
