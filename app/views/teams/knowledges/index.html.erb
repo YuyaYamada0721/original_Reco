@@ -6,7 +6,7 @@
       Team Knowledge
     <% end %>
   </span>
-  <%= @team.name %> -ナレッジ一覧-
+  <%= @team.name %> <i class="fa fa-caret-right"></i> ナレッジ一覧
 </h1>
 
 <div class="knowledge-index-function-box">
@@ -28,11 +28,13 @@
     <% @knowledges.each do |knowledge| %>
       <div class="col-md-4">
         <div class="card stacked--fan-right">
-          <div class="card-header">ナレッジ名：<%= link_to knowledge.name, team_knowledge_path(@team, knowledge) %></div>
-            <a href="/teams/<%= @team.id %>/knowledges/<%= knowledge.id %>">
-              <p class="card-content">作成者：<%= knowledge.member.user.username %></p>
-              <p class="card-content">更新日：<%= l knowledge.updated_at %></p>
-            </a>
+          <a href="/teams/<%= @team.id %>/knowledges/<%= knowledge.id %>">
+            <p class="knowledge-card-content">ナレッジ名：<%= knowledge.name %></p>
+            <div class="knowledge-create-info">
+              <p class="knowledge-card-content">作成者：<%= knowledge.member.user.username %></p>
+              <p class="knowledge-card-content">更新日：<%= l knowledge.updated_at %></p>
+            </div>
+          </a>
         </div>
       </div>
     <% end %>

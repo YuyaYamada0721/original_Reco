@@ -6,7 +6,7 @@
       Team Knowledge
     <% end %>
   </span>
-  <%= @team.name %> -ナレッジ登録-
+  <%= @team.name %> <i class="fa fa-caret-right"></i> ナレッジ登録
 </h1>
 
 <%= form_with model: @knowledge, url: team_knowledges_path(@team), local: true do |form| %>
@@ -22,7 +22,7 @@
   </div>
 
   <div class="form-knowledge">
-    <%= form.label :ナレッジ名 %>
+    <%= form.label :name, 'ナレッジ名(30字以内)' %>
     <%= form.text_field :name, class: 'form-control', placeholder: 'ナレッジ名を入力して下さい。' %>
     <%= form.submit I18n.t('views.button.register'), class: 'custom-btn new-link' %>
   </div>
