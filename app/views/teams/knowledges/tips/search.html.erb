@@ -6,7 +6,7 @@
       Team Tip
     <% end %>
   </span>
-  <%= @team.name %> -ティップ一覧-
+  <%= @team.name %> <i class="fa fa-caret-right"></i> <%= @knowledge.name %> <i class="fa fa-caret-right"></i> ティップ一覧
 </h1>
 
 <div class="tip-index-function-box">
@@ -30,14 +30,14 @@
     <% @results.each do |tip| %>
       <div class="col-md-4">
         <div class="card stacked--fan-right">
-          <div class="card-header">ティップ名：<%= link_to tip.name, team_knowledge_tip_path(@team, @knowledge, tip) %></div>
-            <a href="/teams/<%= @team.id %>/knowledges/<%= @knowledge.id %>/tips/<%= tip.id %>">
-              <% tip.tags.each do |tag| %>
-                <p class="card-content">タグ：<%= tag.name %>  </p>
-              <% end %>
-              <p class="card-content">作成者：<%= tip.member.user.username %></p>
-              <p class="card-content">更新日：<%= l tip.updated_at %></p>
-            </a>
+          <a href="/teams/<%= @team.id %>/knowledges/<%= @knowledge.id %>/tips/<%= tip.id %>">
+            <p class="tip-card-content">ティップ名：<%= tip.name %></p>
+            <% tip.tags.each do |tag| %>
+              <p class="tip-card-content">タグ：<%= tag.name %>  </p>
+            <% end %>
+            <p class="tip-card-content">作成者：<%= tip.member.user.username %></p>
+            <p class="tip-card-content">更新日：<%= l tip.updated_at %></p>
+          </a>
         </div>
       </div>
     <% end %>
