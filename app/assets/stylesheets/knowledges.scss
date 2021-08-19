@@ -9,7 +9,41 @@
 }
 
 .knowledge-index-box {
-  height: 600px;
+  height: 520px;
+}
+
+.knowledge-index-box .card {
+	border: 5px solid #eee;
+	position: relative;
+	z-index: 0;
+}
+
+.knowledge-index-box .card:before{
+	border-top: 5px solid #498ee0;	/* 一部だけ異なる線の太さ・種類・色 */
+	border-left: 5px solid #498ee0;	/* 一部だけ異なる線の太さ・種類・色 */
+	content: '';
+	display: block;
+	position: absolute;
+	top: -5px;
+	left: -5px;
+	width: 20px;
+	height: 20px;
+	z-index: 1;
+}
+
+.knowledge-card-content {
+	color: #094067;
+	font-size: 1.1rem;
+	padding: 5px 20px;
+}
+
+.knowledge-create-info {
+  margin-top: 20px;
+}
+
+.knowledge-create-info p{
+  font-size: 1rem;
+  margin: -5px -5px;
 }
 
 
