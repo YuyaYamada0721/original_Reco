@@ -6,7 +6,7 @@
       Team Tip
     <% end %>
   </span>
-  <%= @team.name %> <i class="fa fa-caret-right"></i> <%= @knowledge.name %> <i class="fa fa-caret-right"></i> <%= @tip.name %>
+  <%= @team.name %> <i class="fa fa-caret-right"></i> <%= @knowledge.name %> <i class="fa fa-caret-right"></i> <%= @tip.name %> <i class="fa fa-caret-right"></i> 編集
 </h1>
 
 <%= form_with model: @tip, url: team_knowledge_tip_path, local: true do |form| %>

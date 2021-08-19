@@ -10,7 +10,9 @@
 
 // ティップ一覧表示範囲
 .tip-index-box {
-  height: 580px;
+  background-color: #f8f9fa;
+  height: 500px;
+  // height: auto;
 }
 
 .tip-new-form {
@@ -62,7 +64,6 @@
 }
 
 .tip-show-tag {
-  background-color: #f4f5f7;
   display: inline-block;
   padding: 5px;
   margin-bottom: 10px;
