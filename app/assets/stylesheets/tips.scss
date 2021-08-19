@@ -10,7 +10,7 @@
 
 // ティップ一覧表示範囲
 .tip-index-box {
-  height: 550px;
+  height: 580px;
 }
 
 .tip-new-form {
@@ -38,15 +38,42 @@
   margin: 20px 0;
 }
 
-// ティップ詳細時の見出しをデザイン
-.tip-label {
-  display: inline-block;
+// ティップ詳細
+.tip-show-label {
   font-size: 1rem;
-  background: #5f6c7b;
-  padding: 0.3em;
-  color: white;
-  border-radius: 0.5em;
 }
+
+.tip-show-name p {
+  background-color: #f4f5f7;
+  display: inline-block;
+  padding: 5px;
+  margin: 0px 0 10px 0;
+  font-size: 1rem;
+}
+
+.tip-show-content {
+  background-color: #f4f5f7;
+  display: inline-block;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.tip-show-content p {
+  font-size: 1rem;
+}
+
+.tip-show-tag {
+  background-color: #f4f5f7;
+  display: inline-block;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.tip-show-tag p {
+  font-size: 1rem;
+  margin: 0;
+}
+
 
 // 写真エリア
 .pictures-area {
@@ -86,18 +113,6 @@
   margin-top: 30px;
 }
 
-.tip-show-name p {
-  font-size: 1.3rem;
-}
-
-.tip-show-content p {
-  font-size: 1.3rem;
-}
-
-.tip-show-tag {
-  margin: 20px 0;
-}
-
 .tip-edit-btn {
   margin: 0 20px;
 }
@@ -126,8 +141,4 @@
 	font-size: 1rem;
 	padding: 0 20px;
   margin: 20px 0;
-}
-
-.return {
-  width: 100%;
 }

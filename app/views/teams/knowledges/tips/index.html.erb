@@ -32,8 +32,12 @@
         <div class="card stacked--fan-right">
           <a href="/teams/<%= @team.id %>/knowledges/<%= @knowledge.id %>/tips/<%= tip.id %>">
             <p class="tip-card-content">ティップ名：<%= tip.name %></p>
-            <% tip.tags.each do |tag| %>
-              <p class="tip-card-content">タグ：<%= tag.name %>  </p>
+            <% if tip.tags.present? %>
+              <p class="tip-card-content">タグ：
+                <% tip.tags.each do |tag| %>
+                  <span ><%= tag.name %>  </span>
+                <% end %>
+              </p>
             <% end %>
             <p class="tip-card-content">作成者：<%= tip.member.user.username %></p>
             <p class="tip-card-content">更新日：<%= l tip.updated_at %></p>
