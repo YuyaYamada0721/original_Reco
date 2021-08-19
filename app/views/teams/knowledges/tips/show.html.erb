@@ -6,29 +6,29 @@
       Team Tip
     <% end %>
   </span>
-  <%= @team.name %> -<%= @knowledge.name %>- -<%= @tip.name %>-
+  <%= @team.name %> <i class="fa fa-caret-right"></i> <%= @knowledge.name %> <i class="fa fa-caret-right"></i> <%= @tip.name %>
 </h1>
 
 <div class="tip-show-box">
+
+  <h4 class="tip-show-label">ティップ名</h4>
   <div class="tip-show-name">
-    <h4 class="tip-label">ティップ名</h4>
     <p><%= @tip.name %></p>
   </div>
 
+  <h4 class="tip-show-label">内容</h4>
   <div class="tip-show-content">
-    <h4 class="tip-label">内容</h4>
     <p><%= markdown(@tip.content).html_safe %></p>
   </div>
 
+  <h4 class="tip-show-label">タグ</h4>
   <div class='tip-show-tag'>
-    <h4 class="tip-label">タグ</h4>
     <% @tip.tags.each do |tag| %>
-      <div>・<%= tag.name %></div>
+      <p>・<%= tag.name %></p>
     <% end %>
   </div>
 
-
-  <h4 class="tip-label">画像</h4>
+  <h4 class="tip-show-label">画像</h4>
   <div class="pictures-area">
     <% @tip.pictures.each do |picture| %>
       <%= link_to picture.image.url, 'data-lightbox': picture do %>

@@ -6,7 +6,7 @@
       Team Tip
     <% end %>
   </span>
-  <%= @team.name %> -<%= @knowledge.name %>- -ティップ登録-
+  <%= @team.name %> <i class="fa fa-caret-right"></i> <%= @knowledge.name %> <i class="fa fa-caret-right"></i> ティップ登録
 </h1>
 
 <%= form_with model: @tip, url: team_knowledge_tips_path(@team.id, @knowledge.id), local: true do |form| %>
@@ -23,7 +23,7 @@
 
 <div class="tip-new-form">
   <div class="tip-name">
-    <%= form.label :name, 'ティップ名' %>
+    <%= form.label :name, 'ティップ名(30字以内)' %>
     <%= form.text_field :name, class: 'form-control', placeholder: 'ティップ名を入力して下さい。' %>
   </div>
 
