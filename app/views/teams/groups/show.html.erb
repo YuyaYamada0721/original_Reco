@@ -13,15 +13,21 @@
     <% end %>
 </h1>
 
-<div class="chat-content">
-  <div class="chat-member">
-    <p>-参加者-</p>
-    <% @group_members.each do |gm| %>
-      <p><%= gm.member.user.username%></p>
-    <% end %>
-    <%= paginate @group_members %>
-  </div>
+<div class="member-list">
+  <a class="js-modal-open" href="">参加者一覧 <%= @group_members.count %> 人</a>
+</div>
+<div class="modal js-modal">
+  <div class="modal__bg js-modal-close"></div>
+    <div class="modal__content">
+      <p>参加者</p>
+      <% @group_members.each do |gm| %>
+        <p><i class="fa fa-user"></i> <%= gm.member.user.username%></p>
+      <% end %>
+      <a class="js-modal-close" href="">閉じる</a>
+    </div>
+</div>
 
+<div class="chat-content">
   <div class="chat-field">
     <% @messages.each do |message| %>
     <div class="chat bg-light p-4">
@@ -37,7 +43,7 @@
               <span>既読 <%= message.reads.where(is_checked: true).count %> / <%= message.reads.count %></span>
             <% end %>
         <% end %>
-          <div><%= l message.created_at %></div>
+        <div><%= l message.created_at %></div>
         </div>
       </div>
     </div>
@@ -65,5 +71,17 @@
     } else {
       $("#button1").prop('disabled', true);
     }
+  });
+
+
+  $(function(){
+    $('.js-modal-open').on('click',function(){
+        $('.js-modal').fadeIn();
+        return false;
+    });
+    $('.js-modal-close').on('click',function(){
+        $('.js-modal').fadeOut();
+        return false;
+    });
   });
 </script>
