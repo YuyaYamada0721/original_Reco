@@ -1,33 +1,7 @@
-// チーム一覧での表示のされ方
-.team-index-box {
-	margin-top: 60px;
-}
-
-.card {
-	margin: 30px 10px;
-}
-
-.card a {
-	text-decoration: none;
-}
-
-.card-header, .card-header a {
-  color: #094067;
-	font-size: 1.3rem;
-	text-decoration: none;
-}
-
-.card-content {
-	color: #094067;
-	font-size: 1rem;
-	padding: 10px 0 0 20px;
-}
-
-
 // チーム一覧での機能
 .team-index-function-box {
   display: flex;
-  margin: 40px 0;
+  margin: 20px 0;
 }
 
 .search-box {
@@ -311,4 +285,69 @@
 			&:before { transform: translate(-2.5px, 0) rotate(-2.5deg); }
 			&:after { transform: translate(-5px, 0) rotate(-5deg); }
 	}
+}
+
+
+// チーム一覧画面のテーブル
+.team-container th h1 {
+	font-weight: bold;
+	font-size: 1rem;
+  text-align: left;
+  color: #185875;
+}
+
+.team-container td {
+	padding: 0;
+	height: 0;
+	width: 250px;
+  -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+		-moz-box-shadow: 0 2px 2px -2px #0E1119;
+				box-shadow: 0 2px 2px -2px #0E1119;
+}
+
+.team-container {
+	overflow: hidden;
+}
+
+.team-container tr {
+	background-color: #f8f9fa;
+}
+
+.team-container th {
+	background-color: #f8f9fa;
+}
+
+.team-container td:first-child { color: #185875; }
+
+.team-container .main-info:hover {
+  background-color: #498ee0;
+  color: #f8f9fa;
+	text-decoration: none;
+  font-weight: bold;
+
+  box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+  transform: translate3d(6px, -6px, 0);
+
+  transition-delay: 0s;
+	transition-duration: 0.4s;
+	transition-property: all;
+  transition-timing-function: line;
+}
+
+.team-container .main-info a:hover {
+  color: #f8f9fa;
+	text-decoration: none;
+  font-weight: bold;
+}
+
+table td a {
+	color: #185875;
+	padding: 25px 10px;
+	height: 100%;
+	display: flex;
+}
+
+table .sub-info {
+	color: #185875;
+	padding: 25px 0 0 20px;
 }

@@ -18,19 +18,25 @@
   </div>
 </div>
 
-<div class="team-index-box">
-  <div class="row">
+<table class="team-container table">
+	<thead>
+		<tr>
+			<th><h1>チーム名</h1></th>
+			<th><h1>使用用途</h1></th>
+			<th><h1>オーナー</h1></th>
+			<th><h1>メンバー数</h1></th>
+		</tr>
+	</thead>
+	<tbody>
     <% @teams.each do |team| %>
-      <div class="col-md-4">
-        <div class="card stacked--fan-right">
-          <div class="card-header">チーム名：<%= link_to team.name, team_path(team) %></div>
-            <a href="/teams/<%= team.id %>">
-              <p class="card-content">使用用途：<%= team.is_solo ? '個人':'チーム' %></p>
-            </a>
-        </div>
-      </div>
+    <tr>
+      <td class="main-info"><%= link_to team.name, team_path(team) %></td>
+      <td class="sub-info"><%= team.is_solo ? '個人':'チーム' %></td>
+      <td class="sub-info"><%= team.owner.username %></td>
+      <td class="sub-info"><%= team.members.count %></td>
+    </tr>
     <% end %>
-  </div>
-</div>
+	</tbody>
+</table>
 
 <%= paginate @teams %>
