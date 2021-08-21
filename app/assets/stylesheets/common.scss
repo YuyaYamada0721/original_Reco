@@ -3,7 +3,7 @@ body {
     color: #5f6c7b;
     background: white;
     font-size: 16px;
-    font-family: 'Osaka', sans-serif;
+    font-family: sans-serif;
 }
 
 // CRUD機能見出し
@@ -119,4 +119,9 @@ body {
 	color: #094067;
 	font-size: 1rem;
 	padding: 10px 0 0 20px;
+}
+
+// placeholder文字の大きさ
+::placeholder {
+  font-size: 0.8rem;
 }
