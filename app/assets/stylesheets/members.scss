@@ -1,24 +1,38 @@
-.chat-btn-space .solo-chat-btn {
-  color: white;
-  background-color: #ffb6c1;
-	display: block;
-	margin: 20px 0;
-	width: 200px;
+.member-profile-bio {
+  color: #094067;
+  font-size: 1.3rem;
 }
 
-.stock-space {
-  height: 500px;
+.profile-real-name {
+  color: #094067;
+  font-size: 1.2rem;
 }
 
 .stock-space li {
-  margin: 20px 0;
-  font-size: 1.2rem;
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+.profile-stock p {
+  font-size: 1.1rem;
 }
 
 .stock-space a {
   text-decoration: none;
 }
 
-.chat-btn-space .fa {
-  font-weight: bold;
+.profile-stock {
+    border-top: #666 5px dotted;
+    margin-top: 2rem;
+    padding-top: 2rem;
+}
+
+.profile-stock {
+    float: right;
+    width: calc(66.666% - 2rem);
+}
+
+.profile-return {
+    float: left;
+    width: calc(66.666% - 2rem);
 }
