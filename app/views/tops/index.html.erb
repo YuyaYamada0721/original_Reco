@@ -30,28 +30,28 @@
                 <hr>
                 <p class="reco-work">Reco! はそのお悩みを解消します。</p>
                 <p class="reco-work">個人での利用も可能ですが、<br>チームでも使用しナレッジを高めましょう。</p>
-                <p>使用方法によっては、<br>日常のあらゆるシーンで活躍しそうですね！</p>
+                <p>使用方法によっては、<br>日常のあらゆるシーンで活躍するはずです！</p>
+                <p class="reco-work">主な機能を3つ紹介します。</p>
             </div>
         </div>
     </div>
 </section>
 
 <div class="py-2 bg-image-full">
-    <div style="height: 20rem">
-        <h3 class="reco-function-title">現在の主な機能</h3>
+    <div>
+        <h3 class="reco-function-title">機能①</h3>
             <div class="text-center my-5">
                 <div class="reco-function">
                     <h3 class="text-white fw-bolder">個人・チーム機能</h3>
                     <p class="text-white fw-bolder">簡単にチームを作成する事ができます。<br>チームへの招待は、登録されたメールアドレスにより行います。</p>
                 </div>
                 <div class="reco-function">
-                    <h3 class="text-white fw-bolder">メッセージ機能</h3>
-                    <p class="text-white fw-bolder">1対1から複数人でのやり取りが可能です。</p>
+                    <%= image_tag 'top1.png', size: '500x300' %>
                 </div>
-                <div class="reco-function">
+                <%# <div class="reco-function">
                     <h3 class="text-white fw-bolder">ナレッジ・ティップ機能</h3>
                     <p class="text-white fw-bolder">ナレッジが親項目、ティップが子項目<br>として機能します。</p>
-                </div>
+                </div> %>
             </div>
     </div>
 </div>
@@ -60,7 +60,7 @@
     <div class="container my-5">
         <div class="row justify-content-center">
             <div class="col-lg-6">
-                <p class="mb-0">これらの機能を駆使して頂く事により、<br>生活のお役に立てれば光栄です。<br>では、よろしくお願いします。</p>
+                <p class="mb-0 text-center">これらの機能を駆使して頂く事により、<br>生活のお役に立てれば光栄です。<br>では、よろしくお願いします。</p>
             </div>
         </div>
     </div>
@@ -69,3 +69,17 @@
 <footer class="py-5 bg-dark">
     <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Reco! 2021</p></div>
 </footer>
+
+
+<script>
+    ScrollReveal().reveal('.reco-function', {
+    duration: 1600,
+    scale: 0.1,
+    reset: true
+});
+
+ScrollReveal().reveal('#reco-main', {
+    duration: 1600,
+    scale: 4,
+});
+</script>
