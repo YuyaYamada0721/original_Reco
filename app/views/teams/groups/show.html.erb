@@ -9,26 +9,32 @@
     <% if @team.is_solo? %>
       メモ
     <% else %>
-    <%= @team.name %> -メッセージ-
+    <%= @team.name %> <i class="fa fa-caret-right"></i> メッセージ
     <% end %>
 </h1>
 
-<div class="chat-content">
-  <div class="chat-member">
-    <p>-参加者-</p>
-    <% @group_members.each do |gm| %>
-      <p><%= gm.member.user.username%></p>
-    <% end %>
-    <%= paginate @group_members %>
-  </div>
+<div class="member-list">
+  <a class="js-modal-open" href="">参加者一覧 <%= @group_members.count %> 人</a>
+</div>
+<div class="modal js-modal">
+  <div class="modal__bg js-modal-close"></div>
+    <div class="modal__content">
+      <p>参加者</p>
+      <% @group_members.each do |gm| %>
+        <p><i class="fa fa-user"></i> <%= gm.member.user.username%></p>
+      <% end %>
+      <a class="js-modal-close" href="">閉じる</a>
+    </div>
+</div>
 
+<div class="message-content">
   <div class="chat-field">
     <% @messages.each do |message| %>
     <div class="chat bg-light p-4">
-      <div class="chat-name"><span><%= message.member.user.username %></span></div>
+      <div class="message-name"><span><%= message.member.user.username %></span></div>
       <div class="message d-flex flex-row align-items-start mb-3">
-        <div class="message-text p-2 ms-2 mb-0"><%= message.body %></div>
-        <div class="chat-status">
+        <div class="message-text p-2 ms-2 mb-0"><%= markdown(message.body).html_safe %></div>
+        <div class="message-status">
         <% if message.member_id == @current_member.id %>
           <%= link_to team_message_path(@team.id, message), method: :delete, data: { confirm: 'メッセージを削除しますか？' } do%>
             <i class="fa fa-trash-o"></i>
@@ -37,7 +43,7 @@
               <span>既読 <%= message.reads.where(is_checked: true).count %> / <%= message.reads.count %></span>
             <% end %>
         <% end %>
-          <div><%= l message.created_at %></div>
+        <div><%= l message.created_at %></div>
         </div>
       </div>
     </div>
@@ -45,11 +51,13 @@
   </div>
 </div>
 
-<div class="chat-input">
+<div class="message-input">
   <%= form_for @message, url: team_messages_path(@team.id) do |form| %>
     <%= form.hidden_field :group_id, value: @group.id %>
-    <%= form.text_field :body, placeholder: 'メッセージを入力して下さい', class: 'form-control', id: 'input1' %>
-    <%= form.submit "投稿する", class: 'message-button', id: 'button1', disabled: true %>
+    <%= form.text_area :body, placeholder: 'メッセージを入力して下さい。', class: 'form-control', id: 'input-message' %>
+    <%= form.button class: 'message-button', id: 'button1', disabled: true do %>
+      <i class="fa fa-paper-plane-o"> 送信</i>
+    <% end %>
   <% end %>
 </div>
 
@@ -57,7 +65,7 @@
 
 
 <script>
-  $("#input1").on("input", function () {
+  $("#input-message").on("input", function () {
     var input = $(this).val();
 
     if (input) {
@@ -65,5 +73,17 @@
     } else {
       $("#button1").prop('disabled', true);
     }
+  });
+
+
+  $(function(){
+    $('.js-modal-open').on('click',function(){
+        $('.js-modal').fadeIn();
+        return false;
+    });
+    $('.js-modal-close').on('click',function(){
+        $('.js-modal').fadeOut();
+        return false;
+    });
   });
 </script>
