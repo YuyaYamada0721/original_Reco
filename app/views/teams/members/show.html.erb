@@ -6,28 +6,46 @@
       Team Member
     <% end %>
   </span>
-  <%= @team.name %> -<%= @member.user.username %>-
+  <%= @team.name %> <i class="fa fa-caret-right"></i> <%= @member.user.username %>
 </h1>
 
-<div class="chat-btn-space">
-  <% if @member.id == @current_member.id %>
-  <% else %>
-    <% if @is_group == true %>
-      <%= link_to team_group_path(params[:team_id], @group_id), class: 'solo-chat-btn btn' do %>
-        <i class="fa fa-comment"> メッセージへ</i>
-      <% end %>
-    <% else %>
-      <%= form_for @group, url: team_groups_path(params[:team_id])  do |f| %>
-        <%= fields_for @group_member do |e| %>
-          <%= e.hidden_field :member_id, value: @member.id %>
-        <% end %>
-        <%= f.submit "メッセージを始める", class: 'solo-chat-btn btn' %>
-      <% end %>
-    <% end %>
-  <% end %>
+<div class="profile-image">
+  <%= image_tag @member.user.image.url, size: '400x300' if @member.user.image && @member.user.image.url %>
 </div>
 
-<p class="stock-label">ナレッジストック一覧</p>
+<div class="profile-user-settings">
+  <h2 class="profile-user-name"><%= @member.user.username %></h2>
+</div>
+
+<div class="profile-stats">
+  <ul>
+    <li>
+      <% if @member.id == @current_member.id %>
+      <% else %>
+        <% if @is_group == true %>
+          <%= link_to team_group_path(params[:team_id], @group_id), class: 'btn user-show-btn' do %>
+            メッセージへ
+          <% end %>
+        <% else %>
+          <%= form_for @group, url: team_groups_path(params[:team_id])  do |f| %>
+            <%= fields_for @group_member do |e| %>
+              <%= e.hidden_field :member_id, value: @member.id %>
+            <% end %>
+            <%= f.submit "メッセージを始める", class: 'btn user-show-btn' %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </li>
+  </ul>
+</div>
+
+<div class="profile-bio">
+  <p class="member-profile-bio"><i class="fa fa-flag"></i> 自己紹介</p>
+  <span class="profile-real-name"><%= @member.user.introduction %></span>
+</div>
+
+<div class="profile-stock">
+  <p class="stock-label"><i class="fa fa-star"></i> ナレッジストック一覧</p>
 
   <% if @current_member.id == params[:id].to_i %>
     <div class="stock-space">
@@ -44,6 +62,8 @@
       <%= paginate @stocks %>
     </div>
   <% end %>
+</div>
 
-<hr>
-<%= link_to '戻る', team_path(@team), class: 'btn-flat-logo' %>
+<div class="profile-return">
+  <%= link_to '戻る', team_path(@team), class: 'btn-flat-logo' %>
+</div>
