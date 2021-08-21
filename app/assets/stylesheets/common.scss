@@ -120,3 +120,9 @@ body {
 	font-size: 1rem;
 	padding: 10px 0 0 20px;
 }
+
+// placeholder文字の大きさ
+::placeholder {
+  font-weight: bold;
+  font-size: 0.8rem;
+}
