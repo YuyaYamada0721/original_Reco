@@ -27,14 +27,14 @@
     </div>
 </div>
 
-<div class="chat-content">
+<div class="message-content">
   <div class="chat-field">
     <% @messages.each do |message| %>
     <div class="chat bg-light p-4">
-      <div class="chat-name"><span><%= message.member.user.username %></span></div>
+      <div class="message-name"><span><%= message.member.user.username %></span></div>
       <div class="message d-flex flex-row align-items-start mb-3">
         <div class="message-text p-2 ms-2 mb-0"><%= message.body %></div>
-        <div class="chat-status">
+        <div class="message-status">
         <% if message.member_id == @current_member.id %>
           <%= link_to team_message_path(@team.id, message), method: :delete, data: { confirm: 'メッセージを削除しますか？' } do%>
             <i class="fa fa-trash-o"></i>
@@ -51,11 +51,13 @@
   </div>
 </div>
 
-<div class="chat-input">
+<div class="message-input">
   <%= form_for @message, url: team_messages_path(@team.id) do |form| %>
     <%= form.hidden_field :group_id, value: @group.id %>
-    <%= form.text_field :body, placeholder: 'メッセージを入力して下さい', class: 'form-control', id: 'input1' %>
-    <%= form.submit "投稿する", class: 'message-button', id: 'button1', disabled: true %>
+    <%= form.text_field :body, placeholder: 'メッセージを入力して下さい。', class: 'form-control', id: 'input-message' %>
+    <%= form.button class: 'message-button', id: 'button1', disabled: true do %>
+      <i class="fa fa-paper-plane-o"> 送信</i>
+    <% end %>
   <% end %>
 </div>
 
@@ -63,7 +65,7 @@
 
 
 <script>
-  $("#input1").on("input", function () {
+  $("#input-message").on("input", function () {
     var input = $(this).val();
 
     if (input) {

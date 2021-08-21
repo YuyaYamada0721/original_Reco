@@ -1,47 +1,62 @@
 // 親枠
-.chat-content {
+.message-content {
   height: 600px;
   overflow-y: auto;
   background-color: #f8f9fa;
+  border: 5px solid #eee;
+  border-radius: 10px;
 }
 
-// チャット内容
+// メッセージ内容
 .message-text {
-  background-color: blanchedalmond;
+  border: 5px solid #eee;
+  border-radius: 10px;
+  background-color: white;
+  color: #094067;
   width: 80%;
   border-radius: 5px;
 }
 
+// メッセージ投稿者の名前
+.message-name {
+  color: #094067;
+}
+
 // 既読のステータス
-.chat-status {
+.message-status {
   width: 20%;
   font-size: 0.8rem;
+  margin: 0 0 0 10px;
+}
+
+.message-status .fa {
+  color: #094067;
+  font-size: 1.2rem;
+}
+
+.message-status .fa a {
+  text-decoration: none;
 }
 
 // 入力欄
-.chat-input {
+.message-input {
   margin: auto;
   text-align: center;
 }
 
-.chat-input .form-control {
+.message-input .form-control {
   width: 600px;
+  border-radius: 5px;
   display: inline-block;
-  margin: 40px 0 0 0;
+  margin: 10px 0 10px 0;
 }
 
 .message-button {
+  background-color: white;
+  border: 2px solid;
+  border-radius: 5px;
   display: inline-block;
-}
-
-.chat-status .fa {
-  color: red;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.chat-status .fa a {
-  text-decoration: none;
+  width: 8%;
 }
 
 
@@ -87,7 +102,7 @@
   border: 2px solid #094067;
   font-weight: bold;
   background: white;
-  padding: 10px 10px;
+  padding: 5px 10px;
   border-radius: 6px;
   transition: .3s;
 }
