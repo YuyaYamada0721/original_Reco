@@ -9,12 +9,17 @@
 
 // メッセージ内容
 .message-text {
+  width: 80%;
   border: 5px solid #eee;
   border-radius: 10px;
   background-color: white;
   color: #094067;
-  width: 80%;
   border-radius: 5px;
+}
+
+.message-text p {
+  font-size: 1rem;
+  margin: 0;
 }
 
 // メッセージ投稿者の名前
@@ -45,24 +50,24 @@
 }
 
 .message-input .form-control {
-  width: 600px;
+  width: 50%;
   border-radius: 5px;
   display: inline-block;
   margin: 10px 0 10px 0;
 }
 
 .message-button {
-  background-color: white;
+  width: 8%;
   border: 2px solid;
   border-radius: 5px;
+  background-color: white;
   display: inline-block;
-  width: 8%;
 }
 
 
 // モーダルウィンドウでメンバー一覧表示
 .member-list {
-  padding: 20px;
+  padding: 10px;
   text-align: right;
 }
 
