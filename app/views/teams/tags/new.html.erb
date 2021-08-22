@@ -6,7 +6,7 @@
       Team Tag
     <% end %>
   </span>
-  <%= @team.name %> -タグ登録-
+  <%= @team.name %> <i class="fa fa-caret-right"></i> タグ登録
 </h1>
 
 <%= form_with model: @tag, url: team_tags_path(@team), local: true do |form| %>
