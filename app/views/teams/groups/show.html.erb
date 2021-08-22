@@ -28,9 +28,9 @@
 </div>
 
 <div class="message-content">
-  <div class="chat-field">
+  <div class="message-field">
     <% @messages.each do |message| %>
-    <div class="chat bg-light p-4">
+    <div class="message bg-light p-4">
       <div class="message-name"><span><%= message.member.user.username %></span></div>
       <div class="message d-flex flex-row align-items-start mb-3">
         <div class="message-text p-2 ms-2 mb-0"><%= markdown(message.body).html_safe %></div>
