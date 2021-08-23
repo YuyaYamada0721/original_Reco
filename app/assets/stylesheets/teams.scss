@@ -118,67 +118,104 @@
 
 
 // チーム詳細時の大枠
-.team-show-function {
+.team-show {
 	display: flex;
-	height: 400px;
-	margin: 50px 0;
-}
-
-.team-member-index {
-	margin-right: 80px;
+	height: 650px;
+	margin: 50px 0 0 0;
 }
 
 
 // チームメンバー一覧
-.team-show-li {
-	width: 400px;
-	margin: 30px 0px;
-	font-size: 1.2rem;
-	list-style: none;
+.team-show-member {
+	margin: 0 50px 0 50px;
 }
 
-.team-show-li .fa {
-	margin-right: 20px;
+.team-show-member img{
+	height: 80px;
+	width: 80px;
+	border-radius: 50%;
+}
+
+.team-show-member p{
+	margin-top: 5px;
+	font-size: 1rem;
+}
+
+.team-show-member .pagination {
+	margin-left: 50px;
+}
+
+// メンバー名前
+.member-button {
+  align-items: center;
+  margin: 0 0 0 20px;
+  padding: 1em 2em;
+  width: auto;
+  color: #2285b1;
+  font-weight: 500;
+	border: 1px solid #a0c4d3;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0 #3d9ec8;
+  transition: 0.3s;
+}
+
+.member-button:hover {
+  text-decoration: none;
+  background-color: #a0c4d3;
+  box-shadow: 0 0 0;
+}
+// -----
+
+.team-show-li {
+	margin: 20px 0px;
+	font-size: 1.2rem;
+	list-style: none;
 }
 
 .team-show-li a {
 	text-decoration: none;
 }
 
-.team-show {
-	margin-left: 100px;
+// チーム詳細の機能
+.team-show-function {
+	margin: 30px 50px 0 50px;
+}
+// _____
+
+// チーム詳細のボタン
+.team-show-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  padding: 1em 2em;
+  width: 300px;
+  color: #2285b1;
+  font-size: 1.2rem;
+  border: 2px solid #a0c4d3;
+  border-radius: 10px;
 }
 
-.team-show .next-btn {
-  background-color: #7db4e6;
-	display: block;
-	margin: 20px 0;
-	width: 200px;
+.team-show-button::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-top: 3px solid #2285b1;
+  border-right: 3px solid #2285b1;
+  transform: rotate(45deg);
 }
 
-.team-show .fa {
-  color: white;
-	font-weight: bold;
+.team-show-button:hover {
+  color: #333333;
+  text-decoration: none;
+  background-color: #a0c4d3;
 }
 
-.team-show .edit-btn {
-  color: white;
-	font-weight: bold;
-  background-color: #8fbc8f;
-	display: block;
-	margin: 20px 0;
-	width: 200px;
+.team-show-button:hover::after {
+  border-top: 3px solid #333333;
+  border-right: 3px solid #333333;
 }
-
-.team-show .message-btn {
-  color: white;
-	font-weight: bold;
-  background-color: #ffb6c1;
-	display: block;
-	margin: 20px 0;
-	width: 200px;
-}
-
+// -----
 
 // チーム編集時
 // 大枠
@@ -236,55 +273,6 @@
 
 .btn-circle-flat:hover {
   background: red;
-}
-
-
-// -----キラッと光るアニメーション-----
-.shine-btn{
-  position: relative;
-  display:inline-block;
-    color: #fff;
-    text-decoration: none;
-    outline: none;
-    overflow: hidden;
-}
-
-.shine-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -75%;
-    width: 50%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
-  transform: skewX(-25deg);
-}
-
-.shine-btn:hover::before {
-  animation: shine 0.7s;
-}
-
-@keyframes shine {
-  100% {
-    left: 125%;
-  }
-}
-
-// カードにホバーすると傾く
-.stacked--fan-right {
-	transform-origin: center bottom;
-
-	&:before,
-	&:after {
-			transform-origin: 50% 100%;
-	}
-
-	&:hover {
-			transform: translate(2.5px, 0) rotate(2.5deg);
-
-			&:before { transform: translate(-2.5px, 0) rotate(-2.5deg); }
-			&:after { transform: translate(-5px, 0) rotate(-5deg); }
-	}
 }
 
 

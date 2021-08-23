@@ -125,3 +125,21 @@ body {
 ::placeholder {
   font-size: 0.8rem;
 }
+
+
+// カードにホバーすると傾く
+.stacked--fan-right {
+	transform-origin: center bottom;
+
+	&:before,
+	&:after {
+			transform-origin: 50% 100%;
+	}
+
+	&:hover {
+			transform: translate(2.5px, 0) rotate(2.5deg);
+
+			&:before { transform: translate(-2.5px, 0) rotate(-2.5deg); }
+			&:after { transform: translate(-5px, 0) rotate(-5deg); }
+	}
+}

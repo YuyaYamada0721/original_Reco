@@ -9,49 +9,47 @@
   <%= @team.name %>
 </h1>
 
-<div class="team-show-function">
+<div class="team-show">
 
-  <div class="team-member-index">
+  <div class="team-show-function">
+    <%= link_to team_knowledges_path(@team), class: 'team-show-button' do %>
+      <i class="fa fa-folder-o"> ナレッジ</i>
+    <% end %>
+
+    <%= link_to team_tags_path(@team), class: 'team-show-button' do %>
+      <i class="fa fa-tag"> タグ</i>
+    <% end %>
+
+    <% if @team.is_solo? %>
+      <%= link_to team_group_path(@team.id, @team_message.id), class: 'team-show-button' do %>
+        <i class="fa fa-sticky-note"></i> メモ</i>
+      <% end %>
+    <% else %>
+      <%= link_to team_group_path(@team.id, @team_message.id), class: 'team-show-button' do %>
+        <i class="fa fa-comments"> チームメッセージ</i>
+      <% end %>
+    <% end %>
+
+    <% if current_user == @team.owner %>
+      <%= link_to edit_team_path(@team), class: 'team-show-button' do %>
+        <i class="fa fa-cogs"> チーム編集</i>
+      <% end %>
+    <% end%>
+  </div>
+
+  <div class="team-show-member">
     <p>メンバー</p>
       <ul>
-        <li class="team-show-li"><i class="fa fa-fort-awesome"></i><%= link_to @team.owner.username, team_member_path(@team.id, @owner.id) %></li>
+        <li class="team-show-li"><%= image_tag @team.owner.image.url if @team.owner.image && @team.owner.image.url %><%= link_to @team.owner.username, team_member_path(@team.id, @owner.id), class: 'member-button' %></li>
         <% @members.each do |member| %>
           <% if member.team.owner.id != member.user.id %>
-            <li class="team-show-li"><i class="fa fa-user"></i><%= link_to member.user.username, team_member_path(@team.id, member.id) %></li>
+            <li class="team-show-li"><%= image_tag member.user.image.url if member.user.image && member.user.image.url %><%= link_to member.user.username, team_member_path(@team.id, member.id), class: 'member-button' %></li>
           <% end %>
         <% end %>
       </ul>
     <%= paginate @members %>
   </div>
 
-  <div class="team-show">
-    <%= link_to team_knowledges_path(@team), class: 'next-btn btn shine-btn' do %>
-      <i class="fa fa-folder-o"> ナレッジ</i>
-    <% end %>
-
-    <%= link_to team_tags_path(@team), class: 'next-btn btn shine-btn' do %>
-      <i class="fa fa-tag"> タグ</i>
-    <% end %>
-
-    <% if @team.is_solo? %>
-      <%= link_to team_group_path(@team.id, @team_message.id), class: 'message-btn btn' do %>
-        <i class="fa fa-sticky-note"></i> メモ</i>
-      <% end %>
-    <% else %>
-      <%= link_to team_group_path(@team.id, @team_message.id), class: 'message-btn btn' do %>
-        <i class="fa fa-comments"> チームメッセージ</i>
-      <% end %>
-    <% end %>
-
-    <% if current_user == @team.owner %>
-      <%= link_to edit_team_path(@team), class: 'edit-btn btn' do %>
-        <i class="fa fa-pencil"> チーム編集</i>
-      <% end %>
-    <% end%>
-  </div>
-
 </div>
-
-<hr>
 
 <%= link_to '戻る', teams_path, class: 'btn-flat-logo' %>
