@@ -15,7 +15,7 @@ class TeamsController < ApplicationController
 
     # チームメッセージへ遷移するための準備
     @owner = Member.find_by(team_id: @team.id, user_id: @team.owner.id)
-    @team_chat = Group.joins(:group_members).find_by(group_members: { member_id: @owner.id }, is_dm: 'false')
+    @team_message = Group.joins(:group_members).find_by(group_members: { member_id: @owner.id }, is_dm: 'false')
   end
 
   def new

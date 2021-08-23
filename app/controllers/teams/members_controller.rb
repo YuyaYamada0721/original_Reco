@@ -10,8 +10,8 @@ class Teams::MembersController < ApplicationController
     else
       @member = Member.create(user_id: @user.id, team_id: @team.id)
       @owner = Member.find_by(team_id: @team.id, user_id: @team.owner.id)
-      @team_chat = Group.joins(:group_members).find_by(group_members: { member_id: @owner.id }, is_dm: 'false')
-      GroupMember.create(member_id: @member.id, group_id: @team_chat.id)
+      @team_message = Group.joins(:group_members).find_by(group_members: { member_id: @owner.id }, is_dm: 'false')
+      GroupMember.create(member_id: @member.id, group_id: @team_message.id)
       redirect_to team_path(@team), notice: 'メンバーを追加しました。'
     end
   end

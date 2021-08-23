@@ -13,10 +13,26 @@ gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 
+gem 'cancancan'
+gem 'devise'
+gem 'devise-i18n'
+gem 'rails_admin', '~> 2.0'
+
+gem 'carrierwave'
+gem 'mini_magick'
+
+gem 'ransack'
+
+gem 'kaminari'
+
+gem 'coderay'
+gem 'redcarpet'
+
+gem 'faker'
+
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 
-  # デバックツール
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-rails'
@@ -41,20 +57,3 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-
-gem 'cancancan'
-gem 'devise'
-gem 'devise-i18n'
-gem 'rails_admin', '~> 2.0'
-
-gem 'carrierwave'
-gem 'mini_magick'
-
-gem 'ransack'
-
-gem 'kaminari'
-
-gem 'coderay'
-gem 'redcarpet'
-
-gem 'faker'

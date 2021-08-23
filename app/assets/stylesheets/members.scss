@@ -36,3 +36,21 @@
     float: left;
     width: calc(66.666% - 2rem);
 }
+
+
+// メッセージを初めて開始する時のボタンのデザイン
+.btn-flat-border {
+  font-size: 1.2rem;
+  background-color: white;
+  border: 1px solid #5f6c7b;
+  color: #5f6c7b;
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: .4s;
+}
+
+.btn-flat-border:hover {
+  background: #228bc8;
+  color: white;
+}
