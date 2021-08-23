@@ -56,7 +56,7 @@
   <% if controller.controller_name == 'tops' %>
     <%= yield %>
   <% else %>
-    <% unless controller.controller_name == 'tops' || controller.controller_name == 'registrations' || controller.controller_name == 'sessions' || controller.controller_name == 'helps' %>
+    <% unless controller.controller_name == 'tops' || controller.controller_name == 'registrations' || controller.controller_name == 'sessions' || controller.controller_name == 'helps' || controller.controller_name == 'passwords' %>
       <div id="sidebar">
         <div class="list">
           <div class="item header-title"></div>
