@@ -12,6 +12,7 @@ class TeamsController < ApplicationController
   def show
     @team = Team.find(params[:id])
     @members = Member.where(team_id: @team.id).page(params[:page]).per(5)
+    @random = Member.where(team_id: @team.id).order('RANDOM()').limit(1) #チームならではの機能テスト
 
     # チームメッセージへ遷移するための準備
     @owner = Member.find_by(team_id: @team.id, user_id: @team.owner.id)

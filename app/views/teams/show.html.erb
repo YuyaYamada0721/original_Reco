@@ -30,6 +30,21 @@
       <% end %>
     <% end %>
 
+    <div class="random-member-button">
+      <a class="js-modal-open team-show-button" href=""><i class="fa fa-random">1人ランダムで表示</i></a>
+    </div>
+      <div class="modal js-modal">
+        <div class="modal__bg js-modal-close"></div>
+      <div class="team-modal__content">
+      <p><i class="fa fa-smile-o"></i> 選ばれた人 <i class="fa fa-smile-o"></i></p>
+      <% @random.each do |random| %>
+        <p><%= random.user.username %></p>
+      <% end %>
+        <h6><i class="fa fa-exclamation-circle"> 再抽選するにはこのページを再読み込みして下さい。</i></h6>
+      <a class="js-modal-close" href="">閉じる</a>
+      </div>
+    </div>
+
     <% if current_user == @team.owner %>
       <%= link_to edit_team_path(@team), class: 'team-show-button' do %>
         <i class="fa fa-cogs"> チーム編集</i>
