@@ -5,32 +5,34 @@ class Teams::MessagesController < ApplicationController
     if GroupMember.where(member_id: @current_member.id, group_id: params[:message][:group_id]).present?
       @message = Message.create(params.require(:message).permit(:member_id, :body, :group_id).merge(member_id: @current_member.id))
 
-      # もし GroupMemberテーブルに現在操作中のメンバー + 送信しているgroup画面でのgroup_idパラメーターがあるなら
-      # groups showでmessageのフォームを作成してあるので、そこから送られてきたパラメーターをメッセージテーブルに保存
+      # グループ情報
+      @group = Group.find(params[:message][:group_id])
+      # グループメッセージ全部
+      @messages = @group.messages
+      # グループメンバー全員
+      @group_members = @group.group_members
+      # 操作中ユーザーのメンバーidでのメッセージ全部
+      @current_member_message = @current_member.messages
 
-      @group = Group.find(params[:message][:group_id]) # 現在のグループ情報
-      @messages = @group.messages # 現在のグループのメッセージ全部
-      @group_members = @group.group_members # 現在のグループのメンバー全員
-      @current_member_message = @current_member.messages # 今操作中のメンバーのメッセージ全部
-
-      @current_member_message_id = [] << @message.member.id
       # Readテーブルに自分以外のメンバーidで未読メッセージとして保存したい
       # @group_members情報は配列で格納されている為、自分の情報を削除できるように配列に格納する
+      @current_member_message_id = [] << @message.member.id
+
+      # グループメンバーのメンバーid群から自分のメンバーidを削除する
       @read_register = @group_members.pluck('member_id') - @current_member_message_id
-      # 現在のグループのメンバーのメンバーid群から自分のメンバーidを削除する
 
-      @read_check = Read.where(member_id: @read_register).pluck('message_id')
-      # Readテーブルから@read_registerに格納されているメンバーidにヒットするメッセージのidを取得する where-配列でも検索できた
-
-      @group_message_check = @messages.pluck('id') # 現在のグループのメッセージ全部のidを取得
-      @reads = @group_message_check - @read_check
+      # Readテーブルから@read_registerに格納されているメンバーidにヒットするメッセージのidを取得する
+      # whereのカラム値が配列でも検索できた
+      # @read_check = Read.where(member_id: @read_register).pluck('message_id')
+      # @group_message_check = @messages.pluck('id') # 現在のグループのメッセージ全部のidを取得
+      # @reads = @group_message_check - @read_check
       # 現在のグループのメッセージ全部から、現時点でのReadテーブルに格納されている自分以外のメッセージidに絞る
 
-        @reads.each do |read|
+        # @reads.each do |read|
           @read_register.each do |register|
-            Read.create(member_id: register, message_id: read)
+            Read.create(member_id: register, message_id: @message.id)
           end
-        end
+        # end
       # 繰り返し処理にて、まだ格納されていないメッセージに対して、自分以外のメンバーidで未読としてReadテーブルに登録する
 
       redirect_to team_group_path(params[:team_id], @message.group_id)
