@@ -7,28 +7,38 @@
 .tip-search-box {
 	padding: 25px 20px 0 20px;
 }
+// -----
+
 
 // ティップ一覧表示範囲
 .tip-index-box {
   background-color: #f8f9fa;
   height: 500px;
-  // height: auto;
 }
+// -----
 
+
+// ティップ新規登録フォーム
 .tip-new-form {
   margin-top: 100px;
 }
+// -----
+
 
 // 内容入力欄
 .tip-content .form-control {
   font-size: 1rem;
   height: 300px;
 }
+// -----
+
 
 // ティップ名入力欄
 .tip-name .form-control {
   width: 400px;
 }
+// -----
+
 
 // タグのフォーム
 .tip-tag {
@@ -74,6 +84,45 @@
   margin: 0;
 }
 
+.tip-show-box {
+  margin-top: 30px;
+}
+
+// ティップ詳細でのボタン
+.tip-show-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  padding: 0.5em 2em;
+  width: 250px;
+  color: #2285b1;
+  font-size: 1.2rem;
+  border: 2px solid #a0c4d3;
+  border-radius: 10px;
+}
+
+.tip-show-button::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-top: 3px solid #2285b1;
+  border-right: 3px solid #2285b1;
+  transform: rotate(45deg);
+}
+
+.tip-show-button:hover {
+  color: #333333;
+  text-decoration: none;
+  background-color: #a0c4d3;
+}
+
+.tip-show-button:hover::after {
+  border-top: 3px solid #333333;
+  border-right: 3px solid #333333;
+}
+// -----
+
 
 // 写真エリア
 .pictures-area {
@@ -99,23 +148,6 @@
   margin: 20px 10px;
 }
 
-// ティップ詳細画面
-.tip-show .edit-btn {
-  color: white;
-	font-weight: bold;
-  background-color: #8fbc8f;
-	display: block;
-	margin: 20px 0;
-	width: 200px;
-}
-
-.tip-show-box {
-  margin-top: 30px;
-}
-
-.tip-edit-btn {
-  margin: 0 20px;
-}
 
 // ティップ一覧画面でのカードデザイン
 .tip-index-box .card {

@@ -40,7 +40,7 @@
 
 <div class="tip-show">
   <% if @tip.member.user.id == current_user.id %>
-    <%= link_to 'ティップ編集', edit_team_knowledge_tip_path(@team.id, @knowledge.id, @tip.id), class: 'edit-btn btn' %>
+    <%= link_to 'ティップ編集', edit_team_knowledge_tip_path(@team.id, @knowledge.id, @tip.id), class: 'tip-show-button' %>
   <% end %>
   <%= link_to '戻る', team_knowledge_tips_path, class: 'btn-flat-logo' %>
 </div>

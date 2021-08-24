@@ -18,7 +18,7 @@
   <%= form.label :チーム名 %>
   <%= form.text_field :name, class: 'form-control', placeholder: 'チーム名を入力して下さい。' %>
 
-  <% if controller.action_name == 'edit' %>
+  <% if controller.action_name == 'edit' || controller.action_name == 'update' %>
     <% if @team.members.count == 1 %>
       <div class="cp_ipradio">
         <div><%= form.label :使用用途 %></div>

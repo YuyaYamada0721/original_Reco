@@ -10,22 +10,22 @@
 </h1>
 
 <div class="knowledge-show">
-  <%= link_to team_knowledge_tips_path(@team.id, @knowledge.id), class: 'next-btn btn shine-btn' do %>
+  <%= link_to team_knowledge_tips_path(@team.id, @knowledge.id), class: 'knowledge-show-button' do %>
     <i class="fa fa-file-text"> ティップ</i>
   <% end %>
 
   <% if @stock.present? %>
-    <%= link_to team_knowledge_stock_path(@knowledge.team_id, @knowledge, params[:id]), method: :delete, class: 'stock-btn sad' do %>
+    <%= link_to team_knowledge_stock_path(@knowledge.team_id, @knowledge, params[:id]), method: :delete, class: 'knowledge-show-button sad' do %>
       <i class="fa fa-star"> ストック解除</i>
     <% end %>
   <% else %>
-    <%= link_to team_knowledge_stocks_path(@knowledge.team_id, @knowledge), method: :post, class: 'stock-btn fine' do %>
+    <%= link_to team_knowledge_stocks_path(@knowledge.team_id, @knowledge), method: :post, class: 'knowledge-show-button fine' do %>
       <i class="fa fa-star-o"> ストック登録</i>
     <% end %>
   <% end %>
 
   <% if @knowledge.member_id == @current_member.id %>
-    <%= link_to edit_team_knowledge_path(@team, @knowledge), class: 'edit-btn btn' do %>
+    <%= link_to edit_team_knowledge_path(@team, @knowledge), class: 'knowledge-show-button' do %>
       <i class="fa fa-pencil"> ナレッジ編集</i>
     <% end %>
   <% end %>

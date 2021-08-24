@@ -11,7 +11,6 @@
 .knowledge-index-box {
   background-color: #f8f9fa;
   height: 480px;
-  // height: auto;
 }
 
 .knowledge-index-box .card {
@@ -22,7 +21,7 @@
 
 .knowledge-index-box .card:before{
 	border-top: 5px solid #498ee0;
-	border-left: 5px solid #498ee0;	
+	border-left: 5px solid #498ee0;
 	content: '';
 	display: block;
 	position: absolute;
@@ -53,48 +52,48 @@
 .form-knowledge .form-control {
   width: 400px;
 }
+// -----
 
-.knowledge-show .next-btn {
-  background-color: #7db4e6;
-	display: block;
-	margin: 30px 0 0 0;
-	width: 200px;
+
+// ナレッジ詳細でのボタン
+.knowledge-show-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  padding: 1em 2em;
+  width: 300px;
+  color: #2285b1;
+  font-size: 1.2rem;
+  border: 2px solid #a0c4d3;
+  border-radius: 10px;
 }
 
-.knowledge-show .fa {
-  color: white;
-	font-weight: bold;
+.knowledge-show-button::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-top: 3px solid #2285b1;
+  border-right: 3px solid #2285b1;
+  transform: rotate(45deg);
 }
 
-.knowledge-show .edit-btn {
-  color: white;
-	font-weight: bold;
-  background-color: #8fbc8f;
-	display: block;
-	margin: 0 0 20px 0;
-	width: 200px;
+.knowledge-show-button:hover {
+  color: #333333;
+  text-decoration: none;
+  background-color: #a0c4d3;
 }
 
-
-// ストックボタン
-.knowledge-show .stock-btn {
-  color: white;
-  background-color: #b2b2ff;
-	border-radius: 5px;
-	padding: 10px;
-	margin: 20px 0;
-	width: 200px;
+.knowledge-show-button:hover::after {
+  border-top: 3px solid #333333;
+  border-right: 3px solid #333333;
 }
+// -----
 
+
+// ストックボタン(浮く)嬉しさを表現
 .knowledge-show .fine {
-  color: #fff;
-  font-weight: bold;
-  text-align: center;
-  background: #b2b2ff;
-  border-radius: 5px;
   position: relative;
-  z-index: 1;
-  display: inline-block;
   transition: .3s;
 }
 
@@ -119,15 +118,10 @@
   transform: translateY(7px);
   opacity: 1;
 }
+// -----
 
 
-// ストック解除
-.knowledge-show .sad {
-  text-align: center;
-  font-weight: bold;
-  display: inline-block;
-}
-
+// ストック解除アニメーション(震える)悲しさを表現
 .knowledge-show .sad:hover {
   animation: hurueru .3s  infinite;
 }
@@ -139,9 +133,11 @@
   75% {transform: translate(2px, 0px) rotateZ(-1deg)}
   100% {transform: translate(0px, 0px) rotateZ(0deg)}
 }
+// -----
 
 
 // ナレッジ削除ボタン
 .knowledge-delete-btn {
   margin-left: 30px;
 }
+// -----
