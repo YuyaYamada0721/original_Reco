@@ -18,7 +18,11 @@
 
   <h4 class="tip-show-label">内容</h4>
   <div class="tip-show-content">
-    <p><%= markdown(@tip.content).html_safe %></p>
+    <% if @tip.content.present? %>
+      <p><%= markdown(@tip.content).html_safe %></p>
+    <% else %>
+      <p>内容を入力して下さい。</p>
+    <% end %>
   </div>
 
   <h4 class="tip-show-label">タグ</h4>
