@@ -12,8 +12,8 @@ Rails.application.routes.draw do
     post 'users/admin_guest_sign_in', to: 'users/sessions#admin_guest_sign_in'
   end
 
-  resources :users, only: %i[show edit update]
   resources :teams do
+    resources :users, only: %i[show edit update], module: :teams
     member do
       patch :owner_change
     end
