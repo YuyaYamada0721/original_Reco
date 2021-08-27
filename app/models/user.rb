@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :teams, dependent: :destroy
   has_many :members, dependent: :destroy
   has_many :members_teams, through: :members, source: :team
+  has_many :group_member, dependent: :destroy
+  has_many :groups, through: :group_member
 
   mount_uploader :image, ImageUploader
 

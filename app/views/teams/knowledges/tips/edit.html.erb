@@ -33,10 +33,8 @@
 
   <div class="tip-tag">
     <%= form.label :タグ： %>
-    <% @tip.team.tags.each do |tag| %>
-      <%= form.label :tag_ids, tag.name, value: tag[:id] %>
-      <%= form.check_box :tag_ids, { multiple: true, checked: @tip.tags.find_by(id: tag.id).present?, include_hidden: false }, tag[:id] %>
-    <% end %>
+    <%# <%= form.hidden_field 'tag_ids[]', value: [] %> %>
+    <%= form.collection_check_boxes :tag_ids, @tip.team.tags, :id, :name %>
   </div>
 
   <div class='pictures-area'>
