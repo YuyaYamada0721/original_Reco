@@ -64,15 +64,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def tag_check # tips登録時、tag_idsのパラメータがなければtaggingからデータを削除する tips
-    if params[:tip][:tag_ids] == nil
-      @tags = Tagging.where(tip_id: @tip.id)
-      @tags.each do |tag|
-        tag.destroy
-      end
-    end
-  end
-
   def tip_author_check
     @current_member = Member.find_by(team_id: params[:team_id], user_id: current_user.id)
     @tip = Tip.find(params[:id])
