@@ -2,6 +2,7 @@ class TeamsController < ApplicationController
   before_action :authenticate_user!
   before_action :team_owner_check, only: :edit
   before_action :team_members_check, only: :show
+  before_action :set_team, except: %i[index new create search]
 
   def index
     @teams = current_user.members_teams.page(params[:page]).per(6)
@@ -10,9 +11,9 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find(params[:id])
     @members = Member.where(team_id: @team.id).page(params[:page]).per(5)
-    @random = Member.where(team_id: @team.id).order('RANDOM()').limit(1) #チームならではの機能テスト
+    # チームならではの機能テスト
+    @random = Member.where(team_id: @team.id).order('RANDOM()').limit(1)
 
     # チームメッセージへ遷移するための準備
     @owner = Member.find_by(team_id: @team.id, user_id: @team.owner.id)
@@ -42,13 +43,12 @@ class TeamsController < ApplicationController
   end
 
   def edit
-    @team = Team.find(params[:id])
     @members = Member.where(team_id: @team.id).page(params[:page]).per(5)
   end
 
   def update
-    @team = Team.find(params[:id])
-    @members = Member.where(team_id: @team.id).page(params[:page]).per(5) # 更新時にエラー発生した場合render先で必要
+    # 更新時にエラー発生した場合render先で必要
+    @members = Member.where(team_id: @team.id).page(params[:page]).per(5)
     if @team.update(team_params)
       redirect_to teams_path, notice: 'チームを編集しました。'
     else
@@ -57,10 +57,10 @@ class TeamsController < ApplicationController
   end
 
   def destroy
-    @team = Team.find(params[:id])
     @members = @team.members
 
-    @members.each do |member| #チームを削除する時にこのチームで作成したGroupも削除する処理
+    #チームを削除する時にこのチームで作成したGroupも削除する処理
+    @members.each do |member|
       @dm_groups = Group.joins(:group_members).where(group_members: { member_id: member.id })
       @dm_groups.each(&:destroy)
     end
@@ -69,7 +69,6 @@ class TeamsController < ApplicationController
   end
 
   def owner_change
-    @team = Team.find(params[:id])
     @team.update(owner_id: params[:owner_id])
     redirect_to team_path, notice: 'チームオーナーを交代しました。'
   end
@@ -81,6 +80,10 @@ class TeamsController < ApplicationController
   end
 
   private
+
+  def set_team
+    @team = Team.find(params[:id])
+  end
 
   def team_params
     params.require(:team).permit(:user_id, :owner_id, :name, :is_solo, :q)
