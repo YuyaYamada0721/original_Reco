@@ -3,20 +3,20 @@ class Teams::KnowledgesController < ApplicationController
   before_action :team_member_check, only: %i[index new create]
   before_action :team_knowledge_check, only: %i[show edit update destroy]
   before_action :knowledge_author_check, only: :edit
+  before_action :set_team, except: :destroy
+  before_action :set_knowledge, only: %i[show edit update destroy]
+
 
   def index
-    @team = Team.find(params[:team_id])
     @knowledges = @team.knowledges.all.page(params[:page]).per(6).order(id: 'DESC')
     @q = @knowledges.ransack(params[:q])
   end
 
   def new
-    @team = Team.find(params[:team_id])
     @knowledge = Knowledge.new
   end
 
   def create
-    @team = Team.find(params[:team_id])
     @member = Member.where(team_id: @team.id).find_by(user_id: current_user.id)
     @knowledge = Knowledge.new(member_id: @member.id, team_id: @team.id, name: params[:knowledge][:name])
     if @knowledge.save
@@ -27,20 +27,13 @@ class Teams::KnowledgesController < ApplicationController
   end
 
   def show
-    @team = Team.find(params[:team_id])
-    @knowledge = Knowledge.find(params[:id])
     @current_member = Member.find_by(team_id: @team.id, user_id: current_user.id)
     @stock = @current_member.stocks.find_by(knowledge_id: @knowledge.id)
   end
 
-  def edit
-    @team = Team.find(params[:team_id])
-    @knowledge = Knowledge.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @team = Team.find(params[:team_id])
-    @knowledge = Knowledge.find(params[:id])
     if @knowledge.update(knowledge_params)
       redirect_to team_knowledges_path, notice: 'ナレッジを編集しました。'
     else
@@ -49,19 +42,25 @@ class Teams::KnowledgesController < ApplicationController
   end
 
   def destroy
-    @knowledge = Knowledge.find(params[:id])
     @knowledge.destroy
     redirect_to team_knowledges_path, notice: 'ナレッジを削除しました。'
   end
 
   def search
-    @team = Team.find(params[:team_id])
     @knowledges = @team.knowledges.all.page(params[:page]).per(6).order(id: 'DESC')
     @q = @knowledges.ransack(params[:q])
     @results = @q.result
   end
 
   private
+
+  def set_team
+    @team = Team.find(params[:team_id])
+  end
+
+  def set_knowledge
+    @knowledge = Knowledge.find(params[:id])
+  end
 
   def knowledge_params
     params.require(:knowledge).permit(:member_id, :team_id, :name, :q)
