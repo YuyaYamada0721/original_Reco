@@ -22,7 +22,7 @@
 
     <% if @team.is_solo? %>
       <%= link_to team_group_path(@team.id, @team_message.id), class: 'team-show-button' do %>
-        <i class="fa fa-sticky-note"></i> メモ</i>
+        <i class="fa fa-sticky-note"> メモ</i>
       <% end %>
     <% else %>
       <%= link_to team_group_path(@team.id, @team_message.id), class: 'team-show-button' do %>
