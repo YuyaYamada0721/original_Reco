@@ -15,7 +15,7 @@
   <%= form.hidden_field :user_id, value: current_user.id %>
   <%= form.hidden_field :owner_id, value: current_user.id %>
 
-  <%= form.label :チーム名 %>
+  <%= form.label :name, 'チーム名(30字以内)' %>
   <%= form.text_field :name, class: 'form-control', placeholder: 'チーム名を入力して下さい。' %>
 
   <% if controller.action_name == 'edit' || controller.action_name == 'update' %>
