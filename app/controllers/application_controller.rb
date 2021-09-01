@@ -5,18 +5,11 @@ class ApplicationController < ActionController::Base
     user_path(current_user.id)
   end
 
-  def same_team_check # 同じチームでないUserページにアクセスさせない users
-    if User.find_by(id: params[:id]).nil?
-      redirect_to user_path(current_user), notice: 'ユーザは存在しません。'
-    elsif current_user.id != params[:id].to_i
-      current_user_join_team = current_user.members.pluck('team_id')
-      subject_user = User.find(params[:id]).members.pluck('team_id')
-      same_team_judgment = current_user_join_team + subject_user
-      result = same_team_judgment.select { |judgment| same_team_judgment.count(judgment) > 1 }.uniq
-      unless result.present?
-        redirect_to user_path(current_user), notice: 'チームメンバーではないのでアクセスできません。'
-      end
-    end
+  def user_check #  users
+    return if User.find_by_id(params[:id]) == current_user
+
+    flash[:notice] = '警告：禁止行為'
+    redirect_to user_path(current_user)
   end
 
   def team_members_check # teams
