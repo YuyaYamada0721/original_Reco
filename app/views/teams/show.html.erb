@@ -37,9 +37,7 @@
         <div class="modal__bg js-modal-close"></div>
       <div class="team-modal__content">
       <p><i class="fa fa-smile-o"></i> 選ばれた人 <i class="fa fa-smile-o"></i></p>
-      <% @random.each do |random| %>
-        <p><%= random.user.username %></p>
-      <% end %>
+      <p><%= @random.user.username %></p>
         <h6><i class="fa fa-exclamation-circle"> 再抽選するにはこのページを再読み込みして下さい。</i></h6>
       <a class="js-modal-close" href="">閉じる</a>
       </div>
