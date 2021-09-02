@@ -13,10 +13,10 @@ class ApplicationController < ActionController::Base
   end
 
   def team_members_check # teams
-    unless Member.where(team_id: params[:id]).where(user_id: current_user.id).present?
-      flash[:notice] = 'メンバーではないチーム情報は見れません。'
-      redirect_to teams_path
-    end
+    return if Member.where(team_id: params[:id]).where(user_id: current_user.id).present?
+
+    flash[:notice] = 'メンバーではないチーム情報は見れません。'
+    redirect_to teams_path
   end
 
   def team_owner_check # teams
