@@ -15,6 +15,8 @@ class Member < ApplicationRecord
 
   before_create :solo_team?
 
+  scope :random_one, ->(members) { offset(rand(members.count)).first }
+
   def solo_team?
     @team = Team.find(team_id)
     throw(:abort) if @team.is_solo == true && @team.members.count == 1
