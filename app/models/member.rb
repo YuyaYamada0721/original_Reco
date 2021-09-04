@@ -16,6 +16,7 @@ class Member < ApplicationRecord
   before_create :solo_team?
 
   scope :random_one, ->(members) { offset(rand(members.count)).first }
+  scope :current_member_info, ->(user) { find_by(user_id: user) }
 
   def solo_team?
     @team = Team.find(team_id)
