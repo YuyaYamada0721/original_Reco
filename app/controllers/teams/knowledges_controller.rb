@@ -6,9 +6,8 @@ class Teams::KnowledgesController < ApplicationController
   before_action :set_team, except: :destroy
   before_action :set_knowledge, only: %i[show edit update destroy]
 
-
   def index
-    @knowledges = @team.knowledges.all.page(params[:page]).per(6).order(id: 'DESC')
+    @knowledges = @team.knowledges.paginate6_update_desc(params)
     @q = @knowledges.ransack(params[:q])
   end
 
@@ -17,8 +16,8 @@ class Teams::KnowledgesController < ApplicationController
   end
 
   def create
-    @member = Member.where(team_id: @team.id).find_by(user_id: current_user.id)
-    @knowledge = Knowledge.new(member_id: @member.id, team_id: @team.id, name: params[:knowledge][:name])
+    @current_member = @team.members.current_member_info(current_user)
+    @knowledge = Knowledge.new(member_id: @current_member.id, team_id: @team.id, name: params[:knowledge][:name])
     if @knowledge.save
       redirect_to team_knowledges_path, notice: 'ナレッジを登録しました。'
     else
@@ -27,7 +26,7 @@ class Teams::KnowledgesController < ApplicationController
   end
 
   def show
-    @current_member = Member.find_by(team_id: @team.id, user_id: current_user.id)
+    @current_member = @team.members.current_member_info(current_user)
     @stock = @current_member.stocks.find_by(knowledge_id: @knowledge.id)
   end
 
@@ -47,7 +46,7 @@ class Teams::KnowledgesController < ApplicationController
   end
 
   def search
-    @knowledges = @team.knowledges.all.page(params[:page]).per(6).order(id: 'DESC')
+    @knowledges = @team.knowledges.paginate6_update_desc(params)
     @q = @knowledges.ransack(params[:q])
     @results = @q.result
   end

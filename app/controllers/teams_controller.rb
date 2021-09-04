@@ -11,9 +11,8 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @members = Member.where(team_id: @team.id).page(params[:page]).per(5)
-    # チームならではの機能テスト
-    @random = @members.offset(rand(@members.count)).first
+    @members = @team.members.page(params[:page]).per(5)
+    @random = @members.random_one(@members)
 
     # チームメッセージへ遷移するための準備
     @owner = Member.find_by(team_id: @team.id, user_id: @team.owner.id)
@@ -43,12 +42,12 @@ class TeamsController < ApplicationController
   end
 
   def edit
-    @members = Member.where(team_id: @team.id).page(params[:page]).per(5)
+    @members = @team.members.page(params[:page]).per(5)
   end
 
   def update
     # 更新時にエラー発生した場合render先で必要
-    @members = Member.where(team_id: @team.id).page(params[:page]).per(5)
+    @members = @team.members.page(params[:page]).per(5)
     if @team.update(team_params)
       redirect_to teams_path, notice: 'チームを編集しました。'
     else
