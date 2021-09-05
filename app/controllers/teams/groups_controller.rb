@@ -3,7 +3,7 @@ class Teams::GroupsController < ApplicationController
 
   def create
     @team = Team.find(params[:team_id])
-    @current_member = Member.find_by(team_id: @team.id, user_id: current_user.id)
+    @current_member = @team.members.current_member_info(current_user)
     @group = Group.create(is_dm: true)
     @group_member1 = GroupMember.create(group_id: @group.id, member_id: @current_member.id)
     @group_member2 = GroupMember.create(params.require(:group_member).permit(:member_id, :group_id).merge(group_id: @group.id))
@@ -12,15 +12,15 @@ class Teams::GroupsController < ApplicationController
 
   def show
     @team = Team.find(params[:team_id])
-    @current_member = Member.find_by(team_id: @team.id, user_id: current_user.id)
+    @current_member = @team.members.current_member_info(current_user)
     @group = Group.find(params[:id])
     @message = Message.new
     @messages = @group.messages.order(id: 'DESC')
     @group_members = @group.group_members.page(params[:page]).per(10)
 
-    if Message.joins(:reads).find_by(reads: { is_checked: false }, reads: { member_id: @current_member.id }, group_id: @group.id).present?
+    if Message.joins(:reads).find_by(reads: { is_checked: false, member_id: @current_member.id }, group_id: @group.id).present?
 
-      @unread_messages = Message.joins(:reads).where(reads: { is_checked: false }, reads: { member_id: @current_member.id }, group_id: @group.id)
+      @unread_messages = Message.joins(:reads).where(reads: { is_checked: false, member_id: @current_member.id }, group_id: @group.id)
       @unread_messages.each do |message|
         read = Read.find_by(member_id: @current_member.id, message_id: message.id)
         read.update(is_checked: true)
