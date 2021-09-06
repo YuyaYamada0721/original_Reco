@@ -1,19 +1,17 @@
 class Teams::TagsController < ApplicationController
   before_action :team_member_check
   before_action :team_function_owner_only, only: :new
+  before_action :set_team, except: %i[destory]
 
   def index
-    @team = Team.find(params[:team_id])
-    @tags = @team.tags.all.page(params[:page]).per(7)
+    @tags = @team.tags.page(params[:page]).per(7)
   end
 
   def new
-    @team = Team.find(params[:team_id])
     @tag = Tag.new
   end
 
   def create
-    @team = Team.find(params[:team_id])
     @tag = Tag.new(tag_params)
     @tag.name = @tag.name.tr('０-９ａ-ｚＡ-Ｚ', '0-9a-zA-Z')
 
@@ -34,6 +32,10 @@ class Teams::TagsController < ApplicationController
   end
 
   private
+
+  def set_team
+    @team = Team.find(params[:team_id])
+  end
 
   def tag_params
     params.require(:tag).permit(:name).merge(team_id: params[:team_id].to_i)
