@@ -17,22 +17,19 @@ class Teams::MembersController < ApplicationController
   end
 
   def destroy
-    @team = Team.find_by(id: params[:team_id])
+    @team = Team.find(params[:team_id])
     @member = Member.find(params[:id])
-    @subject_member = Member.find_by(team_id: @team.id, user_id: @member.user.id)
 
-    @dm_groups = Group.joins(:group_members).where(group_members: { member_id: @subject_member.id }, is_dm: 'true')
-    @dm_groups.each do |dm_group|
-      dm_group.destroy #メンバーを脱退させると そのメンバーが個人チャットしていたgroupを削除
-    end
+    @dm_groups = Group.joins(:group_members).where(group_members: { member_id: @member.id }, is_dm: 'true')
+    @dm_groups.each(&:destory)
 
-    @subject_member.destroy
+    @member.destroy
     redirect_to team_path(@team), notice: 'メンバーを脱退させました。'
   end
 
   def show
-    @team = Team.find(params[:team_id]) #チーム情報
-    @member = Member.find(params[:id]) #対象のメンバー情報
+    @team = Team.find(params[:team_id])
+    @member = Member.find(params[:id])
     @member_group_member = GroupMember.where(member_id: @member.id) #対象のメンバーのグループ情報
     @current_member = Member.find_by(team_id: params[:team_id], user_id: current_user.id) #現在のユーザのメンバーとしての情報
     @current_member_group_member = GroupMember.where(member_id: @current_member.id) #現在のユーザのメンバーとしてのグループ情報
