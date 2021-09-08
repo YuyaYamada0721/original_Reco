@@ -28,10 +28,10 @@ class ApplicationController < ActionController::Base
 
   def team_knowledge_check # knowledges
     @knowledge = Knowledge.find(params[:id])
-    unless Member.where(team_id: @knowledge.team_id, user_id: current_user.id).present?
-      flash[:notice] = 'メンバーでないのでアクセスできません。'
-      redirect_to teams_path
-    end
+    return if Member.where(team_id: @knowledge.team_id, user_id: current_user.id).present?
+
+    flash[:notice] = 'メンバーでないのでアクセスできません。'
+    redirect_to teams_path
   end
 
   def knowledge_author_check # knowledges
