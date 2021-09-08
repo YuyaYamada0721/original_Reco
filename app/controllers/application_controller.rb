@@ -36,10 +36,10 @@ class ApplicationController < ActionController::Base
 
   def knowledge_author_check # knowledges
     @current_member = Member.find_by(team_id: params[:team_id], user_id: current_user.id)
-    unless @current_member.id == @knowledge.member_id
-      flash[:notice] = 'ナレッジの作成者でないとアクセスできません。'
-      redirect_to team_knowledges_path
-    end
+    return if @current_member.id == @knowledge.member_id
+
+    flash[:notice] = 'ナレッジの作成者でないとアクセスできません。'
+    redirect_to team_knowledges_path
   end
 
   def team_function_owner_only #tags
