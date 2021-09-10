@@ -61,6 +61,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
 
+  gem 'rubocop', require: false
+
   gem 'letter_opener_web'
 end
 
