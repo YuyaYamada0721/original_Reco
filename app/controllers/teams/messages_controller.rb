@@ -28,6 +28,6 @@ class Teams::MessagesController < ApplicationController
     @group = Group.find(Message.find_by(id: params[:id]).group_id)
     @message = Message.find(params[:id])
     @message.destroy
-    redirect_to team_group_path(@team, @group), notice: 'メッセージを削除しました。'
+    redirect_to team_group_path(@team, @group), alert: 'メッセージを削除しました。'
   end
 end

@@ -42,7 +42,7 @@ class Teams::KnowledgesController < ApplicationController
 
   def destroy
     @knowledge.destroy
-    redirect_to team_knowledges_path, notice: 'ナレッジを削除しました。'
+    redirect_to team_knowledges_path, alert: 'ナレッジを削除しました。'
   end
 
   def search

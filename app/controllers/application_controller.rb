@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   def user_check #  users
     return if User.find_by_id(params[:id]) == current_user
 
-    flash[:notice] = '警告：禁止行為'
+    flash[:alert] = '警告：禁止行為'
     redirect_to user_path(current_user)
   end
 
