@@ -28,7 +28,7 @@ class Teams::TagsController < ApplicationController
   def destroy
     @tag = Tag.find(params[:id])
     @tag.destroy
-    redirect_to team_tags_path, notice: 'タグを削除しました。'
+    redirect_to team_tags_path, alert: 'タグを削除しました。'
   end
 
   private

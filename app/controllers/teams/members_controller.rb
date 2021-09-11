@@ -24,7 +24,7 @@ class Teams::MembersController < ApplicationController
     @dm_groups.each(&:destory)
 
     @member.destroy
-    redirect_to team_path(@team), notice: 'メンバーを脱退させました。'
+    redirect_to team_path(@team), alert: 'メンバーを脱退させました。'
   end
 
   def show

@@ -64,7 +64,7 @@ class TeamsController < ApplicationController
       @dm_groups.each(&:destroy)
     end
     @team.destroy
-    redirect_to teams_path, notice: 'チームを削除しました。'
+    redirect_to teams_path, alert: 'チームを削除しました。'
   end
 
   def owner_change

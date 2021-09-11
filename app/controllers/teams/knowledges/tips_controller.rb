@@ -74,7 +74,7 @@ class Teams::Knowledges::TipsController < ApplicationController
 
   def destroy
     @tip.destroy
-    redirect_to team_knowledge_tips_path, notice: 'ティップを削除しました。'
+    redirect_to team_knowledge_tips_path, alert: 'ティップを削除しました。'
   end
 
   def search
