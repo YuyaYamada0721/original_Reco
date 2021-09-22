@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :groups, controller: 'teams/groups', only: %i[show create]
     resources :messages, controller: 'teams/messages', only: %i[create destroy]
     resources :tags, controller: 'teams/tags', only: %i[index new create destroy]
+    resources :members, controller: 'teams/members', only: %i[show create destroy]
     resources :knowledges, controller: 'teams/knowledges' do
       collection do
         get :search
@@ -33,8 +34,6 @@ Rails.application.routes.draw do
         end
       end
       resources :stocks, controller: 'teams/knowledges/stocks', only: %i[create destroy]
-    end
-    resources :members, controller: 'teams/members', only: %i[show create destroy] do
     end
   end
 end

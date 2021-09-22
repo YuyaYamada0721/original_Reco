@@ -30,8 +30,8 @@ gem 'redcarpet'
 gem 'faker'
 
 gem 'dotenv-rails'
-gem 'unicorn'
 gem 'mini_racer', platforms: :ruby
+gem 'unicorn'
 
 gem 'fog-aws'
 
@@ -46,13 +46,13 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.8'
 
   gem 'capistrano', '3.6.0'
+  gem 'capistrano3-unicorn'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
-  gem 'capistrano3-unicorn'
 
-  gem 'ed25519'
   gem 'bcrypt_pbkdf'
+  gem 'ed25519'
 end
 
 group :development do
