@@ -21,24 +21,7 @@
   <header>
     <div class="head">
     <% if controller.controller_name == 'tops' || controller.controller_name == 'registrations' || controller.controller_name == 'sessions' || controller.controller_name == 'helps' %>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-          <%= link_to 'Reco!', root_path, class: 'navbar-brand' %>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <% if user_signed_in? %>
-                <li class="nav-item"><%= link_to I18n.t('views.messages.my_page'), user_path(current_user.id), class: 'nav-link active' %></li>
-                <li class="nav-item"><%= link_to I18n.t('views.messages.log_out'), destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
-                <li class="nav-item"><%= link_to 'ヘルプ', help_path, class: 'nav-link' %></li>
-              <% else %>
-                <li class="nav-item"><%= link_to I18n.t('views.messages.sign_up'), new_user_registration_path, class: 'nav-link' %></li>
-                <li class="nav-item"><%= link_to I18n.t('views.messages.sign_in'), new_user_session_path, class: 'nav-link' %></li>
-                <li class="nav-item"><%= link_to 'ヘルプ', help_path, class: 'nav-link' %></li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <%= render 'shared/layout/header' %>
     <% end %>
     </div>
       <% unless controller.controller_name == 'tops' %>
