@@ -44,11 +44,16 @@ p {
   padding: 10px 20px;
   margin: 0 20px;
   display: block;
-}
+  transition: all .3s;
 
-.top-btn a {
-  color: white;
-  text-decoration: none;
+  > a {
+    color: white;
+    text-decoration: none;
+  }
+
+  &:hover {
+    transform: translate(0, -3px);
+  }
 }
 
 .text-center {
@@ -58,21 +63,20 @@ p {
 
 .reco-function-content {
   width: 40%;
-}
 
-.reco-function-content h3 {
-  text-decoration: underline;
-}
+  > h3 {
+    text-decoration: underline;
+  }
 
-.reco-function-content img {
-  border-radius: 10px;
+  > img {
+    border-radius: 10px;
+  }
 }
 
 .reco-function-title {
   color: white;
   text-align: center;
 }
-
 
 .text-white {
   color: white;
