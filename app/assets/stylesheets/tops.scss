@@ -1,4 +1,5 @@
-@charset "UTF-8";
+$white: white;
+$text: #094067;
 
 h1, .h1 {
   color: #094067;
@@ -78,17 +79,20 @@ p {
   text-align: center;
 }
 
-.text-white {
-  color: white;
+.main-content {
+  color: $white;
+  font-weight: 550;
+}
+
+.main-title {
+  color: $white;
+  font-size: 4rem;
+  font-weight: 550;
+  margin-bottom: 2rem;
 }
 
 .navbar-brand {
   font-size: 2.5rem;
-}
-
-#reco-main {
-  font-size: 4rem;
-  margin-bottom: 20px;
 }
 
 #scroll-to-top-btn{
@@ -107,7 +111,26 @@ p {
   transition-duration: 0.5s;
 }
 
-
 .ms-auto {
   margin-left: auto !important;
+}
+
+@media screen and (max-width: 600px) {
+  .top-btn {
+    font-size: .8rem;
+    padding: .8rem .8rem;
+    margin: 0 .4rem;
+  }
+
+  .main-title {
+    font-size: 3.5rem;
+  }
+
+  .main-content {
+    font-size: 1.5rem;
+  }
+
+  .navbar-brand {
+    font-size: 2rem;
+  }
 }
