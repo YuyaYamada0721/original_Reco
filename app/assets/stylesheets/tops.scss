@@ -26,16 +26,32 @@ h6, .h6 {
 }
 
 p {
-  color: #5f6c7b;
-  font-size: 1.5rem;
+  color: #094067;
 }
 
+// -----main-----
 .bg-image-full {
   background-color: #3da9fc;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center;
   background-size: cover;
+}
+
+.main-title {
+  color: $white;
+  font-size: 4rem;
+  font-weight: 550;
+  margin-bottom: 2rem;
+}
+
+.main-content {
+  color: $white;
+  font-weight: 550;
+}
+
+.navbar-brand {
+  font-size: 2.5rem;
 }
 
 .top-btn {
@@ -56,43 +72,42 @@ p {
     transform: translate(0, -3px);
   }
 }
+// -----main-----
+
+
+// -----sub-----
+.sub-content {
+  font-size: 1.5rem;
+}
+// -----sub-----
+
+
+// -----explanation-----
+
+.top-function-explanation {
+  margin: 50px 0;
+
+  & h3 {
+    margin-top: 50px;
+    text-decoration: underline;
+    margin-bottom: 2rem;
+  }
+
+  & p {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+}
+// -----explanation-----
+
 
 .text-center {
   display: flex;
   justify-content: center;
 }
 
-.reco-function-content {
-  width: 40%;
-
-  > h3 {
-    text-decoration: underline;
-  }
-
-  > img {
-    border-radius: 10px;
-  }
-}
-
-.reco-function-title {
-  color: white;
-  text-align: center;
-}
-
-.main-content {
-  color: $white;
-  font-weight: 550;
-}
-
-.main-title {
-  color: $white;
-  font-size: 4rem;
-  font-weight: 550;
-  margin-bottom: 2rem;
-}
-
-.navbar-brand {
-  font-size: 2.5rem;
+.a-single-word {
+  font-size: 1.5rem;
 }
 
 #scroll-to-top-btn{
@@ -115,7 +130,10 @@ p {
   margin-left: auto !important;
 }
 
+
 @media screen and (max-width: 599px) {
+
+// -----main-----
   .top-btn {
     font-size: .8rem;
     padding: .8rem .8rem;
@@ -133,12 +151,61 @@ p {
   .navbar-brand {
     font-size: 2rem;
   }
+// -----main-----
+
+// -----sub-----
+  .sub-content {
+    > h2 {
+      margin-left: 2rem;
+      font-size: 1.5rem;
+    }
+
+    > p {
+      font-size: 1.3rem;
+    }
+  }
+// -----sub-----
+
+// -----explanation-----
+
+  .top-function-num {
+    font-size: 1.4rem;
+  }
+
+  .top-function-explanation {
+    margin: 20px 0;
+
+    & h3 {
+      font-size: 1.4rem;
+      margin: 0 0 2rem 0;
+    }
+
+    & p {
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+  }
+
+  img {
+    height: 250px;
+    width: 400px;
+  }
+  // -----explanation-----
+
+  .a-single-word {
+    font-size: 1.3rem;
+  }
 }
 
+
+
+
+
 @media screen and (min-width: 600px) and (max-width: 1024px) {
+// -----main-----
   .top-btn {
     font-size: 1rem;
-    padding: .8rem .8rem;
+    padding: .8rem .6rem;
     margin: 0 .8rem;
   }
 
@@ -153,4 +220,19 @@ p {
   .navbar-brand {
     font-size: 2rem;
   }
+// -----main-----
+
+// -----explanation-----
+  .top-function-explanation {
+    margin: 20px 0;
+
+    & h3 {
+      margin: 0 0 2rem 0;
+    }
+
+    & p {
+      line-height: 1;
+    }
+  }
+// -----explanation-----
 }
