@@ -115,11 +115,31 @@ p {
   margin-left: auto !important;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 599px) {
   .top-btn {
     font-size: .8rem;
     padding: .8rem .8rem;
     margin: 0 .4rem;
+  }
+
+  .main-title {
+    font-size: 3.5rem;
+  }
+
+  .main-content {
+    font-size: 1.5rem;
+  }
+
+  .navbar-brand {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+  .top-btn {
+    font-size: 1rem;
+    padding: .8rem .8rem;
+    margin: 0 .8rem;
   }
 
   .main-title {

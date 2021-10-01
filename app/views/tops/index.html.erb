@@ -11,28 +11,27 @@
             </div>
             <h1 class="main-title">Reco!</h1>
             <h2 class="main-content">情報を記録・管理・共有できるアプリ</h2>
-            <h3 class="main-content">未来のために記録を残しましょう！</h3>
+            <h2 class="main-content">未来のために記録を残しましょう！</h2>
         </div>
     </div>
-        <div class="text-center my-5">
-            <button class="top-btn"><a href="/users/sign_in"><%= I18n.t('views.messages.sign_in') %></a></button>
-            <button class="top-btn"><a href="/users/sign_up"><%= I18n.t('views.messages.sign_up') %></a></button>
-            <button class="top-btn guest-btn"><%= link_to I18n.t('views.messages.guest_sign_in'), users_guest_sign_in_path, method: :post %></button>
-            <button class="top-btn admin-guest-btn"><%= link_to I18n.t('views.messages.admin_guest_sign_in'), users_admin_guest_sign_in_path, method: :post %></button>
-        </div>
+    <div class="text-center my-5">
+        <button class="top-btn"><a href="/users/sign_in"><%= I18n.t('views.messages.sign_in') %></a></button>
+        <button class="top-btn"><a href="/users/sign_up"><%= I18n.t('views.messages.sign_up') %></a></button>
+        <button class="top-btn guest-btn"><%= link_to I18n.t('views.messages.guest_sign_in'), users_guest_sign_in_path, method: :post %></button>
+        <button class="top-btn admin-guest-btn"><%= link_to I18n.t('views.messages.admin_guest_sign_in'), users_admin_guest_sign_in_path, method: :post %></button>
+    </div>
 </header>
 
-<section class="py-3">
-    <div class="container my-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <h2>日々行った事を、<br>簡単に記録・管理・共有したい。</h2>
-                <hr>
-                <p class="reco-work">Reco! はそのお悩みを解消します。</p>
-                <p class="reco-work">チームで使用しナレッジを高めましょう！<br>もちろん個人での利用も可能です。</p>
-                <p>使用方法によっては、<br>日常のあらゆるシーンで活躍するはずです！</p>
-                <p class="reco-work">主な機能を3つ紹介します。</p>
-            </div>
+<section class="py-5">
+    <div class="row justify-content-center">
+        <div class="sub-content">
+            <h2>日々行った事を、</h2>
+            <h2>簡単に記録・管理・共有したい。</h2>
+            <hr>
+            <p>Reco! はそのお悩みを解消します。</p>
+            <p>チームで使用しナレッジを高めましょう！<br>もちろん個人での利用も可能です。</p>
+            <p>使用方法によっては、<br>日常のあらゆるシーンで活躍するはずです！</p>
+            <p>主な機能を3つ紹介します。</p>
         </div>
     </div>
 </section>
