@@ -1,33 +1,33 @@
-<div class="profile">
+<div class="profile row">
+  <h1 class="app-function-title col-12"><span>User</span>マイページ</h1>
 
-  <h1 class="app-function-title"><span>User</span>マイページ</h1>
-
-  <div class="profile-image">
+  <div class="profile-image col-12 col-lg-6">
     <%= image_tag @user.image.url, size: '400x300' if @user.image && @user.image.url %>
   </div>
 
-  <div class="profile-user-settings">
-    <h2 class="profile-user-name"><%= @user.username %></h2>
-  </div>
+  <div class="profile-box col-12 col-lg-6">
 
-  <div class="profile-stats">
-    <ul>
-      <li><%= link_to '個人記録・チーム記録', teams_path, class: 'btn user-show-btn' %></li>
-      <li>
-        <% if current_user == User.find(params[:id]) %>
-          <%= link_to 'ユーザ編集', edit_user_path, class: 'btn user-show-btn' %>
-        <% end %>
-      </li>
-      <li>
-        <% if current_user.admin? %>
-          <%= link_to '管理者画面', rails_admin_path, class: 'btn user-show-btn' %>
-        <% end %>
-      </li>
-    </ul>
-  </div>
+    <h2 class="profile-name"><%= @user.username %></h2>
 
-  <div class="profile-bio">
-    <p><span><%= @user.introduction %></span></p>
-  </div>
+    <div class="profile-function">
+      <ul>
+        <li><%= link_to '個人記録・チーム記録', teams_path, class: 'btn user-show-btn' %></li>
+        <li>
+          <% if current_user == User.find(params[:id]) %>
+            <%= link_to 'ユーザ編集', edit_user_path, class: 'btn user-show-btn' %>
+          <% end %>
+        </li>
+        <li>
+          <% if current_user.admin? %>
+            <%= link_to '管理者画面', rails_admin_path, class: 'btn user-show-btn' %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
 
+    <div class="profile-bio">
+      <p><span><%= @user.introduction %></span></p>
+    </div>
+
+  </div>
 </div>
