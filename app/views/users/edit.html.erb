@@ -24,10 +24,16 @@
       <%= image_tag @user.image.url, size: '300x200' if @user.image && @user.image.url %>
       <%= form.hidden_field :image_cache %>
 
-      <div class="image-field">
-        <%= form.label :image, '画像', class: 'image_input_btn' %>
-        <%= form.file_field :image, class: 'image_form' %>
-        <%= form.submit value: "設定している画像を削除する。",name: "delete_image",data: { confirm: "画像を削除しますか？"}, class:'btn btn-danger' %>
+      <div class="image-field row">
+        <div class="col-12 col-lg-1">
+          <%= form.label :image, '画像', class: 'image-input-btn' %>
+        </div>
+        <div class="col-12 col-lg-4">
+          <%= form.file_field :image, class: 'image-form' %>
+        </div>
+        <div class="col-12 col-lg-1">
+          <%= form.submit value: "設定している画像を削除する。",name: "delete_image",data: { confirm: "画像を削除しますか？"}, class:'btn btn-danger delete-image' %>
+        </div>
       </div>
 
       <%= form.label :introduction, '自己紹介(200字以内)' %>
@@ -41,7 +47,7 @@
       <%= form.password_field :password_confirmation, class: 'form-control', placeholder: 'パスワードを入力して下さい。' %>
 
     <div class="action">
-      <%= form.submit I18n.t('views.button.register'), class: "send" %>
+      <%= form.submit I18n.t('views.button.register'), class: 'custom-btn new-link' %>
     </div>
   </div>
 <% end %>

@@ -184,12 +184,13 @@ p {
       font-size: 1.1rem;
       line-height: 1;
     }
+
+    & img {
+      height: 250px;
+      width: 400px;
+    }
   }
 
-  img {
-    height: 250px;
-    width: 400px;
-  }
   // -----explanation-----
 
   .a-single-word {
