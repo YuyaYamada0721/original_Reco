@@ -36,6 +36,7 @@ Reco!は、「日々の行った事を簡単に記録・管理・共有したい
   * AWS
     * EC2
     * S3
+    * Route 53
   * Nginx
   * Unicorn
 
