@@ -22,7 +22,7 @@
     </div>
 </header>
 
-<section class="py-5">
+<section class="py-5 container">
     <div class="row justify-content-center">
         <div class="sub-content">
             <h2>日々行った事を、</h2>
@@ -37,21 +37,24 @@
 </section>
 
 <div class="py-2 bg-image-full">
-    <h2 class="top-function-num text-center text-white">機能①</h2>
-        <div class="top-function-explanation text-center justify-content-evenly row">
-            <div class="col-12 col-lg-6">
-                <h3 class="text-white">個人・チーム機能</h3>
-                <p class="text-white">簡単にチームを作成する事ができます。</p>
-                <p class="text-white">チームへの招待は、登録されたメールアドレスにより行います。</p>
+    <div class="container">
+        <h2 class="top-function-num text-center text-white">機能①</h2>
+            <div class="top-function-explanation text-center justify-content-evenly row">
+                <div class="col-12 col-lg-6">
+                    <h3 class="text-white">個人・チーム機能</h3>
+                    <p class="text-white">簡単にチームを作成する事ができます。</p>
+                    <p class="text-white">チームへの招待は、登録されたメールアドレスにより行います。</p>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <%= image_tag 'top1.png', size: '500x350', class: 'rounded img-fluid' %>
+                </div>
             </div>
-            <div class="col-12 col-lg-6">
-                <%= image_tag 'top1.png', size: '500x350', class: 'rounded' %>
-            </div>
-        </div>
+    </div>
 </div>
 
 <div class="py-2 my-5 bg-image-full ">
-    <h2 class="top-function-num text-center text-white">機能②</h2>
+    <div class="container">
+        <h2 class="top-function-num text-center text-white">機能②</h2>
         <div class="top-function-explanation text-center justify-content-evenly row">
             <div class="col-12 col-lg-6">
                 <h3 class="text-white">メッセージ機能</h3>
@@ -60,13 +63,15 @@
                 <p class="text-white">すぐにメッセージでのやり取りが可能です。</p>
             </div>
             <div class="col-12 col-lg-6">
-                <%= image_tag 'top2.png', size: '500x350', class: 'rounded' %>
+                <%= image_tag 'top2.png', size: '500x350', class: 'rounded img-fluid' %>
             </div>
         </div>
+    </div>
 </div>
 
 <div class="py-2 my-5 bg-image-full ">
-    <h2 class="top-function-num text-center text-white">機能③</h2>
+    <div class="container">
+        <h2 class="top-function-num text-center text-white">機能③</h2>
         <div class="top-function-explanation text-center justify-content-evenly row">
             <div class="col-12 col-lg-6">
                 <h3 class="text-white">ナレッジ・ティップ機能</h3>
@@ -74,9 +79,10 @@
                 <p class="text-white">ティップを蓄積していきましょう。</p>
             </div>
             <div class="col-12 col-lg-6">
-                <%= image_tag 'top3.png', size: '500x350', class: 'rounded' %>
+                <%= image_tag 'top3.png', size: '500x350', class: 'rounded img-fluid' %>
             </div>
         </div>
+    </div>
 </div>
 
 <section class="py-5">
@@ -88,14 +94,12 @@
     </div>
 </section>
 
-<button id="scroll-to-top-btn"><i class="fa fa-arrow-up text-center"></i></button>
-
 <footer class="py-5 bg-dark">
     <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Reco! 2021</p></div>
 </footer>
 
 <script>
-ScrollReveal().reveal('.top-function-explanation', {
+    ScrollReveal().reveal('.top-function-explanation', {
     duration: 1600,
     scale: 0.1,
 });
@@ -105,21 +109,4 @@ ScrollReveal().reveal('.main-title', {
     duration: 1600,
     scale: 4,
 });
-
-
-const scroll_to_top_btn = document.querySelector('#scroll-to-top-btn');
-
-scroll_to_top_btn.addEventListener( 'click' , scroll_to_top );
-function scroll_to_top(){
-    window.scroll({top: 0, behavior: 'smooth'});
-};
-
-window.addEventListener( 'scroll' , scroll_event );
-function scroll_event(){
-    if(window.pageYOffset > 400){
-    scroll_to_top_btn.style.opacity = '1';
-    }else if(window.pageYOffset < 400){
-    scroll_to_top_btn.style.opacity = '0';
-    }
-};
 </script>
