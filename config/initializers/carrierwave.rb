@@ -15,10 +15,10 @@ CarrierWave.configure do |config|
   config.fog_attributes = { 'Cache-Control' => 'public, max-age=86400' }
   case Rails.env
   when 'production'
-    config.fog_directory = 'recoreco-production'
-    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/recoreco-production'
+    config.fog_directory = 'reco-prod'
+    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/reco-prod'
   when 'development'
-    config.fog_directory = 'recoreco-development'
+    config.fog_directory = 'https://s3-ap-northeast-1.amazonaws.com/reco-dev'
     config.asset_host = 'http://localhost:3000'
   end
 end
