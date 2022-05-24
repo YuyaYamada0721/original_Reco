@@ -33,8 +33,6 @@ gem 'dotenv-rails'
 gem 'mini_racer', platforms: :ruby
 gem 'unicorn'
 
-# gem 'fog-aws'
-
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 
@@ -44,12 +42,6 @@ group :development, :test do
 
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 3.8'
-
-  # gem 'capistrano', '3.6.0'
-  # gem 'capistrano3-unicorn'
-  # gem 'capistrano-bundler'
-  # gem 'capistrano-rails'
-  # gem 'capistrano-rbenv'
 
   gem 'bcrypt_pbkdf'
   gem 'ed25519'
