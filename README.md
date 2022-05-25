@@ -10,7 +10,8 @@ Reco!は、「日々の行った事を簡単に記録・管理・共有したい
 <br>
 個人で利用し、過去の振り返りや将来誰かをチームに招待しナレッジを共有する事もできます。
 <br>
-https://reco.bar
+~~https://reco.bar~~ (無料枠終了に伴い、Herokuへ)
+https://reco-reco.herokuapp.com
 
 ## 制作背景
 今までの経験で、記録を残す事の大切さ、それをチームで共有する大切さを実感してきました。[(詳細)](https://docs.google.com/spreadsheets/d/1NDM8KZCQmmo7yodlo8UEfojOngeBVVncNlLA4K8uJU0/edit#gid=1735966077&range=A1)
@@ -95,4 +96,3 @@ https://cacoo.com/diagrams/l01zmvJMbIZq4rR9/73966
 
 ## ワイヤーフレーム
 https://cacoo.com/diagrams/l01zmvJMbIZq4rR9/13E59
-
